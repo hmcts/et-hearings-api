@@ -5,5 +5,5 @@ FROM hmctspublic.azurecr.io/base/java:17-distroless
 COPY lib/applicationinsights.json /opt/app/
 COPY build/libs/spring-boot-template.jar /opt/app/
 
-EXPOSE 4550
+EXPOSE 4560
 CMD [ "spring-boot-template.jar" ]
