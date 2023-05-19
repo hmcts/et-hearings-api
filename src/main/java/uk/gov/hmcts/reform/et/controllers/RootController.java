@@ -17,7 +17,8 @@ public class RootController {
      *
      * <p>Azure application service has a hidden feature of making requests to root endpoint when
      * "Always On" is turned on.
-     * This is the endpoint to deal with that and therefore silence the unnecessary 404s as a response code.
+     * This is the endpoint to deal with that and
+     * therefore silence the unnecessary 404s as a response code.
      *
      * @return Welcome message from the service.
      */
