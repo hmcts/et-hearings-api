@@ -1,0 +1,16 @@
+#!groovy
+
+@Library("Infrastructure")
+
+import uk.gov.hmcts.contino.AppPipelineDsl
+
+def type = "java"
+def product = "et"
+def component = "hearings-api"
+def branchesToSync = ['perftest', 'demo', 'ithc']
+
+withPipeline(type, product, component) {
+  disableLegacyDeployment()
+  syncBranchesWithMaster(branchesToSync)
+  enableSlackNotifications('#et-builds')
+}
