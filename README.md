@@ -1,4 +1,4 @@
-# et-hearins-api
+# et-hearings-api
 
 ## Building and deploying the application
 
@@ -27,7 +27,7 @@ Create docker image:
   docker-compose build
 ```
 
-Run the distribution (created in `build/install/et-hearins-api` directory)
+Run the distribution (created in `build/install/et-hearings-api` directory)
 by executing the following command:
 
 ```bash
