@@ -204,7 +204,7 @@ dependencies {
   }
 }
 
-mainClassName = 'uk.gov.hmcts.reform.demo.Application'
+mainClassName = 'uk.gov.hmcts.reform.et.Application'
 
 bootJar {
   archiveFileName = "et-hearings-api.jar"
