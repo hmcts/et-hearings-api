@@ -14,8 +14,9 @@ import uk.gov.hmcts.et.common.model.ccd.CaseDetails;
 @SuppressWarnings({"PMD.ExcessiveImports", "PMD.TooManyMethods"})
 public class CaseService {
 
-    public CaseDetails getUserCase(String authorization, String caseId) {
-        log.info("Fetching case details for: {} ", caseId);
+    public CaseDetails retrieveCase(String authorization, String caseId) {
+        // TODO: Add ccd client
+        log.info("Received request to fetch case details for: {} ", caseId);
         return new CaseDetails();
     }
 }

@@ -8,14 +8,13 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 import uk.gov.hmcts.et.common.model.hmc.CaseCategory;
 import uk.gov.hmcts.et.common.model.hmc.CaseFlags;
-import uk.gov.hmcts.et.common.model.hmc.ScreenNavigation;
-import uk.gov.hmcts.et.common.model.hmc.HearingWindow;
 import uk.gov.hmcts.et.common.model.hmc.HearingLocation;
-import uk.gov.hmcts.et.common.model.hmc.PanelRequirements;
+import uk.gov.hmcts.et.common.model.hmc.HearingWindow;
 import uk.gov.hmcts.et.common.model.hmc.Judiciary;
+import uk.gov.hmcts.et.common.model.hmc.PanelRequirements;
 import uk.gov.hmcts.et.common.model.hmc.PartyDetails;
+import uk.gov.hmcts.et.common.model.hmc.ScreenNavigation;
 import uk.gov.hmcts.et.common.model.hmc.Vocabulary;
-
 
 import java.util.List;
 

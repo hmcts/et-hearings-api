@@ -1,4 +1,5 @@
 package uk.gov.hmcts.reform.et.helper.mapping;
+
 import uk.gov.hmcts.et.common.model.ccd.CaseDetails;
 import uk.gov.hmcts.reform.et.model.service.hearingvalues.ServiceHearingValues;
 

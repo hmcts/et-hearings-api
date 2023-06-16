@@ -2,8 +2,8 @@ package uk.gov.hmcts.reform.et.controllers;
 
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
-import org.springframework.http.ResponseEntity;
 import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestHeader;
@@ -13,6 +13,7 @@ import uk.gov.hmcts.reform.et.model.service.hearingvalues.ServiceHearingValues;
 import uk.gov.hmcts.reform.et.service.ServiceHearingsService;
 
 import static org.springframework.http.ResponseEntity.status;
+
 @RestController
 @Slf4j
 @RequiredArgsConstructor
@@ -23,8 +24,8 @@ public class ServiceHearingsController {
     @PostMapping("/serviceHearingValues")
     public ResponseEntity<ServiceHearingValues> serviceHearingValues(
         @RequestHeader("Authorization") String authorization,
-        @RequestBody ServiceHearingRequest request)
-    {
+        @RequestBody ServiceHearingRequest request
+    ) {
         try {
             log.info("Retrieving case details using Case id : {}, for use in generating Service Hearing Values",
                      request.getCaseId());
@@ -36,6 +37,7 @@ public class ServiceHearingsController {
             throw exc;
         }
     }
+
     private void logException(Exception exc, String caseId) {
         log.error("Error updating case id {}, {}", caseId, exc.toString());
     }
