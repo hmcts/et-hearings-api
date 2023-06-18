@@ -20,7 +20,6 @@ public class ServiceHearingsService {
         ServiceHearingRequest request
     ) {
         CaseDetails caseDetails = caseService.retrieveCase(authorization, request.getCaseId());
-        ServiceHearingValues hearingValues = ServiceHearingValuesMapping.mapServiceHearingValues(caseDetails);
-        return hearingValues;
+        return ServiceHearingValuesMapping.mapServiceHearingValues(caseDetails);
     }
 }

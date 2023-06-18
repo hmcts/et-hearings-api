@@ -10,17 +10,17 @@ import static org.assertj.core.api.Assertions.assertThat;
 
 class ServiceHearingValuesTest {
 
-    private static final ObjectMapper mapper = new ObjectMapper().registerModule(new JavaTimeModule());
+    private static final ObjectMapper MAPPER = new ObjectMapper().registerModule(new JavaTimeModule());
 
     @Test
     void shouldSerializeToPoJoSuccessfully() throws Exception {
 
         String actualJson = ResourceLoader.loadJson("serviceHearingValues.json");
-        ServiceHearingValues serializedObject = mapper.readValue(actualJson, ServiceHearingValues.class);
-        String deserializedJson = mapper.writeValueAsString(serializedObject);
+        ServiceHearingValues serializedObject = MAPPER.readValue(actualJson, ServiceHearingValues.class);
+        String deserializedJson = MAPPER.writeValueAsString(serializedObject);
 
         // assert all values are preserved after serializing/deserializing ignoring node order
-        assertThat(mapper.readValue(deserializedJson, ServiceHearingValues.class)).isEqualTo(serializedObject);
+        assertThat(MAPPER.readValue(deserializedJson, ServiceHearingValues.class)).isEqualTo(serializedObject);
     }
 
 }
