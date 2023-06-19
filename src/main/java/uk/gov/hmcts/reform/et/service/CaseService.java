@@ -12,7 +12,7 @@ import uk.gov.hmcts.et.common.model.ccd.CaseDetails;
 public class CaseService {
 
     public CaseDetails retrieveCase(String authorization, String caseId) {
-        // TODO: Add ccd client
+        // CCD client to be added
         log.info("Received request to fetch case details for: {} ", caseId);
         return new CaseDetails();
     }
