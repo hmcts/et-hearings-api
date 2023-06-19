@@ -17,7 +17,6 @@ public final class ResourceLoader {
     }
 
     private static byte[] loadResource(final String filePath) throws IOException, URISyntaxException {
-        // URL url = ResourceLoader.class.getClassLoader().getResource(filePath);
         URL url = Thread.currentThread().getContextClassLoader().getResource(filePath);
         if (url == null) {
             throw new IllegalArgumentException(String.format("Could not find resource in path %s", filePath));
