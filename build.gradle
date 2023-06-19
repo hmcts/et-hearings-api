@@ -128,10 +128,15 @@ jacocoTestReport {
 project.tasks['sonarqube'].dependsOn jacocoTestReport
 project.tasks['check'].dependsOn integration
 
+def sonarExclusions = [
+  "**/gov/hmcts/reform/et/model/service/hearingvalues/ServiceHearingValues.java"
+]
+
 sonarqube {
   properties {
     property "sonar.projectName", "Reform :: et-hearings-api"
     property "sonar.projectKey", "uk.gov.hmcts.reform:et-hearings-api"
+    property "sonar.coverage.exclusions", sonarExclusions.join(', ')
   }
 }
 
