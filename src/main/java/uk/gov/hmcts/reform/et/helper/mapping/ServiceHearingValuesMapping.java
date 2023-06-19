@@ -1,8 +1,9 @@
 package uk.gov.hmcts.reform.et.helper.mapping;
 
+import lombok.extern.slf4j.Slf4j;
 import uk.gov.hmcts.et.common.model.ccd.CaseDetails;
 import uk.gov.hmcts.reform.et.model.service.hearingvalues.ServiceHearingValues;
-import lombok.extern.slf4j.Slf4j;
+
 
 @Slf4j
 public final class ServiceHearingValuesMapping {

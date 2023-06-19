@@ -14,43 +14,43 @@ class ServiceHearingValuesMappingTest {
         // given
         CaseDetails caseDetails = new CaseDetails();
         // when
-        final ServiceHearingValues serviceHearingValues = ServiceHearingValuesMapping.mapServiceHearingValues(caseDetails);
+        final ServiceHearingValues serviceHearingValues
+            = ServiceHearingValuesMapping.mapServiceHearingValues(caseDetails);
         // then
-        assertFalse(serviceHearingValues.isAutoListFlag());
-        assertNull(serviceHearingValues.getPublicCaseName());
-        assertNull(serviceHearingValues.getPublicCaseName());
-        assertNull(serviceHearingValues.getCaseDeepLink());
-        assertNull(serviceHearingValues.getHmctsInternalCaseName());
-        assertNull(serviceHearingValues.getCaseManagementLocationCode());
-        assertNull(serviceHearingValues.getCaseSlaStartDate());
-        assertFalse(serviceHearingValues.isCaseRestrictedFlag());
-        assertFalse(serviceHearingValues.isAutoListFlag());
+        assertFalse(serviceHearingValues.isAutoListFlag(), "is auto list flag");
+        assertNull(serviceHearingValues.getPublicCaseName(), "get public case name");
+        assertNull(serviceHearingValues.getCaseDeepLink(),"get case deep link");
+        assertNull(serviceHearingValues.getHmctsInternalCaseName(),"hmcts internal case name");
+        assertNull(serviceHearingValues.getCaseManagementLocationCode(),"case mgt location code");
+        assertNull(serviceHearingValues.getCaseSlaStartDate(),"case SLA start date");
+        assertFalse(serviceHearingValues.isCaseRestrictedFlag(),"case restricted flag");
+        assertFalse(serviceHearingValues.isAutoListFlag(),"auot list flag");
 
-        assertNull(serviceHearingValues.getHearingType());
-        assertNull(serviceHearingValues.getCaseType());
-        assertNull(serviceHearingValues.getCaseCategories());
-        assertNull(serviceHearingValues.getHearingWindow());
-        assertNull(serviceHearingValues.getDuration());
-        assertNull(serviceHearingValues.getHearingPriorityType());
-        assertNull(serviceHearingValues.getNumberOfPhysicalAttendees());
-        assertFalse(serviceHearingValues.isHearingInWelshFlag());
-        assertNull(serviceHearingValues.getHearingLocations());
-        assertFalse(serviceHearingValues.getCaseAdditionalSecurityFlag());
+        assertNull(serviceHearingValues.getHearingType(),"hearing type");
+        assertNull(serviceHearingValues.getCaseType(),"case type");
+        assertNull(serviceHearingValues.getCaseCategories(),"case categories");
+        assertNull(serviceHearingValues.getHearingWindow(),"hearing winodw");
+        assertNull(serviceHearingValues.getDuration(),"duration");
+        assertNull(serviceHearingValues.getHearingPriorityType(),"hearing priority type");
+        assertNull(serviceHearingValues.getNumberOfPhysicalAttendees(),"no. of physical attendees");
+        assertFalse(serviceHearingValues.isHearingInWelshFlag(),"hearing in Welsh flag");
+        assertNull(serviceHearingValues.getHearingLocations(),"get locations flag");
+        assertFalse(serviceHearingValues.getCaseAdditionalSecurityFlag(),"additional security flag");
 
-        assertNull(serviceHearingValues.getFacilitiesRequired());
-        assertNull(serviceHearingValues.getListingComments());
-        assertNull(serviceHearingValues.getHearingRequester());
-        assertFalse(serviceHearingValues.isPrivateHearingRequiredFlag());
-        assertNull(serviceHearingValues.getLeadJudgeContractType());
-        assertNull(serviceHearingValues.getJudiciary());
-        assertFalse(serviceHearingValues.isHearingIsLinkedFlag());
-        assertNull(serviceHearingValues.getParties());
-        assertNull(serviceHearingValues.getCaseFlags());
+        assertNull(serviceHearingValues.getFacilitiesRequired(),"facilities required");
+        assertNull(serviceHearingValues.getListingComments(),"listing comments");
+        assertNull(serviceHearingValues.getHearingRequester(),"hearing requester");
+        assertFalse(serviceHearingValues.isPrivateHearingRequiredFlag(),"private hearing required");
+        assertNull(serviceHearingValues.getLeadJudgeContractType(),"lead judge contract");
+        assertNull(serviceHearingValues.getJudiciary(),"judiciary");
+        assertFalse(serviceHearingValues.isHearingIsLinkedFlag(),"is hearing linked");
+        assertNull(serviceHearingValues.getParties(),"parties");
+        assertNull(serviceHearingValues.getCaseFlags(),"case flags");
 
-        assertNull(serviceHearingValues.getHmctsServiceID());
-        assertNull(serviceHearingValues.getHearingChannels());
-        assertNull(serviceHearingValues.getScreenFlow());
-        assertNull(serviceHearingValues.getVocabulary());
+        assertNull(serviceHearingValues.getHmctsServiceID(),"HMCTS service id");
+        assertNull(serviceHearingValues.getHearingChannels(),"hearing channels");
+        assertNull(serviceHearingValues.getScreenFlow(),"screen flow");
+        assertNull(serviceHearingValues.getVocabulary(),"vocabulary");
 
     }
 }
