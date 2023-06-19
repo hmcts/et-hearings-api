@@ -8,6 +8,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestHeader;
 import org.springframework.web.bind.annotation.RestController;
+import uk.gov.hmcts.reform.et.exception.GetCaseException;
 import uk.gov.hmcts.reform.et.model.service.ServiceHearingRequest;
 import uk.gov.hmcts.reform.et.model.service.hearingvalues.ServiceHearingValues;
 import uk.gov.hmcts.reform.et.service.ServiceHearingsService;
@@ -25,7 +26,7 @@ public class ServiceHearingsController {
     public ResponseEntity<ServiceHearingValues> serviceHearingValues(
         @RequestHeader("Authorization") String authorization,
         @RequestBody ServiceHearingRequest request
-    ) {
+    ) throws GetCaseException {
         try {
             log.info("Retrieving case details using Case id : {}, for use in generating Service Hearing Values",
                      request.getCaseId());

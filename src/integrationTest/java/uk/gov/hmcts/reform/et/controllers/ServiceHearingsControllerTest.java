@@ -16,6 +16,7 @@ import org.springframework.test.context.ActiveProfiles;
 import org.springframework.test.context.junit.jupiter.SpringExtension;
 import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.MvcResult;
+import uk.gov.hmcts.reform.et.exception.GetCaseException;
 import uk.gov.hmcts.reform.et.model.service.ServiceHearingRequest;
 import uk.gov.hmcts.reform.et.model.service.hearingvalues.ServiceHearingValues;
 import uk.gov.hmcts.reform.et.service.ServiceHearingsService;
@@ -75,6 +76,24 @@ class ServiceHearingsControllerTest {
                        containsString("publicCaseName"),
                        containsString("hmctsInternalCaseName")));
 
+    }
+
+    @DisplayName("When Case id not provided or invalid should return a with 404 response code")
+    @Test
+    void testPostRequestServiceHearingValuesInvalidCase() throws Exception {
+        ServiceHearingRequest requestNoId = ServiceHearingRequest.builder()
+            .caseId("")
+            .build();
+
+        given(serviceHearingsService.getServiceHearingValues(AUTH_TOKEN, requestNoId))
+            .willThrow(GetCaseException.class);
+
+        mockMvc.perform(post(SERVICE_HEARING_VALUES_URL)
+                            .contentType(APPLICATION_JSON)
+                            .header(HttpHeaders.AUTHORIZATION, AUTH_TOKEN)
+                            .content(asJsonString(requestNoId)))
+            .andDo(print())
+            .andExpect(status().isNotFound());
     }
 
     public static String asJsonString(final Object obj) throws JsonProcessingException {
