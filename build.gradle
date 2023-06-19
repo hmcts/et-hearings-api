@@ -129,7 +129,8 @@ project.tasks['sonarqube'].dependsOn jacocoTestReport
 project.tasks['check'].dependsOn integration
 
 def sonarExclusions = [
-  "**/gov/hmcts/reform/et/model/service/hearingvalues/ServiceHearingValues.java"
+  "**/gov/hmcts/reform/et/model/service/hearingvalues/ServiceHearingValues.java",
+  "**/uk/gov/hmcts/reform/et/exception/**"
 ]
 
 sonarqube {
