@@ -197,10 +197,12 @@ dependencies {
 
   implementation group: 'io.rest-assured', name: 'rest-assured'
 
-  implementation group: 'org.projectlombok', name:'lombok', version: '1.18.26'
-  annotationProcessor group: 'org.projectlombok', name:'lombok', version: '1.18.26'
-  testImplementation group: 'org.projectlombok', name:'lombok', version: '1.18.26'
-  testAnnotationProcessor group: 'org.projectlombok', name:'lombok', version: '1.18.26'
+  compileOnly 'org.projectlombok:lombok'
+  annotationProcessor group: 'org.projectlombok', name: 'lombok'
+  testAnnotationProcessor group: 'org.projectlombok', name: 'lombok'
+  functionalTestAnnotationProcessor group: 'org.projectlombok', name: 'lombok'
+  integrationTestAnnotationProcessor group: 'org.projectlombok', name: 'lombok'
+  testImplementation group: 'org.projectlombok', name: 'lombok'
 
   testImplementation(platform('org.junit:junit-bom:5.9.3'))
   testRuntimeOnly 'org.junit.jupiter:junit-jupiter-engine'
