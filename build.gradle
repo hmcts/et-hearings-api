@@ -128,10 +128,17 @@ jacocoTestReport {
 project.tasks['sonarqube'].dependsOn jacocoTestReport
 project.tasks['check'].dependsOn integration
 
+def sonarExclusions = [
+  "**/gov/hmcts/reform/et/model/service/hearingvalues/ServiceHearingValues.java",
+  "**/uk/gov/hmcts/reform/et/exception/**",
+  "**/uk/gov/hmcts/reform/et/model/service/ServiceHearingRequest.java"
+]
+
 sonarqube {
   properties {
     property "sonar.projectName", "Reform :: et-hearings-api"
     property "sonar.projectKey", "uk.gov.hmcts.reform:et-hearings-api"
+    property "sonar.coverage.exclusions", sonarExclusions.join(', ')
   }
 }
 
@@ -188,6 +195,7 @@ dependencies {
   implementation group: 'org.springframework.boot', name: 'spring-boot-starter-aop'
   implementation group: 'org.springframework.boot', name: 'spring-boot-starter-json'
   implementation group: 'org.springdoc', name: 'springdoc-openapi-starter-webmvc-ui', version: '2.1.0'
+  implementation group: 'com.github.hmcts', name: 'et-data-model', version:'2.2.4'
 
   implementation group: 'com.github.hmcts.java-logging', name: 'logging', version: '6.0.1'
 
@@ -195,6 +203,13 @@ dependencies {
   implementation group: 'org.apache.logging.log4j', name: 'log4j-to-slf4j', version: log4JVersion
 
   implementation group: 'io.rest-assured', name: 'rest-assured'
+
+  compileOnly 'org.projectlombok:lombok'
+  annotationProcessor group: 'org.projectlombok', name: 'lombok'
+  testAnnotationProcessor group: 'org.projectlombok', name: 'lombok'
+  functionalTestAnnotationProcessor group: 'org.projectlombok', name: 'lombok'
+  integrationTestAnnotationProcessor group: 'org.projectlombok', name: 'lombok'
+  testImplementation group: 'org.projectlombok', name: 'lombok'
 
   testImplementation(platform('org.junit:junit-bom:5.9.3'))
   testRuntimeOnly 'org.junit.jupiter:junit-jupiter-engine'
