@@ -11,12 +11,9 @@ import static org.junit.jupiter.api.Assertions.assertNull;
 class ServiceHearingValuesMappingTest {
     @Test
     void shouldReturnServiceHearingValues() {
-        // given
         CaseDetails caseDetails = new CaseDetails();
-        // when
         final ServiceHearingValues serviceHearingValues
             = ServiceHearingValuesMapping.mapServiceHearingValues(caseDetails);
-        // then
         assertFalse(serviceHearingValues.isAutoListFlag(), "is auto list flag");
         assertNull(serviceHearingValues.getPublicCaseName(), "get public case name");
         assertNull(serviceHearingValues.getCaseDeepLink(),"get case deep link");

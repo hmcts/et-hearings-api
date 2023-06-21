@@ -42,11 +42,8 @@
     <exclude name="UseUtilityClass"/>
     <exclude name="LoosePackageCoupling"/>
     <exclude name="DataClass"/>
-  </rule>
-  <rule ref="category/java/design.xml/ExcessiveImports">
-    <properties>
-      <property name="minimum" value="35"/><!-- should be reduced -->
-    </properties>
+    <exclude name="ExcessiveImports"/>
+    <exclude name="TooManyMethods"/>
   </rule>
   <rule ref="category/java/design.xml/LawOfDemeter">
     <properties>

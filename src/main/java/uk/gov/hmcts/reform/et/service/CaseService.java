@@ -10,7 +10,6 @@ import uk.gov.hmcts.reform.et.exception.GetCaseException;
 @Slf4j
 @Service
 @RequiredArgsConstructor
-@SuppressWarnings({"PMD.ExcessiveImports", "PMD.TooManyMethods"})
 public class CaseService {
 
     public CaseDetails retrieveCase(String authorization, String caseId) throws GetCaseException {
