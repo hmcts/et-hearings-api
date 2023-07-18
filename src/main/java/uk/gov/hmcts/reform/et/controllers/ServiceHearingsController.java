@@ -30,16 +30,15 @@ public class ServiceHearingsController {
         try {
             log.info("Retrieving case details using Case id : {}, for use in generating Service Hearing Values",
                      request.getCaseId());
-
             ServiceHearingValues model = serviceHearingsService.getServiceHearingValues(authorization, request);
             return status(HttpStatus.OK).body(model);
-        } catch (Exception exc) {
-            logException(exc, request.getCaseId());
-            throw exc;
+        } catch (Exception ex) {
+            logException(ex, request.getCaseId());
+            throw ex;
         }
     }
 
-    private void logException(Exception exc, String caseId) {
-        log.error("Error updating case id {}, {}", caseId, exc.toString());
+    private void logException(Exception ex, String caseId) {
+        log.error("Error updating case id {}, {}", caseId, ex.toString());
     }
 }
