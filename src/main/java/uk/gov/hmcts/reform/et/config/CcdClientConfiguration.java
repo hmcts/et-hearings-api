@@ -1,4 +1,4 @@
-package uk.gov.hmcts.ethos.replacement.docmosis.config;
+package uk.gov.hmcts.reform.et.config;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import org.springframework.beans.factory.annotation.Value;
@@ -8,8 +8,8 @@ import org.springframework.web.client.RestTemplate;
 import uk.gov.hmcts.ecm.common.client.CaseDataBuilder;
 import uk.gov.hmcts.ecm.common.client.CcdClient;
 import uk.gov.hmcts.ecm.common.client.CcdClientConfig;
-import uk.gov.hmcts.ethos.replacement.docmosis.service.UserService;
 import uk.gov.hmcts.reform.authorisation.generators.AuthTokenGenerator;
+import uk.gov.hmcts.reform.et.service.UserService;
 
 @Configuration
 public class CcdClientConfiguration {
