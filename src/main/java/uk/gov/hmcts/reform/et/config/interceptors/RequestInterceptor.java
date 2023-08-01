@@ -1,17 +1,17 @@
 package uk.gov.hmcts.reform.et.config.interceptors;
+
+import jakarta.servlet.http.HttpServletRequest;
+import jakarta.servlet.http.HttpServletResponse;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 import org.springframework.web.servlet.HandlerInterceptor;
 import uk.gov.hmcts.reform.et.service.VerifyTokenService;
 
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
-
 import static org.springframework.http.HttpHeaders.AUTHORIZATION;
 
 /**
- * Intercepts any call to the et-sya-api and validates the token.
+ * Intercepts any call to the et-hearings-api and validates the token.
  */
 @Slf4j
 @Component
@@ -33,6 +33,7 @@ public class RequestInterceptor implements HandlerInterceptor {
     public boolean preHandle(HttpServletRequest requestServlet, HttpServletResponse responseServlet, Object handler) {
         String authorizationHeader = requestServlet.getHeader(AUTHORIZATION);
         boolean jwtVerified = verifyTokenService.verifyTokenSignature(authorizationHeader);
+        System.out.println("############################# PRE HANDLE #######################################################");
         if (!jwtVerified) {
             log.error(FAILED_TO_VERIFY_TOKEN, authorizationHeader);
             throw new UnAuthorisedServiceException("Failed to verify bearer token.");

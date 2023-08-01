@@ -20,6 +20,8 @@ public class GlobalExceptionHandler extends ResponseEntityExceptionHandler {
     @ExceptionHandler(InvalidTokenException.class)
     public ResponseEntity<ErrorResponse> handleInvalidTokenException(InvalidTokenException exception) {
         log.error(exception.getMessage(), exception);
+        System.out.println("invalid token");
+
         return ResponseEntity.status(UNAUTHORIZED).body(
             ErrorResponse.builder()
                 .message(exception.getMessage())
@@ -33,6 +35,8 @@ public class GlobalExceptionHandler extends ResponseEntityExceptionHandler {
         UnAuthorisedServiceException unAuthorisedServiceException
     ) {
         log.error(unAuthorisedServiceException.getMessage(), unAuthorisedServiceException);
+        System.out.println("except auth");
+
         return ResponseEntity.status(FORBIDDEN).body(
             ErrorResponse.builder()
                 .message(unAuthorisedServiceException.getMessage())
@@ -44,6 +48,7 @@ public class GlobalExceptionHandler extends ResponseEntityExceptionHandler {
     @ExceptionHandler(FeignException.class)
     ResponseEntity<ErrorResponse> handleFeignException(FeignException exception) {
         log.error(exception.getMessage(), exception);
+        System.out.println("sererr  auth");
 
         return ResponseEntity.status(exception.status()).body(
             ErrorResponse.builder()

@@ -20,11 +20,14 @@ public class AuthConfiguration {
         @Value("${idam.s2s-auth.microservice}") final String microService,
         final ServiceAuthorisationApi serviceAuthorisationApi
     ) {
+        System.out.println("servce auth");
         return AuthTokenGeneratorFactory.createDefaultGenerator(secret, microService, serviceAuthorisationApi);
     }
 
     @Bean
     public AuthTokenValidator tokenValidator(ServiceAuthorisationApi s2sApi) {
+        System.out.println("2s");
+
         return new ServiceAuthTokenValidator(s2sApi);
     }
 }

@@ -23,6 +23,8 @@ public class RootController {
      */
     @GetMapping("/")
     public ResponseEntity<String> welcome() {
+
+        System.out.println("######################################## wlecome TRIGGERED!");
         return ok("Welcome to spring-boot-template");
     }
 }
