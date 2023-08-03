@@ -3,7 +3,7 @@ package uk.gov.hmcts.reform.et.service;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
-import uk.gov.hmcts.et.common.model.ccd.CaseDetails;
+import uk.gov.hmcts.ccd.sdk.api.*;
 import uk.gov.hmcts.reform.et.exception.GetCaseException;
 import uk.gov.hmcts.reform.et.helper.mapping.ServiceHearingValuesMapping;
 import uk.gov.hmcts.reform.et.model.service.ServiceHearingRequest;
@@ -20,7 +20,9 @@ public class ServiceHearingsService {
         String authorization,
         ServiceHearingRequest request
     ) throws GetCaseException {
-        CaseDetails caseDetails = caseService.retrieveCase(authorization, request.getCaseId());
-        return ServiceHearingValuesMapping.mapServiceHearingValues(caseDetails);
+     //   CaseDetails caseDetails = caseService.retrieveCase(authorization, request.getCaseId());
+        String caseDetails = caseService.retrieveCase(authorization, request.getCaseId());
+
+        return ServiceHearingValuesMapping.mapServiceHearingValues();
     }
 }

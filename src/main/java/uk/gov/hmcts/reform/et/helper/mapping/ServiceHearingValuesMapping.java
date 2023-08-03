@@ -1,7 +1,7 @@
 package uk.gov.hmcts.reform.et.helper.mapping;
 
 import lombok.extern.slf4j.Slf4j;
-import uk.gov.hmcts.et.common.model.ccd.CaseDetails;
+import uk.gov.hmcts.reform.ccd.client.model.CaseDetails;
 import uk.gov.hmcts.reform.et.model.service.hearingvalues.ServiceHearingValues;
 
 
@@ -11,9 +11,11 @@ public final class ServiceHearingValuesMapping {
     private ServiceHearingValuesMapping() {
     }
 
-    public static ServiceHearingValues mapServiceHearingValues(CaseDetails caseDetails) {
-        log.info("Mapping hearing values for Case id : {}, for use in generating Service Hearing Values",
-                 caseDetails.getCaseId());
+   // public static ServiceHearingValues mapServiceHearingValues(CaseDetails caseDetails) {
+        public static ServiceHearingValues mapServiceHearingValues() {
+
+            log.info("Mapping hearing values for Case id : {}, for use in generating Service Hearing Values");
+              //   caseDetails.getId());
         return ServiceHearingValues.builder()
             .publicCaseName(null)
             .caseDeepLink(null)
