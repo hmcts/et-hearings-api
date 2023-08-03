@@ -11,12 +11,13 @@ public final class ServiceHearingValuesMapping {
     private ServiceHearingValuesMapping() {
     }
 
-   // public static ServiceHearingValues mapServiceHearingValues(CaseDetails caseDetails) {
-        public static ServiceHearingValues mapServiceHearingValues() {
+        public static ServiceHearingValues mapServiceHearingValues(CaseDetails caseDetails) {
 
-            log.info("Mapping hearing values for Case id : {}, for use in generating Service Hearing Values");
-              //   caseDetails.getId());
+            log.info("Mapping hearing values for Case id : {}, for use in generating Service Hearing Values", caseDetails.getId());
+
+            // adding caseType for demonstration purposes
         return ServiceHearingValues.builder()
+            .caseType(caseDetails.getData().get("caseType").toString())
             .publicCaseName(null)
             .caseDeepLink(null)
             .caseManagementLocationCode(null)
@@ -25,7 +26,6 @@ public final class ServiceHearingValuesMapping {
             .hmctsInternalCaseName(null)
             .autoListFlag(false)
             .hearingType(null)
-            .caseType(null)
             .caseCategories(null)
             .hearingWindow(null)
             .duration(null)
