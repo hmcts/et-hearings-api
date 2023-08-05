@@ -33,10 +33,7 @@ public class RequestInterceptor implements HandlerInterceptor {
     public boolean preHandle(HttpServletRequest requestServlet, HttpServletResponse responseServlet, Object handler) {
         String authorizationHeader = requestServlet.getHeader(AUTHORIZATION);
         boolean jwtVerified = verifyTokenService.verifyTokenSignature(authorizationHeader);
-        System.out.println("############################# PRE HANDLE #######################################################");
         if (!jwtVerified) {
-            System.out.println("## THE JWT WAS NOT VERIFIED #####");
-
             log.error(FAILED_TO_VERIFY_TOKEN, authorizationHeader);
             throw new UnAuthorisedServiceException("Failed to verify bearer token.");
         }

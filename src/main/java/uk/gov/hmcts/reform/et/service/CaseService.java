@@ -1,13 +1,13 @@
 package uk.gov.hmcts.reform.et.service;
 
-import lombok.*;
-import lombok.extern.slf4j.*;
-import org.apache.commons.lang3.*;
-import org.springframework.stereotype.*;
-import uk.gov.hmcts.reform.authorisation.generators.*;
-import uk.gov.hmcts.reform.ccd.client.model.CaseDetails;
-import uk.gov.hmcts.reform.et.exception.*;
+import lombok.RequiredArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
+import org.apache.commons.lang3.StringUtils;
+import org.springframework.stereotype.Service;
+import uk.gov.hmcts.reform.authorisation.generators.AuthTokenGenerator;
 import uk.gov.hmcts.reform.ccd.client.CoreCaseDataApi;
+import uk.gov.hmcts.reform.ccd.client.model.CaseDetails;
+import uk.gov.hmcts.reform.et.exception.GetCaseException;
 
 @Slf4j
 @Service
@@ -16,8 +16,8 @@ public class CaseService {
 
     private final AuthTokenGenerator authTokenGenerator;
     private final CoreCaseDataApi ccdApiClient;
+
     public CaseDetails retrieveCase(String authorization, String caseId) throws GetCaseException {
-        // CCD client to be added
 
         if (StringUtils.isEmpty(caseId)) {
             String cause = String.format("The Case id was invalid");
@@ -26,9 +26,7 @@ public class CaseService {
             throw exc;
         }
         log.info("Received request to fetch case details for: {} ", caseId);
-       return ccdApiClient.getCase(authorization, authTokenGenerator.generate(), caseId);
-      //  return case;
-     //  return new CaseDetails();
+        return ccdApiClient.getCase(authorization, authTokenGenerator.generate(), caseId);
 
     }
 }

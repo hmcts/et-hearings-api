@@ -1,19 +1,33 @@
 package uk.gov.hmcts.reform.et.helper.mapping;
 
 import org.junit.jupiter.api.Test;
-import uk.gov.hmcts.et.common.model.ccd.CaseDetails;
+import org.springframework.boot.test.mock.mockito.MockBean;
+import uk.gov.hmcts.reform.ccd.client.model.CaseDetails;
+import uk.gov.hmcts.reform.et.exception.GetCaseException;
 import uk.gov.hmcts.reform.et.model.service.hearingvalues.ServiceHearingValues;
+import uk.gov.hmcts.reform.et.service.CaseService;
 
+import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertNull;
 
 
 class ServiceHearingValuesMappingTest {
+    private final String caseId = "123";
+    private static final String AUTH_TOKEN = "some-token";
+
+    @MockBean
+    private CaseService caseService;
+
     @Test
-    void shouldReturnServiceHearingValues() {
-        CaseDetails caseDetails = new CaseDetails();
-        final ServiceHearingValues serviceHearingValues
-            = ServiceHearingValuesMapping.mapServiceHearingValues(caseDetails);
+    void shouldReturnServiceHearingValues() throws GetCaseException {
+        CaseDetails caseDetails = CaseDetails.builder()
+            .caseTypeId("ET_England")
+            .id(123_456_789L)
+            .build();
+
+        ServiceHearingValues serviceHearingValues = ServiceHearingValuesMapping.mapServiceHearingValues(caseDetails);
+        assertEquals(serviceHearingValues.getCaseType(),"ET_England");
         assertFalse(serviceHearingValues.isAutoListFlag(), "is auto list flag");
         assertNull(serviceHearingValues.getPublicCaseName(), "get public case name");
         assertNull(serviceHearingValues.getCaseDeepLink(),"get case deep link");
@@ -24,7 +38,6 @@ class ServiceHearingValuesMappingTest {
         assertFalse(serviceHearingValues.isAutoListFlag(),"auot list flag");
 
         assertNull(serviceHearingValues.getHearingType(),"hearing type");
-        assertNull(serviceHearingValues.getCaseType(),"case type");
         assertNull(serviceHearingValues.getCaseCategories(),"case categories");
         assertNull(serviceHearingValues.getHearingWindow(),"hearing winodw");
         assertNull(serviceHearingValues.getDuration(),"duration");
