@@ -1,11 +1,9 @@
 package uk.gov.hmcts.reform.et.helper.mapping;
 
 import org.junit.jupiter.api.Test;
-import org.springframework.boot.test.mock.mockito.MockBean;
 import uk.gov.hmcts.reform.ccd.client.model.CaseDetails;
 import uk.gov.hmcts.reform.et.exception.GetCaseException;
 import uk.gov.hmcts.reform.et.model.service.hearingvalues.ServiceHearingValues;
-import uk.gov.hmcts.reform.et.service.CaseService;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertFalse;
@@ -13,11 +11,6 @@ import static org.junit.jupiter.api.Assertions.assertNull;
 
 
 class ServiceHearingValuesMappingTest {
-    private final String caseId = "123";
-    private static final String AUTH_TOKEN = "some-token";
-
-    @MockBean
-    private CaseService caseService;
 
     @Test
     void shouldReturnServiceHearingValues() throws GetCaseException {
@@ -27,7 +20,7 @@ class ServiceHearingValuesMappingTest {
             .build();
 
         ServiceHearingValues serviceHearingValues = ServiceHearingValuesMapping.mapServiceHearingValues(caseDetails);
-        assertEquals(serviceHearingValues.getCaseType(),"ET_England");
+        assertEquals(serviceHearingValues.getCaseType(),"ET_England", "case type");
         assertFalse(serviceHearingValues.isAutoListFlag(), "is auto list flag");
         assertNull(serviceHearingValues.getPublicCaseName(), "get public case name");
         assertNull(serviceHearingValues.getCaseDeepLink(),"get case deep link");

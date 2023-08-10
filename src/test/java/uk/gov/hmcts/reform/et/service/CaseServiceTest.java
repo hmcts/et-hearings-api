@@ -30,7 +30,7 @@ class CaseServiceTest {
     @Mock
     private CoreCaseDataApi ccdApiClient;
 
-    private CaseTestData caseTestData;
+    private final CaseTestData caseTestData;
 
     private static final String TEST_SERVICE_AUTH_TOKEN = "Bearer TestServiceAuth";
 
@@ -50,7 +50,7 @@ class CaseServiceTest {
 
         CaseDetails actualCaseDetails = caseService.retrieveCase(TEST_SERVICE_AUTH_TOKEN, "12345");
 
-        assertEquals(caseTestData.expectedDetails(), actualCaseDetails);
+        assertEquals(caseTestData.expectedDetails(), actualCaseDetails, "case details");
     }
 
     @Test

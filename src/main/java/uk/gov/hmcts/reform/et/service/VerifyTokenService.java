@@ -33,21 +33,15 @@ public class VerifyTokenService {
 
     public boolean verifyTokenSignature(String token) {
         try {
-            System.out.println("the token being checked is " + token);
             var tokenTocheck = StringUtils.replace(token, "Bearer ", "");
-            System.out.println("token to check is : " + tokenTocheck);
             var signedJwt = SignedJWT.parse(tokenTocheck);
-            System.out.println("signed jwt - " + signedJwt);
             JWKSet jsonWebKeySet = loadJsonWebKeySet(idamJwkUrl);
 
             var jwsHeader = signedJwt.getHeader();
-            System.out.println("jws header : " + jwsHeader);
 
             var key = findKeyById(jsonWebKeySet, jwsHeader.getKeyID());
-            System.out.println("key is : " + key);
 
             var jwsVerifier = jwsVerifierFactory.createJWSVerifier(jwsHeader, key);
-            System.out.println("jws verifier: " + jwsVerifier);
 
             return signedJwt.verify(jwsVerifier);
         } catch (Exception e) {

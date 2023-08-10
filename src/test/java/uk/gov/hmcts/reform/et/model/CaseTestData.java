@@ -12,13 +12,12 @@ import java.net.URISyntaxException;
 @Data
 public final class CaseTestData {
 
-    private static final ObjectMapper mapper = new ObjectMapper().registerModule(new JavaTimeModule());
+    private static final ObjectMapper MAPPER = new ObjectMapper().registerModule(new JavaTimeModule());
 
     public CaseDetails expectedDetails() throws IOException, URISyntaxException {
         String actualJson = ResourceLoader.loadJson(
             "responses/caseDetails.json"
         );
-        CaseDetails serializedObject = mapper.readValue(actualJson, CaseDetails.class);
-        return serializedObject;
+        return MAPPER.readValue(actualJson, CaseDetails.class);
     }
 }
