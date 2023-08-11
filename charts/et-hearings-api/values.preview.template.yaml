@@ -5,8 +5,8 @@ java:
   keyVaults:
     et-hearings-api:
       secrets:
-        - name: et-sya-api-s2s-secret
-          alias: ET_SYA_S2S_SECRET
+        - name: et-hearings-api-s2s-secret
+          alias: ET_HEARINGS_S2S_SECRET
     et:
       secrets:
         - AppInsightsInstrumentationKey
