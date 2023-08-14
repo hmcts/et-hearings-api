@@ -8,7 +8,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import uk.gov.hmcts.reform.authorisation.exceptions.InvalidTokenException;
 import uk.gov.hmcts.reform.et.config.interceptors.UnAuthorisedServiceException;
-import uk.gov.hmcts.reform.et.model.service.ErrorResponse;
+import uk.gov.hmcts.reform.et.model.ErrorResponse;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.mockito.Mockito.mock;

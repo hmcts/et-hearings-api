@@ -1,5 +1,4 @@
-package uk.gov.hmcts.reform.et.model.service;
-
+package uk.gov.hmcts.reform.et.model;
 
 import lombok.Builder;
 import lombok.Data;
