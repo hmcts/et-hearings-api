@@ -136,7 +136,8 @@ def sonarExclusions = [
   "**/uk/gov/hmcts/reform/et/model/service/ServiceHearingRequest.java",
   "**/gov/hmcts/reform/et/config/**",
   "**/gov/hmcts/reform/et/Application.java",
-  "**/gov/hmcts/reform/et/service/VerifyTokenService.java"
+  "**/gov/hmcts/reform/et/service/VerifyTokenService.java",
+  "**/gov/hmcts/reform/et/model/ErrorResponse.java"
 ]
 
 sonarqube {
