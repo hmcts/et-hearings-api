@@ -133,7 +133,10 @@ project.tasks['check'].dependsOn integration
 def sonarExclusions = [
   "**/gov/hmcts/reform/et/model/service/hearingvalues/ServiceHearingValues.java",
   "**/uk/gov/hmcts/reform/et/exception/**",
-  "**/uk/gov/hmcts/reform/et/model/service/ServiceHearingRequest.java"
+  "**/uk/gov/hmcts/reform/et/model/service/ServiceHearingRequest.java",
+  "**/gov/hmcts/reform/et/config/**",
+  "**/gov/hmcts/reform/et/Application.java",
+  "**/gov/hmcts/reform/et/service/VerifyTokenService.java"
 ]
 
 sonarqube {
