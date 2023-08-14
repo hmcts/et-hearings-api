@@ -14,7 +14,8 @@ public final class ServiceHearingValuesMapping {
     public static ServiceHearingValues mapServiceHearingValues(CaseDetails caseDetails) {
 
         log.info("Mapping hearing values for Case id : {}, generating Service Hearing Values", caseDetails.getId());
-        // adding caseType for demonstration purposes
+        // ServiceHearingsValues is returned with caseType populated
+        // (e.g. with ET_EnglandWales) when a case is successfully fetched from ccd.
         return ServiceHearingValues.builder()
         .caseType(caseDetails.getCaseTypeId())
         .publicCaseName(null)
