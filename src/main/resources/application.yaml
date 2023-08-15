@@ -55,10 +55,11 @@ idam:
     jwksUrl: ${IDAM_JWKS_BASEURL:http://localhost:5000/o/jwks}
   s2s-auth:
     url: ${SERVICE_AUTH_PROVIDER_URL:http://localhost:4502}
-    secret: ${ET_HEARINGS_S2S_SECRET:AAAAAAAAAAAAAAAC}
-    microservice: ${MICRO_SERVICE:ccd_gw}
-  s2s-authorised:
-    services: ${IDAM_S2S_AUTH_MICROSERVICES:xui_webapp} # todo: request onboarding with xui_webapp 
+    secret: ${ET_HEARINGS_S2S_SECRET:AAAAAAAAAAAAAAAA}
+    microservice: ${MICRO_SERVICE:et_hearings_api} 
+ # s2s-authorised:
+  #  services: ${IDAM_S2S_AUTH_MICROSERVICES:xui_webapp} todo: request onboarding with xui_webapp 
+
 core_case_data:
   api:
     url: ${CASE_DATA_STORE_BASEURL:http://localhost:4452}

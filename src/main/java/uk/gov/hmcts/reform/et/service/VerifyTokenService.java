@@ -18,6 +18,13 @@ import uk.gov.hmcts.reform.authorisation.exceptions.InvalidTokenException;
 import java.net.URL;
 import java.security.Key;
 
+/**
+ * Used by {@link RequestInterceptor} to test the validity of the jwt of the caller.
+ * This relies upon the following configurations to be set at an environment level:
+ * <ul>
+ *   <li>IDAM_JWKS_BASEURL</li>
+ * </ul>
+ */
 @Slf4j
 @Service
 public class VerifyTokenService {
