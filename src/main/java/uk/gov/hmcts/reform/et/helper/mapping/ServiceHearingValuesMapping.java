@@ -1,7 +1,7 @@
 package uk.gov.hmcts.reform.et.helper.mapping;
 
 import lombok.extern.slf4j.Slf4j;
-import uk.gov.hmcts.et.common.model.ccd.CaseDetails;
+import uk.gov.hmcts.reform.ccd.client.model.CaseDetails;
 import uk.gov.hmcts.reform.et.model.service.hearingvalues.ServiceHearingValues;
 
 
@@ -12,9 +12,12 @@ public final class ServiceHearingValuesMapping {
     }
 
     public static ServiceHearingValues mapServiceHearingValues(CaseDetails caseDetails) {
-        log.info("Mapping hearing values for Case id : {}, for use in generating Service Hearing Values",
-                 caseDetails.getCaseId());
+
+        log.info("Mapping hearing values for Case id : {}, generating Service Hearing Values", caseDetails.getId());
+        // ServiceHearingsValues is returned with caseType populated
+        // (e.g. with ET_EnglandWales) when a case is successfully fetched from ccd.
         return ServiceHearingValues.builder()
+            .caseType(caseDetails.getCaseTypeId())
             .publicCaseName(null)
             .caseDeepLink(null)
             .caseManagementLocationCode(null)
@@ -23,7 +26,6 @@ public final class ServiceHearingValuesMapping {
             .hmctsInternalCaseName(null)
             .autoListFlag(false)
             .hearingType(null)
-            .caseType(null)
             .caseCategories(null)
             .hearingWindow(null)
             .duration(null)

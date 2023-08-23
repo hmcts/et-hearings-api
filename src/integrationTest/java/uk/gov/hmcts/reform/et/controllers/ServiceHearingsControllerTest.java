@@ -4,6 +4,7 @@ import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.datatype.jsr310.JavaTimeModule;
 import org.hamcrest.CoreMatchers;
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
@@ -16,14 +17,18 @@ import org.springframework.test.context.ActiveProfiles;
 import org.springframework.test.context.junit.jupiter.SpringExtension;
 import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.MvcResult;
+import uk.gov.hmcts.reform.authorisation.generators.AuthTokenGenerator;
 import uk.gov.hmcts.reform.et.exception.GetCaseException;
 import uk.gov.hmcts.reform.et.model.service.ServiceHearingRequest;
 import uk.gov.hmcts.reform.et.model.service.hearingvalues.ServiceHearingValues;
 import uk.gov.hmcts.reform.et.service.ServiceHearingsService;
+import uk.gov.hmcts.reform.et.service.VerifyTokenService;
 
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.Matchers.containsString;
 import static org.mockito.BDDMockito.given;
+import static org.mockito.Mockito.any;
+import static org.mockito.Mockito.when;
 import static org.springframework.http.MediaType.APPLICATION_JSON;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
 import static org.springframework.test.web.servlet.result.MockMvcResultHandlers.print;
@@ -48,6 +53,18 @@ class ServiceHearingsControllerTest {
 
     @MockBean
     public ServiceHearingsService serviceHearingsService;
+
+    @MockBean
+    private VerifyTokenService verifyTokenService;
+
+    @MockBean
+    private AuthTokenGenerator authTokenGenerator;
+
+    @BeforeEach
+    void setUpBeforeEach() {
+        when(verifyTokenService.verifyTokenSignature(any())).thenReturn(true);
+        when(authTokenGenerator.generate()).thenReturn("token");
+    }
 
     @DisplayName("When Authorization and Case ID valid "
         + "should return the case name with a with 200 response code")
