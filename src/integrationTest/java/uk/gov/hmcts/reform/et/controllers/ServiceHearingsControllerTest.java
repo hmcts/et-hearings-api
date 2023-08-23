@@ -42,6 +42,8 @@ class ServiceHearingsControllerTest {
 
     private static final String CASE_ID = "123456abc";
 
+    private static final String HEARING_ID = "c73bcbc4-430e-41c9-9790-182543914c0c";
+
     private static final String SERVICE_HEARING_VALUES_URL = "/serviceHearingValues";
 
     private static final String AUTH_TOKEN = "testToken";
@@ -80,19 +82,22 @@ class ServiceHearingsControllerTest {
                             .build());
 
         MvcResult result = mockMvc.perform(post(SERVICE_HEARING_VALUES_URL)
-                            .contentType(APPLICATION_JSON)
-                            .header(HttpHeaders.AUTHORIZATION, AUTH_TOKEN)
-                            .content(asJsonString(request)))
+                                               .contentType(APPLICATION_JSON)
+                                               .header(HttpHeaders.AUTHORIZATION, AUTH_TOKEN)
+                                               .content(asJsonString(request)))
             .andDo(print())
             .andExpect(status().isOk()).andReturn();
 
         String content = result.getResponse().getContentAsString();
 
         assertThat("Json body returned contains correct properties", content, CoreMatchers.allOf(
-                       containsString("hmctsServiceID"),
-                       containsString("publicCaseName"),
-                       containsString("hmctsInternalCaseName")));
-
+            containsString("autoListFlag"),
+            containsString("hearingInWelshFlag"),
+            containsString("privateHearingRequiredFlag"),
+            containsString("caseInterpreterRequiredFlag"),
+            containsString("hearingIsLinkedFlag"),
+            containsString("caserestrictedFlag")
+        ));
     }
 
     @DisplayName("When Case id not provided or invalid should return a with 404 response code")
