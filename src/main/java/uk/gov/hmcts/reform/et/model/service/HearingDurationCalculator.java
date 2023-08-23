@@ -6,7 +6,7 @@ import uk.gov.hmcts.reform.ccd.client.model.CaseDetails;
 import java.util.List;
 
 
-public class HearingDurationCalculator {
+public final class HearingDurationCalculator {
 
     private HearingDurationCalculator() {
     }

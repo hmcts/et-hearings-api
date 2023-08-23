@@ -24,10 +24,6 @@ public enum YesNo {
         return value;
     }
 
-    public boolean toBoolean() {
-        return YES.value.equals(value);
-    }
-
     public static boolean isYes(YesNo yesNo) {
         return YES.equals(yesNo);
     }
