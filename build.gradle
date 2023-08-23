@@ -217,6 +217,14 @@ dependencies {
   implementation group: 'io.rest-assured', name: 'rest-assured'
   implementation group: 'org.apache.tomcat.embed', name: 'tomcat-embed-core', version: '10.1.11'
   implementation group: 'org.apache.tomcat.embed', name: 'tomcat-embed-websocket', version: '10.1.11'
+  implementation group: 'org.bouncycastle', name: 'bcprov-jdk18on', version: '1.76'
+
+//  implementation 'org.bouncycastle:bcprov-jdk18on'
+//  constraints {
+//    implementation('org.bouncycastle:bcprov-jdk18on:1.7.6') {
+//      because 'previous versions have CVE-2023-33201'
+//    }
+//  }
 
   compileOnly 'org.projectlombok:lombok'
   annotationProcessor group: 'org.projectlombok', name: 'lombok'
