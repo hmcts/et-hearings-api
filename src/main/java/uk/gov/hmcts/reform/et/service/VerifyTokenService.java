@@ -1,6 +1,5 @@
 package uk.gov.hmcts.reform.et.service;
 
-
 import com.nimbusds.jose.JOSEException;
 import com.nimbusds.jose.crypto.factories.DefaultJWSVerifierFactory;
 import com.nimbusds.jose.jwk.AsymmetricJWK;
