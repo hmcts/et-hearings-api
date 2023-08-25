@@ -24,18 +24,17 @@ public class ServiceHearingsService {
 
     private final ReferenceDataServiceHolder referenceDataServiceHolder;
 
-
     public ServiceHearingValues getServiceHearingValues(
         String authorization,
         ServiceHearingRequest request
     ) throws GetCaseException {
         CaseDetails caseDetails = caseService.retrieveCase(authorization, request.getCaseId());
         CaseData caseData = EmployeeObjectMapper.mapRequestCaseDataToCaseData(caseDetails.getData());
-        String hearingRequest = EmployeeObjectMapper.mapServiceHearingRequestDataToCaseData(request.getHearingId());
+        String hearingId = EmployeeObjectMapper.mapServiceHearingRequestDataToCaseData(request.getHearingId());
         List<HearingTypeItem> hearingCollection = EmployeeObjectMapper.mapHearingCollectionDataToCaseData(
             caseData.getHearingCollection());
 
         return ServiceHearingValuesMapping.mapServiceHearingValues(
-            caseDetails, caseData, hearingRequest, hearingCollection, referenceDataServiceHolder);
+            caseDetails, caseData, hearingId, hearingCollection, referenceDataServiceHolder);
     }
 }

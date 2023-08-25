@@ -17,13 +17,13 @@ import static uk.gov.hmcts.reform.et.model.service.YesNo.isYes;
 public final class HearingsDetailsMapping {
 
     public static final String STANDARD_PRIORITY = "Standard";
-    private static final String NULL = "Null";
+    private static final String NULL = "null";
 
     private static final boolean HEARING_IN_WELSH_FLAG = false;
 
     private static final int PHYSICAL_ATTENDEES = 0;
 
-    private static final String LEAD_JUDGE_CONTRACT_TYPE = "Null";
+    private static final String LEAD_JUDGE_CONTRACT_TYPE = "null";
 
 
     private HearingsDetailsMapping() {
@@ -39,7 +39,7 @@ public final class HearingsDetailsMapping {
     }
 
     public static Integer getHearingDuration(
-        CaseDetails caseDetails, String hearingRequest, List<HearingTypeItem> hearingCollection) {
+            CaseDetails caseDetails, String hearingRequest, List<HearingTypeItem> hearingCollection) {
         return calculateHearingDuration(caseDetails, hearingRequest, hearingCollection);
     }
 
@@ -47,14 +47,14 @@ public final class HearingsDetailsMapping {
         return caseData.getHearingEstLengthNumType();
     }
 
-    public static String getHearingDateType(String hearingRequest, List<HearingTypeItem> hearingCollection) {
-        String hearingDateType = null;
+    public static String getHearingType(String hearingRequest, List<HearingTypeItem> hearingCollection) {
+        String hearingType = null;
         for (HearingTypeItem hearingItem : hearingCollection) {
             if (hearingItem.getId().equals(hearingRequest)) {
-                hearingDateType = hearingItem.getValue().getHearingType();
+                hearingType = hearingItem.getValue().getHearingType();
             }
         }
-        return hearingDateType;
+        return hearingType;
     }
 
     public static Integer getNumberOfPhysicalAttendees() {
