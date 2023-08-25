@@ -1,6 +1,7 @@
 package uk.gov.hmcts.reform.et.controllers;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
+import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.datatype.jsr310.JavaTimeModule;
 import org.hamcrest.CoreMatchers;
@@ -25,7 +26,6 @@ import uk.gov.hmcts.reform.et.service.ServiceHearingsService;
 import uk.gov.hmcts.reform.et.service.VerifyTokenService;
 
 import static org.hamcrest.MatcherAssert.assertThat;
-import static org.hamcrest.Matchers.containsString;
 import static org.mockito.BDDMockito.given;
 import static org.mockito.Mockito.any;
 import static org.mockito.Mockito.when;
@@ -41,8 +41,6 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 class ServiceHearingsControllerTest {
 
     private static final String CASE_ID = "123456abc";
-
-    private static final String HEARING_ID = "c73bcbc4-430e-41c9-9790-182543914c0c";
 
     private static final String SERVICE_HEARING_VALUES_URL = "/serviceHearingValues";
 
@@ -89,15 +87,20 @@ class ServiceHearingsControllerTest {
             .andExpect(status().isOk()).andReturn();
 
         String content = result.getResponse().getContentAsString();
+        JsonNode jsonNode = new ObjectMapper().readTree(content);
 
-        assertThat("Json body returned contains correct properties", content, CoreMatchers.allOf(
-            containsString("autoListFlag"),
-            containsString("hearingInWelshFlag"),
-            containsString("privateHearingRequiredFlag"),
-            containsString("caseInterpreterRequiredFlag"),
-            containsString("hearingIsLinkedFlag"),
-            containsString("caserestrictedFlag")
-        ));
+        assertThat("Json body returned should contain autoListFlag property",
+                   jsonNode.has("autoListFlag"), CoreMatchers.is(true));
+        assertThat("Json body returned should contain hearingInWelshFlag property",
+                   jsonNode.has("hearingInWelshFlag"), CoreMatchers.is(true));
+        assertThat("Json body returned should contain privateHearingRequiredFlag property",
+                   jsonNode.has("privateHearingRequiredFlag"), CoreMatchers.is(true));
+        assertThat("Json body returned should contain caseInterpreterRequiredFlag property",
+                   jsonNode.has("caseInterpreterRequiredFlag"), CoreMatchers.is(true));
+        assertThat("Json body returned should contain hearingIsLinkedFlag property",
+                   jsonNode.has("hearingIsLinkedFlag"), CoreMatchers.is(true));
+        assertThat("Json body returned should contain caseRestrictedFlag property",
+                   jsonNode.has("caseRestrictedFlag"), CoreMatchers.is(true));
     }
 
     @DisplayName("When Case id not provided or invalid should return a with 404 response code")

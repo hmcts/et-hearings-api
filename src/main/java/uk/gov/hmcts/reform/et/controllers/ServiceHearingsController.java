@@ -38,7 +38,7 @@ public class ServiceHearingsController {
         }
     }
 
-    private void logException(Exception ex, String caseId) {
+    void logException(Exception ex, String caseId) {
         log.error("Error updating case id {}, {}", caseId, ex.toString());
     }
 }
