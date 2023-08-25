@@ -12,7 +12,7 @@ public final class HearingDurationCalculator {
     }
 
     public static int calculateHearingDuration(
-        CaseDetails caseDetails, String hearingRequest, List<HearingTypeItem> hearingCollection) {
+            CaseDetails caseDetails, String hearingRequest, List<HearingTypeItem> hearingCollection) {
         int hearingEstLengthNum;
         String hearingEstLengthNumType;
 
@@ -26,9 +26,9 @@ public final class HearingDurationCalculator {
                     case "Hours" -> hearingEstLengthNum * 60;
                     case "Minutes" -> hearingEstLengthNum;
                     default -> throw new NumberFormatException(String.format(
-                        "Unexpected hearing duration for case id %s: '%s'",
-                        caseDetails.getId(),
-                        hearingEstLengthNum
+                            "Unexpected hearing duration for case id %s: '%s'",
+                            caseDetails.getId(),
+                            hearingEstLengthNum
                     ));
                 };
             }
@@ -36,9 +36,10 @@ public final class HearingDurationCalculator {
 
         // Handle the case when no match is found
         throw new IllegalArgumentException(String.format(
-            "No hearing with id '%s' found for case id %s",
-            hearingRequest,
-            caseDetails.getId()
+                "No hearing with id '%s' found for case id %s",
+                hearingRequest,
+                caseDetails.getId()
         ));
     }
 }
+

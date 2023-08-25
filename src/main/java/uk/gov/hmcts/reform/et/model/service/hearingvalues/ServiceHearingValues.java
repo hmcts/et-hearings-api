@@ -42,10 +42,7 @@ public class ServiceHearingValues {
 
     private String tribunalAndOfficeLocation;
 
-    @JsonProperty("caserestrictedFlag")
     private boolean caseRestrictedFlag;
-
-    private String caseManagementLocationCode;
 
     @JsonProperty("receiptDate")
     private String receiptDate;
@@ -56,7 +53,6 @@ public class ServiceHearingValues {
     @JsonProperty("hearingEstLengthNumType")
     private String hearingEstLengthNumType;
 
-    @JsonProperty("hearingDateType")
     private String hearingType;
 
     private HearingWindow hearingWindow;

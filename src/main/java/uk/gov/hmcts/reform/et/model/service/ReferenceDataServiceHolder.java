@@ -12,5 +12,8 @@ public class ReferenceDataServiceHolder {
     @Value("${et.hmctsServiceId}")
     private String hmctsServiceId;
 
+    public String getHmctsServiceId() {
+        return hmctsServiceId;
+    }
 }
 

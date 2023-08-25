@@ -3,7 +3,6 @@ package uk.gov.hmcts.reform.et.model.service;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonValue;
 
-import static java.util.Objects.isNull;
 import static java.util.Objects.nonNull;
 
 public enum YesNo {
@@ -30,14 +29,6 @@ public enum YesNo {
 
     public static boolean isYes(String yesNo) {
         return nonNull(yesNo) && YES.getValue().equalsIgnoreCase(yesNo);
-    }
-
-    public static boolean isNoOrNull(YesNo yesNo) {
-        return isNull(yesNo) || NO.equals(yesNo);
-    }
-
-    public static boolean isNoOrNull(String yesNo) {
-        return isNull(yesNo) || NO.getValue().equalsIgnoreCase(yesNo);
     }
 
     @Override
