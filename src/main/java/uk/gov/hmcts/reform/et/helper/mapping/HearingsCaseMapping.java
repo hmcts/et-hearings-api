@@ -13,7 +13,6 @@ public final class HearingsCaseMapping {
 
 
     private HearingsCaseMapping() {
-
     }
 
     public static String getCaseDeepLink(CaseData caseData) {

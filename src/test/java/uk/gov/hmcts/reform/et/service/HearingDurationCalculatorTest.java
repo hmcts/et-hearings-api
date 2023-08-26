@@ -15,9 +15,12 @@ import java.util.List;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 
-class HearingDurationCalculatorTest {
+public class HearingDurationCalculatorTest {
 
-    private static final String HEARING_REQUEST_ID = "hearing_request_id";
+    public static final String HEARING_REQUEST_ID = "hearing_request_id";
+    public static final String DAYS = "Days";
+    public static final String HOURS = "Hours";
+    public static final String MINUTES = "Minutes";
 
     @Test
     void calculateHearingDurationDays() throws IOException, URISyntaxException {
@@ -29,7 +32,7 @@ class HearingDurationCalculatorTest {
 
         final HearingType hearingValue = new HearingType();
         hearingValue.setHearingEstLengthNum("2");
-        hearingValue.setHearingEstLengthNumType("Days");
+        hearingValue.setHearingEstLengthNumType(DAYS);
         hearingItem.setValue(hearingValue);
         hearingCollection.add(hearingItem);
 
@@ -49,7 +52,7 @@ class HearingDurationCalculatorTest {
 
         HearingType hearingValue = new HearingType();
         hearingValue.setHearingEstLengthNum("3");
-        hearingValue.setHearingEstLengthNumType("Hours");
+        hearingValue.setHearingEstLengthNumType(HOURS);
         hearingItem.setValue(hearingValue);
         hearingCollection.add(hearingItem);
 
@@ -69,7 +72,7 @@ class HearingDurationCalculatorTest {
 
         HearingType hearingValue = new HearingType();
         hearingValue.setHearingEstLengthNum("30");
-        hearingValue.setHearingEstLengthNumType("Minutes");
+        hearingValue.setHearingEstLengthNumType(MINUTES);
         hearingItem.setValue(hearingValue);
         hearingCollection.add(hearingItem);
 
@@ -110,7 +113,7 @@ class HearingDurationCalculatorTest {
 
         HearingType hearingValue = new HearingType();
         hearingValue.setHearingEstLengthNum("2");
-        hearingValue.setHearingEstLengthNumType("Days");
+        hearingValue.setHearingEstLengthNumType(DAYS);
         hearingItem.setValue(hearingValue);
         hearingCollection.add(hearingItem);
 

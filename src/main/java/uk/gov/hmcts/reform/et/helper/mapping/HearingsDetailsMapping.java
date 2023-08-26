@@ -17,14 +17,8 @@ import static uk.gov.hmcts.reform.et.model.service.YesNo.isYes;
 public final class HearingsDetailsMapping {
 
     public static final String STANDARD_PRIORITY = "Standard";
-    private static final String NULL = "null";
-
-    private static final boolean HEARING_IN_WELSH_FLAG = false;
 
     private static final int PHYSICAL_ATTENDEES = 0;
-
-    private static final String LEAD_JUDGE_CONTRACT_TYPE = "null";
-
 
     private HearingsDetailsMapping() {
     }
@@ -62,26 +56,25 @@ public final class HearingsDetailsMapping {
         return PHYSICAL_ATTENDEES;
     }
 
-    public static boolean isHearingInWelshFlag() {
+    public static boolean isHearingInWelshFlag(CaseData caseData) {
         // TODO Future Work
-        return HEARING_IN_WELSH_FLAG;
+        return isYes(caseData.getHearingInWelshFlag());
     }
 
     public static Boolean isPrivateHearingRequiredFlag(CaseData caseData) {
         return isYes(caseData.getPrivateHearingRequiredFlag());
     }
 
-    public static String getLeadJudgeContractType() {
-        // TODO Future Work
-        return LEAD_JUDGE_CONTRACT_TYPE;
+    public static String getLeadJudgeContractType(CaseData caseData) {
+        return caseData.getLeadJudgeContractType();
     }
 
     public static Boolean isHearingIsLinkedFlag(CaseData caseData) {
         return Boolean.parseBoolean(caseData.getHearingIsLinkedFlag());
     }
 
-    public static String getTribunalAndOfficeLocation() {
-        return NULL;
+    public static String getTribunalAndOfficeLocation(CaseData caseData) {
+        return caseData.getTribunalAndOfficeLocation();
     }
 
 }

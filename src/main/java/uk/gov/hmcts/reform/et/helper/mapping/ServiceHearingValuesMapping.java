@@ -28,7 +28,7 @@ public final class ServiceHearingValuesMapping {
         return ServiceHearingValues.builder()
                 .publicCaseName(HearingsCaseMapping.getPublicCaseName(caseData))
                 .caseDeepLink(HearingsCaseMapping.getCaseDeepLink(caseData))
-                .tribunalAndOfficeLocation(HearingsDetailsMapping.getTribunalAndOfficeLocation())
+                .tribunalAndOfficeLocation(HearingsDetailsMapping.getTribunalAndOfficeLocation(caseData))
                 .caseRestrictedFlag(HearingsCaseMapping.getCaseRestrictedFlag(caseData))
                 .receiptDate(HearingsCaseMapping.getCaseCreated(caseData))
                 .caseNameHmctsInternal(HearingsCaseMapping.getCaseNameHmctsInternal(caseData))
@@ -38,14 +38,14 @@ public final class ServiceHearingValuesMapping {
                 .duration(HearingsDetailsMapping.getHearingDuration(caseDetails, hearingRequest, hearingCollection))
                 .hearingPriorityType(HearingsDetailsMapping.getHearingPriorityType())
                 .numberOfPhysicalAttendees(HearingsDetailsMapping.getNumberOfPhysicalAttendees())
-                .hearingInWelshFlag(HearingsDetailsMapping.isHearingInWelshFlag())
+                .hearingInWelshFlag(HearingsDetailsMapping.isHearingInWelshFlag(caseData))
                 .caseAdditionalSecurityFlag(HearingsCaseMapping.getCaseAdditionalSecurityFlag(caseData))
                 .privateHearingRequiredFlag(HearingsDetailsMapping.isPrivateHearingRequiredFlag(caseData))
-                .leadJudgeContractType(HearingsDetailsMapping.getLeadJudgeContractType())
+                .leadJudgeContractType(HearingsDetailsMapping.getLeadJudgeContractType(caseData))
                 .hearingIsLinkedFlag(HearingsDetailsMapping.isHearingIsLinkedFlag(caseData))
                 .hmctsServiceId(referenceDataServiceHolder.getHmctsServiceId())
                 .caseInterpreterRequiredFlag(HearingsCaseMapping.getCaseInterpreterRequiredFlag(caseData))
-                .tribunalAndOfficeLocation(HearingsDetailsMapping.getTribunalAndOfficeLocation())
+                .tribunalAndOfficeLocation(HearingsDetailsMapping.getTribunalAndOfficeLocation(caseData))
                 .build();
     }
 }

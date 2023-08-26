@@ -2,15 +2,16 @@ package uk.gov.hmcts.reform.et.model.service;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonValue;
+import uk.gov.hmcts.ecm.common.model.helper.Constants;
 
 import static java.util.Objects.nonNull;
 
 public enum YesNo {
 
-    @JsonProperty("Yes")
-    YES("Yes"),
-    @JsonProperty("No")
-    NO("No");
+    @JsonProperty(Constants.YES)
+    YES(Constants.YES),
+    @JsonProperty(Constants.NO)
+    NO(Constants.NO);
 
     private final String value;
 

@@ -45,6 +45,10 @@ class ServiceHearingsServiceTest {
     @Mock
     private CoreCaseDataApi ccdApiClient;
 
+    private static final String TEST_SERVICE_AUTH_TOKEN = "Bearer TestServiceAuth";
+    private static final String MOCK_CASE_ID = "1646225213651590";
+    private static final String MOCK_REQUEST_HEARING_ID = "c73bcbc4-430e-41c9-9790-182543914c0c";
+
     @BeforeEach
     public void setUp() {
         MockitoAnnotations.openMocks(this);
@@ -53,9 +57,8 @@ class ServiceHearingsServiceTest {
     @Test
     void serviceHearingsServiceTest() throws IOException, URISyntaxException, GetCaseException {
         String authorization = "authorization";
-        String caseId = "1646225213651590";
-        String requestHearingId = "c73bcbc4-430e-41c9-9790-182543914c0c";
-        ServiceHearingRequest request = new ServiceHearingRequest(caseId, requestHearingId);
+        String caseId = MOCK_CASE_ID;
+        ServiceHearingRequest request = new ServiceHearingRequest(caseId, MOCK_REQUEST_HEARING_ID);
         CaseDetails mockCaseDetails = new CaseTestData().expectedDetails();
         CaseData caseData = EmployeeObjectMapper.mapRequestCaseDataToCaseData(mockCaseDetails.getData());
         List<HearingTypeItem> mockHearingCollection = new CaseTestData().getHearingCollectionAsList();
@@ -64,9 +67,9 @@ class ServiceHearingsServiceTest {
 
         when(authTokenGenerator.generate()).thenReturn("serviceAuthS2s");
         when(ccdApiClient.getCase(
-                "Bearer TestServiceAuth",
+                TEST_SERVICE_AUTH_TOKEN,
                 "serviceAuthS2s",
-                "1646225213651590"
+                MOCK_CASE_ID
         )).thenReturn(mockCaseDetails);
 
         try (MockedStatic<EmployeeObjectMapper> employeeObjectMapperMock = mockStatic(EmployeeObjectMapper.class)) {
