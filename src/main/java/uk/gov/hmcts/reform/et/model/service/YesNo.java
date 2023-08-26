@@ -29,7 +29,7 @@ public enum YesNo {
     }
 
     public static boolean isYes(String yesNo) {
-        return nonNull(yesNo) && YES.getValue().equalsIgnoreCase(yesNo);
+        return nonNull(yesNo) && YES.toString().equalsIgnoreCase(yesNo);
     }
 
     @Override
@@ -37,4 +37,3 @@ public enum YesNo {
         return value;
     }
 }
-

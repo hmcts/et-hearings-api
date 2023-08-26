@@ -24,7 +24,8 @@ class HearingsCaseMappingTest {
     void testGetHmctsServiceId() {
         holder.setHmctsServiceId("BHA1");
 
-        assertEquals("BHA1", holder.getHmctsServiceId());
+        assertEquals("BHA1", holder.getHmctsServiceId(),
+                "HmctsServiceId should match expected value");
     }
 
     @Test
@@ -32,7 +33,8 @@ class HearingsCaseMappingTest {
         CaseData caseData = new CaseData();
         caseData.setCaseDeepLink("deepLink");
 
-        assertEquals("deepLink", HearingsCaseMapping.getCaseDeepLink(caseData));
+        assertEquals("deepLink", HearingsCaseMapping.getCaseDeepLink(caseData),
+                "CaseDeepLink should match expected value");
     }
 
     @Test
@@ -40,7 +42,8 @@ class HearingsCaseMappingTest {
         CaseData caseData = new CaseData();
         caseData.setCaseNameHmctsInternal("nameInternal");
 
-        assertEquals("nameInternal", HearingsCaseMapping.getCaseNameHmctsInternal(caseData));
+        assertEquals("nameInternal", HearingsCaseMapping.getCaseNameHmctsInternal(caseData),
+                "CaseNameHmctsInternal should match expected value");
     }
 
     @Test
@@ -48,7 +51,8 @@ class HearingsCaseMappingTest {
         CaseData caseData = new CaseData();
         caseData.setPublicCaseName("publicName");
 
-        assertEquals("publicName", HearingsCaseMapping.getPublicCaseName(caseData));
+        assertEquals("publicName", HearingsCaseMapping.getPublicCaseName(caseData),
+                "PublicCaseName should match expected value");
     }
 
     @Test
@@ -56,15 +60,16 @@ class HearingsCaseMappingTest {
         CaseData caseData = new CaseData();
         caseData.setCaseRestrictedFlag(YES);
 
-        assertTrue(HearingsCaseMapping.getCaseRestrictedFlag(caseData));
+        assertTrue(HearingsCaseMapping.getCaseRestrictedFlag(caseData), "CaseRestrictedFlag should be true");
     }
 
     @Test
     void testGetCaseAdditionalSecurityFlag() {
         CaseData caseData = new CaseData();
-       caseData.setCaseAdditionalSecurityFlag(YES);
+        caseData.setCaseAdditionalSecurityFlag(YES);
 
-        assertTrue(HearingsCaseMapping.getCaseAdditionalSecurityFlag(caseData));
+        assertTrue(HearingsCaseMapping.getCaseAdditionalSecurityFlag(caseData),
+                "CaseAdditionalSecurityFlag should be true");
     }
 
     @Test
@@ -72,7 +77,8 @@ class HearingsCaseMappingTest {
         CaseData caseData = new CaseData();
         caseData.setCaseInterpreterRequiredFlag(YES);
 
-        assertTrue(HearingsCaseMapping.getCaseInterpreterRequiredFlag(caseData));
+        assertTrue(HearingsCaseMapping.getCaseInterpreterRequiredFlag(caseData),
+                "CaseInterpreterRequiredFlag should be true");
     }
 
     @Test
@@ -80,7 +86,7 @@ class HearingsCaseMappingTest {
         CaseData caseData = new CaseData();
         caseData.setReceiptDate("2023-08-26");
 
-        assertEquals("2023-08-26", HearingsCaseMapping.getCaseCreated(caseData));
+        assertEquals("2023-08-26", HearingsCaseMapping.getCaseCreated(caseData),
+                "CaseCreated should match expected value");
     }
 }
-

@@ -18,6 +18,9 @@ import static org.mockito.Mockito.when;
 
 class ServiceHearingValuesMappingTest {
 
+    public static final String PUBLIC_CASE_NAME = "Johnny Claimant v Acme Redde Ltd";
+    public static final String HMCTS_INTERNAL_CASE_NAME = "Johnny Claimant v Acme Redde Ltd";
+
     @Mock
     private CaseData caseData;
 
@@ -30,9 +33,9 @@ class ServiceHearingValuesMappingTest {
     void shouldReturnServiceHearingValues() throws IOException, URISyntaxException {
 
         when(caseData.getAutoListFlag()).thenReturn(String.valueOf(false));
-        when(caseData.getPublicCaseName()).thenReturn("Johnny Claimant v Acme Redde Ltd");
+        when(caseData.getPublicCaseName()).thenReturn(PUBLIC_CASE_NAME);
         when(caseData.getCaseDeepLink()).thenReturn("/documents/deep/link");
-        when(caseData.getCaseNameHmctsInternal()).thenReturn("Johnny Claimant v Acme Redde Ltd");
+        when(caseData.getCaseNameHmctsInternal()).thenReturn(HMCTS_INTERNAL_CASE_NAME);
         when(caseData.getReceiptDate()).thenReturn(null);
         when(caseData.getCaseRestrictedFlag()).thenReturn(String.valueOf(false));
         when(caseData.getHearingType()).thenReturn("Hearing");
@@ -49,11 +52,11 @@ class ServiceHearingValuesMappingTest {
         ServiceHearingValues mockServiceHearingValues = new CaseTestData().expectedServiceHearingValues();
 
         assertFalse(mockServiceHearingValues.isAutoListFlag(), "is auto list flag");
-        assertEquals("Johnny Claimant v Acme Redde Ltd", mockServiceHearingValues.getPublicCaseName(),
+        assertEquals(PUBLIC_CASE_NAME, mockServiceHearingValues.getPublicCaseName(),
                 "get public case name");
         assertEquals("/documents/deep/link", mockServiceHearingValues.getCaseDeepLink(),
                 "get case deep link");
-        assertEquals("Johnny Claimant v Acme Redde Ltd", mockServiceHearingValues.getCaseNameHmctsInternal(),
+        assertEquals(HMCTS_INTERNAL_CASE_NAME, mockServiceHearingValues.getCaseNameHmctsInternal(),
                 "hmcts internal case name");
         assertNull(mockServiceHearingValues.getReceiptDate(), "case SLA start date");
         assertFalse(mockServiceHearingValues.isCaseRestrictedFlag(), "case restricted flag");

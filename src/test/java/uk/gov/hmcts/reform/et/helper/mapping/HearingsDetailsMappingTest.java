@@ -41,19 +41,19 @@ class HearingsDetailsMappingTest {
     @Test
     void testGetAutoListFlag() {
         when(caseData.getAutoListFlag()).thenReturn(String.valueOf(YesNo.YES));
-        assertTrue(HearingsDetailsMapping.getAutoListFlag(caseData));
+        assertTrue(HearingsDetailsMapping.getAutoListFlag(caseData), "AutoListFlag should be true");
     }
 
     @Test
     void testGetHearingPriorityType() {
-        assertEquals(HearingsDetailsMapping.STANDARD_PRIORITY, HearingsDetailsMapping.getHearingPriorityType());
+        assertEquals(HearingsDetailsMapping.STANDARD_PRIORITY, HearingsDetailsMapping.getHearingPriorityType(),
+                "Hearing priority type should match");
     }
 
     @Test
-    public void testGetHearingDuration() throws IOException, URISyntaxException {
+    void testGetHearingDuration() throws IOException, URISyntaxException {
         final CaseDetails caseDetails = new CaseTestData().expectedDetails();
         final List<HearingTypeItem> hearingCollection = new ArrayList<>();
-        String hearingRequest = REQUEST_1;
         final HearingTypeItem hearingItem = new HearingTypeItem();
         hearingItem.setId(REQUEST_1);
 
@@ -64,23 +64,23 @@ class HearingsDetailsMappingTest {
         hearingCollection.add(hearingItem);
 
         int duration = HearingDurationCalculator.calculateHearingDuration(
-            caseDetails,
-            hearingRequest,
-            hearingCollection
+                caseDetails,
+                REQUEST_1,
+                hearingCollection
         );
-        assertEquals(2 * 360, duration);
+        assertEquals(2 * 360, duration, "Hearing duration in days should match");
     }
 
     @Test
     void testGetHearingEstLengthNumType() {
         when(caseData.getHearingEstLengthNumType()).thenReturn("length_type");
-        assertEquals("length_type", HearingsDetailsMapping.getHearingEstLengthNumType(caseData));
+        assertEquals("length_type", HearingsDetailsMapping.getHearingEstLengthNumType(
+                caseData), "HearingEstLengthNumType should match");
     }
 
     @Test
-    public void testGetHearingType() {
-        String hearingRequest = REQUEST_1;
-        List<HearingTypeItem> hearingCollection = new ArrayList<>();
+    void testGetHearingType() {
+        final List<HearingTypeItem> hearingCollection = new ArrayList<>();
 
         HearingTypeItem hearingItem1 = new HearingTypeItem();
         hearingItem1.setId(REQUEST_1);
@@ -99,43 +99,48 @@ class HearingsDetailsMappingTest {
         hearingCollection.add(hearingItem1);
         hearingCollection.add(hearingItem2);
 
-        String hearingType = HearingsDetailsMapping.getHearingType(hearingRequest, hearingCollection);
-        assertEquals(TYPE_1, hearingType);
+        String hearingType = HearingsDetailsMapping.getHearingType(REQUEST_1, hearingCollection);
+        assertEquals(TYPE_1, hearingType, "HearingType should match");
     }
 
     @Test
     void testGetNumberOfPhysicalAttendees() {
-        assertEquals(
-            0, HearingsDetailsMapping.getNumberOfPhysicalAttendees());
+        assertEquals(0, HearingsDetailsMapping.getNumberOfPhysicalAttendees(),
+                "Number of physical attendees should be 0");
     }
 
     @Test
     void testIsHearingInWelshFlag() {
-        assertFalse(HearingsDetailsMapping.isHearingInWelshFlag(caseData));
+        assertFalse(HearingsDetailsMapping.isHearingInWelshFlag(caseData),
+                "HearingInWelshFlag should be false");
     }
 
     @Test
     void testIsPrivateHearingRequiredFlag() {
         when(caseData.getPrivateHearingRequiredFlag()).thenReturn(String.valueOf(YesNo.YES));
-        assertTrue(HearingsDetailsMapping.isPrivateHearingRequiredFlag(caseData));
+        assertTrue(HearingsDetailsMapping.isPrivateHearingRequiredFlag(caseData),
+                "PrivateHearingRequiredFlag should be true");
     }
 
     @Test
     void testGetLeadJudgeContractType() {
-        assertNull(HearingsDetailsMapping.getLeadJudgeContractType(caseData));
+        assertNull(HearingsDetailsMapping.getLeadJudgeContractType(caseData),
+                "LeadJudgeContractType should be null");
     }
 
     @Test
     void testIsHearingIsLinkedFlag() {
         when(caseData.getHearingIsLinkedFlag()).thenReturn("true");
-        assertTrue(HearingsDetailsMapping.isHearingIsLinkedFlag(caseData));
+        assertTrue(HearingsDetailsMapping.isHearingIsLinkedFlag(caseData),
+                "HearingIsLinkedFlag should be true");
         when(caseData.getHearingIsLinkedFlag()).thenReturn("false");
-        assertFalse(HearingsDetailsMapping.isHearingIsLinkedFlag(caseData));
+        assertFalse(HearingsDetailsMapping.isHearingIsLinkedFlag(caseData),
+                "HearingIsLinkedFlag should be false");
     }
 
     @Test
     void testGetTribunalAndOfficeLocation() {
-        assertNull(HearingsDetailsMapping.getTribunalAndOfficeLocation(caseData));
+        assertNull(HearingsDetailsMapping.getTribunalAndOfficeLocation(caseData),
+                "TribunalAndOfficeLocation should be null");
     }
-
 }

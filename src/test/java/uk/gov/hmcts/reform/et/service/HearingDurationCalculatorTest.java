@@ -15,7 +15,7 @@ import java.util.List;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 
-public class HearingDurationCalculatorTest {
+class HearingDurationCalculatorTest {
 
     public static final String HEARING_REQUEST_ID = "hearing_request_id";
     public static final String DAYS = "Days";

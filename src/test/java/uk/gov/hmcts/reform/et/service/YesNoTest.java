@@ -2,34 +2,36 @@ package uk.gov.hmcts.reform.et.service;
 
 import org.junit.jupiter.api.Test;
 import uk.gov.hmcts.reform.et.model.service.YesNo;
-import static uk.gov.hmcts.ecm.common.model.helper.Constants.YES;
-import static uk.gov.hmcts.ecm.common.model.helper.Constants.NO;
-
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertTrue;
+import static uk.gov.hmcts.ecm.common.model.helper.Constants.NO;
+import static uk.gov.hmcts.ecm.common.model.helper.Constants.YES;
 
 class YesNoTest {
 
     @Test
     void testYesNoEnumValues() {
-        assertEquals(YES, YesNo.YES.getValue());
-        assertEquals(NO, YesNo.NO.getValue());
+        YesNo yesEnum = YesNo.YES;
+        YesNo noEnum = YesNo.NO;
+
+        assertEquals(YES, yesEnum.getValue(), "YES enum value should match expected value");
+        assertEquals(NO, noEnum.getValue(), "NO enum value should match expected value");
     }
 
     @Test
     void testIsYesForEnum() {
-        assertTrue(YesNo.isYes(YesNo.YES));
-        assertFalse(YesNo.isYes(YesNo.NO));
+        assertTrue(YesNo.isYes(YesNo.YES), "isYes should return true for YES enum");
+        assertFalse(YesNo.isYes(YesNo.NO), "isYes should return false for NO enum");
     }
 
     @Test
     void testIsYesForStringValue() {
-        assertTrue(YesNo.isYes(YES));
-        assertTrue(YesNo.isYes(YES));
-        assertFalse(YesNo.isYes(NO));
-        assertFalse(YesNo.isYes((String) null));
+        assertTrue(YesNo.isYes(YES), "isYes should return true for YES string");
+        assertTrue(YesNo.isYes(YES), "isYes should return true for YES string");
+        assertFalse(YesNo.isYes(NO), "isYes should return false for NO string");
+        assertFalse(YesNo.isYes((String) null), "isYes should return false for null input");
     }
 
     private static boolean isYesEnum(YesNo yesNo) {
@@ -38,7 +40,7 @@ class YesNoTest {
 
     @Test
     void testIsYesEnumMethod() {
-        assertTrue(isYesEnum(YesNo.YES));
-        assertFalse(isYesEnum(YesNo.NO));
+        assertTrue(isYesEnum(YesNo.YES), "isYesEnum should return true for YES enum");
+        assertFalse(isYesEnum(YesNo.NO), "isYesEnum should return false for NO enum");
     }
 }
