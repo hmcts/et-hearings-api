@@ -201,6 +201,7 @@ dependencies {
   implementation group: 'org.springframework.boot', name: 'spring-boot-starter-aop'
   implementation group: 'org.springframework.boot', name: 'spring-boot-starter-json'
   implementation group: 'org.springdoc', name: 'springdoc-openapi-starter-webmvc-ui', version: '2.2.0'
+  implementation group: 'com.github.hmcts', name: 'et-common', version:'1.2.0'
   implementation group: 'com.github.hmcts', name: 'et-data-model', version:'2.6.1'
   implementation group: 'org.springframework.boot', name: 'spring-boot-configuration-processor'
   implementation group: 'org.springframework.retry', name: 'spring-retry', version: '2.0.2'
@@ -218,8 +219,9 @@ dependencies {
   implementation group: 'org.apache.tomcat.embed', name: 'tomcat-embed-core', version: '10.1.12'
   implementation group: 'org.apache.tomcat.embed', name: 'tomcat-embed-websocket', version: '10.1.12'
   implementation group: 'org.bouncycastle', name: 'bcprov-jdk18on', version: '1.76'
+    implementation 'org.junit.jupiter:junit-jupiter:5.8.1'
 
-  compileOnly 'org.projectlombok:lombok'
+    compileOnly 'org.projectlombok:lombok'
   annotationProcessor group: 'org.projectlombok', name: 'lombok'
   testAnnotationProcessor group: 'org.projectlombok', name: 'lombok'
   functionalTestAnnotationProcessor group: 'org.projectlombok', name: 'lombok'
