@@ -5,11 +5,14 @@ import org.junit.jupiter.api.Test;
 import org.mockito.Mock;
 import org.mockito.MockitoAnnotations;
 import uk.gov.hmcts.et.common.model.ccd.CaseData;
-import uk.gov.hmcts.reform.et.model.CaseTestData;
+import uk.gov.hmcts.et.common.model.ccd.items.HearingTypeItem;
+import uk.gov.hmcts.et.common.model.ccd.types.HearingType;
+import uk.gov.hmcts.reform.ccd.client.model.CaseDetails;
+import uk.gov.hmcts.reform.et.model.service.ReferenceDataServiceHolder;
 import uk.gov.hmcts.reform.et.model.service.hearingvalues.ServiceHearingValues;
 
-import java.io.IOException;
-import java.net.URISyntaxException;
+import java.util.ArrayList;
+import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertFalse;
@@ -22,24 +25,41 @@ class ServiceHearingValuesMappingTest {
     public static final String HMCTS_INTERNAL_CASE_NAME = "Johnny Claimant v Acme Redde Ltd";
 
     @Mock
+    private CaseDetails caseDetails;
+
+    @Mock
     private CaseData caseData;
 
+    @Mock
+    private ReferenceDataServiceHolder referenceDataServiceHolder;
+
     @BeforeEach
-    public void setUp() {
+    void setUp() {
         MockitoAnnotations.openMocks(this);
     }
 
     @Test
-    void shouldReturnServiceHearingValues() throws IOException, URISyntaxException {
+    void testMapServiceHearingValues() {
+        final List<HearingTypeItem> hearingCollection = new ArrayList<>();
+        final HearingTypeItem hearingItem = new HearingTypeItem();
+        hearingItem.setId("test_ID");
 
+        final HearingType hearingValue = new HearingType();
+        hearingValue.setHearingEstLengthNum("2");
+        hearingValue.setHearingEstLengthNumType("Days");
+        hearingValue.setHearingType("Hearing");
+        hearingItem.setValue(hearingValue);
+        hearingCollection.add(hearingItem);
+
+        when(caseDetails.getId()).thenReturn(Long.valueOf("123"));
         when(caseData.getAutoListFlag()).thenReturn(String.valueOf(false));
         when(caseData.getPublicCaseName()).thenReturn(PUBLIC_CASE_NAME);
         when(caseData.getCaseDeepLink()).thenReturn("/documents/deep/link");
         when(caseData.getCaseNameHmctsInternal()).thenReturn(HMCTS_INTERNAL_CASE_NAME);
         when(caseData.getReceiptDate()).thenReturn(null);
-        when(caseData.getCaseRestrictedFlag()).thenReturn(String.valueOf(false));
         when(caseData.getHearingType()).thenReturn("Hearing");
-        when(caseData.getDuration()).thenReturn(45);
+        when(caseData.getDuration()).thenReturn(720);
+        when(caseData.getCaseRestrictedFlag()).thenReturn(String.valueOf(false));
         when(caseData.getHearingPriorityType()).thenReturn("Standard");
         when(caseData.getNumberOfPhysicalAttendees()).thenReturn(0);
         when(caseData.getHearingInWelshFlag()).thenReturn(String.valueOf(false));
@@ -48,29 +68,43 @@ class ServiceHearingValuesMappingTest {
         when(caseData.getLeadJudgeContractType()).thenReturn("");
         when(caseData.getHearingIsLinkedFlag()).thenReturn(String.valueOf(false));
         when(caseData.getHmctsServiceID()).thenReturn("BHA1");
+        when(referenceDataServiceHolder.getHmctsServiceId()).thenReturn("ServiceId");
 
-        ServiceHearingValues mockServiceHearingValues = new CaseTestData().expectedServiceHearingValues();
+        ServiceHearingValues serviceHearingValues = ServiceHearingValuesMapping.mapServiceHearingValues(
+            caseDetails,
+            caseData,
+            "test_ID",
+            hearingCollection,
+            referenceDataServiceHolder
+        );
 
-        assertFalse(mockServiceHearingValues.isAutoListFlag(), "is auto list flag");
-        assertEquals(PUBLIC_CASE_NAME, mockServiceHearingValues.getPublicCaseName(),
-                "get public case name");
-        assertEquals("/documents/deep/link", mockServiceHearingValues.getCaseDeepLink(),
-                "get case deep link");
-        assertEquals(HMCTS_INTERNAL_CASE_NAME, mockServiceHearingValues.getCaseNameHmctsInternal(),
-                "hmcts internal case name");
-        assertNull(mockServiceHearingValues.getReceiptDate(), "case SLA start date");
-        assertFalse(mockServiceHearingValues.isCaseRestrictedFlag(), "case restricted flag");
-        assertEquals("Hearing", mockServiceHearingValues.getHearingType(), "hearing type");
-        assertEquals(45, mockServiceHearingValues.getDuration(), "duration");
-        assertEquals("Standard", mockServiceHearingValues.getHearingPriorityType(),
-                "hearing priority type");
-        assertEquals(0, mockServiceHearingValues.getNumberOfPhysicalAttendees(),
-                "no. of physical attendees");
-        assertFalse(mockServiceHearingValues.isHearingInWelshFlag(), "hearing in Welsh flag");
-        assertFalse(mockServiceHearingValues.getCaseAdditionalSecurityFlag(), "additional security flag");
-        assertFalse(mockServiceHearingValues.isPrivateHearingRequiredFlag(), "private hearing required");
-        assertEquals("", mockServiceHearingValues.getLeadJudgeContractType(), "lead judge contract");
-        assertFalse(mockServiceHearingValues.isHearingIsLinkedFlag(), "is hearing linked");
-        assertEquals("BHA1", mockServiceHearingValues.getHmctsServiceId(), "HMCTS service id");
+        assertEquals("ServiceId", serviceHearingValues.getHmctsServiceId(),
+                     "HmctsServiceId should match expected value"
+        );
+        assertFalse(serviceHearingValues.isAutoListFlag(), "is auto list flag");
+        assertEquals(PUBLIC_CASE_NAME, serviceHearingValues.getPublicCaseName(),
+                     "get public case name"
+        );
+        assertEquals("/documents/deep/link", serviceHearingValues.getCaseDeepLink(),
+                     "get case deep link"
+        );
+        assertEquals(HMCTS_INTERNAL_CASE_NAME, serviceHearingValues.getCaseNameHmctsInternal(),
+                     "hmcts internal case name"
+        );
+        assertNull(serviceHearingValues.getReceiptDate(), "case SLA start date");
+        assertFalse(serviceHearingValues.isCaseRestrictedFlag(), "case restricted flag");
+        assertEquals("Hearing", serviceHearingValues.getHearingType(), "hearing type");
+        assertEquals(720, serviceHearingValues.getDuration(), "duration");
+        assertEquals("Standard", serviceHearingValues.getHearingPriorityType(),
+                     "hearing priority type"
+        );
+        assertEquals(0, serviceHearingValues.getNumberOfPhysicalAttendees(),
+                     "no. of physical attendees"
+        );
+        assertFalse(serviceHearingValues.isHearingInWelshFlag(), "hearing in Welsh flag");
+        assertFalse(serviceHearingValues.getCaseAdditionalSecurityFlag(), "additional security flag");
+        assertFalse(serviceHearingValues.isPrivateHearingRequiredFlag(), "private hearing required");
+        assertEquals("", serviceHearingValues.getLeadJudgeContractType(), "lead judge contract");
+        assertFalse(serviceHearingValues.isHearingIsLinkedFlag(), "is hearing linked");
     }
 }
