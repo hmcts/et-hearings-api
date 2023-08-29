@@ -8,6 +8,8 @@ java:
       secrets:
         - name: et-hearings-api-s2s-secret
           alias: ET_HEARINGS_S2S_SECRET
+        - name: hmc-servicebus-connection-string
+          alias: HEARINGS_TOPIC_CONNECTION_STRING
     et:
       secrets:
         - name: app-insights-connection-string
@@ -18,3 +20,6 @@ java:
     CASE_DATA_STORE_BASEURL: "http://ccd-data-store-api-{{ .Values.global.environment }}.service.core-compute-{{ .Values.global.environment }}.internal"
     SERVICE_AUTH_PROVIDER_URL: "http://rpe-service-auth-provider-{{ .Values.global.environment }}.service.core-compute-{{ .Values.global.environment }}.internal"
     MICRO_SERVICE: "et_hearings_api"
+    HEARINGS_TOPIC_NAME: "hmc-to-cft-{{ .Values.global.environment }}"
+    HEARINGS_TOPIC_SUBSCRIPTION_NAME: "hmc-subs-to-cft-{{ .Values.global.environment }}"
+    HMC_HEARING_LISTENING_ENABLED: false

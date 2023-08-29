@@ -25,7 +25,6 @@ import uk.gov.hmcts.reform.idam.client.IdamApi;
     }
 )
 @ImportAutoConfiguration({FeignAutoConfiguration.class})
-
 public class Application {
 
     public static void main(final String[] args) {
