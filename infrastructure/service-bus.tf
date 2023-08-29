@@ -47,6 +47,6 @@ resource "azurerm_key_vault_secret" "et-hmc-servicebus-shared-access-key-tf" {
 
   content_type = "secret"
   tags = merge(var.common_tags, {
-    "source" : "Vault ${module.key-vault.key_vault_id.name}"
+    "source" : "Vault ${module.key-vault.key_vault_id}"
   })
 }
