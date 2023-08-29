@@ -6,8 +6,8 @@ module "servicebus-subscription" {
   topic_name            = "hmc-to-cft-${var.env}"
   resource_group_name   = "hmc-shared-${var.env}"
 }
-resource "azurerm_servicebus_subscription_rule" "topic_filter_rule_sscs" {
-  name            = "hmc-servicebus-${var.env}-subscription-rule-bba3"
+resource "azurerm_servicebus_subscription_rule" "topic_filter_rule_et" {
+  name            = "hmc-servicebus-${var.env}-subscription-rule-BHA1"
   subscription_id = module.servicebus-subscription.id
   filter_type     = "CorrelationFilter"
   correlation_filter {
