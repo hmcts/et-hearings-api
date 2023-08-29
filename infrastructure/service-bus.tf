@@ -29,7 +29,7 @@ data "azurerm_key_vault_secret" "hmc-servicebus-connection-string" {
   name         = "hmc-servicebus-connection-string"
 }
 
-resource "azurerm_key_vault_secret" "hmc_to_et_hearings_api_s2s_secret" {
+resource "azurerm_key_vault_secret" "hmc_to_et_hearings_api_servicebus-connection-string" {
   name         = "hmc-servicebus-connection-string"
   value        = data.azurerm_key_vault_secret.hmc-servicebus-connection-string.value
   key_vault_id = module.key-vault.key_vault_id
@@ -43,10 +43,10 @@ data "azurerm_key_vault_secret" "hmc-servicebus-shared-access-key" {
 resource "azurerm_key_vault_secret" "et-hmc-servicebus-shared-access-key-tf" {
   name         = "hmc-servicebus-shared-access-key-tf"
   value        = data.azurerm_key_vault_secret.hmc-servicebus-shared-access-key.value
-  key_vault_id = data.azurerm_key_vault.et_key_vault.id
+  key_vault_id = module.key-vault.key_vault_id
 
   content_type = "secret"
   tags = merge(var.common_tags, {
-    "source" : "Vault ${data.azurerm_key_vault.et_key_vault.name}"
+    "source" : "Vault ${module.key-vault.key_vault_id.name}"
   })
 }

@@ -16,11 +16,6 @@ locals {
   )
 }
 
-data "azurerm_key_vault" "et_key_vault" {
-  name                = local.azureVaultName
-  resource_group_name = local.azureVaultName
-}
-
 resource "azurerm_resource_group" "rg" {
   name     = "${var.product}-${var.component}-${var.env}"
   location = var.location
@@ -53,11 +48,6 @@ data "azurerm_key_vault" "s2s_vault" {
 data "azurerm_key_vault_secret" "et_hearings_api_s2s_key" {
   name         = "microservicekey-et-hearings-api"
   key_vault_id = data.azurerm_key_vault.s2s_vault.id
-}
-
-data "azurerm_key_vault" "et_key_vault" {
-  name                = local.azureVaultName
-  resource_group_name = local.azureVaultName
 }
 
 resource "azurerm_key_vault_secret" "et_hearings_api_s2s_secret" {
