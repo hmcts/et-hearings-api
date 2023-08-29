@@ -16,9 +16,9 @@ import java.util.Map;
  */
 @Slf4j
 @Service
-public final class EmployeeObjectMapper {
+public final class CaseDataMapper {
 
-    private EmployeeObjectMapper() {
+    private CaseDataMapper() {
     }
 
     /**

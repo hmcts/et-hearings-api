@@ -12,7 +12,7 @@ import uk.gov.hmcts.reform.authorisation.generators.AuthTokenGenerator;
 import uk.gov.hmcts.reform.ccd.client.CoreCaseDataApi;
 import uk.gov.hmcts.reform.ccd.client.model.CaseDetails;
 import uk.gov.hmcts.reform.et.exception.GetCaseException;
-import uk.gov.hmcts.reform.et.helper.mapping.EmployeeObjectMapper;
+import uk.gov.hmcts.reform.et.helper.mapping.CaseDataMapper;
 import uk.gov.hmcts.reform.et.helper.mapping.ServiceHearingValuesMapping;
 import uk.gov.hmcts.reform.et.model.CaseTestData;
 import uk.gov.hmcts.reform.et.model.service.ReferenceDataServiceHolder;
@@ -60,9 +60,9 @@ class ServiceHearingsServiceTest {
         String caseId = MOCK_CASE_ID;
         ServiceHearingRequest request = new ServiceHearingRequest(caseId, MOCK_REQUEST_HEARING_ID);
         CaseDetails mockCaseDetails = new CaseTestData().expectedDetails();
-        CaseData caseData = EmployeeObjectMapper.mapRequestCaseDataToCaseData(mockCaseDetails.getData());
+        CaseData caseData = CaseDataMapper.mapRequestCaseDataToCaseData(mockCaseDetails.getData());
         List<HearingTypeItem> mockHearingCollection = new CaseTestData().getHearingCollectionAsList();
-        String hearingId = EmployeeObjectMapper.mapServiceHearingRequestDataToCaseData(request.getHearingId());
+        String hearingId = CaseDataMapper.mapServiceHearingRequestDataToCaseData(request.getHearingId());
         ServiceHearingValues mockServiceHearingValues = new CaseTestData().expectedServiceHearingValues();
 
         when(authTokenGenerator.generate()).thenReturn("serviceAuthS2s");
@@ -72,12 +72,12 @@ class ServiceHearingsServiceTest {
                 MOCK_CASE_ID
         )).thenReturn(mockCaseDetails);
 
-        try (MockedStatic<EmployeeObjectMapper> employeeObjectMapperMock = mockStatic(EmployeeObjectMapper.class)) {
-            employeeObjectMapperMock.when(() -> EmployeeObjectMapper.mapRequestCaseDataToCaseData(
+        try (MockedStatic<CaseDataMapper> caseDataMapperMock = mockStatic(CaseDataMapper.class)) {
+            caseDataMapperMock.when(() -> CaseDataMapper.mapRequestCaseDataToCaseData(
                     mockCaseDetails.getData())).thenReturn(caseData);
-            employeeObjectMapperMock.when(() -> EmployeeObjectMapper.mapHearingCollectionDataToCaseData(any()))
+            caseDataMapperMock.when(() -> CaseDataMapper.mapHearingCollectionDataToCaseData(any()))
                     .thenReturn(mockHearingCollection);
-            employeeObjectMapperMock.when(() -> EmployeeObjectMapper.mapServiceHearingRequestDataToCaseData(
+            caseDataMapperMock.when(() -> CaseDataMapper.mapServiceHearingRequestDataToCaseData(
                             request.getHearingId()))
                     .thenReturn(hearingId);
         }
