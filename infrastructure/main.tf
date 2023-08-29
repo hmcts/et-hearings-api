@@ -1,6 +1,7 @@
 provider "azurerm" {
   features {}
 }
+
 locals {
   tagEnv = var.env == "aat" ? "staging" : var.env
   tags = merge(var.common_tags,
@@ -20,10 +21,12 @@ resource "azurerm_resource_group" "rg" {
   location = var.location
   tags     = local.tags
 }
+
 data "azurerm_user_assigned_identity" "et-identity" {
   name                = "${var.product}-${var.env}-mi"
   resource_group_name = "managed-identities-${var.env}-rg"
 }
+
 module "key-vault" {
   source                      = "git@github.com:hmcts/cnp-module-key-vault?ref=master"
   name                        = "${var.product}-${var.component}-${var.env}"
@@ -36,10 +39,12 @@ module "key-vault" {
   common_tags                 = local.tags
   managed_identity_object_ids = [data.azurerm_user_assigned_identity.et-identity.principal_id]
 }
+
 data "azurerm_key_vault" "s2s_vault" {
   name                = "s2s-${var.env}"
   resource_group_name = "rpe-service-auth-provider-${var.env}"
 }
+
 data "azurerm_key_vault_secret" "et_hearings_api_s2s_key" {
   name         = "microservicekey-et-hearings-api"
   key_vault_id = data.azurerm_key_vault.s2s_vault.id
