@@ -216,7 +216,7 @@ dependencies {
   implementation group: 'org.apache.logging.log4j', name: 'log4j-to-slf4j', version: log4JVersion
   implementation group: 'io.rest-assured', name: 'rest-assured'
   implementation group: 'org.apache.tomcat.embed', name: 'tomcat-embed-core', version: '10.1.13'
-  implementation group: 'org.apache.tomcat.embed', name: 'tomcat-embed-websocket', version: '10.1.12'
+  implementation group: 'org.apache.tomcat.embed', name: 'tomcat-embed-websocket', version: '10.1.13'
   implementation group: 'org.bouncycastle', name: 'bcprov-jdk18on', version: '1.76'
 
   compileOnly 'org.projectlombok:lombok'
