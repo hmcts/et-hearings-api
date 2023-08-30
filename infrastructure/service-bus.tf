@@ -34,13 +34,8 @@ data "azurerm_key_vault_secret" "hmc-servicebus-shared-access-key" {
   key_vault_id = data.azurerm_key_vault.hmc-key-vault.id
   name         = "hmc-servicebus-shared-access-key"
 }
-resource "azurerm_key_vault_secret" "et-hmc-servicebus-shared-access-key-tf" {
-  name         = "hmc-servicebus-shared-access-key-tf"
+resource "azurerm_key_vault_secret" "et-hmc-servicebus-shared-access-key" {
+  name         = "hmc-servicebus-shared-access-key"
   value        = data.azurerm_key_vault_secret.hmc-servicebus-shared-access-key.value
   key_vault_id = module.key-vault.key_vault_id
-
-  content_type = "secret"
-  tags = merge(var.common_tags, {
-    "source" : "Vault ${module.key-vault.key_vault_id}"
-  })
 }
