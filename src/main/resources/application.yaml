@@ -48,7 +48,6 @@ azure:
   application-insights:
     instrumentation-key: ${AppInsightsInstrumentationKey:00000000-0000-0000-0000-000000000000}
 
-
 idam:
   api:
     url: ${IDAM_API_BASEURL:http://localhost:5000}
@@ -56,12 +55,15 @@ idam:
   s2s-auth:
     url: ${SERVICE_AUTH_PROVIDER_URL:http://localhost:4502}
     secret: ${ET_HEARINGS_S2S_SECRET:AAAAAAAAAAAAAAAA}
-    microservice: ${MICRO_SERVICE:et_hearings_api} 
+    microservice: ${MICRO_SERVICE:et_hearings_api}
  # s2s-authorised:
-  #  services: ${IDAM_S2S_AUTH_MICROSERVICES:xui_webapp} todo: request onboarding with xui_webapp 
+  #  services: ${IDAM_S2S_AUTH_MICROSERVICES:xui_webapp} todo: request onboarding with xui_webapp
 
 core_case_data:
   api:
     url: ${CASE_DATA_STORE_BASEURL:http://localhost:4452}
   search:
     page_size: ${CCD_SEARCH_PAGE_SIZE:100}
+
+et:
+  hmctsServiceId: ${HMCTS_SERVICE_ID:BHA1}
