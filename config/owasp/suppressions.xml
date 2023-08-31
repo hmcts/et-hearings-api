@@ -7,6 +7,14 @@
     </notes>
     <cve>CVE-2016-1000027</cve>
   </suppress>
+  <suppress>
+    <suppress>
+      <notes>False Positives
+        CVE-2023-4586 - https://github.com/netty/netty/issues/8537#issuecomment-1527896917
+      </notes>
+      <cve>CVE-2023-4586</cve>
+    </suppress>
+  </suppress>
   <!--End of false positives section -->
 
   <!--Please add all the temporary suppression under the below section-->
