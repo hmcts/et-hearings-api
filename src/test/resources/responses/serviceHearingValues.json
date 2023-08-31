@@ -1,0 +1,224 @@
+{
+  "hmctsServiceId": "BHA1",
+  "caseNameHmctsInternal": "Johnny Claimant v Acme Redde Ltd",
+  "publicCaseName": "Johnny Claimant v Acme Redde Ltd",
+  "caseAdditionalSecurityFlag": false,
+  "caseCategories": null,
+  "caseDeepLink": "/documents/deep/link",
+  "caseRestrictedFlag": false,
+  "externalCaseReference": "abc123",
+  "caseManagementLocationCode": "location123",
+  "caseSLAStartDate": "2024-04-23T18:25:43.511Z",
+  "autoListFlag": false,
+  "hearingType": "Hearing",
+  "hearingWindow": {
+    "firstDateTimeMustBe": "2023-12-01T00:00:00.000Z",
+    "dateRangeStart": "2023-11-23",
+    "dateRangeEnd": "2023-11-30"
+  },
+  "duration": 45,
+  "hearingPriorityType": "Standard",
+  "numberOfPhysicalAttendees": 0,
+  "hearingInWelshFlag": false,
+  "hearingLocations": [
+    {
+      "locationId": "123456abcdef",
+      "locationType": "type"
+    }
+  ],
+  "facilitiesRequired": ["a room with a view"],
+  "listingComments": "Additional instructions for the hearing",
+  "hearingRequester": "",
+  "privateHearingRequiredFlag": false,
+  "caseInterpreterRequiredFlag": false,
+  "panelRequirements": {
+    "roleType": [
+      "tribunalJudge",
+      "deputyTribunalJudge",
+      "regionalTribunalJudge"
+    ],
+    "panelPreferences": [],
+    "panelSpecialisms": [
+      "DisabilityQualifiedPanelMember",
+      "EyeSurgeon",
+      "GeneralPractitioner",
+      "FinanciallyQualifiedPanelMember",
+      "RegionalMedicalMember"
+    ]
+  },
+  "leadJudgeContractType": "",
+  "judiciary": {
+    "roleType": [""],
+    "authorisationTypes": [""],
+    "authorisationSubType": [""],
+    "judiciaryPreferences": [
+      {
+        "memberID": "p1000000",
+        "memberType": "JUDGE",
+        "requirementType": "EXCLUDE"
+      }
+    ],
+    "judiciarySpecialisms": [""],
+    "panelComposition": [
+      {
+        "memberType": "",
+        "count": 1
+      }
+    ]
+  },
+  "hearingIsLinkedFlag": false,
+  "parties": [
+    {
+      "partyID": "P1",
+      "partyType": "IND",
+      "partyName": "Jane Smith",
+      "individualDetails": {
+        "firstName": "Jane",
+        "lastName": "Smith",
+        "vulnerableFlag": false
+      },
+      "unavailabilityRanges": [
+        {
+          "unavailableFromDate": "2021-12-10",
+          "unavailableToDate": "2021-12-31",
+          "unavailabilityType": "ALL_DAY"
+        }
+      ]
+    },
+    {
+      "partyID": "P2",
+      "partyType": "ORG",
+      "partyRole": "DWP",
+      "unavailabilityRanges": [
+        {
+          "unavailableFromDate": "2021-12-20",
+          "unavailableToDate": "2021-12-31"
+        }
+      ]
+    }
+  ],
+  "caseFlags": {
+    "flags": [
+      {
+        "partyName": "Jane Smith",
+        "flagParentId": "RA0008",
+        "flagId": "RA0042",
+        "flagDescription": "Sign language interpreter required",
+        "flagStatus": "ACTIVE"
+      },
+      {
+        "partyName": "Jane Smith",
+        "flagParentId": "RA0032",
+        "flagId": "RA0053",
+        "flagDescription": "Hearing loop required",
+        "flagStatus": "ACTIVE"
+      },
+      {
+        "partyName": "Jane Smith",
+        "flagParentId": "RA0002",
+        "flagId": "RA0013",
+        "flagDescription": "Larger font size",
+        "flagStatus": "ACTIVE"
+      }
+    ],
+    "flagAmendURL": "/flag/amend"
+  },
+  "screenFlow": [
+    {
+      "screenName": "hearing-requirements",
+      "navigation": [
+        {
+          "resultValue": "hearing-facilities"
+        }
+      ]
+    },
+    {
+      "screenName": "hearing-facilities",
+      "navigation": [
+        {
+          "resultValue": "hearing-stage"
+        }
+      ]
+    },
+    {
+      "screenName": "hearing-stage",
+      "navigation": [
+        {
+          "resultValue": "hearing-attendance"
+        }
+      ]
+    },
+    {
+      "screenName": "hearing-attendance",
+      "navigation": [
+        {
+          "resultValue": "hearing-venue"
+        }
+      ]
+    },
+    {
+      "screenName": "hearing-venue",
+      "conditionKey": "region",
+      "navigation": [
+        {
+          "conditionOperator": "INCLUDE",
+          "conditionValue": "Wales",
+          "resultValue": "hearing-welsh"
+        },
+        {
+          "conditionOperator": "NOT INCLUDE",
+          "conditionValue": "Wales",
+          "resultValue": "hearing-judge"
+        }
+      ]
+    },
+    {
+      "screenName": "hearing-welsh",
+      "navigation": [
+        {
+          "resultValue": "hearing-judge"
+        }
+      ]
+    },
+    {
+      "screenName": "hearing-judge",
+      "navigation": [
+        {
+          "resultValue": "hearing-panel"
+        }
+      ]
+    },
+    {
+      "screenName": "hearing-panel",
+      "navigation": [
+        {
+          "resultValue": "hearing-timing"
+        }
+      ]
+    },
+    {
+      "screenName": "hearing-timing",
+      "navigation": [
+        {
+          "resultValue": "hearing-additional-instructions"
+        }
+      ]
+    },
+    {
+      "screenName": "hearing-additional-instructions",
+      "navigation": [
+        {
+          "resultValue": "hearing-create-edit-summary"
+        }
+      ]
+    }
+  ],
+  "vocabulary": [
+    {
+      "word1": ""
+    }
+  ],
+  "hearingChannels": ["abc"],
+  "caseType": "case-type-str",
+  "hearingLevelParticipantAttendance": ["abc"]
+}
