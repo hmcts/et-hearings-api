@@ -8,6 +8,12 @@
     <cve>CVE-2016-1000027</cve>
   </suppress>
   <suppress>
+    <notes>False Positives
+      CVE-2023-4586 - https://github.com/netty/netty/issues/8537#issuecomment-1527896917
+    </notes>
+    <cve>CVE-2023-4586</cve>
+  </suppress>
+  <suppress>
     <notes><![CDATA[
    file name: adal4j-1.6.7.jar
    ]]></notes>
