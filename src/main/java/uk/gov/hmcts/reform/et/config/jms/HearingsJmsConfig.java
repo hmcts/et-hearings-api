@@ -39,7 +39,8 @@ public class HearingsJmsConfig {
 
     @Bean
     @ConditionalOnProperty("flags.hmc-to-hearings-api.enabled")
-    public ConnectionFactory hmcHearingJmsConnectionFactory(@Value("${spring.application.name}") final String clientId) {
+    public ConnectionFactory hmcHearingJmsConnectionFactory(@Value("${spring.application.name}")
+                                                                final String clientId) {
         String connection = String.format(AMQP_CONNECTION_STRING_TEMPLATE, namespace + connectionPostfix, idleTimeout);
         JmsConnectionFactory jmsConnectionFactory = new JmsConnectionFactory(connection);
         jmsConnectionFactory.setUsername(username);
