@@ -202,6 +202,9 @@ dependencies {
   implementation group: 'org.springframework.boot', name: 'spring-boot-starter-actuator'
   implementation group: 'org.springframework.boot', name: 'spring-boot-starter-aop'
   implementation group: 'org.springframework.boot', name: 'spring-boot-starter-json'
+  implementation group: 'org.springframework.boot', name: 'spring-boot-starter-activemq', version: '2.7.12'
+  implementation group: 'org.springframework', name: 'spring-jms', version: '6.0.9'
+  implementation group: 'org.springframework', name: 'spring-messaging', version: '6.0.9'
   implementation group: 'org.springdoc', name: 'springdoc-openapi-starter-webmvc-ui', version: '2.2.0'
   implementation group: 'com.github.hmcts', name: 'et-common', version:'1.2.0'
   implementation group: 'com.github.hmcts', name: 'et-data-model', version:'2.6.1'
@@ -218,10 +221,14 @@ dependencies {
   implementation group: 'org.apache.logging.log4j', name: 'log4j-api', version: log4JVersion
   implementation group: 'org.apache.logging.log4j', name: 'log4j-to-slf4j', version: log4JVersion
   implementation group: 'io.rest-assured', name: 'rest-assured'
+  implementation group: 'org.apache.qpid', name: 'qpid-jms-client', version: '2.4.0'
   implementation group: 'org.apache.tomcat.embed', name: 'tomcat-embed-core', version: '10.1.13'
   implementation group: 'org.apache.tomcat.embed', name: 'tomcat-embed-websocket', version: '10.1.13'
   implementation group: 'org.bouncycastle', name: 'bcprov-jdk18on', version: '1.76'
-    implementation 'org.junit.jupiter:junit-jupiter:5.8.1'
+    implementation 'org.junit.jupiter:junit-jupiter:5.9.2'
+
+  implementation group: 'com.azure', name: 'azure-core', version: '1.37.0'
+  implementation group: 'com.azure', name: 'azure-messaging-servicebus', version: '7.14.0-beta.1'
 
     compileOnly 'org.projectlombok:lombok'
   annotationProcessor group: 'org.projectlombok', name: 'lombok'
