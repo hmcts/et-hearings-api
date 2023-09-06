@@ -46,6 +46,7 @@ public final class ServiceHearingValuesMapping {
                 .hmctsServiceId(referenceDataServiceHolder.getHmctsServiceId())
                 .caseInterpreterRequiredFlag(HearingsCaseMapping.getCaseInterpreterRequiredFlag(caseData))
                 .tribunalAndOfficeLocation(HearingsDetailsMapping.getTribunalAndOfficeLocation(caseData))
+                .caseFlags(PartyFlagsMapping.getCaseFlags(caseData))
                 .build();
     }
 }

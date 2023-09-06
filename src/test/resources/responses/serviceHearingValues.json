@@ -69,7 +69,7 @@
   "hearingIsLinkedFlag": false,
   "parties": [
     {
-      "partyID": "P1",
+      "partyId": "P1",
       "partyType": "IND",
       "partyName": "Jane Smith",
       "individualDetails": {
@@ -86,7 +86,7 @@
       ]
     },
     {
-      "partyID": "P2",
+      "partyId": "P2",
       "partyType": "ORG",
       "partyRole": "DWP",
       "unavailabilityRanges": [

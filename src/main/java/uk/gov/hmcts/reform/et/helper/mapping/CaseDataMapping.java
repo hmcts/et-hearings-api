@@ -7,6 +7,7 @@ import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
 import uk.gov.hmcts.et.common.model.ccd.CaseData;
 import uk.gov.hmcts.et.common.model.ccd.items.HearingTypeItem;
+import uk.gov.hmcts.et.common.model.hmc.PartyFlags;
 
 import java.util.List;
 import java.util.Map;
@@ -16,9 +17,9 @@ import java.util.Map;
  */
 @Slf4j
 @Service
-public final class CaseDataMapper {
+public final class CaseDataMapping {
 
-    private CaseDataMapper() {
+    private CaseDataMapping() {
     }
 
     /**
@@ -47,6 +48,13 @@ public final class CaseDataMapper {
         return mapper.convertValue(hearingCollection, type);
     }
 
+    private static List<PartyFlags> getPartyFlagsData(List<PartyFlags> partyFlags) {
+        ObjectMapper mapper = new ObjectMapper();
+        mapper.registerModule(new JavaTimeModule());
+        JavaType type = mapper.getTypeFactory().constructCollectionType(List.class, PartyFlags.class);
+        return mapper.convertValue(partyFlags, type);
+    }
+
     /**
      * Converts caseData to {@link CaseData} object.
      *
@@ -63,5 +71,9 @@ public final class CaseDataMapper {
 
     public static List<HearingTypeItem> mapHearingCollectionDataToCaseData(List<HearingTypeItem> hearingCollection) {
         return getHearingCollectionData(hearingCollection);
+    }
+
+    public static List<PartyFlags> mapPartyFlagsDataToCaseData(List<PartyFlags> partyFlags) {
+        return getPartyFlagsData(partyFlags);
     }
 }

@@ -3,6 +3,9 @@ package uk.gov.hmcts.reform.et.helper.mapping;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.web.bind.annotation.RestController;
 import uk.gov.hmcts.et.common.model.ccd.CaseData;
+import uk.gov.hmcts.et.common.model.hmc.PartyFlags;
+
+import java.util.List;
 
 import static uk.gov.hmcts.reform.et.model.service.YesNo.isYes;
 
@@ -41,6 +44,10 @@ public final class HearingsCaseMapping {
 
     public static String getCaseCreated(CaseData caseData) {
         return caseData.getReceiptDate();
+    }
+
+    public static List<PartyFlags> getAllHearingRelevantCaseFlags(List<PartyFlags> flags) {
+        return flags;
     }
 
 }
