@@ -53,7 +53,7 @@ class HmcHearingsEventTopicListenerTest {
 
     @Test
     @DisplayName("Messages should not be processed if their service code does not match the service.")
-    void testOnMessage_serviceCodeNotApplicable() throws Exception {
+    void serviceCodeNotApplicable() throws Exception {
 
         HmcMessage hmcMessage = createHmcMessage("BBA4");
 
@@ -64,12 +64,12 @@ class HmcHearingsEventTopicListenerTest {
 
         hmcHearingsEventTopicListener.onMessage(bytesMessage);
 
-        verify(processHmcMessageService, never()).processEventMessage((any(HmcMessage.class)));
+        verify(processHmcMessageService, never()).processEventMessage(any(HmcMessage.class));
     }
 
     @Test
     @DisplayName("Messages should be processed if their service code matches the service.")
-    void testOnMessage_serviceCodeApplicable() throws Exception {
+    void serviceCodeApplicable() throws Exception {
 
         HmcMessage hmcMessage = createHmcMessage(SERVICE_CODE);
 
@@ -80,7 +80,7 @@ class HmcHearingsEventTopicListenerTest {
 
         hmcHearingsEventTopicListener.onMessage(bytesMessage);
 
-        verify(processHmcMessageService).processEventMessage((any(HmcMessage.class)));
+        verify(processHmcMessageService).processEventMessage(any(HmcMessage.class));
     }
 
     private HmcMessage createHmcMessage(String messageServiceCode) {
