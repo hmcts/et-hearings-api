@@ -11,6 +11,8 @@ import uk.gov.hmcts.reform.et.model.hmc.message.HmcMessage;
 public class ProcessHmcMessageService {
 
     public void processEventMessage(HmcMessage hmcMessage){
-            //currently not implemented here just created for unit test on HmcHearingsTopicListnerTest also been added to sonarExclusion list temporarily
+            //currently not implemented here just created for unit test on
+            // HmcHearingsTopicListnerTest also been added to sonarExclusion list temporarily
+
     }
 }
