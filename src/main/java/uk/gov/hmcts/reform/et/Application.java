@@ -5,6 +5,7 @@ import org.springframework.boot.autoconfigure.ImportAutoConfiguration;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.cloud.openfeign.EnableFeignClients;
 import org.springframework.cloud.openfeign.FeignAutoConfiguration;
+import org.springframework.jms.annotation.EnableJms;
 import uk.gov.hmcts.reform.authorisation.ServiceAuthorisationApi;
 import uk.gov.hmcts.reform.ccd.client.CaseAssignmentApi;
 import uk.gov.hmcts.reform.ccd.client.CaseUserApi;
@@ -24,6 +25,7 @@ import uk.gov.hmcts.reform.idam.client.IdamApi;
         CaseAssignmentApi.class,
     }
 )
+@EnableJms
 @ImportAutoConfiguration({FeignAutoConfiguration.class})
 
 public class Application {
