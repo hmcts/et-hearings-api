@@ -4,13 +4,10 @@ import uk.gov.hmcts.et.common.model.ccd.CaseData;
 import uk.gov.hmcts.et.common.model.ccd.items.RepresentedTypeRItem;
 import uk.gov.hmcts.et.common.model.ccd.items.RespondentSumTypeItem;
 import uk.gov.hmcts.et.common.model.hmc.PartyDetails;
+import uk.gov.hmcts.reform.et.model.hmc.reference.EntityRoleCode;
 
 import java.util.ArrayList;
 import java.util.List;
-
-import static uk.gov.hmcts.reform.et.model.hmc.reference.EntityRoleCode.CLAIMANT;
-import static uk.gov.hmcts.reform.et.model.hmc.reference.EntityRoleCode.LEGAL_REPRESENTATIVE;
-import static uk.gov.hmcts.reform.et.model.hmc.reference.EntityRoleCode.RESPONDENT;
 
 public final class HearingsPartyMapping {
 
@@ -52,11 +49,12 @@ public final class HearingsPartyMapping {
     }
 
     private static List<PartyDetails> getDetailsForRespondentPartyObject(List<RespondentSumTypeItem> respondents) {
+        EntityRoleCode respondent = EntityRoleCode.RESPONDENT;
         return respondents.stream()
             .map(respondentItem -> {
                 PartyDetails respondentDetails = new PartyDetails();
                 respondentDetails.setPartyID(respondentItem.getId());
-                respondentDetails.setPartyRole(RESPONDENT.getHmcReference());
+                respondentDetails.setPartyRole(respondent.getHmcReference());
 
                 if (respondentItem.getValue().getRespondentOrganisation() == null
                     || respondentItem.getValue().getRespondentOrganisation().isEmpty()) {
@@ -73,12 +71,13 @@ public final class HearingsPartyMapping {
 
     private static List<PartyDetails> getDetailsForRespondentRepPartyObject(
         List<RepresentedTypeRItem> representatives) {
+        EntityRoleCode representative = EntityRoleCode.LEGAL_REPRESENTATIVE;
         return representatives.stream()
             .map(repItem -> {
                 PartyDetails respondentRepDetails = new PartyDetails();
                 respondentRepDetails.setPartyID(repItem.getId());
                 respondentRepDetails.setPartyName(repItem.getValue().getNameOfRepresentative());
-                respondentRepDetails.setPartyRole(LEGAL_REPRESENTATIVE.getHmcReference());
+                respondentRepDetails.setPartyRole(representative.getHmcReference());
 
                 if (repItem.getValue().getNameOfOrganisation() == null
                     || repItem.getValue().getNameOfOrganisation().isEmpty()) {
@@ -93,10 +92,11 @@ public final class HearingsPartyMapping {
 
     private static PartyDetails getDetailsForClaimantPartyObject(CaseData caseData) {
         PartyDetails claimantDetails = new PartyDetails();
+        EntityRoleCode claimant = EntityRoleCode.CLAIMANT;
 
         claimantDetails.setPartyID(caseData.getClaimantId());
         claimantDetails.setPartyName(caseData.getClaimant());
-        claimantDetails.setPartyRole(CLAIMANT.getHmcReference());
+        claimantDetails.setPartyRole(claimant.getHmcReference());
         claimantDetails.setPartyType(INDIVIDUAL);
 
         return claimantDetails;
@@ -104,9 +104,10 @@ public final class HearingsPartyMapping {
 
     private static PartyDetails getDetailsForClaimantRepPartyObject(CaseData caseData) {
         PartyDetails claimantRepDetails = new PartyDetails();
+        EntityRoleCode representative = EntityRoleCode.LEGAL_REPRESENTATIVE;
         claimantRepDetails.setPartyID(caseData.getRepresentativeClaimantType().getRepresentativeId());
         claimantRepDetails.setPartyName(caseData.getRepresentativeClaimantType().getNameOfRepresentative());
-        claimantRepDetails.setPartyRole(LEGAL_REPRESENTATIVE.getHmcReference());
+        claimantRepDetails.setPartyRole(representative.getHmcReference());
 
         if (caseData.getRepresentativeClaimantType().getNameOfOrganisation() == null
             || caseData.getRepresentativeClaimantType().getNameOfOrganisation().isEmpty()) {
