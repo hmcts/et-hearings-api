@@ -7,7 +7,8 @@ import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
 import uk.gov.hmcts.et.common.model.ccd.CaseData;
 import uk.gov.hmcts.et.common.model.ccd.items.HearingTypeItem;
-import uk.gov.hmcts.et.common.model.hmc.PartyFlags;
+import uk.gov.hmcts.et.common.model.ccd.items.RepresentedTypeRItem;
+import uk.gov.hmcts.et.common.model.ccd.items.RespondentSumTypeItem;
 
 import java.util.List;
 import java.util.Map;
@@ -48,11 +49,18 @@ public final class CaseDataMapping {
         return mapper.convertValue(hearingCollection, type);
     }
 
-    private static List<PartyFlags> getPartyFlagsData(List<PartyFlags> partyFlags) {
+    private static List<RespondentSumTypeItem> getRespondentData(List<RespondentSumTypeItem> respondentDetails) {
         ObjectMapper mapper = new ObjectMapper();
         mapper.registerModule(new JavaTimeModule());
-        JavaType type = mapper.getTypeFactory().constructCollectionType(List.class, PartyFlags.class);
-        return mapper.convertValue(partyFlags, type);
+        JavaType type = mapper.getTypeFactory().constructCollectionType(List.class, RespondentSumTypeItem.class);
+        return mapper.convertValue(respondentDetails, type);
+    }
+
+    private static List<RepresentedTypeRItem> getLegalRepresentatives(List<RepresentedTypeRItem> legalReps) {
+        ObjectMapper mapper = new ObjectMapper();
+        mapper.registerModule(new JavaTimeModule());
+        JavaType type = mapper.getTypeFactory().constructCollectionType(List.class, RepresentedTypeRItem.class);
+        return mapper.convertValue(legalReps, type);
     }
 
     /**
@@ -73,7 +81,12 @@ public final class CaseDataMapping {
         return getHearingCollectionData(hearingCollection);
     }
 
-    public static List<PartyFlags> mapPartyFlagsDataToCaseData(List<PartyFlags> partyFlags) {
-        return getPartyFlagsData(partyFlags);
+    public static List<RespondentSumTypeItem> mapRespondentDetailsToCaseData(
+            List<RespondentSumTypeItem> respondentDetails) {
+        return getRespondentData(respondentDetails);
+    }
+
+    public static List<RepresentedTypeRItem> mapLegalRepsToCaseData(List<RepresentedTypeRItem> legalReps) {
+        return getLegalRepresentatives(legalReps);
     }
 }

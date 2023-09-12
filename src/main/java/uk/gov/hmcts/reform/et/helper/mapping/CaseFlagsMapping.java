@@ -3,16 +3,16 @@ package uk.gov.hmcts.reform.et.helper.mapping;
 import uk.gov.hmcts.et.common.model.ccd.CaseData;
 import uk.gov.hmcts.et.common.model.ccd.items.FlagDetailType;
 import uk.gov.hmcts.et.common.model.ccd.items.GenericTypeItem;
+import uk.gov.hmcts.et.common.model.ccd.types.CaseFlagsType;
 import uk.gov.hmcts.et.common.model.hmc.CaseFlags;
 import uk.gov.hmcts.et.common.model.hmc.PartyFlags;
-import uk.gov.hmcts.reform.et.model.caseflags.PartyFlagsModel;
 
 import java.util.ArrayList;
 import java.util.List;
 
 import static uk.gov.hmcts.reform.et.utils.CaseFlagsHearingsUtils.getAllActiveFlags;
 
-public class CaseFlagsMapping {
+public final class CaseFlagsMapping {
 
     private static final String ACTIVE_STATUS = "Active";
 
@@ -21,7 +21,7 @@ public class CaseFlagsMapping {
     }
 
     public static CaseFlags getCaseFlags(CaseData caseData) {
-        List<PartyFlagsModel> allActiveFlags = getAllActiveFlags(caseData);
+        List<CaseFlagsType> allActiveFlags = getAllActiveFlags(caseData);
 
         if (allActiveFlags.isEmpty()) {
             return CaseFlags.builder()
@@ -32,18 +32,20 @@ public class CaseFlagsMapping {
 
         List<PartyFlags> partyFlagsModelList = new ArrayList<>();
 
-        for (PartyFlagsModel activeFlag : allActiveFlags) {
+        for (CaseFlagsType activeFlag : allActiveFlags) {
             String partyName = activeFlag.getPartyName();
-            for (GenericTypeItem<FlagDetailType> flagDetail : activeFlag.getDetails()) {
-                PartyFlags partyFlagModel = PartyFlags.builder()
-                    .partyId(activeFlag.getPartyId())
-                    .partyName(partyName)
-                    .flagParentId("")
-                    .flagId(flagDetail.getValue().getFlagCode())
-                    .flagDescription(flagDetail.getValue().getName())
-                    .flagStatus(ACTIVE_STATUS)
-                    .build();
-                partyFlagsModelList.add(partyFlagModel);
+            if (activeFlag.getDetails() != null) {
+                for (GenericTypeItem<FlagDetailType> flagDetail : activeFlag.getDetails()) {
+                    PartyFlags partyFlagModel = PartyFlags.builder()
+                        .flagId(flagDetail.getId())
+                        .partyName(partyName)
+                        .flagParentId("")
+                        .flagId(flagDetail.getValue().getFlagCode())
+                        .flagDescription(flagDetail.getValue().getName())
+                        .flagStatus(ACTIVE_STATUS)
+                        .build();
+                    partyFlagsModelList.add(partyFlagModel);
+                }
             }
         }
 
