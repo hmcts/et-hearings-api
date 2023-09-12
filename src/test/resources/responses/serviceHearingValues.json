@@ -22,8 +22,8 @@
   "hearingInWelshFlag": false,
   "hearingLocations": [
     {
-      "locationId": "123456abcdef",
-      "locationType": "type"
+      "locationId": "Barnstaple",
+      "locationType": "Court"
     }
   ],
   "facilitiesRequired": ["a room with a view"],
@@ -69,7 +69,7 @@
   "hearingIsLinkedFlag": false,
   "parties": [
     {
-      "partyId": "P1",
+      "partyID": "P1",
       "partyType": "IND",
       "partyName": "Jane Smith",
       "individualDetails": {
@@ -86,7 +86,7 @@
       ]
     },
     {
-      "partyId": "P2",
+      "partyID": "P2",
       "partyType": "ORG",
       "partyRole": "DWP",
       "unavailabilityRanges": [
