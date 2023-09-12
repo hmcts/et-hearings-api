@@ -40,7 +40,7 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 @ActiveProfiles("integration")
 class ServiceHearingsControllerTest {
 
-    private static final String CASE_ID = "123456abc";
+    private static final String CASE_ID = "1646225213651590";
 
     private static final String SERVICE_HEARING_VALUES_URL = "/serviceHearingValues";
 
