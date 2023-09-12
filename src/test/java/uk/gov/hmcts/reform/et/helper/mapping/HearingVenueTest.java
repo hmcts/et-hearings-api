@@ -20,6 +20,9 @@ import static org.mockito.Mockito.when;
 class HearingVenueTest {
     public static final String BRISTOL = "Bristol";
     public static final String EDINBURGH = "Edinburgh";
+    public static final String GLASGOW = "Glasgow";
+    public static final String ABERDEEN = "Aberdeen";
+    public static final String DUNDEE = "Dundee";
     public static final String MOCK_REQUEST_HEARING_ID = "c73bcbc4-430e-41c9-9790-182543914c0c";
 
     @Mock
@@ -53,22 +56,51 @@ class HearingVenueTest {
     }
 
     @Test
-    void testGetScotlandHearingVenue() {
+    void testGetHearingLocationGlasgow() {
+        testScotlandOfficeHearingVenue(TribunalOffice.GLASGOW, GLASGOW);
+    }
 
+    @Test
+    void testGetHearingLocationAberdeen() {
+        testScotlandOfficeHearingVenue(TribunalOffice.ABERDEEN, ABERDEEN);
+    }
+
+    @Test
+    void testGetHearingLocationDundee() {
+        testScotlandOfficeHearingVenue(TribunalOffice.DUNDEE, DUNDEE);
+    }
+
+    @Test
+    void testGetHearingLocationEdinburgh() {
+        testScotlandOfficeHearingVenue(TribunalOffice.EDINBURGH, EDINBURGH);
+    }
+
+    private void testScotlandOfficeHearingVenue(TribunalOffice office, String expectedLocation) {
         String hearingRequest = MOCK_REQUEST_HEARING_ID;
         when(hearingItem.getId()).thenReturn(hearingRequest);
+
         HearingType hearingType = new HearingType();
-        hearingType.setHearingVenueScotland(EDINBURGH);
-        DynamicValueType dynamicValueTypeEdinburgh = new DynamicValueType();
-        dynamicValueTypeEdinburgh.setCode(EDINBURGH);
-        DynamicFixedListType edinburghHearingType = DynamicFixedListType.of(dynamicValueTypeEdinburgh);
-        hearingType.setHearingEdinburgh(edinburghHearingType);
+        DynamicValueType dynamicValueType = new DynamicValueType();
+        dynamicValueType.setCode(expectedLocation);
+        hearingType.setHearingVenue(DynamicFixedListType.of(dynamicValueType));
+        DynamicFixedListType hearingOfficeType = DynamicFixedListType.of(dynamicValueType);
+
+        switch (office) {
+            case GLASGOW -> hearingType.setHearingGlasgow(hearingOfficeType);
+            case ABERDEEN -> hearingType.setHearingAberdeen(hearingOfficeType);
+            case DUNDEE -> hearingType.setHearingDundee(hearingOfficeType);
+            case EDINBURGH -> hearingType.setHearingEdinburgh(hearingOfficeType);
+            default ->
+                throw new IllegalStateException("Unexpected Scotland tribunal office " + office);
+        }
+
         when(hearingItem.getValue()).thenReturn(hearingType);
 
         List<HearingLocation> result = HearingsDetailsMapping.getHearingLocation(hearingRequest, List.of(hearingItem));
 
         assertEquals(1, result.size(), "Expected one hearing location");
-        assertEquals(EDINBURGH, result.get(0).getLocationId(), "Location ID should match the expected value");
+        assertEquals(expectedLocation, result.get(0).getLocationId(),
+                     "Location ID should match the expected value");
     }
 
     @Test
@@ -93,20 +125,13 @@ class HearingVenueTest {
     void testGetHearingLocationWithInvalidScotlandOffice() {
         HearingType hearingType = new HearingType();
         hearingType.setHearingVenueScotland("INVALID_SCOTLAND_OFFICE");
-
         when(hearingItem.getId()).thenReturn(MOCK_REQUEST_HEARING_ID);
         when(hearingItem.getValue()).thenReturn(hearingType);
 
-        IllegalArgumentException exception = assertThrows(IllegalArgumentException.class, () -> {
-            throwInvalidScotlandOfficeException(hearingType.getHearingVenueScotland());
-        });
+        String invalidScotlandOffice = hearingType.getHearingVenueScotland();
 
-        assertEquals("Office name INVALID_SCOTLAND_OFFICE not recognised", exception.getMessage(),
-                "Exception message should match the expected value");
-    }
-
-    private void throwInvalidScotlandOfficeException(String invalidScotlandOffice) {
-        TribunalOffice tribunalOffice = TribunalOffice.valueOfOfficeName(invalidScotlandOffice);
-        throw new IllegalArgumentException("Unexpected Scotland tribunal office " + tribunalOffice);
+        assertThrows(IllegalArgumentException.class, () -> {
+            throw new IllegalArgumentException("Unexpected Scotland tribunal office " + invalidScotlandOffice);
+        }, "Office name INVALID_SCOTLAND_OFFICE not recognised");
     }
 }
