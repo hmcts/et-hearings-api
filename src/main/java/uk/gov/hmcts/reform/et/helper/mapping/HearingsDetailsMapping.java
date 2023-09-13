@@ -81,11 +81,7 @@ public final class HearingsDetailsMapping {
     }
 
     public static HearingWindow getHearingWindow() {
-        HearingWindow hearingWindow = new HearingWindow();
-        hearingWindow.setDateRangeStart(null);
-        hearingWindow.setDateRangeEnd(null);
-        hearingWindow.setFirstDateTimeMustBe(null);
-        return hearingWindow;
+        return new HearingWindow();
     }
 
     public static List<HearingLocation> getHearingLocation(
