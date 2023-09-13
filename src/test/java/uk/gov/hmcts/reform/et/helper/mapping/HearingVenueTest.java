@@ -2,6 +2,8 @@ package uk.gov.hmcts.reform.et.helper.mapping;
 
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.CsvSource;
 import org.mockito.Mock;
 import org.mockito.MockitoAnnotations;
 import uk.gov.hmcts.ecm.common.model.helper.TribunalOffice;
@@ -19,10 +21,6 @@ import static org.mockito.Mockito.when;
 
 class HearingVenueTest {
     public static final String BRISTOL = "Bristol";
-    public static final String EDINBURGH = "Edinburgh";
-    public static final String GLASGOW = "Glasgow";
-    public static final String ABERDEEN = "Aberdeen";
-    public static final String DUNDEE = "Dundee";
     public static final String MOCK_REQUEST_HEARING_ID = "c73bcbc4-430e-41c9-9790-182543914c0c";
 
     @Mock
@@ -49,76 +47,46 @@ class HearingVenueTest {
         when(hearingItem.getValue()).thenReturn(hearingType);
 
         List<HearingLocation> result = HearingsDetailsMapping.getHearingLocation(
-                requestHearingId, List.of(hearingItem));
+            requestHearingId, List.of(hearingItem));
 
         assertEquals(1, result.size(), "Expected one hearing location");
         assertEquals(BRISTOL, result.get(0).getLocationId(), "Location ID should match the expected value");
     }
 
-    @Test
-    void testGetHearingLocationGlasgow() {
-        testScotlandOfficeHearingVenue(TribunalOffice.GLASGOW, GLASGOW);
-    }
-
-    @Test
-    void testGetHearingLocationAberdeen() {
-        testScotlandOfficeHearingVenue(TribunalOffice.ABERDEEN, ABERDEEN);
-    }
-
-    @Test
-    void testGetHearingLocationDundee() {
-        testScotlandOfficeHearingVenue(TribunalOffice.DUNDEE, DUNDEE);
-    }
-
-    @Test
-    void testGetHearingLocationEdinburgh() {
-        testScotlandOfficeHearingVenue(TribunalOffice.EDINBURGH, EDINBURGH);
-    }
-
-    private void testScotlandOfficeHearingVenue(TribunalOffice office, String expectedLocation) {
-        String hearingRequest = MOCK_REQUEST_HEARING_ID;
-        when(hearingItem.getId()).thenReturn(hearingRequest);
-
+    @ParameterizedTest
+    @CsvSource({
+        "Glasgow, Glasgow",
+        "Aberdeen, Aberdeen",
+        "Dundee, Dundee",
+        "Edinburgh, Edinburgh",
+    })
+    void testGetHearingVenueScotland(String officeName, String expectedLocation) {
         HearingType hearingType = new HearingType();
+        hearingType.setHearingVenueScotland(officeName);
+
         DynamicValueType dynamicValueType = new DynamicValueType();
         dynamicValueType.setCode(expectedLocation);
-        hearingType.setHearingVenue(DynamicFixedListType.of(dynamicValueType));
-        DynamicFixedListType hearingOfficeType = DynamicFixedListType.of(dynamicValueType);
 
-        switch (office) {
-            case GLASGOW -> hearingType.setHearingGlasgow(hearingOfficeType);
-            case ABERDEEN -> hearingType.setHearingAberdeen(hearingOfficeType);
-            case DUNDEE -> hearingType.setHearingDundee(hearingOfficeType);
-            case EDINBURGH -> hearingType.setHearingEdinburgh(hearingOfficeType);
-            default ->
-                throw new IllegalStateException("Unexpected Scotland tribunal office " + office);
+        switch (TribunalOffice.valueOfOfficeName(officeName)) {
+            case GLASGOW -> hearingType.setHearingGlasgow(DynamicFixedListType.of(dynamicValueType));
+            case ABERDEEN -> hearingType.setHearingAberdeen(DynamicFixedListType.of(dynamicValueType));
+            case DUNDEE -> hearingType.setHearingDundee(DynamicFixedListType.of(dynamicValueType));
+            case EDINBURGH -> hearingType.setHearingEdinburgh(DynamicFixedListType.of(dynamicValueType));
+            default -> {
+                throw new IllegalArgumentException("Office name " + officeName + " not recognised");
+            }
         }
 
+        when(hearingItem.getId()).thenReturn(MOCK_REQUEST_HEARING_ID);
         when(hearingItem.getValue()).thenReturn(hearingType);
 
-        List<HearingLocation> result = HearingsDetailsMapping.getHearingLocation(hearingRequest, List.of(hearingItem));
+        List<HearingLocation> result = HearingsDetailsMapping.getHearingLocation(
+            MOCK_REQUEST_HEARING_ID, List.of(hearingItem));
 
         assertEquals(1, result.size(), "Expected one hearing location");
         assertEquals(expectedLocation, result.get(0).getLocationId(),
-                     "Location ID should match the expected value");
-    }
-
-    @Test
-    void testGetHearingLocationForNonScotlandOffice() {
-
-        String hearingRequest = MOCK_REQUEST_HEARING_ID;
-        HearingType hearingType = new HearingType();
-        DynamicValueType dynamicValueType = new DynamicValueType();
-        dynamicValueType.setCode(BRISTOL);
-        hearingType.setHearingVenue(DynamicFixedListType.of(dynamicValueType));
-
-        when(hearingItem.getId()).thenReturn(hearingRequest);
-        when(hearingItem.getValue()).thenReturn(hearingType);
-
-        List<HearingLocation> result = HearingsDetailsMapping.getHearingLocation(hearingRequest, List.of(hearingItem));
-
-        assertEquals(1, result.size(), "Expected one hearing location");
-        assertEquals(BRISTOL, result.get(0).getLocationId(), "Location ID should match the expected value");
+                     "Location ID should match the expected value"
+        );
     }
 
     @Test
