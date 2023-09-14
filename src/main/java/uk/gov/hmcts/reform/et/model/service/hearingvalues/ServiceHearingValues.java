@@ -49,10 +49,6 @@ public class ServiceHearingValues {
 
     private boolean autoListFlag;
 
-    private String hearingEstLengthNum;
-    @JsonProperty("hearingEstLengthNumType")
-    private String hearingEstLengthNumType;
-
     private String hearingType;
 
     private HearingWindow hearingWindow;

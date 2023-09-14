@@ -18,6 +18,20 @@
     "claimantType": {
       "claimant_email_address": "test@gmail.com"
     },
+    "representativeClaimantType": {
+      "representative_id": "12345",
+      "name_of_organisation": "",
+      "name_of_representative": "Claimant rep - ind",
+      "representative_address": {
+        "County": null,
+        "Country": "United Kingdom",
+        "PostCode": "SW1H 9AJ",
+        "PostTown": "London",
+        "AddressLine1": "Ministry Of Justice",
+        "AddressLine2": "Seventh Floor 102 Petty France",
+        "AddressLine3": null
+      }
+    },
     "documentCollection": [],
     "hearingCollection": [
       {
@@ -578,5 +592,126 @@
     ]
   },
   "security_classification": "PUBLIC",
-  "callback_response_status": null
+  "callback_response_status": null,
+  "caseCategories": [
+    {
+      "categoryType": "Employment",
+      "categoryValue": "Employment",
+      "categoryParent": "Employment"
+    }
+  ],
+  "respondentCollection": [
+    {
+      "id": "5f69a174-fce3-4286-a13c-58832514be9e",
+      "value": {
+        "respondentType": "Organisation",
+        "respondent_ACAS": "123",
+        "respondent_name": "George Costanza",
+        "responseContinue": "Yes",
+        "responseReceived": "No",
+        "respondent_phone1": "07123456789",
+        "responseStruckOut": "No",
+        "extensionRequested": "No",
+        "respondent_address": {
+          "Country": "United Kingdom",
+          "PostCode": "DA8 2DE",
+          "PostTown": "Erith",
+          "AddressLine1": "35 Bridge Road"
+        },
+        "respondent_ACAS_question": "Yes"
+      }
+    },
+    {
+      "id": "5f69a174-fce3-4286-a13c-58832514be9f",
+      "value": {
+        "respondentType": "Organisation",
+        "respondent_ACAS": "123",
+        "respondent_name": "Lynnette Orr",
+        "responseContinue": "Yes",
+        "responseReceived": "No",
+        "respondent_phone1": "07123456789",
+        "responseStruckOut": "No",
+        "extensionRequested": "No",
+        "respondent_address": {
+          "Country": "United Kingdom",
+          "PostCode": "DA8 2DE",
+          "PostTown": "Erith",
+          "AddressLine1": "35 Bridge Road"
+        },
+        "respondent_ACAS_question": "Yes"
+      }
+    }
+  ],
+  "repCollection": [
+    {
+      "id": "7977fb82-8dd4-4b33-8fee-f8f60809c6f1",
+      "value": {
+        "respondentId": "5f69a174-fce3-4286-a13c-58832514be9e",
+        "resp_rep_name": "George Costanza",
+        "dynamic_resp_rep_name": {
+          "value": {
+            "code": "R: George Costanza",
+            "label": "George Costanza"
+          },
+          "list_items": [
+            {
+              "code": "R: George Costanza",
+              "label": "George Costanza"
+            },
+            {
+              "code": "R: Lynnette Orr",
+              "label": "Lynnette Orr"
+            }
+          ],
+          "selectedCode": "R: George Costanza",
+          "selectedLabel": "George Costanza"
+        },
+        "name_of_representative": "Respondent rep 2",
+        "representative_address": {
+          "Country": "United Kingdom",
+          "PostCode": "SW1H 9AJ",
+          "PostTown": "London",
+          "AddressLine1": "Ministry Of Justice",
+          "AddressLine2": "Seventh Floor 102 Petty France"
+        }
+      }
+    },
+    {
+      "id": "1c97e356-f3ca-4785-9ecd-80808f696d86",
+      "value": {
+        "myHmctsYesNo": "Yes",
+        "respondentId": "5f69a174-fce3-4286-a13c-58832514be9f",
+        "resp_rep_name": "Lynnette Orr",
+        "name_of_organisation": "ET - Organisation 1",
+        "dynamic_resp_rep_name": {
+          "value": {
+            "code": "R: Lynnette Orr",
+            "label": "Lynnette Orr"
+          },
+          "list_items": [
+            {
+              "code": "R: George Costanza",
+              "label": "George Costanza"
+            },
+            {
+              "code": "R: Lynnette Orr",
+              "label": "Lynnette Orr"
+            }
+          ],
+          "selectedCode": "R: Lynnette Orr",
+          "selectedLabel": "Lynnette Orr"
+        },
+        "name_of_representative": "Respondent rep (orgl) for org",
+        "representative_address": {
+          "PostCode": "ET1 ET1",
+          "PostTown": "London",
+          "AddressLine1": "1 Main Street"
+        },
+        "respondentOrganisation": {
+          "OrganisationID": "79ZRSOU",
+          "OrganisationName": "ET - Organisation 1"
+        }
+      }
+    }
+  ]
 }

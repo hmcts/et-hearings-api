@@ -2,11 +2,15 @@ package uk.gov.hmcts.reform.et.helper.mapping;
 
 import org.junit.jupiter.api.Test;
 import uk.gov.hmcts.et.common.model.ccd.CaseData;
+import uk.gov.hmcts.et.common.model.hmc.CaseCategory;
 import uk.gov.hmcts.reform.et.model.service.ReferenceDataServiceHolder;
+
+import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 import static uk.gov.hmcts.ecm.common.model.helper.Constants.YES;
+import static uk.gov.hmcts.reform.et.model.service.ReferenceDataServiceHolder.DEFAULT_CATEGORY;
 
 class HearingsCaseMappingTest {
 
@@ -16,7 +20,7 @@ class HearingsCaseMappingTest {
         referenceDataServiceHolder.setHmctsServiceId("ServiceId");
         String hmctsServiceId = referenceDataServiceHolder.getHmctsServiceId();
 
-        assertEquals("ServiceId", hmctsServiceId, "HmctsServiceId should match expected value");
+        assertEquals("ServiceId", hmctsServiceId, "HmctsServiceId should match the expected value");
     }
 
     @Test
@@ -25,7 +29,7 @@ class HearingsCaseMappingTest {
         caseData.setCaseDeepLink("deepLink");
 
         assertEquals("deepLink", HearingsCaseMapping.getCaseDeepLink(caseData),
-                     "CaseDeepLink should match expected value");
+                "CaseDeepLink should match the expected value");
     }
 
     @Test
@@ -34,7 +38,7 @@ class HearingsCaseMappingTest {
         caseData.setCaseNameHmctsInternal("nameInternal");
 
         assertEquals("nameInternal", HearingsCaseMapping.getCaseNameHmctsInternal(caseData),
-                     "CaseNameHmctsInternal should match expected value");
+                "CaseNameHmctsInternal should match the expected value");
     }
 
     @Test
@@ -43,7 +47,7 @@ class HearingsCaseMappingTest {
         caseData.setPublicCaseName("publicName");
 
         assertEquals("publicName", HearingsCaseMapping.getPublicCaseName(caseData),
-                     "PublicCaseName should match expected value");
+                "PublicCaseName should match the expected value");
     }
 
     @Test
@@ -60,7 +64,7 @@ class HearingsCaseMappingTest {
         caseData.setCaseAdditionalSecurityFlag(YES);
 
         assertTrue(HearingsCaseMapping.getCaseAdditionalSecurityFlag(caseData),
-                   "CaseAdditionalSecurityFlag should be true");
+                "CaseAdditionalSecurityFlag should be true");
     }
 
     @Test
@@ -69,7 +73,7 @@ class HearingsCaseMappingTest {
         caseData.setCaseInterpreterRequiredFlag(YES);
 
         assertTrue(HearingsCaseMapping.getCaseInterpreterRequiredFlag(caseData),
-                   "CaseInterpreterRequiredFlag should be true");
+                "CaseInterpreterRequiredFlag should be true");
     }
 
     @Test
@@ -78,6 +82,20 @@ class HearingsCaseMappingTest {
         caseData.setReceiptDate("2023-08-26");
 
         assertEquals("2023-08-26", HearingsCaseMapping.getCaseCreated(caseData),
-                     "CaseCreated should match expected value");
+                "CaseCreated should match the expected value");
+    }
+
+    @Test
+    void testGetCaseCategories() {
+        List<CaseCategory> result = HearingsCaseMapping.getCaseCategories();
+        assertEquals(1, result.size(), "There should be one case category");
+
+        CaseCategory caseCategory = result.get(0);
+        assertEquals(DEFAULT_CATEGORY, caseCategory.getCategoryType(),
+                "CategoryType should match the expected value");
+        assertEquals(DEFAULT_CATEGORY, caseCategory.getCategoryValue(),
+                "CategoryValue should match the expected value");
+        assertEquals(DEFAULT_CATEGORY, caseCategory.getCategoryParent(),
+                "CategoryParent should match the expected value");
     }
 }
