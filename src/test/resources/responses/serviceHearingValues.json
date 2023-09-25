@@ -22,8 +22,8 @@
   "hearingInWelshFlag": false,
   "hearingLocations": [
     {
-      "locationId": "123456abcdef",
-      "locationType": "type"
+      "locationId": "Barnstaple",
+      "locationType": "Court"
     }
   ],
   "facilitiesRequired": ["a room with a view"],

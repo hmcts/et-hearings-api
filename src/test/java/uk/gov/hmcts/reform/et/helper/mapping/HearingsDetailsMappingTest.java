@@ -72,13 +72,6 @@ class HearingsDetailsMappingTest {
     }
 
     @Test
-    void testGetHearingEstLengthNumType() {
-        when(caseData.getHearingEstLengthNumType()).thenReturn("length_type");
-        assertEquals("length_type", HearingsDetailsMapping.getHearingEstLengthNumType(
-                caseData), "HearingEstLengthNumType should match");
-    }
-
-    @Test
     void testGetHearingType() {
         final List<HearingTypeItem> hearingCollection = new ArrayList<>();
 
@@ -140,7 +133,7 @@ class HearingsDetailsMappingTest {
 
     @Test
     void testGetTribunalAndOfficeLocation() {
-        assertNull(HearingsDetailsMapping.getTribunalAndOfficeLocation(caseData),
+        assertNull(HearingsDetailsMapping.getTribunalAndOfficeLocation(),
                 "TribunalAndOfficeLocation should be null");
     }
 }

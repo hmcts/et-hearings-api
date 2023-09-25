@@ -8,11 +8,13 @@ import org.mockito.MockedStatic;
 import org.mockito.MockitoAnnotations;
 import uk.gov.hmcts.et.common.model.ccd.CaseData;
 import uk.gov.hmcts.et.common.model.ccd.items.HearingTypeItem;
+import uk.gov.hmcts.et.common.model.ccd.items.RepresentedTypeRItem;
+import uk.gov.hmcts.et.common.model.ccd.items.RespondentSumTypeItem;
 import uk.gov.hmcts.reform.authorisation.generators.AuthTokenGenerator;
 import uk.gov.hmcts.reform.ccd.client.CoreCaseDataApi;
 import uk.gov.hmcts.reform.ccd.client.model.CaseDetails;
 import uk.gov.hmcts.reform.et.exception.GetCaseException;
-import uk.gov.hmcts.reform.et.helper.mapping.CaseDataMapper;
+import uk.gov.hmcts.reform.et.helper.mapping.CaseDataMapping;
 import uk.gov.hmcts.reform.et.helper.mapping.ServiceHearingValuesMapping;
 import uk.gov.hmcts.reform.et.model.CaseTestData;
 import uk.gov.hmcts.reform.et.model.service.ReferenceDataServiceHolder;
@@ -46,8 +48,8 @@ class ServiceHearingsServiceTest {
     private CoreCaseDataApi ccdApiClient;
 
     private static final String TEST_SERVICE_AUTH_TOKEN = "Bearer TestServiceAuth";
-    private static final String MOCK_CASE_ID = "1646225213651590";
-    private static final String MOCK_REQUEST_HEARING_ID = "c73bcbc4-430e-41c9-9790-182543914c0c";
+    public static final String MOCK_CASE_ID = "1646225213651590";
+    public static final String MOCK_REQUEST_HEARING_ID = "c73bcbc4-430e-41c9-9790-182543914c0c";
 
     @BeforeEach
     public void setUp() {
@@ -60,10 +62,12 @@ class ServiceHearingsServiceTest {
         String caseId = MOCK_CASE_ID;
         ServiceHearingRequest request = new ServiceHearingRequest(caseId, MOCK_REQUEST_HEARING_ID);
         CaseDetails mockCaseDetails = new CaseTestData().expectedDetails();
-        CaseData caseData = CaseDataMapper.mapRequestCaseDataToCaseData(mockCaseDetails.getData());
+        CaseData caseData = CaseDataMapping.mapRequestCaseDataToCaseData(mockCaseDetails.getData());
         List<HearingTypeItem> mockHearingCollection = new CaseTestData().getHearingCollectionAsList();
-        String hearingId = CaseDataMapper.mapServiceHearingRequestDataToCaseData(request.getHearingId());
+        String hearingId = CaseDataMapping.mapServiceHearingRequestDataToCaseData(request.getHearingId());
         ServiceHearingValues mockServiceHearingValues = new CaseTestData().expectedServiceHearingValues();
+        List<RespondentSumTypeItem> respondents = new CaseTestData().getRespondentCollectionAsList();
+        List<RepresentedTypeRItem> legalReps = new CaseTestData().getRespondentRepCollectionAsList();
 
         when(authTokenGenerator.generate()).thenReturn("serviceAuthS2s");
         when(ccdApiClient.getCase(
@@ -72,12 +76,12 @@ class ServiceHearingsServiceTest {
                 MOCK_CASE_ID
         )).thenReturn(mockCaseDetails);
 
-        try (MockedStatic<CaseDataMapper> caseDataMapperMock = mockStatic(CaseDataMapper.class)) {
-            caseDataMapperMock.when(() -> CaseDataMapper.mapRequestCaseDataToCaseData(
+        try (MockedStatic<CaseDataMapping> caseDataMapperMock = mockStatic(CaseDataMapping.class)) {
+            caseDataMapperMock.when(() -> CaseDataMapping.mapRequestCaseDataToCaseData(
                     mockCaseDetails.getData())).thenReturn(caseData);
-            caseDataMapperMock.when(() -> CaseDataMapper.mapHearingCollectionDataToCaseData(any()))
+            caseDataMapperMock.when(() -> CaseDataMapping.mapHearingCollectionDataToCaseData(any()))
                     .thenReturn(mockHearingCollection);
-            caseDataMapperMock.when(() -> CaseDataMapper.mapServiceHearingRequestDataToCaseData(
+            caseDataMapperMock.when(() -> CaseDataMapping.mapServiceHearingRequestDataToCaseData(
                             request.getHearingId()))
                     .thenReturn(hearingId);
         }
@@ -88,6 +92,8 @@ class ServiceHearingsServiceTest {
                             caseData,
                             hearingId,
                             mockHearingCollection,
+                            respondents,
+                            legalReps,
                             referenceDataServiceHolder))
                     .thenReturn(mockServiceHearingValues);
             when(caseService.retrieveCase(authorization, caseId)).thenReturn(mockCaseDetails);
