@@ -10,6 +10,7 @@ import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnProperty;
 import org.springframework.jms.annotation.JmsListener;
 import org.springframework.stereotype.Component;
+import uk.gov.hmcts.reform.et.exception.GetHearingException;
 import uk.gov.hmcts.reform.et.exception.HmcEventProcessingException;
 import uk.gov.hmcts.reform.et.model.hmc.message.HmcMessage;
 import uk.gov.hmcts.reform.et.service.hmc.topic.ProcessHmcMessageService;
@@ -63,6 +64,8 @@ public class HmcHearingsEventTopicListener {
         }  catch (JsonProcessingException ex) {
             throw new HmcEventProcessingException(String.format("Unable to successfully deliver HMC message: %s",
                                                                 convertedMessage), ex);
+        } catch (GetHearingException e) {
+            throw new RuntimeException(e);
         }
     }
 
