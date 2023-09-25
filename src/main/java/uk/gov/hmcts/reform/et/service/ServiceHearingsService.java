@@ -5,9 +5,11 @@ import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
 import uk.gov.hmcts.et.common.model.ccd.CaseData;
 import uk.gov.hmcts.et.common.model.ccd.items.HearingTypeItem;
+import uk.gov.hmcts.et.common.model.ccd.items.RepresentedTypeRItem;
+import uk.gov.hmcts.et.common.model.ccd.items.RespondentSumTypeItem;
 import uk.gov.hmcts.reform.ccd.client.model.CaseDetails;
 import uk.gov.hmcts.reform.et.exception.GetCaseException;
-import uk.gov.hmcts.reform.et.helper.mapping.CaseDataMapper;
+import uk.gov.hmcts.reform.et.helper.mapping.CaseDataMapping;
 import uk.gov.hmcts.reform.et.helper.mapping.ServiceHearingValuesMapping;
 import uk.gov.hmcts.reform.et.model.service.ReferenceDataServiceHolder;
 import uk.gov.hmcts.reform.et.model.service.ServiceHearingRequest;
@@ -29,12 +31,15 @@ public class ServiceHearingsService {
         ServiceHearingRequest request
     ) throws GetCaseException {
         CaseDetails caseDetails = caseService.retrieveCase(authorization, request.getCaseId());
-        CaseData caseData = CaseDataMapper.mapRequestCaseDataToCaseData(caseDetails.getData());
-        String hearingId = CaseDataMapper.mapServiceHearingRequestDataToCaseData(request.getHearingId());
-        List<HearingTypeItem> hearingCollection = CaseDataMapper.mapHearingCollectionDataToCaseData(
+        CaseData caseData = CaseDataMapping.mapRequestCaseDataToCaseData(caseDetails.getData());
+        String hearingId = CaseDataMapping.mapServiceHearingRequestDataToCaseData(request.getHearingId());
+        List<HearingTypeItem> hearingCollection = CaseDataMapping.mapHearingCollectionDataToCaseData(
             caseData.getHearingCollection());
+        List<RespondentSumTypeItem> respondents = CaseDataMapping.mapRespondentDetailsToCaseData(
+            caseData.getRespondentCollection());
+        List<RepresentedTypeRItem> legalReps = CaseDataMapping.mapLegalRepsToCaseData(caseData.getRepCollection());
 
         return ServiceHearingValuesMapping.mapServiceHearingValues(
-            caseDetails, caseData, hearingId, hearingCollection, referenceDataServiceHolder);
+            caseDetails, caseData, hearingId, hearingCollection, respondents, legalReps, referenceDataServiceHolder);
     }
 }
