@@ -13,7 +13,6 @@ import static java.util.Objects.isNull;
 
 @Slf4j
 @RequiredArgsConstructor
-@Service
 public class HmcHearingApiService {
 
     public final HmcHearingApi hmcHearingApi;

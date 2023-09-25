@@ -32,28 +32,22 @@ class HmcHearingApiServiceTest {
 
     @Test
     void getHearingRequest_shouldReturnHearingResponse_whenApiReturnsResponse() throws GetHearingException {
-        // Arrange
+
         String hearingId = "123";
         String accessToken = "access_token";
         String idToken = "id_token";
         HearingGetResponse expectedResponse = new HearingGetResponse();
-        String expiresIn = null;
-        String refreshToken = null;
-        String scope = null;
-        String tokenType = null;
-        when(idamClient.getAccessTokenResponse(anyString(), anyString())).thenReturn(new TokenResponse(accessToken, idToken, expiresIn, refreshToken, scope, tokenType));
+        when(idamClient.getAccessTokenResponse(anyString(), anyString()))
+            .thenReturn(new TokenResponse(accessToken, idToken, null, null, null, null));
         when(hmcHearingApi.getHearingRequest(accessToken, idToken, hearingId, null)).thenReturn(expectedResponse);
 
-        // Act
         HearingGetResponse actualResponse = service.getHearingRequest(hearingId);
 
-        // Assert
         assertEquals(expectedResponse, actualResponse);
     }
 
     @Test
     void getHearingRequest_shouldThrowException_whenApiReturnsNull() {
-        // Arrange
         String hearingId = "123";
         String accessToken = "access_token";
         String idToken = "id_token";
@@ -61,10 +55,10 @@ class HmcHearingApiServiceTest {
         String refreshToken = null;
         String scope = null;
         String tokenType = null;
-        when(idamClient.getAccessTokenResponse(anyString(), anyString())).thenReturn(new TokenResponse(accessToken, idToken, expiresIn, refreshToken, scope, tokenType));
+        when(idamClient.getAccessTokenResponse(anyString(),
+                                               anyString())).thenReturn(new TokenResponse(accessToken, idToken,null, null, null, null));
         when(hmcHearingApi.getHearingRequest(accessToken, idToken, hearingId, null)).thenReturn(null);
 
-        // Act & Assert
         assertThrows(GetHearingException.class, () -> service.getHearingRequest(hearingId));
     }
 }
