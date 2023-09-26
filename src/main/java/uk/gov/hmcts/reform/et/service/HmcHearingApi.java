@@ -1,6 +1,7 @@
 package uk.gov.hmcts.reform.et.service;
 
 import org.springframework.cloud.openfeign.FeignClient;
+import org.springframework.stereotype.Component;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestHeader;
@@ -11,6 +12,7 @@ import uk.gov.hmcts.reform.et.model.hearing.HearingGetResponse;
 import static org.springframework.http.HttpHeaders.AUTHORIZATION;
 
 @FeignClient(name = "hmc-hearing", url = "${hmc.url}", configuration = FeignClientConfig.class)
+@Component
 public interface HmcHearingApi {
 
     String SERVICE_AUTHORIZATION = "ServiceAuthorization";
@@ -23,5 +25,4 @@ public interface HmcHearingApi {
         @PathVariable String id,
         @RequestParam(name = "isValid", required = false) Boolean isValid
     );
-
 }
