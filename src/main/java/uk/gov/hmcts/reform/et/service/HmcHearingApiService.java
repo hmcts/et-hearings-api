@@ -38,7 +38,7 @@ public class HmcHearingApiService {
         return hearingResponse;
     }
 
-   public TokenResponse getIdamTokens() {
+    public TokenResponse getIdamTokens() {
         return idamClient.getAccessTokenResponse(systemUserName, systemUserPassword);
     }
 
