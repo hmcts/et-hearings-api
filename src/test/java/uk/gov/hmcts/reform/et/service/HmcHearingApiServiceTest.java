@@ -16,7 +16,7 @@ import static org.mockito.Mockito.when;
 
 
 @ExtendWith(MockitoExtension.class)
-public class HmcHearingApiServiceTest {
+class HmcHearingApiServiceTest {
 
     @Mock
     private HmcHearingApi hmcHearingApi;
@@ -35,7 +35,7 @@ public class HmcHearingApiServiceTest {
 
 
     @Test
-    public void testGetHearingRequest() throws Exception {
+    void testGetHearingRequest() throws Exception {
         String hearingId = "12345";
         TokenResponse tokenResponse = new TokenResponse("access_token", "id_token", "", "","","");
         HearingGetResponse hearingResponse = new HearingGetResponse();
@@ -49,6 +49,6 @@ public class HmcHearingApiServiceTest {
 
         // Call the getHearingRequest method and verify that it returns the expected HearingGetResponse object
         HearingGetResponse result = hmcHearingApiService.getHearingRequest(hearingId);
-        assertEquals(hearingResponse, result);
+        assertEquals(hearingResponse, result, "hearingResponse should match the expected value");
     }
 }
