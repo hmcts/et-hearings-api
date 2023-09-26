@@ -3,7 +3,6 @@ package uk.gov.hmcts.reform.et.service;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Value;
-import org.springframework.stereotype.Service;
 import uk.gov.hmcts.reform.et.exception.GetHearingException;
 import uk.gov.hmcts.reform.et.model.hearing.HearingGetResponse;
 import uk.gov.hmcts.reform.idam.client.IdamClient;
@@ -39,7 +38,7 @@ public class HmcHearingApiService {
         return hearingResponse;
     }
 
-    private TokenResponse getIdamTokens() {
+   public TokenResponse getIdamTokens() {
         return idamClient.getAccessTokenResponse(systemUserName, systemUserPassword);
     }
 

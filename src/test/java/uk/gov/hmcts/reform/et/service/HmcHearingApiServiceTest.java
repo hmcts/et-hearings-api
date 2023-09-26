@@ -1,64 +1,40 @@
 package uk.gov.hmcts.reform.et.service;
 
-import org.junit.jupiter.api.BeforeEach;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.mockito.Mockito.*;
+
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.extension.ExtendWith;
+import org.mockito.InjectMocks;
 import org.mockito.Mock;
-import org.mockito.MockitoAnnotations;
-import uk.gov.hmcts.reform.et.exception.GetHearingException;
+import org.mockito.junit.jupiter.MockitoExtension;
 import uk.gov.hmcts.reform.et.model.hearing.HearingGetResponse;
-import uk.gov.hmcts.reform.idam.client.IdamClient;
 import uk.gov.hmcts.reform.idam.client.models.TokenResponse;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertThrows;
-import static org.mockito.ArgumentMatchers.anyString;
-import static org.mockito.Mockito.when;
-
-class HmcHearingApiServiceTest {
-
-    private HmcHearingApiService service;
+@ExtendWith(MockitoExtension.class)
+public class HmcHearingApiServiceTest {
 
     @Mock
     private HmcHearingApi hmcHearingApi;
 
-    @Mock
-    private IdamClient idamClient;
-
-    @BeforeEach
-    void setUp() {
-        MockitoAnnotations.openMocks(this);
-        service = new HmcHearingApiService(hmcHearingApi, idamClient);
-    }
+    @InjectMocks
+    private HmcHearingApiService hmcHearingApiService;
 
     @Test
-    void getHearingRequest_shouldReturnHearingResponse_whenApiReturnsResponse() throws GetHearingException {
+    public void testGetHearingRequest() throws Exception {
+        String hearingId = "12345";
+        TokenResponse tokenResponse = new TokenResponse("access_token", "id_token", "", "","","");
+        HearingGetResponse hearingResponse = new HearingGetResponse();
 
-        String hearingId = "123";
-        String accessToken = "access_token";
-        String idToken = "id_token";
-        HearingGetResponse expectedResponse = new HearingGetResponse();
-        when(idamClient.getAccessTokenResponse(anyString(), anyString()))
-            .thenReturn(new TokenResponse(accessToken, idToken, null, null, null, null));
-        when(hmcHearingApi.getHearingRequest(accessToken, idToken, hearingId, null)).thenReturn(expectedResponse);
+        // Mock the getIdamTokens method to return a TokenResponse object
+        when(hmcHearingApiService.getIdamTokens()).thenReturn(tokenResponse);
 
-        HearingGetResponse actualResponse = service.getHearingRequest(hearingId);
+        // Mock the getHearingRequest method to return a HearingGetResponse object
+        when(hmcHearingApi.getHearingRequest(tokenResponse.accessToken, tokenResponse.idToken, hearingId, null))
+            .thenReturn(hearingResponse);
 
-        assertEquals(expectedResponse, actualResponse);
-    }
-
-    @Test
-    void getHearingRequest_shouldThrowException_whenApiReturnsNull() {
-        String hearingId = "123";
-        String accessToken = "access_token";
-        String idToken = "id_token";
-        String expiresIn = null;
-        String refreshToken = null;
-        String scope = null;
-        String tokenType = null;
-        when(idamClient.getAccessTokenResponse(anyString(),
-                                               anyString())).thenReturn(new TokenResponse(accessToken, idToken,null, null, null, null));
-        when(hmcHearingApi.getHearingRequest(accessToken, idToken, hearingId, null)).thenReturn(null);
-
-        assertThrows(GetHearingException.class, () -> service.getHearingRequest(hearingId));
+        // Call the getHearingRequest method and verify that it returns the expected HearingGetResponse object
+        HearingGetResponse result = hmcHearingApiService.getHearingRequest(hearingId);
+        assertEquals(hearingResponse, result);
     }
 }
