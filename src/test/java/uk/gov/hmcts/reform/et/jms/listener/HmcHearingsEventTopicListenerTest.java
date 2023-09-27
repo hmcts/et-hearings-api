@@ -2,7 +2,9 @@ package uk.gov.hmcts.reform.et.jms.listener;
 
 
 
+import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
+import jakarta.jms.JMSException;
 import org.apache.qpid.jms.message.JmsBytesMessage;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
@@ -11,6 +13,7 @@ import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.Mock;
 import org.mockito.junit.jupiter.MockitoExtension;
 import org.springframework.test.util.ReflectionTestUtils;
+import uk.gov.hmcts.reform.et.exception.HmcEventProcessingException;
 import uk.gov.hmcts.reform.et.jms.listner.HmcHearingsEventTopicListener;
 import uk.gov.hmcts.reform.et.model.hmc.message.HearingUpdate;
 import uk.gov.hmcts.reform.et.model.hmc.message.HmcMessage;
@@ -18,6 +21,7 @@ import uk.gov.hmcts.reform.et.service.hmc.topic.ProcessHmcMessageService;
 
 import java.nio.charset.StandardCharsets;
 
+import static org.assertj.core.api.AssertionsForClassTypes.assertThatExceptionOfType;
 import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.ArgumentMatchers.eq;
 import static org.mockito.BDDMockito.given;
@@ -81,6 +85,23 @@ class HmcHearingsEventTopicListenerTest {
         hmcHearingsEventTopicListener.onMessage(bytesMessage);
 
         verify(processHmcMessageService).processEventMessage(any(HmcMessage.class));
+    }
+
+    @Test
+    @DisplayName("A HmcEventProcessingException should be thrown if a JsonProcessing exception is encountered.")
+    void testOnMessage_JsonProcessingException() throws JsonProcessingException, JMSException {
+
+        HmcMessage hmcMessage = createHmcMessage(SERVICE_CODE);
+
+        byte[] messageBytes = OBJECT_MAPPER.writeValueAsString(hmcMessage).getBytes(StandardCharsets.UTF_8);
+
+        given(bytesMessage.getBodyLength()).willReturn((long) messageBytes.length);
+        given(mockObjectMapper.readValue(any(String.class), eq(HmcMessage.class)))
+            .willThrow(JsonProcessingException.class);
+
+        assertThatExceptionOfType(HmcEventProcessingException.class)
+            .isThrownBy(() -> hmcHearingsEventTopicListener.onMessage(bytesMessage))
+            .withCauseInstanceOf(JsonProcessingException.class);
     }
 
     private HmcMessage createHmcMessage(String messageServiceCode) {

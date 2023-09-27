@@ -141,6 +141,7 @@ def sonarExclusions = [
   "**/gov/hmcts/reform/et/service/hmc/topic/ProcessHmcMessageService.java",
   "**/gov/hmcts/reform/et/model/hmc/message/HmcMessage.java",
   "**/gov/hmcts/reform/et/model/hmc/message/HearingUpdate.java",
+  "**/gov/hmcts/reform/et/model/hearing/HearingGetResponse.java",
 ]
 
 sonarqube {
