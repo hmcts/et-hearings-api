@@ -3,7 +3,7 @@ package uk.gov.hmcts.reform.et.service.hmc.topic;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
-import uk.gov.hmcts.reform.et.exception.GetHearingException;
+import uk.gov.hmcts.reform.et.exception.MessageProcessingException;
 import uk.gov.hmcts.reform.et.model.hearing.HearingGetResponse;
 import uk.gov.hmcts.reform.et.model.hmc.message.HmcMessage;
 import uk.gov.hmcts.reform.et.model.hmc.reference.HmcStatus;
@@ -16,7 +16,7 @@ public class ProcessHmcMessageService {
 
     private final HmcHearingApiService hmcHearingApiService;
 
-    public void processEventMessage(HmcMessage hmcMessage) throws GetHearingException {
+    public void processEventMessage(HmcMessage hmcMessage) throws MessageProcessingException {
 
         String hearingId = hmcMessage.getHearingId();
 
