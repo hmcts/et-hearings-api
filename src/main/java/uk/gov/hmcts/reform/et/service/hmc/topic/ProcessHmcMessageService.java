@@ -17,11 +17,8 @@ public class ProcessHmcMessageService {
     private final HmcHearingApiService hmcHearingApiService;
 
     public void processEventMessage(HmcMessage hmcMessage) throws MessageProcessingException {
-
         String hearingId = hmcMessage.getHearingId();
-
         HearingGetResponse hearingResponse = hmcHearingApiService.getHearingRequest(hearingId);
-
         HmcStatus hmcMessageStatus = hmcMessage.getHearingUpdate().getHmcStatus();
 
         log.info(

@@ -61,9 +61,12 @@ public class HmcHearingsEventTopicListener {
 
                 processHmcMessageService.processEventMessage(hmcMessage);
             }
-        }  catch (JsonProcessingException | MessageProcessingException ex) {
-            throw new HmcEventProcessingException(String.format("Unable to successfully deliver HMC message: %s",
-                                                                convertedMessage), ex);
+        }  catch (JsonProcessingException ex) {
+            throw new HmcEventProcessingException(
+                String.format("Unable to process JSON message: %s", convertedMessage), ex);
+        } catch (MessageProcessingException ex) {
+            throw new HmcEventProcessingException(
+                String.format("Unable to process HMC message: %s", convertedMessage), ex);
         }
     }
 
