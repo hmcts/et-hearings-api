@@ -54,7 +54,7 @@ class HmcHearingApiServiceTest {
     }
 
     @Test
-    void testGetHearingRequestThrowsException(){
+    void testGetHearingRequestThrowsException() {
         String hearingId = "12345";
         TokenResponse tokenResponse = new TokenResponse("access_token", "", "id_token", "","","");
 
@@ -69,7 +69,8 @@ class HmcHearingApiServiceTest {
         try {
             hmcHearingApiService.getHearingRequest(hearingId);
         } catch (GetHearingException e) {
-            assertEquals("Failed to retrieve hearing with Id: 12345 from HMC", e.getMessage(), "Exception message should match the expected value");
+            assertEquals("Failed to retrieve hearing with Id: 12345 from HMC",
+                         e.getMessage(), "Exception message should match the expected value");
         }
     }
 }
