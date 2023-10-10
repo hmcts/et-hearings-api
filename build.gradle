@@ -141,6 +141,7 @@ def sonarExclusions = [
   "**/gov/hmcts/reform/et/service/hmc/topic/ProcessHmcMessageService.java",
   "**/gov/hmcts/reform/et/model/hmc/message/HmcMessage.java",
   "**/gov/hmcts/reform/et/model/hmc/message/HearingUpdate.java",
+  "**/gov/hmcts/reform/et/model/hearing/HearingGetResponse.java",
 ]
 
 sonarqube {
@@ -228,6 +229,7 @@ dependencies {
   implementation group: 'org.apache.tomcat.embed', name: 'tomcat-embed-core', version: '10.1.13'
   implementation group: 'org.apache.tomcat.embed', name: 'tomcat-embed-websocket', version: '10.1.13'
   implementation group: 'org.bouncycastle', name: 'bcprov-jdk18on', version: '1.76'
+  implementation group: 'org.elasticsearch', name: 'elasticsearch', version: '8.10.2'
   implementation group: 'com.azure', name: 'azure-core', version: '1.43.0'
   implementation group: 'com.azure', name: 'azure-messaging-servicebus', version: '7.14.4'
 

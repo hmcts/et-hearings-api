@@ -10,6 +10,7 @@ import uk.gov.hmcts.reform.authorisation.ServiceAuthorisationApi;
 import uk.gov.hmcts.reform.ccd.client.CaseAssignmentApi;
 import uk.gov.hmcts.reform.ccd.client.CaseUserApi;
 import uk.gov.hmcts.reform.ccd.client.CoreCaseDataApi;
+import uk.gov.hmcts.reform.et.service.HmcHearingApi;
 import uk.gov.hmcts.reform.idam.client.IdamApi;
 
 @SpringBootApplication(
@@ -23,11 +24,11 @@ import uk.gov.hmcts.reform.idam.client.IdamApi;
         CaseUserApi.class,
         CoreCaseDataApi.class,
         CaseAssignmentApi.class,
+        HmcHearingApi.class
     }
 )
 @EnableJms
 @ImportAutoConfiguration({FeignAutoConfiguration.class})
-
 public class Application {
 
     public static void main(final String[] args) {

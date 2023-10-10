@@ -79,8 +79,16 @@ core_case_data:
 et:
   hmctsServiceId: ${HMCTS_SERVICE_ID:BHA1}
 
+etcos:
+  system:
+    username: et.service@hmcts.net
+    password: Pa55word11
+
   flags:
     hmc-to-hearings-api:
       enabled: ${HMC_HEARINGS_LISTENING_ENABLED:false}
     tribunals-to-hearings-api:
       enabled: ${TRIBUNALS_HEARINGS_LISTENING_ENABLED:false}
+
+hmc:
+  url: ${HMC_URL:http://localhost:8080}
