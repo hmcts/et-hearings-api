@@ -230,7 +230,7 @@ dependencies {
   implementation group: 'org.apache.tomcat.embed', name: 'tomcat-embed-websocket', version: '10.1.15'
   implementation group: 'org.bouncycastle', name: 'bcprov-jdk18on', version: '1.76'
   implementation group: 'org.elasticsearch', name: 'elasticsearch', version: '8.10.4'
-  implementation group: 'com.azure', name: 'azure-core', version: '1.44.0'
+  implementation group: 'com.azure', name: 'azure-core', version: '1.44.1'
   implementation group: 'com.azure', name: 'azure-messaging-servicebus', version: '7.14.4'
 
     implementation 'org.junit.jupiter:junit-jupiter:5.10.0'
