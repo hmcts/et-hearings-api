@@ -46,9 +46,11 @@ public final class HearingsDetailsMapping {
 
     public static String getHearingType(String hearingRequest, List<HearingTypeItem> hearingCollection) {
         String hearingType = null;
-        for (HearingTypeItem hearingItem : hearingCollection) {
-            if (hearingItem.getId().equals(hearingRequest)) {
-                hearingType = hearingItem.getValue().getHearingType();
+        if (hearingCollection != null) {
+            for (HearingTypeItem hearingItem : hearingCollection) {
+                if (hearingItem.getId().equals(hearingRequest)) {
+                    hearingType = hearingItem.getValue().getHearingType();
+                }
             }
         }
         return hearingType;
