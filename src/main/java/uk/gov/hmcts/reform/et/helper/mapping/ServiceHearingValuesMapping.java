@@ -53,7 +53,7 @@ public final class ServiceHearingValuesMapping {
                 .caseInterpreterRequiredFlag(HearingsCaseMapping.getCaseInterpreterRequiredFlag(caseData))
                 .caseFlags(CaseFlagsMapping.getCaseFlags(caseData))
                 .caseCategories(HearingsCaseMapping.getCaseCategories())
-                .screenFlow(HearingsCaseMapping.getScreenFlow())
+                .screenFlow(null)
                 .vocabulary(HearingsCaseMapping.getVocabulary())
                 .hearingWindow(HearingsDetailsMapping.getHearingWindow())
                 .hearingLocations(HearingsDetailsMapping.getHearingLocation())

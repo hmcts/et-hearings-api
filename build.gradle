@@ -269,4 +269,3 @@ wrapper {
     distributionType = Wrapper.DistributionType.ALL
 }
 
-pmdMain.maxFailures = 1

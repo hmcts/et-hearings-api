@@ -4,7 +4,6 @@ import lombok.extern.slf4j.Slf4j;
 import org.springframework.web.bind.annotation.RestController;
 import uk.gov.hmcts.et.common.model.ccd.CaseData;
 import uk.gov.hmcts.et.common.model.hmc.CaseCategory;
-import uk.gov.hmcts.et.common.model.hmc.ScreenNavigation;
 import uk.gov.hmcts.et.common.model.hmc.Vocabulary;
 
 import java.util.ArrayList;
@@ -12,7 +11,6 @@ import java.util.List;
 
 import static uk.gov.hmcts.reform.et.model.service.ReferenceDataServiceHolder.DEFAULT_CATEGORY;
 import static uk.gov.hmcts.reform.et.model.service.YesNo.isYes;
-
 
 @RestController
 @Slf4j
@@ -60,10 +58,6 @@ public final class HearingsCaseMapping {
         resultList.add(caseCategory);
 
         return resultList;
-    }
-
-    public static List<ScreenNavigation> getScreenFlow() {
-        return null;
     }
 
     public static List<Vocabulary> getVocabulary() {
