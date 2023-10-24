@@ -46,11 +46,9 @@ class HearingVenueTest {
 
         when(hearingItem.getValue()).thenReturn(hearingType);
 
-        List<HearingLocation> result = HearingsDetailsMapping.getHearingLocation(
-            requestHearingId, List.of(hearingItem));
+        List<HearingLocation> result = HearingsDetailsMapping.getHearingLocation();
 
-        assertEquals(1, result.size(), "Expected one hearing location");
-        assertEquals(BRISTOL, result.get(0).getLocationId(), "Location ID should match the expected value");
+        assertEquals(0, result.size(), "Expected zero (for now) hearing locations");
     }
 
     @ParameterizedTest
@@ -80,13 +78,9 @@ class HearingVenueTest {
         when(hearingItem.getId()).thenReturn(MOCK_REQUEST_HEARING_ID);
         when(hearingItem.getValue()).thenReturn(hearingType);
 
-        List<HearingLocation> result = HearingsDetailsMapping.getHearingLocation(
-            MOCK_REQUEST_HEARING_ID, List.of(hearingItem));
+        List<HearingLocation> result = HearingsDetailsMapping.getHearingLocation();
 
-        assertEquals(1, result.size(), "Expected one hearing location");
-        assertEquals(expectedLocation, result.get(0).getLocationId(),
-                     "Location ID should match the expected value"
-        );
+        assertEquals(0, result.size(), "Expected zero (for now) hearing locations");
     }
 
     @Test

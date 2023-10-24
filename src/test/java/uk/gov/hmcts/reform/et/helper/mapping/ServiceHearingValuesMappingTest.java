@@ -152,12 +152,12 @@ class ServiceHearingValuesMappingTest {
                      "Public case name should match");
         assertEquals("/documents/deep/link", serviceHearingValues.getCaseDeepLink(),
                      "Case deep link should match");
-        assertEquals(HMCTS_INTERNAL_CASE_NAME, serviceHearingValues.getCaseNameHmctsInternal(),
+        assertEquals(HMCTS_INTERNAL_CASE_NAME, serviceHearingValues.getHmctsInternalCaseName(),
                      "Hmcts internal case name should match");
-        assertNull(serviceHearingValues.getReceiptDate(), "Receipt date should be null");
+        assertNull(serviceHearingValues.getCaseSlaStartDate(), "Receipt date should be null");
         assertFalse(serviceHearingValues.isCaseRestrictedFlag(), "Case restricted flag should be false");
-        assertEquals("Hearing", serviceHearingValues.getHearingType(), "Hearing type should match");
-        assertEquals(720, serviceHearingValues.getDuration(), "Duration should match");
+        assertEquals("", serviceHearingValues.getHearingType(), "Hearing type should match");
+        assertEquals(0, serviceHearingValues.getDuration(), "Duration should match");
         assertEquals("Standard", serviceHearingValues.getHearingPriorityType(),
                      "Hearing priority type should match");
         assertEquals(0, serviceHearingValues.getNumberOfPhysicalAttendees(),

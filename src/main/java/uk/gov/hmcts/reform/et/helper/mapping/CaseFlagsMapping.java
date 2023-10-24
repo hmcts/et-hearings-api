@@ -51,6 +51,7 @@ public final class CaseFlagsMapping {
 
         return CaseFlags.builder()
             .flags(partyFlagsModelList)
+            .flagAmendUrl("")
             .build();
     }
 }

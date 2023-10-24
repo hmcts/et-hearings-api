@@ -100,7 +100,7 @@ class ServiceHearingsControllerTest {
         assertThat("Json body returned should contain hearingIsLinkedFlag property",
                    jsonNode.has("hearingIsLinkedFlag"), CoreMatchers.is(true));
         assertThat("Json body returned should contain caseRestrictedFlag property",
-                   jsonNode.has("caseRestrictedFlag"), CoreMatchers.is(true));
+                   jsonNode.has("caserestrictedFlag"), CoreMatchers.is(true));
     }
 
     @DisplayName("When Case id not provided or invalid should return a with 404 response code")

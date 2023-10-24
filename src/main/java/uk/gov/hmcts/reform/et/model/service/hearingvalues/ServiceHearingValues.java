@@ -28,8 +28,8 @@ public class ServiceHearingValues {
 
     private String hmctsServiceId;
 
-    @JsonProperty("caseNameHmctsInternal")
-    private String caseNameHmctsInternal;
+    @JsonProperty("hmctsInternalCaseName")
+    private String hmctsInternalCaseName;
 
     @JsonProperty("publicCaseName")
     private String publicCaseName;
@@ -40,12 +40,13 @@ public class ServiceHearingValues {
 
     private String caseDeepLink;
 
-    private String tribunalAndOfficeLocation;
+    private String caseManagementLocationCode;
 
+    @JsonProperty("caserestrictedFlag")
     private boolean caseRestrictedFlag;
 
-    @JsonProperty("receiptDate")
-    private String receiptDate;
+    @JsonProperty("caseSLAStartDate")
+    private String caseSlaStartDate;
 
     private boolean autoListFlag;
 

@@ -5,10 +5,13 @@ import uk.gov.hmcts.et.common.model.ccd.CaseData;
 import uk.gov.hmcts.et.common.model.ccd.items.HearingTypeItem;
 import uk.gov.hmcts.et.common.model.ccd.items.RepresentedTypeRItem;
 import uk.gov.hmcts.et.common.model.ccd.items.RespondentSumTypeItem;
+import uk.gov.hmcts.et.common.model.hmc.Judiciary;
+import uk.gov.hmcts.et.common.model.hmc.PanelRequirements;
 import uk.gov.hmcts.reform.ccd.client.model.CaseDetails;
 import uk.gov.hmcts.reform.et.model.service.ReferenceDataServiceHolder;
 import uk.gov.hmcts.reform.et.model.service.hearingvalues.ServiceHearingValues;
 
+import java.util.ArrayList;
 import java.util.List;
 
 @Slf4j
@@ -32,13 +35,13 @@ public final class ServiceHearingValuesMapping {
         return ServiceHearingValues.builder()
                 .publicCaseName(HearingsCaseMapping.getPublicCaseName(caseData))
                 .caseDeepLink(HearingsCaseMapping.getCaseDeepLink(caseData))
-                .tribunalAndOfficeLocation(HearingsDetailsMapping.getTribunalAndOfficeLocation())
+                .caseManagementLocationCode(HearingsDetailsMapping.getTribunalAndOfficeLocation())
                 .caseRestrictedFlag(HearingsCaseMapping.getCaseRestrictedFlag(caseData))
-                .receiptDate(HearingsCaseMapping.getCaseCreated(caseData))
-                .caseNameHmctsInternal(HearingsCaseMapping.getCaseNameHmctsInternal(caseData))
+                .caseSlaStartDate(HearingsCaseMapping.getCaseCreated(caseData))
+                .hmctsInternalCaseName(HearingsCaseMapping.getCaseNameHmctsInternal(caseData))
                 .autoListFlag(HearingsDetailsMapping.getAutoListFlag(caseData))
-                .hearingType(HearingsDetailsMapping.getHearingType(hearingRequest, hearingCollection))
-                .duration(HearingsDetailsMapping.getHearingDuration(caseDetails, hearingRequest, hearingCollection))
+                .hearingType(HearingsDetailsMapping.getHearingType())
+                .duration(HearingsDetailsMapping.getHearingDuration())
                 .hearingPriorityType(HearingsDetailsMapping.getHearingPriorityType())
                 .numberOfPhysicalAttendees(HearingsDetailsMapping.getNumberOfPhysicalAttendees())
                 .hearingInWelshFlag(HearingsDetailsMapping.isHearingInWelshFlag(caseData))
@@ -53,8 +56,11 @@ public final class ServiceHearingValuesMapping {
                 .screenFlow(HearingsCaseMapping.getScreenFlow())
                 .vocabulary(HearingsCaseMapping.getVocabulary())
                 .hearingWindow(HearingsDetailsMapping.getHearingWindow())
-                .hearingLocations(HearingsDetailsMapping.getHearingLocation(hearingRequest, hearingCollection))
+                .hearingLocations(HearingsDetailsMapping.getHearingLocation())
                 .parties(HearingsPartyMapping.buildPartyObjectForHearingPayload(caseData, respondents, legalReps))
+                .panelRequirements(new PanelRequirements())
+                .judiciary(new Judiciary())
+                .hearingChannels(new ArrayList<>())
                 .build();
     }
 }
