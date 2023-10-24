@@ -63,7 +63,7 @@ public final class HearingsCaseMapping {
     }
 
     public static List<ScreenNavigation> getScreenFlow() {
-        return new ArrayList<>();
+        return null;
     }
 
     public static List<Vocabulary> getVocabulary() {

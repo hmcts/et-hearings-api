@@ -268,3 +268,5 @@ rootProject.tasks.named("processSmokeTestResources") {
 wrapper {
     distributionType = Wrapper.DistributionType.ALL
 }
+
+pmdMain.maxFailures = 1
