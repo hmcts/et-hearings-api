@@ -58,7 +58,7 @@ public final class ServiceHearingValuesMapping {
                 .hearingWindow(HearingsDetailsMapping.getHearingWindow())
                 .hearingLocations(HearingsDetailsMapping.getHearingLocation())
                 .parties(HearingsPartyMapping.buildPartyObjectForHearingPayload(caseData, respondents, legalReps))
-                .panelRequirements(new PanelRequirements())
+                .panelRequirements(PanelRequirements.builder().panelPreferences(new ArrayList<>()).build())
                 .judiciary(new Judiciary())
                 .hearingChannels(new ArrayList<>())
                 .build();
