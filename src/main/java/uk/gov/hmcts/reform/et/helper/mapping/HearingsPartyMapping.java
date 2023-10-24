@@ -3,6 +3,7 @@ package uk.gov.hmcts.reform.et.helper.mapping;
 import uk.gov.hmcts.et.common.model.ccd.CaseData;
 import uk.gov.hmcts.et.common.model.ccd.items.RepresentedTypeRItem;
 import uk.gov.hmcts.et.common.model.ccd.items.RespondentSumTypeItem;
+import uk.gov.hmcts.et.common.model.hmc.IndividualDetails;
 import uk.gov.hmcts.et.common.model.hmc.PartyDetails;
 import uk.gov.hmcts.reform.et.model.hmc.reference.EntityRoleCode;
 
@@ -60,6 +61,13 @@ public final class HearingsPartyMapping {
                     || respondentItem.getValue().getRespondentOrganisation().isEmpty()) {
                     respondentDetails.setPartyType(INDIVIDUAL);
                     respondentDetails.setPartyName(respondentItem.getValue().getRespondentName());
+
+                    respondentDetails.setIndividualDetails(
+                        IndividualDetails.builder()
+                            .firstName(respondentItem.getValue().getRespondentFirstName())
+                            .lastName(respondentItem.getValue().getRespondentLastName())
+                            .build()
+                    );
                 } else {
                     respondentDetails.setPartyType(ORGANISATION);
                     respondentDetails.setPartyName(respondentItem.getValue().getRespondentOrganisation());
@@ -98,6 +106,13 @@ public final class HearingsPartyMapping {
         claimantDetails.setPartyName(caseData.getClaimant());
         claimantDetails.setPartyRole(claimant.getHmcReference());
         claimantDetails.setPartyType(INDIVIDUAL);
+
+        claimantDetails.setIndividualDetails(
+            IndividualDetails.builder()
+                .firstName(caseData.getClaimant())
+                .lastName("") // TODO: Split claimant into first name last name
+                .build()
+        );
 
         return claimantDetails;
     }
