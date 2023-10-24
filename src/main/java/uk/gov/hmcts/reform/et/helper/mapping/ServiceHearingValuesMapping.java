@@ -49,7 +49,7 @@ public final class ServiceHearingValuesMapping {
                 .privateHearingRequiredFlag(HearingsDetailsMapping.isPrivateHearingRequiredFlag(caseData))
                 .leadJudgeContractType(HearingsDetailsMapping.getLeadJudgeContractType(caseData))
                 .hearingIsLinkedFlag(HearingsDetailsMapping.isHearingIsLinkedFlag(caseData))
-                .hmctsServiceId(referenceDataServiceHolder.getHmctsServiceId())
+                .hmctsServiceID(referenceDataServiceHolder.getHmctsServiceId())
                 .caseInterpreterRequiredFlag(HearingsCaseMapping.getCaseInterpreterRequiredFlag(caseData))
                 .caseFlags(CaseFlagsMapping.getCaseFlags(caseData))
                 .caseCategories(HearingsCaseMapping.getCaseCategories())

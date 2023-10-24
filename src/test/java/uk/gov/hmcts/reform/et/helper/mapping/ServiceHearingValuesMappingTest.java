@@ -145,7 +145,7 @@ class ServiceHearingValuesMappingTest {
     }
 
     private void assertServiceHearingValues(ServiceHearingValues serviceHearingValues) {
-        assertEquals("ServiceId", serviceHearingValues.getHmctsServiceId(),
+        assertEquals("ServiceId", serviceHearingValues.getHmctsServiceID(),
                      "HmctsServiceId should match expected value");
         assertFalse(serviceHearingValues.isAutoListFlag(), "Auto list flag should be false");
         assertEquals(PUBLIC_CASE_NAME, serviceHearingValues.getPublicCaseName(),

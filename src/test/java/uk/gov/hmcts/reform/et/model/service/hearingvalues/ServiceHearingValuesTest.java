@@ -14,7 +14,7 @@ class ServiceHearingValuesTest {
     void shouldSerializeToPoJoSuccessfully() throws Exception {
 
         ServiceHearingValues serviceHearingValues = ServiceHearingValues.builder()
-                .hmctsServiceId("BHA1")
+                .hmctsServiceID("BHA1")
                 .hmctsInternalCaseName("Johnny Claimant v Acme Redde Ltd")
                 .publicCaseName("Johnny Claimant v Acme Redde Ltd")
                 .caseAdditionalSecurityFlag(false)
