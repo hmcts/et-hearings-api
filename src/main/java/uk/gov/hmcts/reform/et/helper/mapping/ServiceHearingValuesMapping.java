@@ -51,7 +51,7 @@ public final class ServiceHearingValuesMapping {
                 .hearingType(null)
                 .hearingWindow(HearingsDetailsMapping.getHearingWindow())
                 .hmctsInternalCaseName(HearingsCaseMapping.getCaseNameHmctsInternal(caseData))
-                .hmctsServiceID(referenceDataServiceHolder.getHmctsServiceId())
+                .hmctsServiceID("BBA3")
                 .judiciary(new Judiciary())
                 .leadJudgeContractType(HearingsDetailsMapping.getLeadJudgeContractType(caseData))
                 .numberOfPhysicalAttendees(HearingsDetailsMapping.getNumberOfPhysicalAttendees())

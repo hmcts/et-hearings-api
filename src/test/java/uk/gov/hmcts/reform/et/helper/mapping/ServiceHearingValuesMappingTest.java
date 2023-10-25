@@ -10,6 +10,7 @@ import uk.gov.hmcts.et.common.model.ccd.CaseData;
 import uk.gov.hmcts.et.common.model.ccd.items.HearingTypeItem;
 import uk.gov.hmcts.et.common.model.ccd.items.RepresentedTypeRItem;
 import uk.gov.hmcts.et.common.model.ccd.items.RespondentSumTypeItem;
+import uk.gov.hmcts.et.common.model.ccd.types.ClaimantIndType;
 import uk.gov.hmcts.et.common.model.ccd.types.HearingType;
 import uk.gov.hmcts.et.common.model.ccd.types.RepresentedTypeR;
 import uk.gov.hmcts.et.common.model.ccd.types.RespondentSumType;
@@ -136,16 +137,23 @@ class ServiceHearingValuesMappingTest {
         when(caseData.getPrivateHearingRequiredFlag()).thenReturn(String.valueOf(false));
         when(caseData.getLeadJudgeContractType()).thenReturn("");
         when(caseData.getHearingIsLinkedFlag()).thenReturn(String.valueOf(false));
-        when(caseData.getHmctsServiceID()).thenReturn("BHA1");
-        when(referenceDataServiceHolder.getHmctsServiceId()).thenReturn("ServiceId");
+        when(caseData.getHmctsServiceID()).thenReturn("BBA3");
+        when(referenceDataServiceHolder.getHmctsServiceId()).thenReturn("BBA3");
         when(caseData.getCaseCategories()).thenReturn(caseCategoryList);
         when(caseData.getRespondentCollection()).thenReturn(respondentCollection);
         when(caseData.getRepCollection()).thenReturn(respondentRepCollection);
         when(caseData.getHearingLocations()).thenReturn(hearingLocations);
+
+        ClaimantIndType claimantIndType = new ClaimantIndType();
+        claimantIndType.setClaimantFirstNames("First");
+        claimantIndType.setClaimantLastName("Last");
+        claimantIndType.setClaimantTitle("Mr");
+
+        when(caseData.getClaimantIndType()).thenReturn(claimantIndType);
     }
 
     private void assertServiceHearingValues(ServiceHearingValues serviceHearingValues) {
-        assertEquals("ServiceId", serviceHearingValues.getHmctsServiceID(),
+        assertEquals("BBA3", serviceHearingValues.getHmctsServiceID(),
                      "HmctsServiceId should match expected value");
         assertFalse(serviceHearingValues.isAutoListFlag(), "Auto list flag should be false");
         assertEquals(PUBLIC_CASE_NAME, serviceHearingValues.getPublicCaseName(),

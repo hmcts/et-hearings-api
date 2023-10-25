@@ -269,3 +269,4 @@ wrapper {
     distributionType = Wrapper.DistributionType.ALL
 }
 
+pmdTest.maxFailures = 1

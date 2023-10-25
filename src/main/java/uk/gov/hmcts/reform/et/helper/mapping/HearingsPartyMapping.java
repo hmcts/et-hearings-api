@@ -109,9 +109,10 @@ public final class HearingsPartyMapping {
 
         claimantDetails.setIndividualDetails(
             IndividualDetails.builder()
-                .firstName(caseData.getClaimant())
-                .lastName("") // TODO: Split claimant into first name last name
-                .build()
+                    .title(caseData.getClaimantIndType().getClaimantTitle())
+                    .firstName(caseData.getClaimantIndType().getClaimantFirstNames())
+                    .lastName(caseData.getClaimantIndType().getClaimantLastName())
+                    .build()
         );
 
         return claimantDetails;
