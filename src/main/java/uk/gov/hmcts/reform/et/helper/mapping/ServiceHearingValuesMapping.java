@@ -39,7 +39,7 @@ public final class ServiceHearingValuesMapping {
                 .caseDeepLink(HearingsCaseMapping.getCaseDeepLink(caseData))
                 .caseFlags(CaseFlagsMapping.getCaseFlags(caseData))
                 .caseInterpreterRequiredFlag(HearingsCaseMapping.getCaseInterpreterRequiredFlag(caseData))
-                .caseManagementLocationCode(HearingsDetailsMapping.getTribunalAndOfficeLocation())
+                .caseManagementLocationCode(HearingsDetailsMapping.getTribunalAndOfficeLocation(caseData))
                 .caseRestrictedFlag(HearingsCaseMapping.getCaseRestrictedFlag(caseData))
                 .caseSlaStartDate(HearingsCaseMapping.getCaseCreated(caseData))
                 .duration(HearingsDetailsMapping.getHearingDuration())

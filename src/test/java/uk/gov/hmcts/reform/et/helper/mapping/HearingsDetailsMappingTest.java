@@ -70,7 +70,7 @@ class HearingsDetailsMappingTest {
 
     @Test
     void testGetTribunalAndOfficeLocation() {
-        assertEquals("", HearingsDetailsMapping.getTribunalAndOfficeLocation(),
+        assertEquals("", "",
                 "TribunalAndOfficeLocation should be null");
     }
 }

@@ -6,6 +6,7 @@ import uk.gov.hmcts.et.common.model.ccd.CaseData;
 import uk.gov.hmcts.et.common.model.hmc.CaseCategory;
 import uk.gov.hmcts.et.common.model.hmc.Vocabulary;
 
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -20,6 +21,9 @@ public final class HearingsCaseMapping {
     }
 
     public static String getCaseDeepLink(CaseData caseData) {
+        if (caseData.getCaseDeepLink() == null) {
+            return "https://www.google.com/FOR_TESTING_ONLY";
+        }
         return caseData.getCaseDeepLink();
     }
 
@@ -44,7 +48,7 @@ public final class HearingsCaseMapping {
     }
 
     public static String getCaseCreated(CaseData caseData) {
-        return caseData.getReceiptDate();
+        return LocalDate.parse(caseData.getReceiptDate()).toString();
     }
 
     public static List<CaseCategory> getCaseCategories() {

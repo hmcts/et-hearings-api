@@ -67,8 +67,8 @@ public final class HearingsDetailsMapping {
         return isYes(caseData.getHearingIsLinkedFlag());
     }
 
-    public static String getTribunalAndOfficeLocation() {
-        return "";
+    public static String getTribunalAndOfficeLocation(CaseData caseData) {
+        return caseData.getCaseManagementLocation().getBaseLocation();
     }
 
     public static HearingWindow getHearingWindow() {

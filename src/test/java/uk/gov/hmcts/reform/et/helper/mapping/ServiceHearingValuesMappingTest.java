@@ -10,6 +10,7 @@ import uk.gov.hmcts.et.common.model.ccd.CaseData;
 import uk.gov.hmcts.et.common.model.ccd.items.HearingTypeItem;
 import uk.gov.hmcts.et.common.model.ccd.items.RepresentedTypeRItem;
 import uk.gov.hmcts.et.common.model.ccd.items.RespondentSumTypeItem;
+import uk.gov.hmcts.et.common.model.ccd.types.CaseLocation;
 import uk.gov.hmcts.et.common.model.ccd.types.ClaimantIndType;
 import uk.gov.hmcts.et.common.model.ccd.types.HearingType;
 import uk.gov.hmcts.et.common.model.ccd.types.RepresentedTypeR;
@@ -25,7 +26,7 @@ import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertFalse;
-import static org.junit.jupiter.api.Assertions.assertNull;
+import static org.junit.jupiter.api.Assertions.assertNotNull;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 import static org.mockito.Mockito.when;
 import static uk.gov.hmcts.reform.et.helper.mapping.HearingVenueTest.BRISTOL;
@@ -126,7 +127,7 @@ class ServiceHearingValuesMappingTest {
         when(caseData.getPublicCaseName()).thenReturn(PUBLIC_CASE_NAME);
         when(caseData.getCaseDeepLink()).thenReturn("/documents/deep/link");
         when(caseData.getCaseNameHmctsInternal()).thenReturn(HMCTS_INTERNAL_CASE_NAME);
-        when(caseData.getReceiptDate()).thenReturn(null);
+        when(caseData.getReceiptDate()).thenReturn("2023-02-02");
         when(caseData.getHearingType()).thenReturn("Hearing");
         when(caseData.getDuration()).thenReturn(720);
         when(caseData.getCaseRestrictedFlag()).thenReturn(String.valueOf(false));
@@ -143,6 +144,7 @@ class ServiceHearingValuesMappingTest {
         when(caseData.getRespondentCollection()).thenReturn(respondentCollection);
         when(caseData.getRepCollection()).thenReturn(respondentRepCollection);
         when(caseData.getHearingLocations()).thenReturn(hearingLocations);
+        when(caseData.getCaseManagementLocation()).thenReturn(CaseLocation.builder().baseLocation("36313").build());
 
         ClaimantIndType claimantIndType = new ClaimantIndType();
         claimantIndType.setClaimantFirstNames("First");
@@ -162,7 +164,7 @@ class ServiceHearingValuesMappingTest {
                      "Case deep link should match");
         assertEquals(HMCTS_INTERNAL_CASE_NAME, serviceHearingValues.getHmctsInternalCaseName(),
                      "Hmcts internal case name should match");
-        assertNull(serviceHearingValues.getCaseSlaStartDate(), "Receipt date should be null");
+        assertNotNull(serviceHearingValues.getCaseSlaStartDate(), "Receipt date should be null");
         assertFalse(serviceHearingValues.isCaseRestrictedFlag(), "Case restricted flag should be false");
         assertEquals(null, serviceHearingValues.getHearingType(), "Hearing type should match");
         assertEquals(0, serviceHearingValues.getDuration(), "Duration should match");

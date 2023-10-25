@@ -62,10 +62,14 @@ public final class HearingsPartyMapping {
                     respondentDetails.setPartyType(INDIVIDUAL);
                     respondentDetails.setPartyName(respondentItem.getValue().getRespondentName());
 
+                    String name = respondentItem.getValue().getRespondentName();
+                    String firstName = name.substring(0, name.lastIndexOf(" "));
+                    String lastName = name.substring(name.lastIndexOf(" ") + 1);
+
                     respondentDetails.setIndividualDetails(
                         IndividualDetails.builder()
-                            .firstName(respondentItem.getValue().getRespondentFirstName())
-                            .lastName(respondentItem.getValue().getRespondentLastName())
+                            .firstName(firstName)
+                            .lastName(lastName)
                             .build()
                     );
                 } else {
