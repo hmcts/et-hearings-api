@@ -156,7 +156,7 @@ class ServiceHearingValuesMappingTest {
                      "Hmcts internal case name should match");
         assertNull(serviceHearingValues.getCaseSlaStartDate(), "Receipt date should be null");
         assertFalse(serviceHearingValues.isCaseRestrictedFlag(), "Case restricted flag should be false");
-        assertEquals("", serviceHearingValues.getHearingType(), "Hearing type should match");
+        assertEquals(null, serviceHearingValues.getHearingType(), "Hearing type should match");
         assertEquals(0, serviceHearingValues.getDuration(), "Duration should match");
         assertEquals("Standard", serviceHearingValues.getHearingPriorityType(),
                      "Hearing priority type should match");
