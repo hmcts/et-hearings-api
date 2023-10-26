@@ -5,6 +5,7 @@ import org.junit.jupiter.api.Test;
 import org.mockito.Mock;
 import org.mockito.MockitoAnnotations;
 import uk.gov.hmcts.et.common.model.ccd.CaseData;
+import uk.gov.hmcts.et.common.model.ccd.types.CaseLocation;
 import uk.gov.hmcts.reform.et.model.service.YesNo;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
@@ -70,7 +71,8 @@ class HearingsDetailsMappingTest {
 
     @Test
     void testGetTribunalAndOfficeLocation() {
-        assertEquals("", "",
+        when(caseData.getCaseManagementLocation()).thenReturn(CaseLocation.builder().baseLocation("316313").build());
+        assertEquals("316313", HearingsDetailsMapping.getTribunalAndOfficeLocation(caseData),
                 "TribunalAndOfficeLocation should be null");
     }
 }
