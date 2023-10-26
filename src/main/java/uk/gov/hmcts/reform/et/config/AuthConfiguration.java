@@ -1,5 +1,6 @@
 package uk.gov.hmcts.reform.et.config;
 
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -19,6 +20,7 @@ import uk.gov.hmcts.reform.authorisation.validators.ServiceAuthTokenValidator;
  * </ul>
  */
 @Configuration
+@Slf4j
 @Lazy
 public class AuthConfiguration {
 
@@ -35,6 +37,7 @@ public class AuthConfiguration {
         @Value("${idam.s2s-auth.microservice}") final String microService,
         final ServiceAuthorisationApi serviceAuthorisationApi
     ) {
+        log.info("Secre token is " + secret);
         return AuthTokenGeneratorFactory.createDefaultGenerator(secret, microService, serviceAuthorisationApi);
     }
 
