@@ -1,5 +1,7 @@
 package uk.gov.hmcts.reform.et.helper.mapping;
 
+import com.fasterxml.jackson.core.JsonProcessingException;
+import com.fasterxml.jackson.databind.ObjectMapper;
 import lombok.extern.slf4j.Slf4j;
 import uk.gov.hmcts.et.common.model.ccd.CaseData;
 import uk.gov.hmcts.et.common.model.ccd.items.HearingTypeItem;
@@ -32,6 +34,15 @@ public final class ServiceHearingValuesMapping {
         log.info("Mapping hearing values for Case id : {}, generating Service Hearing Values", caseDetails.getId());
         // ServiceHearingsValues is returned with caseType populated
         // (e.g. with ET_EnglandWales) when a case is successfully fetched from ccd.
+
+        ObjectMapper objectMapper = new ObjectMapper();
+        try {
+            String json = objectMapper.writeValueAsString(caseData);
+            log.info(json);
+        } catch (JsonProcessingException e) {
+            log.info("Failed to generate JSON for case data because " + e.getMessage());
+        }
+
         return ServiceHearingValues.builder()
                 .autoListFlag(HearingsDetailsMapping.getAutoListFlag(caseData))
                 .caseAdditionalSecurityFlag(HearingsCaseMapping.getCaseAdditionalSecurityFlag(caseData))
