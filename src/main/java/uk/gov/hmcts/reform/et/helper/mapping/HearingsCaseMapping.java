@@ -6,7 +6,6 @@ import uk.gov.hmcts.et.common.model.ccd.CaseData;
 import uk.gov.hmcts.et.common.model.hmc.CaseCategory;
 import uk.gov.hmcts.et.common.model.hmc.Vocabulary;
 
-import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 
