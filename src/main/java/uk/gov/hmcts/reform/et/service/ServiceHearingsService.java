@@ -35,7 +35,7 @@ public class ServiceHearingsService {
         CaseDetails caseDetails = caseService.retrieveCase(authorization, request.getCaseId());
         ObjectMapper objectMapper = new ObjectMapper();
         try {
-            String json = objectMapper.writeValueAsString(caseDetails);
+            String json = objectMapper.writeValueAsString(caseDetails.getData());
             log.info(json);
         } catch (JsonProcessingException e) {
             log.info("Failed to generate JSON for case details because " + e.getMessage());

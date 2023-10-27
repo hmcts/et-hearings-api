@@ -68,6 +68,14 @@ public final class HearingsDetailsMapping {
     }
 
     public static String getTribunalAndOfficeLocation(CaseData caseData) {
+        if (caseData.getCaseManagementLocationCode() != null) {
+            return caseData.getCaseManagementLocationCode();
+        }
+
+        if (caseData.getCaseManagementLocation() == null) {
+            log.error("caseManagementLocation was null");
+            return " ";
+        }
         return caseData.getCaseManagementLocation().getBaseLocation();
     }
 

@@ -48,7 +48,7 @@ public final class HearingsCaseMapping {
     }
 
     public static String getCaseCreated(CaseData caseData) {
-        return LocalDate.parse(caseData.getReceiptDate()).toString();
+        return caseData.getReceiptDate();
     }
 
     public static List<CaseCategory> getCaseCategories() {
