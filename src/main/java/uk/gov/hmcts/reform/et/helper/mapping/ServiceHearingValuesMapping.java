@@ -42,7 +42,6 @@ public final class ServiceHearingValuesMapping {
         } catch (JsonProcessingException e) {
             log.info("Failed to generate JSON for case data because " + e.getMessage());
         }
-
         return ServiceHearingValues.builder()
                 .autoListFlag(HearingsDetailsMapping.getAutoListFlag(caseData))
                 .caseAdditionalSecurityFlag(HearingsCaseMapping.getCaseAdditionalSecurityFlag(caseData))

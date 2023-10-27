@@ -1,5 +1,8 @@
 package uk.gov.hmcts.reform.et.helper.mapping;
 
+import com.fasterxml.jackson.core.JsonProcessingException;
+import com.fasterxml.jackson.databind.ObjectMapper;
+import lombok.extern.slf4j.Slf4j;
 import uk.gov.hmcts.et.common.model.ccd.CaseData;
 import uk.gov.hmcts.et.common.model.ccd.items.RepresentedTypeRItem;
 import uk.gov.hmcts.et.common.model.ccd.items.RespondentSumTypeItem;
@@ -10,6 +13,7 @@ import uk.gov.hmcts.reform.et.model.hmc.reference.EntityRoleCode;
 import java.util.ArrayList;
 import java.util.List;
 
+@Slf4j
 public final class HearingsPartyMapping {
 
     public static final String INDIVIDUAL = "IND";
@@ -57,20 +61,36 @@ public final class HearingsPartyMapping {
                 respondentDetails.setPartyID(respondentItem.getId());
                 respondentDetails.setPartyRole(respondent.getHmcReference());
 
+                ObjectMapper objectMapper = new ObjectMapper();
+                try {
+                    String json = objectMapper.writeValueAsString(respondentItem);
+                    log.info(json);
+                } catch (JsonProcessingException e) {
+                    log.info("Failed to generate JSON for respondentDetails because " + e.getMessage());
+                }
+
                 if (respondentItem.getValue().getRespondentOrganisation() == null
                     || respondentItem.getValue().getRespondentOrganisation().isEmpty()) {
                     respondentDetails.setPartyType(INDIVIDUAL);
                     respondentDetails.setPartyName(respondentItem.getValue().getRespondentName());
 
                     String name = respondentItem.getValue().getRespondentName();
+                    if (name.lastIndexOf(" ") == -1) {
+                        respondentDetails.setIndividualDetails(
+                                IndividualDetails.builder()
+                                        .firstName(name)
+                                        .lastName(" ")
+                                        .build()
+                        );
+                    }
                     String firstName = name.substring(0, name.lastIndexOf(" "));
                     String lastName = name.substring(name.lastIndexOf(" ") + 1);
 
                     respondentDetails.setIndividualDetails(
-                        IndividualDetails.builder()
-                            .firstName(firstName)
-                            .lastName(lastName)
-                            .build()
+                            IndividualDetails.builder()
+                                    .firstName(firstName)
+                                    .lastName(lastName)
+                                    .build()
                     );
                 } else {
                     respondentDetails.setPartyType(ORGANISATION);

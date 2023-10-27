@@ -1,5 +1,7 @@
 package uk.gov.hmcts.reform.et.service;
 
+import com.fasterxml.jackson.core.JsonProcessingException;
+import com.fasterxml.jackson.databind.ObjectMapper;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
@@ -31,6 +33,13 @@ public class ServiceHearingsService {
         ServiceHearingRequest request
     ) throws GetCaseException {
         CaseDetails caseDetails = caseService.retrieveCase(authorization, request.getCaseId());
+        ObjectMapper objectMapper = new ObjectMapper();
+        try {
+            String json = objectMapper.writeValueAsString(caseDetails);
+            log.info(json);
+        } catch (JsonProcessingException e) {
+            log.info("Failed to generate JSON for case details because " + e.getMessage());
+        }
         CaseData caseData = CaseDataMapping.mapRequestCaseDataToCaseData(caseDetails.getData());
         String hearingId = CaseDataMapping.mapServiceHearingRequestDataToCaseData(request.getHearingId());
         List<HearingTypeItem> hearingCollection = CaseDataMapping.mapHearingCollectionDataToCaseData(
