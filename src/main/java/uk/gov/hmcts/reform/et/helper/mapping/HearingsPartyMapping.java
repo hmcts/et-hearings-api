@@ -12,6 +12,7 @@ import uk.gov.hmcts.reform.et.model.hmc.reference.EntityRoleCode;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.UUID;
 
 @Slf4j
 public final class HearingsPartyMapping {
@@ -82,16 +83,17 @@ public final class HearingsPartyMapping {
                                         .lastName(" ")
                                         .build()
                         );
-                    }
-                    String firstName = name.substring(0, name.lastIndexOf(" "));
-                    String lastName = name.substring(name.lastIndexOf(" ") + 1);
+                    } else {
+                        String firstName = name.substring(0, name.lastIndexOf(" "));
+                        String lastName = name.substring(name.lastIndexOf(" ") + 1);
 
-                    respondentDetails.setIndividualDetails(
-                            IndividualDetails.builder()
-                                    .firstName(firstName)
-                                    .lastName(lastName)
-                                    .build()
-                    );
+                        respondentDetails.setIndividualDetails(
+                                IndividualDetails.builder()
+                                        .firstName(firstName)
+                                        .lastName(lastName)
+                                        .build()
+                        );
+                    }
                 } else {
                     respondentDetails.setPartyType(ORGANISATION);
                     respondentDetails.setPartyName(respondentItem.getValue().getRespondentOrganisation());
@@ -126,7 +128,8 @@ public final class HearingsPartyMapping {
         PartyDetails claimantDetails = new PartyDetails();
         EntityRoleCode claimant = EntityRoleCode.CLAIMANT;
 
-        claimantDetails.setPartyID(caseData.getClaimantId());
+        // claimantDetails.setPartyID(caseData.getClaimantId());
+        claimantDetails.setPartyID(UUID.randomUUID().toString());
         claimantDetails.setPartyName(caseData.getClaimant());
         claimantDetails.setPartyRole(claimant.getHmcReference());
         claimantDetails.setPartyType(INDIVIDUAL);

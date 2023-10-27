@@ -31,6 +31,9 @@ public final class HearingsCaseMapping {
     }
 
     public static String getPublicCaseName(CaseData caseData) {
+        if (caseData.getPublicCaseName() == null) {
+            return "TODO";
+        }
         return caseData.getPublicCaseName();
     }
 
