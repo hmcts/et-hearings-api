@@ -69,11 +69,8 @@ class ServiceHearingValuesMappingTest {
         ServiceHearingValues serviceHearingValues = ServiceHearingValuesMapping.mapServiceHearingValues(
             caseDetails,
             caseData,
-            MOCK_REQUEST_HEARING_ID,
-            hearingCollection,
             respondentCollection,
-            respondentRepCollection,
-            referenceDataServiceHolder
+            respondentRepCollection
         );
 
         assertServiceHearingValues(serviceHearingValues);

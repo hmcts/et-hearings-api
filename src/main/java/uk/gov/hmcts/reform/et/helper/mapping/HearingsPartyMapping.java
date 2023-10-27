@@ -76,7 +76,7 @@ public final class HearingsPartyMapping {
                     respondentDetails.setPartyName(respondentItem.getValue().getRespondentName());
 
                     String name = respondentItem.getValue().getRespondentName();
-                    if (name.lastIndexOf(" ") == -1) {
+                    if (name.lastIndexOf(' ') == -1) {
                         respondentDetails.setIndividualDetails(
                                 IndividualDetails.builder()
                                         .firstName(name)
@@ -84,8 +84,8 @@ public final class HearingsPartyMapping {
                                         .build()
                         );
                     } else {
-                        String firstName = name.substring(0, name.lastIndexOf(" "));
-                        String lastName = name.substring(name.lastIndexOf(" ") + 1);
+                        String firstName = name.substring(0, name.lastIndexOf(' '));
+                        String lastName = name.substring(name.lastIndexOf(' ') + 1);
 
                         respondentDetails.setIndividualDetails(
                                 IndividualDetails.builder()

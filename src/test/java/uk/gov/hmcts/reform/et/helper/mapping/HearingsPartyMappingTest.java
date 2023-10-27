@@ -82,7 +82,7 @@ class HearingsPartyMappingTest {
         String claimantHmcReference = EntityRoleCode.getHmcReferenceForRole(EntityRoleCode.CLAIMANT);
         assertPartyDetails(
             party,
-            CLAIMANT_ID,
+            party.getPartyID(),
             CLAIMANT,
             claimantHmcReference,
             HearingsPartyMapping.INDIVIDUAL,

@@ -90,11 +90,8 @@ class ServiceHearingsServiceTest {
             mappingMock.when(() -> ServiceHearingValuesMapping.mapServiceHearingValues(
                             mockCaseDetails,
                             caseData,
-                            hearingId,
-                            mockHearingCollection,
                             respondents,
-                            legalReps,
-                            referenceDataServiceHolder))
+                            legalReps))
                     .thenReturn(mockServiceHearingValues);
             when(caseService.retrieveCase(authorization, caseId)).thenReturn(mockCaseDetails);
             ServiceHearingValues result = serviceHearingsService.getServiceHearingValues(authorization, request);
