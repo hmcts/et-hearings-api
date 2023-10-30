@@ -35,6 +35,10 @@ public class ServiceHearingsService {
             caseData.getRespondentCollection());
         List<RepresentedTypeRItem> legalReps = CaseDataMapping.mapLegalRepsToCaseData(caseData.getRepCollection());
 
-        return ServiceHearingValuesMapping.mapServiceHearingValues(caseDetails, caseData, respondents, legalReps, referenceDataServiceHolder);
+        return ServiceHearingValuesMapping.mapServiceHearingValues(caseDetails,
+                                                                   caseData,
+                                                                   respondents,
+                                                                   legalReps,
+                                                                   referenceDataServiceHolder);
     }
 }
