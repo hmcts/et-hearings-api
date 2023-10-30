@@ -10,6 +10,7 @@ import uk.gov.hmcts.reform.ccd.client.model.CaseDetails;
 import uk.gov.hmcts.reform.et.exception.GetCaseException;
 import uk.gov.hmcts.reform.et.helper.mapping.CaseDataMapping;
 import uk.gov.hmcts.reform.et.helper.mapping.ServiceHearingValuesMapping;
+import uk.gov.hmcts.reform.et.model.service.ReferenceDataServiceHolder;
 import uk.gov.hmcts.reform.et.model.service.ServiceHearingRequest;
 import uk.gov.hmcts.reform.et.model.service.hearingvalues.ServiceHearingValues;
 
@@ -22,6 +23,8 @@ public class ServiceHearingsService {
 
     private final CaseService caseService;
 
+    private final ReferenceDataServiceHolder referenceDataServiceHolder;
+
     public ServiceHearingValues getServiceHearingValues(
         String authorization,
         ServiceHearingRequest request
@@ -32,6 +35,6 @@ public class ServiceHearingsService {
             caseData.getRespondentCollection());
         List<RepresentedTypeRItem> legalReps = CaseDataMapping.mapLegalRepsToCaseData(caseData.getRepCollection());
 
-        return ServiceHearingValuesMapping.mapServiceHearingValues(caseDetails, caseData, respondents, legalReps);
+        return ServiceHearingValuesMapping.mapServiceHearingValues(caseDetails, caseData, respondents, legalReps, referenceDataServiceHolder);
     }
 }

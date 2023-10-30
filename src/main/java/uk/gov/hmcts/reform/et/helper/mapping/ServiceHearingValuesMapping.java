@@ -7,6 +7,7 @@ import uk.gov.hmcts.et.common.model.ccd.items.RespondentSumTypeItem;
 import uk.gov.hmcts.et.common.model.hmc.Judiciary;
 import uk.gov.hmcts.et.common.model.hmc.PanelRequirements;
 import uk.gov.hmcts.reform.ccd.client.model.CaseDetails;
+import uk.gov.hmcts.reform.et.model.service.ReferenceDataServiceHolder;
 import uk.gov.hmcts.reform.et.model.service.hearingvalues.ServiceHearingValues;
 
 import java.util.ArrayList;
@@ -23,7 +24,8 @@ public final class ServiceHearingValuesMapping {
             CaseDetails caseDetails,
             CaseData caseData,
             List<RespondentSumTypeItem> respondents,
-            List<RepresentedTypeRItem> legalReps) {
+            List<RepresentedTypeRItem> legalReps,
+            ReferenceDataServiceHolder referenceDataServiceHolder) {
         log.info("Mapping hearing values for Case id : {}, generating Service Hearing Values", caseDetails.getId());
         // ServiceHearingsValues is returned with caseType populated
         // (e.g. with ET_EnglandWales) when a case is successfully fetched from ccd.
@@ -46,7 +48,7 @@ public final class ServiceHearingValuesMapping {
                 .hearingType(null)
                 .hearingWindow(HearingsDetailsMapping.getHearingWindow())
                 .hmctsInternalCaseName(HearingsCaseMapping.getCaseNameHmctsInternal(caseData))
-                .hmctsServiceID("BBA3")
+                .hmctsServiceID(referenceDataServiceHolder.getHmctsServiceId())
                 .judiciary(new Judiciary())
                 .leadJudgeContractType(HearingsDetailsMapping.getLeadJudgeContractType(caseData))
                 .numberOfPhysicalAttendees(HearingsDetailsMapping.getNumberOfPhysicalAttendees())

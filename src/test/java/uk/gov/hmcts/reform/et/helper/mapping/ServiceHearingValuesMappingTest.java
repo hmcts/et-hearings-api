@@ -70,7 +70,8 @@ class ServiceHearingValuesMappingTest {
             caseDetails,
             caseData,
             respondentCollection,
-            respondentRepCollection
+            respondentRepCollection,
+            referenceDataServiceHolder
         );
 
         assertServiceHearingValues(serviceHearingValues);
@@ -135,8 +136,8 @@ class ServiceHearingValuesMappingTest {
         when(caseData.getPrivateHearingRequiredFlag()).thenReturn(String.valueOf(false));
         when(caseData.getLeadJudgeContractType()).thenReturn("");
         when(caseData.getHearingIsLinkedFlag()).thenReturn(String.valueOf(false));
-        when(caseData.getHmctsServiceID()).thenReturn("BBA3");
-        when(referenceDataServiceHolder.getHmctsServiceId()).thenReturn("BBA3");
+        when(caseData.getHmctsServiceID()).thenReturn("BHA1");
+        when(referenceDataServiceHolder.getHmctsServiceId()).thenReturn("BHA1");
         when(caseData.getCaseCategories()).thenReturn(caseCategoryList);
         when(caseData.getRespondentCollection()).thenReturn(respondentCollection);
         when(caseData.getRepCollection()).thenReturn(respondentRepCollection);
@@ -152,7 +153,7 @@ class ServiceHearingValuesMappingTest {
     }
 
     private void assertServiceHearingValues(ServiceHearingValues serviceHearingValues) {
-        assertEquals("BBA3", serviceHearingValues.getHmctsServiceID(),
+        assertEquals("BHA1", serviceHearingValues.getHmctsServiceID(),
                      "HmctsServiceId should match expected value");
         assertFalse(serviceHearingValues.isAutoListFlag(), "Auto list flag should be false");
         assertEquals(PUBLIC_CASE_NAME, serviceHearingValues.getPublicCaseName(),

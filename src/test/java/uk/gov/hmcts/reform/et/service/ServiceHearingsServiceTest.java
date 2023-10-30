@@ -91,7 +91,8 @@ class ServiceHearingsServiceTest {
                             mockCaseDetails,
                             caseData,
                             respondents,
-                            legalReps))
+                            legalReps,
+                            referenceDataServiceHolder))
                     .thenReturn(mockServiceHearingValues);
             when(caseService.retrieveCase(authorization, caseId)).thenReturn(mockCaseDetails);
             ServiceHearingValues result = serviceHearingsService.getServiceHearingValues(authorization, request);
