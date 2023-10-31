@@ -5,7 +5,6 @@ import uk.gov.hmcts.et.common.model.ccd.CaseData;
 import uk.gov.hmcts.et.common.model.ccd.items.RepresentedTypeRItem;
 import uk.gov.hmcts.et.common.model.ccd.items.RespondentSumTypeItem;
 import uk.gov.hmcts.et.common.model.hmc.Judiciary;
-import uk.gov.hmcts.et.common.model.hmc.PanelRequirements;
 import uk.gov.hmcts.reform.ccd.client.model.CaseDetails;
 import uk.gov.hmcts.reform.et.model.service.ReferenceDataServiceHolder;
 import uk.gov.hmcts.reform.et.model.service.hearingvalues.ServiceHearingValues;
@@ -53,7 +52,7 @@ public final class ServiceHearingValuesMapping {
                 .leadJudgeContractType(HearingsDetailsMapping.getLeadJudgeContractType(caseData))
                 .numberOfPhysicalAttendees(HearingsDetailsMapping.getNumberOfPhysicalAttendees())
                 .parties(HearingsPartyMapping.buildPartyObjectForHearingPayload(caseData, respondents, legalReps))
-                .panelRequirements(PanelRequirements.builder().panelPreferences(new ArrayList<>()).build())
+                .panelRequirements(null)
                 .privateHearingRequiredFlag(HearingsDetailsMapping.isPrivateHearingRequiredFlag(caseData))
                 .publicCaseName(HearingsCaseMapping.getPublicCaseName(caseData))
                 .screenFlow(null)
