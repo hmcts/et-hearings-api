@@ -61,7 +61,6 @@ public final class HearingsCaseMapping {
         CaseCategory caseCategory = new CaseCategory();
         caseCategory.setCategoryType(CASE_TYPE);
         caseCategory.setCategoryValue(DEFAULT_CATEGORY);
-        caseCategory.setCategoryParent(DEFAULT_CATEGORY);
 
         List<CaseCategory> resultList = new ArrayList<>();
         resultList.add(caseCategory);

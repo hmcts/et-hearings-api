@@ -8,6 +8,7 @@ import uk.gov.hmcts.reform.et.model.service.ReferenceDataServiceHolder;
 import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertNull;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 import static uk.gov.hmcts.ecm.common.model.helper.Constants.YES;
 import static uk.gov.hmcts.reform.et.helper.mapping.HearingsCaseMapping.CASE_TYPE;
@@ -96,7 +97,6 @@ class HearingsCaseMappingTest {
                 "CategoryType should match the expected value");
         assertEquals(DEFAULT_CATEGORY, caseCategory.getCategoryValue(),
                 "CategoryValue should match the expected value");
-        assertEquals(DEFAULT_CATEGORY, caseCategory.getCategoryParent(),
-                "CategoryParent should match the expected value");
+        assertNull(caseCategory.getCategoryParent());
     }
 }
