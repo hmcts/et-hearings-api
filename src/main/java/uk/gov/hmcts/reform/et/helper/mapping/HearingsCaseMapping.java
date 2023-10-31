@@ -4,6 +4,8 @@ import lombok.extern.slf4j.Slf4j;
 import org.springframework.web.bind.annotation.RestController;
 import uk.gov.hmcts.et.common.model.ccd.CaseData;
 import uk.gov.hmcts.et.common.model.hmc.CaseCategory;
+import uk.gov.hmcts.et.common.model.hmc.Navigation;
+import uk.gov.hmcts.et.common.model.hmc.ScreenNavigation;
 import uk.gov.hmcts.et.common.model.hmc.Vocabulary;
 
 import java.util.ArrayList;
@@ -70,4 +72,23 @@ public final class HearingsCaseMapping {
         return new ArrayList<>();
     }
 
+    public static List<ScreenNavigation> getScreenFlow() {
+        return List.of(
+                buildScreenNavigation("hearing-requirements", "hearing-facilities"),
+                buildScreenNavigation("hearing-facilities", "hearing-stage"),
+                buildScreenNavigation("hearing-stage", "hearing-attendance"),
+                buildScreenNavigation("hearing-attendance", "hearing-venue"),
+                buildScreenNavigation("hearing-venue", "hearing-judge"),
+                buildScreenNavigation("hearing-judge", "hearing-timing"),
+                buildScreenNavigation("hearing-timing", "hearing-link"),
+                buildScreenNavigation("hearing-link", "hearing-additional-instructions")
+        );
+    }
+
+    private static ScreenNavigation buildScreenNavigation(String name, String nextName) {
+        return ScreenNavigation.builder()
+                .navigation(List.of(Navigation.builder().resultValue(nextName).build()))
+                .screenName(name)
+                .build();
+    }
 }

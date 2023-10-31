@@ -55,7 +55,7 @@ public final class ServiceHearingValuesMapping {
                 .panelRequirements(null)
                 .privateHearingRequiredFlag(HearingsDetailsMapping.isPrivateHearingRequiredFlag(caseData))
                 .publicCaseName(HearingsCaseMapping.getPublicCaseName(caseData))
-                .screenFlow(null)
+                .screenFlow(HearingsCaseMapping.getScreenFlow())
                 .vocabulary(HearingsCaseMapping.getVocabulary())
                 .build();
     }
