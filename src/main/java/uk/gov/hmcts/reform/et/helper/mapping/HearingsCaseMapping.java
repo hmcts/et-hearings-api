@@ -17,6 +17,7 @@ import static uk.gov.hmcts.reform.et.model.service.YesNo.isYes;
 @RestController
 @Slf4j
 public final class HearingsCaseMapping {
+    public static final String CASE_TYPE = "caseType";
 
     private HearingsCaseMapping() {
     }
@@ -58,7 +59,7 @@ public final class HearingsCaseMapping {
     public static List<CaseCategory> getCaseCategories() {
 
         CaseCategory caseCategory = new CaseCategory();
-        caseCategory.setCategoryType(DEFAULT_CATEGORY);
+        caseCategory.setCategoryType(CASE_TYPE);
         caseCategory.setCategoryValue(DEFAULT_CATEGORY);
         caseCategory.setCategoryParent(DEFAULT_CATEGORY);
 

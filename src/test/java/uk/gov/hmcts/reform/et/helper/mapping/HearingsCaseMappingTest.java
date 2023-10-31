@@ -10,6 +10,7 @@ import java.util.List;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 import static uk.gov.hmcts.ecm.common.model.helper.Constants.YES;
+import static uk.gov.hmcts.reform.et.helper.mapping.HearingsCaseMapping.CASE_TYPE;
 import static uk.gov.hmcts.reform.et.model.service.ReferenceDataServiceHolder.DEFAULT_CATEGORY;
 
 class HearingsCaseMappingTest {
@@ -91,7 +92,7 @@ class HearingsCaseMappingTest {
         assertEquals(1, result.size(), "There should be one case category");
 
         CaseCategory caseCategory = result.get(0);
-        assertEquals(DEFAULT_CATEGORY, caseCategory.getCategoryType(),
+        assertEquals(CASE_TYPE, caseCategory.getCategoryType(),
                 "CategoryType should match the expected value");
         assertEquals(DEFAULT_CATEGORY, caseCategory.getCategoryValue(),
                 "CategoryValue should match the expected value");
