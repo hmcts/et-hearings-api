@@ -18,6 +18,7 @@ import static uk.gov.hmcts.reform.et.model.service.YesNo.isYes;
 @Slf4j
 public final class HearingsCaseMapping {
     public static final String CASE_TYPE = "caseType";
+    public static final String CASE_SUB_TYPE = "caseSubType";
 
     private HearingsCaseMapping() {
     }
@@ -56,16 +57,15 @@ public final class HearingsCaseMapping {
         return caseData.getReceiptDate();
     }
 
-    public static List<CaseCategory> getCaseCategories() {
-
-        CaseCategory caseCategory = new CaseCategory();
-        caseCategory.setCategoryType(CASE_TYPE);
-        caseCategory.setCategoryValue(DEFAULT_CATEGORY);
-
-        List<CaseCategory> resultList = new ArrayList<>();
-        resultList.add(caseCategory);
-
-        return resultList;
+    public static List<CaseCategory> getCaseCategories(String caseTypeId) {
+        return List.of(
+                CaseCategory.builder().categoryType(CASE_TYPE).categoryValue(DEFAULT_CATEGORY).build(),
+                CaseCategory.builder()
+                        .categoryType(CASE_SUB_TYPE)
+                        .categoryValue(caseTypeId)
+                        .categoryParent(DEFAULT_CATEGORY)
+                        .build()
+        );
     }
 
     public static List<Vocabulary> getVocabulary() {

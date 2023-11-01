@@ -31,7 +31,7 @@ public final class ServiceHearingValuesMapping {
         return ServiceHearingValues.builder()
                 .autoListFlag(HearingsDetailsMapping.getAutoListFlag(caseData))
                 .caseAdditionalSecurityFlag(HearingsCaseMapping.getCaseAdditionalSecurityFlag(caseData))
-                .caseCategories(HearingsCaseMapping.getCaseCategories())
+                .caseCategories(HearingsCaseMapping.getCaseCategories(caseDetails.getCaseTypeId()))
                 .caseDeepLink(HearingsCaseMapping.getCaseDeepLink(caseData))
                 .caseFlags(CaseFlagsMapping.getCaseFlags(caseData))
                 .caseInterpreterRequiredFlag(HearingsCaseMapping.getCaseInterpreterRequiredFlag(caseData))
