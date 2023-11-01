@@ -27,7 +27,7 @@ class CaseFlagsMappingTest {
     @Test
     void testGetCaseFlags() throws IOException, URISyntaxException {
         CaseDetails mockCaseDetails = new CaseTestData().expectedDetails();
-        CaseData caseData = CaseDataMapping.mapRequestCaseDataToCaseData(mockCaseDetails.getData());
+        CaseData caseData = CaseDataMapping.mapCaseData(mockCaseDetails.getData());
 
         CaseFlagsType flag1 = new CaseFlagsType(RESPONDENT_TITLE, RESPONDENT_TITLE, createFlagDetails(URGENT_FLAG));
         CaseFlagsType flag2 = new CaseFlagsType(

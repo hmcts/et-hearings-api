@@ -50,7 +50,7 @@ class ServiceLinkedCasesServiceTest {
     @Test
     void serviceLinkedCasesServiceTest() throws IOException, URISyntaxException, GetCaseException {
         CaseDetails mockCaseDetails = new CaseTestData().expectedDetails();
-        CaseData caseData = CaseDataMapping.mapRequestCaseDataToCaseData(mockCaseDetails.getData());
+        CaseData caseData = CaseDataMapping.mapCaseData(mockCaseDetails.getData());
 
         when(authTokenGenerator.generate()).thenReturn("serviceAuthS2s");
         when(ccdApiClient.getCase(
@@ -60,7 +60,7 @@ class ServiceLinkedCasesServiceTest {
         )).thenReturn(mockCaseDetails);
 
         try (MockedStatic<CaseDataMapping> caseDataMapperMock = mockStatic(CaseDataMapping.class)) {
-            caseDataMapperMock.when(() -> CaseDataMapping.mapRequestCaseDataToCaseData(
+            caseDataMapperMock.when(() -> CaseDataMapping.mapCaseData(
                     mockCaseDetails.getData())).thenReturn(caseData);
         }
 

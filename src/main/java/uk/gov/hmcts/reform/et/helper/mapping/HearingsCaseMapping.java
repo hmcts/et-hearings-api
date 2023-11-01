@@ -21,6 +21,7 @@ public final class HearingsCaseMapping {
     public static final String CASE_SUB_TYPE = "caseSubType";
 
     private HearingsCaseMapping() {
+
     }
 
     public static String getCaseDeepLink(CaseData caseData) {

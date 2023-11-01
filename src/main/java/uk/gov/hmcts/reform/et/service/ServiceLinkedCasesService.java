@@ -20,7 +20,7 @@ public class ServiceLinkedCasesService {
     public ListTypeItem<CaseLink> getServiceLinkedCases(String authorization, ServiceHearingRequest request)
             throws GetCaseException {
         CaseDetails caseDetails = caseService.retrieveCase(authorization, request.getCaseId());
-        CaseData caseData = CaseDataMapping.mapRequestCaseDataToCaseData(caseDetails.getData());
+        CaseData caseData = CaseDataMapping.mapCaseData(caseDetails.getData());
         if (caseData.getCaseLinks() == null) {
             return new ListTypeItem<>();
         }

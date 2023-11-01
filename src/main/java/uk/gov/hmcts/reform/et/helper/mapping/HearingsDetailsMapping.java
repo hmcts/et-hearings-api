@@ -11,7 +11,6 @@ import java.util.List;
 
 import static uk.gov.hmcts.reform.et.model.service.YesNo.isYes;
 
-
 @RestController
 @Slf4j
 public final class HearingsDetailsMapping {
@@ -23,6 +22,7 @@ public final class HearingsDetailsMapping {
     private static final int PHYSICAL_ATTENDEES = 0;
 
     private HearingsDetailsMapping() {
+
     }
 
     public static boolean getAutoListFlag(CaseData caseData) {

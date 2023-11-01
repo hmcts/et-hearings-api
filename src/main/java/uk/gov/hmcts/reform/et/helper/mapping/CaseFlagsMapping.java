@@ -13,11 +13,10 @@ import java.util.List;
 import static uk.gov.hmcts.reform.et.utils.CaseFlagsHearingsUtils.getAllActiveFlags;
 
 public final class CaseFlagsMapping {
-
     private static final String ACTIVE_STATUS = "Active";
 
     private CaseFlagsMapping() {
-        //NO-OP
+
     }
 
     public static CaseFlags getCaseFlags(CaseData caseData) {
