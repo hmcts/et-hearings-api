@@ -57,13 +57,14 @@ public final class HearingsCaseMapping {
         return caseData.getReceiptDate();
     }
 
-    public static List<CaseCategory> getCaseCategories(String caseTypeId) {
+    public static List<CaseCategory> getCaseCategories() {
+        String caseType = "BHA1-EMT";
         return List.of(
-                CaseCategory.builder().categoryType(CASE_TYPE).categoryValue("Employment").build(),
+                CaseCategory.builder().categoryType(CASE_TYPE).categoryValue(caseType).build(),
                 CaseCategory.builder()
                         .categoryType(CASE_SUB_TYPE)
-                        .categoryValue(caseTypeId)
-                        .categoryParent("Employment")
+                        .categoryValue(caseType)
+                        .categoryParent(caseType)
                         .build()
         );
     }

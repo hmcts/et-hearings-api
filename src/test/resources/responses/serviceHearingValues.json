@@ -6,12 +6,12 @@
   "caseCategories": [
     {
       "categoryType": "caseType",
-      "categoryValue": "Employment"
+      "categoryValue": "BHA1-EMT"
     },
     {
       "categoryType": "caseSubType",
-      "categoryValue": "ET_Scotland",
-      "categoryParent": "Employment"
+      "categoryValue": "BHA1-EMT",
+      "categoryParent": "BHA1-EMT"
     }
   ],
   "caseDeepLink": "https://www.google.com/FOR_TESTING_ONLY",

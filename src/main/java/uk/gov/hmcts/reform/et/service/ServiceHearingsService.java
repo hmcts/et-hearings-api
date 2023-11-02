@@ -41,7 +41,7 @@ public class ServiceHearingsService {
         return ServiceHearingValues.builder()
                 .autoListFlag(HearingsDetailsMapping.getAutoListFlag(caseData))
                 .caseAdditionalSecurityFlag(HearingsCaseMapping.getCaseAdditionalSecurityFlag(caseData))
-                .caseCategories(HearingsCaseMapping.getCaseCategories(caseTypeId))
+                .caseCategories(HearingsCaseMapping.getCaseCategories())
                 .caseDeepLink(HearingsCaseMapping.getCaseDeepLink(caseData))
                 .caseFlags(CaseFlagsMapping.getCaseFlags(caseData))
                 .caseInterpreterRequiredFlag(HearingsCaseMapping.getCaseInterpreterRequiredFlag(caseData))

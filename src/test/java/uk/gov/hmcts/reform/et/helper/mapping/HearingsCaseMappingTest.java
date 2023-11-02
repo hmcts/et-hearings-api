@@ -89,18 +89,18 @@ class HearingsCaseMappingTest {
 
     @Test
     void testGetCaseCategories() {
-        String etScotland = "ET_Scotland";
-        List<CaseCategory> result = HearingsCaseMapping.getCaseCategories(etScotland);
+        String caseType = "BHA1-EMT";
+        List<CaseCategory> result = HearingsCaseMapping.getCaseCategories();
         assertEquals(2, result.size());
 
         CaseCategory caseCategory = result.get(0);
         assertEquals(CASE_TYPE, caseCategory.getCategoryType());
-        assertEquals("Employment", caseCategory.getCategoryValue());
+        assertEquals(caseType, caseCategory.getCategoryValue());
         assertNull(caseCategory.getCategoryParent());
 
         CaseCategory caseCategory2 = result.get(1);
         assertEquals(CASE_SUB_TYPE, caseCategory2.getCategoryType());
-        assertEquals(etScotland, caseCategory2.getCategoryValue());
-        assertEquals("Employment", caseCategory2.getCategoryParent());
+        assertEquals(caseType, caseCategory2.getCategoryValue());
+        assertEquals(caseType, caseCategory2.getCategoryParent());
     }
 }
