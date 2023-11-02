@@ -6,12 +6,12 @@
   "caseCategories": [
     {
       "categoryType": "caseType",
-      "categoryValue": "ET_Scotland"
+      "categoryValue": "Employment"
     },
     {
       "categoryType": "caseSubType",
       "categoryValue": "ET_Scotland",
-      "categoryParent": "ET_Scotland"
+      "categoryParent": "Employment"
     }
   ],
   "caseDeepLink": "https://www.google.com/FOR_TESTING_ONLY",

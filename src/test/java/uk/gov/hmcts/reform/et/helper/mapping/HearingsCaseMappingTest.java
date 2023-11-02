@@ -95,12 +95,12 @@ class HearingsCaseMappingTest {
 
         CaseCategory caseCategory = result.get(0);
         assertEquals(CASE_TYPE, caseCategory.getCategoryType());
-        assertEquals(etScotland, caseCategory.getCategoryValue());
+        assertEquals("Employment", caseCategory.getCategoryValue());
         assertNull(caseCategory.getCategoryParent());
 
         CaseCategory caseCategory2 = result.get(1);
         assertEquals(CASE_SUB_TYPE, caseCategory2.getCategoryType());
         assertEquals(etScotland, caseCategory2.getCategoryValue());
-        assertEquals(etScotland, caseCategory2.getCategoryParent());
+        assertEquals("Employment", caseCategory2.getCategoryParent());
     }
 }
