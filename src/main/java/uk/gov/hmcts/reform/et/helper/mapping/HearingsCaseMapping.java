@@ -11,7 +11,6 @@ import uk.gov.hmcts.et.common.model.hmc.Vocabulary;
 import java.util.ArrayList;
 import java.util.List;
 
-import static uk.gov.hmcts.reform.et.model.service.ReferenceDataServiceHolder.DEFAULT_CATEGORY;
 import static uk.gov.hmcts.reform.et.model.service.YesNo.isYes;
 
 @RestController
@@ -60,11 +59,11 @@ public final class HearingsCaseMapping {
 
     public static List<CaseCategory> getCaseCategories(String caseTypeId) {
         return List.of(
-                CaseCategory.builder().categoryType(CASE_TYPE).categoryValue(DEFAULT_CATEGORY).build(),
+                CaseCategory.builder().categoryType(CASE_TYPE).categoryValue(caseTypeId).build(),
                 CaseCategory.builder()
                         .categoryType(CASE_SUB_TYPE)
                         .categoryValue(caseTypeId)
-                        .categoryParent(DEFAULT_CATEGORY)
+                        .categoryParent(caseTypeId)
                         .build()
         );
     }

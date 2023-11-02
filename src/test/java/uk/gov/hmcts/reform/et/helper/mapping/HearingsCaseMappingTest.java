@@ -13,7 +13,6 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
 import static uk.gov.hmcts.ecm.common.model.helper.Constants.YES;
 import static uk.gov.hmcts.reform.et.helper.mapping.HearingsCaseMapping.CASE_SUB_TYPE;
 import static uk.gov.hmcts.reform.et.helper.mapping.HearingsCaseMapping.CASE_TYPE;
-import static uk.gov.hmcts.reform.et.model.service.ReferenceDataServiceHolder.DEFAULT_CATEGORY;
 
 class HearingsCaseMappingTest {
 
@@ -90,17 +89,18 @@ class HearingsCaseMappingTest {
 
     @Test
     void testGetCaseCategories() {
-        List<CaseCategory> result = HearingsCaseMapping.getCaseCategories("ET_Scotland");
+        String etScotland = "ET_Scotland";
+        List<CaseCategory> result = HearingsCaseMapping.getCaseCategories(etScotland);
         assertEquals(2, result.size());
 
         CaseCategory caseCategory = result.get(0);
         assertEquals(CASE_TYPE, caseCategory.getCategoryType());
-        assertEquals(DEFAULT_CATEGORY, caseCategory.getCategoryValue());
+        assertEquals(etScotland, caseCategory.getCategoryValue());
         assertNull(caseCategory.getCategoryParent());
 
         CaseCategory caseCategory2 = result.get(1);
         assertEquals(CASE_SUB_TYPE, caseCategory2.getCategoryType());
-        assertEquals("ET_Scotland", caseCategory2.getCategoryValue());
-        assertEquals(DEFAULT_CATEGORY, caseCategory2.getCategoryParent());
+        assertEquals(etScotland, caseCategory2.getCategoryValue());
+        assertEquals(etScotland, caseCategory2.getCategoryParent());
     }
 }
