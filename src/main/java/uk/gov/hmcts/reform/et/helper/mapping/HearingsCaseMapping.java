@@ -59,11 +59,11 @@ public final class HearingsCaseMapping {
 
     public static List<CaseCategory> getCaseCategories(String caseTypeId) {
         return List.of(
-                CaseCategory.builder().categoryType(CASE_TYPE).categoryValue(caseTypeId).build(),
+                CaseCategory.builder().categoryType(CASE_TYPE).categoryValue("Employment").build(),
                 CaseCategory.builder()
                         .categoryType(CASE_SUB_TYPE)
                         .categoryValue(caseTypeId)
-                        .categoryParent(caseTypeId)
+                        .categoryParent("Employment")
                         .build()
         );
     }
