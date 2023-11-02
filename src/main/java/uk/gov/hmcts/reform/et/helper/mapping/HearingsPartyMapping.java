@@ -14,6 +14,7 @@ import uk.gov.hmcts.reform.et.model.hmc.reference.EntityRoleCode;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
+import java.util.UUID;
 
 import static org.apache.commons.lang3.StringUtils.defaultString;
 import static org.apache.commons.lang3.StringUtils.isEmpty;
@@ -101,7 +102,9 @@ public final class HearingsPartyMapping {
                 .build();
 
         return PartyDetails.builder()
-                .partyID(caseData.getClaimantId())
+                // TODO: Remove the defaultString line when migration has gone live
+                // .partyID(caseData.getClaimantId()))
+                .partyID(defaultString(caseData.getClaimantId(), UUID.randomUUID().toString()))
                 .partyName(caseData.getClaimant())
                 .partyRole(EntityRoleCode.CLAIMANT.getHmcReference())
                 .partyType(INDIVIDUAL)
