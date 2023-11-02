@@ -40,7 +40,7 @@
   "hearingIsLinkedFlag": false,
   "parties": [
     {
-      "partyID": null,
+      "partyID": "9e87348b-e37b-44c9-8324-f323eb933d83",
       "partyType": "IND",
       "partyRole": "CLAI",
       "individualDetails": {
@@ -65,7 +65,7 @@
       "unavailabilityDOW": null
     },
     {
-      "partyID": null,
+      "partyID": "5d3be92a-c731-49c2-abda-0cc3825cbd3f",
       "partyType": "ORG",
       "partyRole": "LGRP",
       "individualDetails": null,
@@ -114,9 +114,23 @@
   ],
   "caseFlags": {
     "flags": [
-      {}
+      {
+        "flagDescription": "Urgent case",
+        "flagId": "CF0007",
+        "flagParentId": "",
+        "flagStatus": "Inactive",
+        "partyId": ""
+      },
+      {
+        "flagDescription": "Documents in a specified colour",
+        "flagId": "RA0010",
+        "flagParentId": "",
+        "flagStatus": "Active",
+        "partyId": "9e87348b-e37b-44c9-8324-f323eb933d83",
+        "partyName": "Citizen One"
+      }
     ],
-    "flagAmendURL": null
+    "flagAmendURL": ""
   },
   "screenFlow": [
     {

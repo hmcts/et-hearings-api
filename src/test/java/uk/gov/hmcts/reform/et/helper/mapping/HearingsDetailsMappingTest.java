@@ -6,12 +6,12 @@ import org.mockito.Mock;
 import org.mockito.MockitoAnnotations;
 import uk.gov.hmcts.et.common.model.ccd.CaseData;
 import uk.gov.hmcts.et.common.model.ccd.types.CaseLocation;
-import uk.gov.hmcts.reform.et.model.service.YesNo;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 import static org.mockito.Mockito.when;
+import static uk.gov.hmcts.ecm.common.model.helper.Constants.YES;
 
 class HearingsDetailsMappingTest {
     @Mock
@@ -24,7 +24,7 @@ class HearingsDetailsMappingTest {
 
     @Test
     void testGetAutoListFlag() {
-        when(caseData.getAutoListFlag()).thenReturn(String.valueOf(YesNo.YES));
+        when(caseData.getAutoListFlag()).thenReturn(YES);
         assertTrue(HearingsDetailsMapping.getAutoListFlag(caseData), "AutoListFlag should be true");
     }
 
@@ -48,7 +48,7 @@ class HearingsDetailsMappingTest {
 
     @Test
     void testIsPrivateHearingRequiredFlag() {
-        when(caseData.getPrivateHearingRequiredFlag()).thenReturn(String.valueOf(YesNo.YES));
+        when(caseData.getPrivateHearingRequiredFlag()).thenReturn(YES);
         assertTrue(HearingsDetailsMapping.isPrivateHearingRequiredFlag(caseData),
                 "PrivateHearingRequiredFlag should be true");
     }

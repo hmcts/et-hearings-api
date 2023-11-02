@@ -102,7 +102,7 @@ public final class HearingsPartyMapping {
                 .build();
 
         return PartyDetails.builder()
-                // TODO: Remove the defaultString line when migration has gone live
+                // TODO: Remove the defaultString line when migration has gone live (RET-4383)
                 // .partyID(caseData.getClaimantId()))
                 .partyID(defaultString(caseData.getClaimantId(), UUID.randomUUID().toString()))
                 .partyName(caseData.getClaimant())
@@ -116,7 +116,9 @@ public final class HearingsPartyMapping {
 
         // TODO: Do we need IndividualDetails for ClaimantRep?
         return PartyDetails.builder()
-                .partyID(claimantType.getRepresentativeId())
+                // TODO: Remove the defaultString line when migration has gone live (RET-4383)
+                // .partyID(claimantType.getRepresentativeId())
+                .partyID(defaultString(claimantType.getRepresentativeId(), UUID.randomUUID().toString()))
                 .partyName(claimantType.getNameOfRepresentative())
                 .partyRole(EntityRoleCode.LEGAL_REPRESENTATIVE.getHmcReference())
                 .partyType(isEmpty(claimantType.getNameOfOrganisation()) ? INDIVIDUAL : ORGANISATION)

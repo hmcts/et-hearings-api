@@ -8,6 +8,34 @@
   "locked_by_user_id": null,
   "security_level": null,
   "case_data": {
+    "caseFlags": {
+      "details": [
+        {
+          "id": "9de878f4-706e-4e66-92ad-4405b26b9764",
+          "value": {
+            "name": "Urgent case",
+            "path": [
+              {
+                "id": "82f5e1b0-42b1-4c4e-a453-a4a124afc75d",
+                "value": "Case"
+              }
+            ],
+            "status": "Inactive",
+            "flagCode": "CF0007",
+            "subTypeKey": null,
+            "flagComment": "idklol",
+            "subTypeValue": null,
+            "dateTimeCreated": "2023-11-02T10:20:51.166Z",
+            "hearingRelevant": "No",
+            "dateTimeModified": "2023-11-02T10:21:35.362Z",
+            "otherDescription": null
+          }
+        }
+      ],
+      "groupId": null,
+      "visibility": null
+    },
+    "claimantId": "9e87348b-e37b-44c9-8324-f323eb933d83",
     "caseType": "Single",
     "claimant": "Citizen One",
     "bfActions": [
@@ -128,8 +156,40 @@
       "discrimination"
     ],
     "claimantFlags": {
+      "details": [
+        {
+          "id": "4f2edbbf-ef40-4b33-9d3a-1c210a093f9e",
+          "value": {
+            "name": "Documents in a specified colour",
+            "path": [
+              {
+                "id": "d999016f-f28a-4902-849d-c9530e961926",
+                "value": "Party"
+              },
+              {
+                "id": "dc997510-27d4-46f8-8141-6475dfbd0018",
+                "value": "Reasonable adjustment"
+              },
+              {
+                "id": "44bfbac2-6701-4ca6-9046-f7fea5424d2f",
+                "value": "I need documents in an alternative format"
+              }
+            ],
+            "status": "Active",
+            "flagCode": "RA0010",
+            "subTypeKey": null,
+            "flagComment": null,
+            "subTypeValue": null,
+            "dateTimeCreated": "2023-11-02T10:21:53.628Z",
+            "hearingRelevant": "Yes",
+            "otherDescription": null
+          }
+        }
+      ],
+      "groupId": null,
       "partyName": "Citizen One",
-      "roleOnCase": "claimant"
+      "roleOnCase": "claimant",
+      "visibility": null
     },
     "preAcceptCase": {
       "caseAccepted": "Yes",
@@ -208,8 +268,10 @@
     },
     "currentPosition": "ET1 Online submission",
     "respondentFlags": {
+      "groupId": null,
       "partyName": "Badman",
-      "roleOnCase": "respondent"
+      "roleOnCase": "respondent",
+      "visibility": null
     },
     "triageQuestions": {
       "caseType": "Single",
@@ -523,6 +585,7 @@
     "representativeClaimantType": {
       "name_of_organisation": "Org Name",
       "name_of_representative": "Claimant Rep",
+      "representative_id": "5d3be92a-c731-49c2-abda-0cc3825cbd3f",
       "representative_address": {
         "County": "",
         "Country": "United Kingdom",

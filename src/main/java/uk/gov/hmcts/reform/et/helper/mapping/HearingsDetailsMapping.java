@@ -9,15 +9,12 @@ import uk.gov.hmcts.et.common.model.hmc.HearingWindow;
 import java.util.ArrayList;
 import java.util.List;
 
-import static uk.gov.hmcts.reform.et.model.service.YesNo.isYes;
+import static uk.gov.hmcts.ecm.common.model.helper.Constants.YES;
 
 @RestController
 @Slf4j
 public final class HearingsDetailsMapping {
-
     public static final String STANDARD_PRIORITY = "Standard";
-
-    public static final String DEFAULT_HEARING_LOCATION_TYPE = "Court";
 
     private static final int PHYSICAL_ATTENDEES = 0;
 
@@ -26,7 +23,7 @@ public final class HearingsDetailsMapping {
     }
 
     public static boolean getAutoListFlag(CaseData caseData) {
-        return isYes(caseData.getAutoListFlag());
+        return YES.equals(caseData.getAutoListFlag());
     }
 
     public static String getHearingPriorityType() {
@@ -38,10 +35,6 @@ public final class HearingsDetailsMapping {
         return 0;
     }
 
-    public static String getHearingType() {
-        return "";
-    }
-
     public static Integer getNumberOfPhysicalAttendees() {
         // TODO Future Work
         return PHYSICAL_ATTENDEES;
@@ -49,11 +42,11 @@ public final class HearingsDetailsMapping {
 
     public static boolean isHearingInWelshFlag(CaseData caseData) {
         // TODO Future Work
-        return isYes(caseData.getHearingInWelshFlag());
+        return YES.equals(caseData.getHearingInWelshFlag());
     }
 
     public static Boolean isPrivateHearingRequiredFlag(CaseData caseData) {
-        return isYes(caseData.getPrivateHearingRequiredFlag());
+        return YES.equals(caseData.getPrivateHearingRequiredFlag());
     }
 
     public static String getLeadJudgeContractType(CaseData caseData) {
@@ -64,7 +57,7 @@ public final class HearingsDetailsMapping {
     }
 
     public static Boolean isHearingIsLinkedFlag(CaseData caseData) {
-        return isYes(caseData.getHearingIsLinkedFlag());
+        return YES.equals(caseData.getHearingIsLinkedFlag());
     }
 
     public static String getTribunalAndOfficeLocation(CaseData caseData) {

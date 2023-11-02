@@ -11,7 +11,7 @@ import uk.gov.hmcts.et.common.model.hmc.Vocabulary;
 import java.util.ArrayList;
 import java.util.List;
 
-import static uk.gov.hmcts.reform.et.model.service.YesNo.isYes;
+import static uk.gov.hmcts.ecm.common.model.helper.Constants.YES;
 
 @RestController
 @Slf4j
@@ -42,15 +42,15 @@ public final class HearingsCaseMapping {
     }
 
     public static Boolean getCaseRestrictedFlag(CaseData caseData) {
-        return isYes(caseData.getCaseRestrictedFlag());
+        return YES.equals(caseData.getCaseRestrictedFlag());
     }
 
     public static Boolean getCaseAdditionalSecurityFlag(CaseData caseData) {
-        return isYes(caseData.getCaseAdditionalSecurityFlag());
+        return YES.equals(caseData.getCaseAdditionalSecurityFlag());
     }
 
     public static Boolean getCaseInterpreterRequiredFlag(CaseData caseData) {
-        return isYes(caseData.getCaseInterpreterRequiredFlag());
+        return YES.equals(caseData.getCaseInterpreterRequiredFlag());
     }
 
     public static String getCaseCreated(CaseData caseData) {
