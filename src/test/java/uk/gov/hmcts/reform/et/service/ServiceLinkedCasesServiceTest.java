@@ -52,7 +52,7 @@ class ServiceLinkedCasesServiceTest {
     }
 
     @Test
-    void getServiceLinkedCases_noLinks() throws GetCaseException {
+    void serviceLinkedCasesNoLinks() throws GetCaseException {
         ServiceHearingRequest request = new ServiceHearingRequest(caseId, MOCK_REQUEST_HEARING_ID);
         ListTypeItem<CaseLink> result = serviceLinkedCasesService.getServiceLinkedCases(authorization, request);
 
@@ -60,7 +60,7 @@ class ServiceLinkedCasesServiceTest {
     }
 
     @Test
-    void getServiceLinkedCases_withLinks() throws GetCaseException {
+    void serviceLinkedCasesWithLinks() throws GetCaseException {
         mockCaseDetails.getData().put("caseLinks", ListTypeItem.from(CaseLink.builder()
                 .caseReference("1698860164619605")
                 .caseType("ET_Scotland")

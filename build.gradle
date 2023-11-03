@@ -270,5 +270,3 @@ rootProject.tasks.named("processSmokeTestResources") {
 wrapper {
     distributionType = Wrapper.DistributionType.ALL
 }
-
-pmdTest.ruleSetFiles = files("config/pmd/rulesetTest.xml")

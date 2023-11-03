@@ -7,7 +7,6 @@ import uk.gov.hmcts.et.common.model.ccd.types.RepresentedTypeC;
 import uk.gov.hmcts.et.common.model.ccd.types.RespondentSumType;
 import uk.gov.hmcts.et.common.model.hmc.IndividualDetails;
 import uk.gov.hmcts.et.common.model.hmc.PartyDetails;
-import uk.gov.hmcts.reform.et.model.hmc.reference.EntityRoleCode;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -17,6 +16,9 @@ import java.util.UUID;
 import static org.apache.commons.lang3.StringUtils.defaultString;
 import static org.apache.commons.lang3.StringUtils.isEmpty;
 import static org.apache.commons.lang3.StringUtils.isNotEmpty;
+import static uk.gov.hmcts.reform.et.model.hmc.reference.EntityRoleCode.CLAIMANT;
+import static uk.gov.hmcts.reform.et.model.hmc.reference.EntityRoleCode.LEGAL_REPRESENTATIVE;
+import static uk.gov.hmcts.reform.et.model.hmc.reference.EntityRoleCode.RESPONDENT;
 
 public final class HearingsPartyMapping {
 
@@ -54,7 +56,7 @@ public final class HearingsPartyMapping {
 
         PartyDetails details = PartyDetails.builder()
                 .partyID(respondentItem.getId())
-                .partyRole(EntityRoleCode.RESPONDENT.getHmcReference())
+                .partyRole(RESPONDENT.getHmcReference())
                 .partyType(ORGANISATION)
                 .partyName(respondent.getRespondentOrganisation())
                 .build();
@@ -86,7 +88,7 @@ public final class HearingsPartyMapping {
         return PartyDetails.builder()
                 .partyID(repItem.getId())
                 .partyName(repItem.getValue().getNameOfRepresentative())
-                .partyRole(EntityRoleCode.LEGAL_REPRESENTATIVE.getHmcReference())
+                .partyRole(LEGAL_REPRESENTATIVE.getHmcReference())
                 .partyType(isEmpty(repItem.getValue().getNameOfOrganisation()) ? INDIVIDUAL : ORGANISATION)
                 .build();
     }
@@ -103,7 +105,7 @@ public final class HearingsPartyMapping {
                 // .partyID(caseData.getClaimantId()))
                 .partyID(defaultString(caseData.getClaimantId(), UUID.randomUUID().toString()))
                 .partyName(caseData.getClaimant())
-                .partyRole(EntityRoleCode.CLAIMANT.getHmcReference())
+                .partyRole(CLAIMANT.getHmcReference())
                 .partyType(INDIVIDUAL)
                 .individualDetails(individualDetails).build();
     }
@@ -117,7 +119,7 @@ public final class HearingsPartyMapping {
                 // .partyID(claimantType.getRepresentativeId())
                 .partyID(defaultString(claimantType.getRepresentativeId(), UUID.randomUUID().toString()))
                 .partyName(claimantType.getNameOfRepresentative())
-                .partyRole(EntityRoleCode.LEGAL_REPRESENTATIVE.getHmcReference())
+                .partyRole(LEGAL_REPRESENTATIVE.getHmcReference())
                 .partyType(isEmpty(claimantType.getNameOfOrganisation()) ? INDIVIDUAL : ORGANISATION)
                 .build();
     }
