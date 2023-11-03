@@ -141,8 +141,7 @@ def sonarExclusions = [
   "**/gov/hmcts/reform/et/service/hmc/topic/ProcessHmcMessageService.java",
   "**/gov/hmcts/reform/et/model/hmc/message/HmcMessage.java",
   "**/gov/hmcts/reform/et/model/hmc/message/HearingUpdate.java",
-  "**/gov/hmcts/reform/et/model/hearing/HearingGetResponse.java",
-        "**"
+  "**/gov/hmcts/reform/et/model/hearing/HearingGetResponse.java"
 ]
 
 sonarqube {
@@ -272,5 +271,4 @@ wrapper {
     distributionType = Wrapper.DistributionType.ALL
 }
 
-pmdMain.maxFailures = 99
-pmdTest.maxFailures = 99
+pmdTest.ruleSetFiles = files("config/pmd/rulesetTest.xml")

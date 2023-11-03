@@ -1,7 +1,6 @@
 package uk.gov.hmcts.reform.et.helper.mapping;
 
 import lombok.extern.slf4j.Slf4j;
-import org.apache.commons.lang3.StringUtils;
 import uk.gov.hmcts.et.common.model.ccd.CaseData;
 import uk.gov.hmcts.et.common.model.ccd.items.RepresentedTypeRItem;
 import uk.gov.hmcts.et.common.model.ccd.items.RespondentSumTypeItem;
@@ -62,7 +61,7 @@ public final class HearingsPartyMapping {
                 .partyName(respondent.getRespondentOrganisation())
                 .build();
 
-        if (StringUtils.isNotEmpty(details.getPartyName())) {
+        if (isNotEmpty(details.getPartyName())) {
             return details; // Return early as we've already defaulted to organisation
         }
 
