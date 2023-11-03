@@ -79,7 +79,7 @@ tasks.withType(Test) {
 }
 
 test {
-  failFast = false
+  failFast = true
 }
 
 task functional(type: Test) {
