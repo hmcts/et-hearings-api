@@ -11,6 +11,7 @@ import uk.gov.hmcts.et.common.model.hmc.Vocabulary;
 import java.util.ArrayList;
 import java.util.List;
 
+import static org.apache.commons.lang3.StringUtils.defaultString;
 import static uk.gov.hmcts.ecm.common.model.helper.Constants.YES;
 
 @RestController
@@ -24,10 +25,7 @@ public final class HearingsCaseMapping {
     }
 
     public static String getCaseDeepLink(CaseData caseData) {
-        if (caseData.getCaseDeepLink() == null) {
-            return "https://www.google.com/FOR_TESTING_ONLY";
-        }
-        return caseData.getCaseDeepLink();
+        return defaultString(caseData.getCaseDeepLink(), "TODO");
     }
 
     public static String getCaseNameHmctsInternal(CaseData caseData) {
@@ -35,10 +33,7 @@ public final class HearingsCaseMapping {
     }
 
     public static String getPublicCaseName(CaseData caseData) {
-        if (caseData.getPublicCaseName() == null) {
-            return "TODO";
-        }
-        return caseData.getPublicCaseName();
+        return defaultString(caseData.getPublicCaseName(), "TODO");
     }
 
     public static Boolean getCaseRestrictedFlag(CaseData caseData) {

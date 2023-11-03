@@ -3,12 +3,15 @@ package uk.gov.hmcts.reform.et.helper.mapping;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.web.bind.annotation.RestController;
 import uk.gov.hmcts.et.common.model.ccd.CaseData;
+import uk.gov.hmcts.et.common.model.ccd.types.CaseLocation;
 import uk.gov.hmcts.et.common.model.hmc.HearingLocation;
 import uk.gov.hmcts.et.common.model.hmc.HearingWindow;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 
+import static org.apache.commons.lang3.StringUtils.defaultString;
 import static uk.gov.hmcts.ecm.common.model.helper.Constants.YES;
 
 @RestController
@@ -50,10 +53,7 @@ public final class HearingsDetailsMapping {
     }
 
     public static String getLeadJudgeContractType(CaseData caseData) {
-        if (caseData.getLeadJudgeContractType() == null) {
-            return "";
-        }
-        return caseData.getLeadJudgeContractType();
+        return defaultString(caseData.getLeadJudgeContractType(), "");
     }
 
     public static Boolean isHearingIsLinkedFlag(CaseData caseData) {
@@ -61,15 +61,11 @@ public final class HearingsDetailsMapping {
     }
 
     public static String getTribunalAndOfficeLocation(CaseData caseData) {
-        if (caseData.getCaseManagementLocationCode() != null) {
-            return caseData.getCaseManagementLocationCode();
-        }
-
-        if (caseData.getCaseManagementLocation() == null) {
-            log.error("caseManagementLocation was null");
-            return " ";
-        }
-        return caseData.getCaseManagementLocation().getBaseLocation();
+        return defaultString(caseData.getCaseManagementLocationCode(),
+                Optional.ofNullable(caseData.getCaseManagementLocation())
+                        .map(CaseLocation::getBaseLocation)
+                        .orElse(" ")
+        );
     }
 
     public static HearingWindow getHearingWindow() {
