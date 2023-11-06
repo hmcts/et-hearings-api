@@ -55,35 +55,18 @@ class ServiceHearingsServiceTest {
         ServiceHearingValues actual = serviceHearingsService.getServiceHearingValues(authorization, request);
         ServiceHearingValues expected = new CaseTestData().expectedServiceHearingValues();
 
-        assertEquals(expected.isAutoListFlag(), actual.isAutoListFlag());
-        assertEquals(expected.getCaseAdditionalSecurityFlag(), actual.getCaseAdditionalSecurityFlag());
         assertEquals(expected.getCaseCategories(), actual.getCaseCategories());
-        assertEquals(expected.getCaseDeepLink(), actual.getCaseDeepLink());
         assertEquals(expected.getCaseFlags(), actual.getCaseFlags());
-        assertEquals(expected.isCaseInterpreterRequiredFlag(), actual.isCaseInterpreterRequiredFlag());
-        assertEquals(expected.getCaseManagementLocationCode(), actual.getCaseManagementLocationCode());
-        assertEquals(expected.isCaseRestrictedFlag(), actual.isCaseRestrictedFlag());
-        assertEquals(expected.getCaseSlaStartDate(), actual.getCaseSlaStartDate());
-        assertEquals(expected.getCaseType(), actual.getCaseType());
-        assertEquals(expected.getDuration(), actual.getDuration());
         assertEquals(expected.getHearingChannels(), actual.getHearingChannels());
-        assertEquals(expected.isHearingInWelshFlag(), actual.isHearingInWelshFlag());
-        assertEquals(expected.isHearingIsLinkedFlag(), actual.isHearingIsLinkedFlag());
         assertEquals(expected.getHearingLocations(), actual.getHearingLocations());
-        assertEquals(expected.getHearingPriorityType(), actual.getHearingPriorityType());
-        assertEquals(expected.getHearingType(), actual.getHearingType());
         assertEquals(expected.getHearingWindow(), actual.getHearingWindow());
-        assertEquals(expected.getHmctsInternalCaseName(), actual.getHmctsInternalCaseName());
-        assertEquals(expected.getHmctsServiceID(), actual.getHmctsServiceID());
         assertEquals(expected.getJudiciary(), actual.getJudiciary());
-        assertEquals(expected.getLeadJudgeContractType(), actual.getLeadJudgeContractType());
-        assertEquals(expected.getNumberOfPhysicalAttendees(), actual.getNumberOfPhysicalAttendees());
         assertEquals(expected.getParties(), actual.getParties());
         assertEquals(expected.getPanelRequirements(), actual.getPanelRequirements());
-        assertEquals(expected.isPrivateHearingRequiredFlag(), actual.isPrivateHearingRequiredFlag());
-        assertEquals(expected.getPublicCaseName(), actual.getPublicCaseName());
         assertEquals(expected.getScreenFlow(), actual.getScreenFlow());
         assertEquals(expected.getVocabulary(), actual.getVocabulary());
+
+        assertEquals(expected, actual);
     }
 }
 
