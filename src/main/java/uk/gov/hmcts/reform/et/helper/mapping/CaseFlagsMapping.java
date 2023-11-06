@@ -1,57 +1,62 @@
 package uk.gov.hmcts.reform.et.helper.mapping;
 
 import uk.gov.hmcts.et.common.model.ccd.CaseData;
-import uk.gov.hmcts.et.common.model.ccd.items.FlagDetailType;
-import uk.gov.hmcts.et.common.model.ccd.items.GenericTypeItem;
+import uk.gov.hmcts.et.common.model.ccd.items.RespondentSumTypeItem;
 import uk.gov.hmcts.et.common.model.ccd.types.CaseFlagsType;
 import uk.gov.hmcts.et.common.model.hmc.CaseFlags;
 import uk.gov.hmcts.et.common.model.hmc.PartyFlags;
 
 import java.util.ArrayList;
 import java.util.List;
-
-import static uk.gov.hmcts.reform.et.utils.CaseFlagsHearingsUtils.getAllActiveFlags;
+import java.util.Objects;
+import java.util.Optional;
 
 public final class CaseFlagsMapping {
-
-    private static final String ACTIVE_STATUS = "Active";
-
     private CaseFlagsMapping() {
-        //NO-OP
+
     }
 
+    /**
+     * Flattens case and party flags into a single CaseFlags object for the HMC payload.
+     */
     public static CaseFlags getCaseFlags(CaseData caseData) {
-        List<CaseFlagsType> allActiveFlags = getAllActiveFlags(caseData);
+        List<PartyFlags> flags = new ArrayList<>();
 
-        if (allActiveFlags.isEmpty()) {
-            return CaseFlags.builder()
-                .flags(List.of(PartyFlags.builder()
-                                   .build()))
-                .build();
-        }
+        flags.addAll(mapCaseFlagsToPartyFlags("", caseData.getCaseFlags()));
+        flags.addAll(mapCaseFlagsToPartyFlags(caseData.getClaimantId(), caseData.getClaimantFlags()));
 
-        List<PartyFlags> partyFlagsModelList = new ArrayList<>();
-
-        for (CaseFlagsType activeFlag : allActiveFlags) {
-            String partyName = activeFlag.getPartyName();
-            if (activeFlag.getDetails() != null) {
-                for (GenericTypeItem<FlagDetailType> flagDetail : activeFlag.getDetails()) {
-                    PartyFlags partyFlagModel = PartyFlags.builder()
-                        .flagId(flagDetail.getId())
-                        .partyName(partyName)
-                        .flagParentId("")
-                        .flagId(flagDetail.getValue().getFlagCode())
-                        .flagDescription(flagDetail.getValue().getName())
-                        .flagStatus(ACTIVE_STATUS)
-                        .build();
-                    partyFlagsModelList.add(partyFlagModel);
-                }
-            }
-        }
+        Optional.ofNullable(caseData.getRespondentCollection())
+                .map(o -> o.get(0))
+                .map(RespondentSumTypeItem::getId)
+                .ifPresent(o -> flags.addAll(mapCaseFlagsToPartyFlags(o, caseData.getRespondentFlags())));
 
         return CaseFlags.builder()
-            .flags(partyFlagsModelList)
-            .build();
+                .flags(flags)
+                .flagAmendUrl("")
+                .build();
+    }
+
+    /**
+     * Map CaseFlag objects into PartyFlags for HMC.
+     * @param partyId ID for the party being mapped
+     * @param flags CaseFlags object as recognised by CCD
+     */
+    private static List<PartyFlags> mapCaseFlagsToPartyFlags(String partyId, CaseFlagsType flags) {
+        if (flags == null || flags.getDetails() == null) {
+            return new ArrayList<>();
+        }
+
+        return flags.getDetails().stream()
+                .filter(Objects::nonNull)
+                .map(flag -> PartyFlags.builder()
+                        .partyName(flags.getPartyName())
+                        .flagDescription(flag.getValue().getName())
+                        .flagId(flag.getValue().getFlagCode())
+                        .flagParentId("")
+                        .flagStatus(flag.getValue().getStatus())
+                        .partyId(partyId)
+                        .build())
+                .toList();
     }
 }
 

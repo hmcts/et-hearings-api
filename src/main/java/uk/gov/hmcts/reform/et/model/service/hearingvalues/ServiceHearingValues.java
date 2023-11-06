@@ -26,12 +26,10 @@ import java.util.List;
 @NoArgsConstructor
 public class ServiceHearingValues {
 
-    private String hmctsServiceId;
+    private String hmctsServiceID;
 
-    @JsonProperty("caseNameHmctsInternal")
-    private String caseNameHmctsInternal;
+    private String hmctsInternalCaseName;
 
-    @JsonProperty("publicCaseName")
     private String publicCaseName;
 
     private Boolean caseAdditionalSecurityFlag;
@@ -40,12 +38,15 @@ public class ServiceHearingValues {
 
     private String caseDeepLink;
 
-    private String tribunalAndOfficeLocation;
-
+    @JsonProperty("caserestrictedFlag")
     private boolean caseRestrictedFlag;
 
-    @JsonProperty("receiptDate")
-    private String receiptDate;
+    private String externalCaseReference;
+
+    private String caseManagementLocationCode;
+
+    @JsonProperty("caseSLAStartDate")
+    private String caseSlaStartDate;
 
     private boolean autoListFlag;
 
@@ -94,5 +95,4 @@ public class ServiceHearingValues {
     private String caseType;
 
     private List<String> hearingLevelParticipantAttendance;
-
 }

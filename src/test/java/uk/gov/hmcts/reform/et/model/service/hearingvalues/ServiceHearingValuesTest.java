@@ -14,14 +14,14 @@ class ServiceHearingValuesTest {
     void shouldSerializeToPoJoSuccessfully() throws Exception {
 
         ServiceHearingValues serviceHearingValues = ServiceHearingValues.builder()
-                .hmctsServiceId("BHA1")
-                .caseNameHmctsInternal("Johnny Claimant v Acme Redde Ltd")
+                .hmctsServiceID("BHA1")
+                .hmctsInternalCaseName("Johnny Claimant v Acme Redde Ltd")
                 .publicCaseName("Johnny Claimant v Acme Redde Ltd")
                 .caseAdditionalSecurityFlag(false)
                 .caseCategories(null)
                 .caseDeepLink("/documents/deep/link")
                 .caseRestrictedFlag(false)
-                .receiptDate("2024-04-23T18:25:43.511Z")
+                .caseSlaStartDate("2024-04-23T18:25:43.511Z")
                 .autoListFlag(false)
                 .hearingType("BHA1-SUB")
                 .duration(45)

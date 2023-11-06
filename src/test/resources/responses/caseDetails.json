@@ -8,210 +8,306 @@
   "locked_by_user_id": null,
   "security_level": null,
   "case_data": {
+    "caseFlags": {
+      "details": [
+        {
+          "id": "9de878f4-706e-4e66-92ad-4405b26b9764",
+          "value": {
+            "name": "Urgent case",
+            "path": [
+              {
+                "id": "82f5e1b0-42b1-4c4e-a453-a4a124afc75d",
+                "value": "Case"
+              }
+            ],
+            "status": "Inactive",
+            "flagCode": "CF0007",
+            "subTypeKey": null,
+            "flagComment": "idklol",
+            "subTypeValue": null,
+            "dateTimeCreated": "2023-11-02T10:20:51.166Z",
+            "hearingRelevant": "No",
+            "dateTimeModified": "2023-11-02T10:21:35.362Z",
+            "otherDescription": null
+          }
+        }
+      ],
+      "groupId": null,
+      "visibility": null
+    },
+    "claimantId": "9e87348b-e37b-44c9-8324-f323eb933d83",
     "caseType": "Single",
-    "caseSource": "Manually Created",
-    "claimantIndType": {
-      "claimant_first_names": "Michael",
-      "claimant_last_name": "Jackson"
-    },
-    "ethosCaseReference": "1646225213651590",
-    "claimantType": {
-      "claimant_email_address": "test@gmail.com"
-    },
-    "representativeClaimantType": {
-      "representative_id": "12345",
-      "name_of_organisation": "",
-      "name_of_representative": "Claimant rep - ind",
-      "representative_address": {
-        "County": null,
-        "Country": "United Kingdom",
-        "PostCode": "SW1H 9AJ",
-        "PostTown": "London",
-        "AddressLine1": "Ministry Of Justice",
-        "AddressLine2": "Seventh Floor 102 Petty France",
-        "AddressLine3": null
+    "claimant": "Citizen One",
+    "bfActions": [
+      {
+        "id": "20e7c753-a09d-45de-a8b1-941b426c06db",
+        "value": {
+          "notes": "Comments",
+          "bfDate": "2000-05-16",
+          "cleared": "2022-05-16",
+          "cwActions": "Case papers prepared",
+          "dateEntered": "2023-05-11"
+        }
       }
+    ],
+    "caseSource": "ET1 Online",
+    "respondent": "Badman",
+    "depositType": [
+      {
+        "id": "d4bf464e-6703-4f94-ba9a-a08d36cc5fb6",
+        "value": {
+          "depositDoc": {
+            "document_url": "http://dm-store-demo.service.core-compute-demo.internal/documents/b52f0618-f656-4e63-a8b8-634fd210552e",
+            "document_filename": "TPS Report.pdf",
+            "document_binary_url": "http://dm-store-demo.service.core-compute-demo.internal/documents/b52f0618-f656-4e63-a8b8-634fd210552e/binary"
+          },
+          "deposit_due": "1996-05-16",
+          "depositNotes": "Notes",
+          "Deposit_amount": "6900",
+          "deposit_covers": "All",
+          "deposit_refund": "Yes",
+          "depositReceived": "Yes",
+          "deposit_time_ext": "Yes",
+          "depositRefundedTo": "Respondent",
+          "deposit_order_sent": "1996-05-16",
+          "depositOrderAgainst": "Respondent",
+          "depositReceivedDate": "2022-05-16",
+          "deposit_refund_date": "2000-01-11",
+          "deposit_requested_by": "Respondent",
+          "deposit_time_ext_due": "2000-05-16",
+          "depositAmountRefunded": "100",
+          "dynamicDepositRefundedTo": {
+            "value": {
+              "code": "R: Another Person",
+              "label": "Another Person"
+            },
+            "list_items": [
+              {
+                "code": "R: Another Person",
+                "label": "Another Person"
+              },
+              {
+                "code": "C: Jack Reeve",
+                "label": "Jack Reeve"
+              }
+            ],
+            "selectedCode": "R: Another Person",
+            "selectedLabel": "Another Person"
+          },
+          "dynamicDepositRequestedBy": {
+            "value": {
+              "code": "R: Another Person",
+              "label": "Another Person"
+            },
+            "list_items": [
+              {
+                "code": "R: Another Person",
+                "label": "Another Person"
+              },
+              {
+                "code": "C: Jack Reeve",
+                "label": "Jack Reeve"
+              },
+              {
+                "code": "Tribunal",
+                "label": "Tribunal"
+              }
+            ],
+            "selectedCode": "R: Another Person",
+            "selectedLabel": "Another Person"
+          },
+          "dynamicDepositOrderAgainst": {
+            "value": {
+              "code": "R: Another Person",
+              "label": "Another Person"
+            },
+            "list_items": [
+              {
+                "code": "R: Another Person",
+                "label": "Another Person"
+              },
+              {
+                "code": "C: Jack Reeve",
+                "label": "Jack Reeve"
+              }
+            ],
+            "selectedCode": "R: Another Person",
+            "selectedLabel": "Another Person"
+          }
+        }
+      }
+    ],
+    "receiptDate": "2023-11-01",
+    "claimantType": {
+      "claimant_addressUK": {
+        "Country": "isnt",
+        "PostCode": "EH12 7TB",
+        "PostTown": "this",
+        "AddressLine1": "I",
+        "AddressLine2": "hope"
+      },
+      "claimant_phone_number": "07111111111",
+      "claimant_email_address": "et.citizen1@hmcts.net",
+      "claimant_contact_preference": "Email"
     },
-    "documentCollection": [],
+    "multipleFlag": "No",
+    "positionType": "ET1 Online submission",
+    "typesOfClaim": [
+      "discrimination"
+    ],
+    "claimantFlags": {
+      "details": [
+        {
+          "id": "4f2edbbf-ef40-4b33-9d3a-1c210a093f9e",
+          "value": {
+            "name": "Documents in a specified colour",
+            "path": [
+              {
+                "id": "d999016f-f28a-4902-849d-c9530e961926",
+                "value": "Party"
+              },
+              {
+                "id": "dc997510-27d4-46f8-8141-6475dfbd0018",
+                "value": "Reasonable adjustment"
+              },
+              {
+                "id": "44bfbac2-6701-4ca6-9046-f7fea5424d2f",
+                "value": "I need documents in an alternative format"
+              }
+            ],
+            "status": "Active",
+            "flagCode": "RA0010",
+            "subTypeKey": null,
+            "flagComment": null,
+            "subTypeValue": null,
+            "dateTimeCreated": "2023-11-02T10:21:53.628Z",
+            "hearingRelevant": "Yes",
+            "otherDescription": null
+          }
+        }
+      ],
+      "groupId": null,
+      "partyName": "Citizen One",
+      "roleOnCase": "claimant",
+      "visibility": null
+    },
+    "preAcceptCase": {
+      "caseAccepted": "Yes",
+      "dateAccepted": "2022-09-06"
+    },
+    "repCollection": [
+      {
+        "id": "a0f0f5d3-93d3-435a-9d7f-db2d73036707",
+        "value": {
+          "myHmctsYesNo": "Yes",
+          "respondentId": "1c3b2694-111b-490d-a371-fa251ea3af1f",
+          "resp_rep_name": "Badman",
+          "name_of_organisation": "ET Test 3 Org",
+          "name_of_representative": "Legal repFive",
+          "representative_address": {
+            "County": "Leeds",
+            "PostCode": "LS1 6HF",
+            "PostTown": "Leeds",
+            "AddressLine1": "Marks & Spencer Plc",
+            "AddressLine2": "Briggate"
+          },
+          "respondentOrganisation": {
+            "OrganisationID": "TWH38KH"
+          },
+          "representative_email_address": "et.legalrep.1@gmail.com"
+        }
+      }
+    ],
+    "SearchCriteria": {
+      "SearchParties": [
+        {
+          "id": "a79f2de3-bcda-43f6-8f0b-700a880f737e",
+          "value": {
+            "Name": "Citizen One",
+            "PostCode": "EH12 7TB",
+            "DateOfBirth": "1989-01-16",
+            "AddressLine1": "I",
+            "EmailAddress": "et.citizen1@hmcts.net"
+          }
+        },
+        {
+          "id": "2aecc469-da12-4776-8b83-962323cd5058",
+          "value": {
+            "Name": "Badman",
+            "PostCode": "EH12 7TB",
+            "AddressLine1": "I"
+          }
+        },
+        {
+          "id": "632ae175-517e-4ae4-ad0b-d1cf32b51c0e",
+          "value": {
+            "Name": "Badman",
+            "PostCode": "LS1 6HF",
+            "AddressLine1": "Marks & Spencer Plc",
+            "EmailAddress": "et.legalrep.1@gmail.com"
+          }
+        }
+      ],
+      "OtherCaseReferences": [
+        {
+          "id": "5e5af5c0-1b07-4551-ae00-87b9860b638d",
+          "value": "8000255/2023"
+        }
+      ]
+    },
+    "dateToPosition": "2023-11-01",
+    "managingOffice": "Glasgow",
+    "nextListedDate": "2069-05-16",
+    "claimantIndType": {
+      "claimant_sex": "Male",
+      "claimant_last_name": "One",
+      "claimant_first_names": "Citizen",
+      "claimant_title_other": "Doctor Professor",
+      "claimant_date_of_birth": "1989-01-16",
+      "claimant_preferred_title": "Other"
+    },
+    "currentPosition": "ET1 Online submission",
+    "respondentFlags": {
+      "groupId": null,
+      "partyName": "Badman",
+      "roleOnCase": "respondent",
+      "visibility": null
+    },
+    "triageQuestions": {
+      "caseType": "Single",
+      "postcode": "EH12 7TB",
+      "acasMultiple": "Yes",
+      "typesOfClaim": [
+        "discrimination"
+      ],
+      "claimantRepresentedQuestion": "No"
+    },
+    "claimantRequests": {
+      "claim_description": "idklol",
+      "discrimination_claims": [
+        "Age"
+      ]
+    },
+    "et1DateCompleted": "01 Nov 2023",
+    "claimantOtherType": {
+      "pastEmployer": "Yes",
+      "stillWorking": "No longer working",
+      "claimant_occupation": "Fall Guy",
+      "claimant_employed_to": "2023-01-01",
+      "claimant_employed_from": "1989-01-01",
+      "claimant_pay_after_tax": "69000",
+      "claimant_pay_before_tax": "420000",
+      "claimant_average_weekly_hours": "69"
+    },
+    "conciliationTrack": "No Conciliation",
+    "et1TribunalRegion": "Bristol",
+    "feeGroupReference": "1698860164619605",
+    "flagsImageAltText": "<font color='Red' size='5'> RULE 50(3)b </font><font size='5'> - </font><font color='LightBlack' size='5'> REPORTING </font>",
     "hearingCollection": [
       {
         "id": "c73bcbc4-430e-41c9-9790-182543914c0c",
         "value": {
           "Hearing_type": "Hearing",
-          "Hearing_venue": {
-            "value": {
-              "code": "Barnstaple",
-              "label": "Barnstaple"
-            },
-            "list_items": [
-              {
-                "code": "Barnstaple",
-                "label": "Barnstaple"
-              },
-              {
-                "code": "Bath Law Courts",
-                "label": "Bath Law Courts"
-              },
-              {
-                "code": "Bodmin",
-                "label": "Bodmin"
-              },
-              {
-                "code": "Bournemouth MC",
-                "label": "Bournemouth MC"
-              },
-              {
-                "code": "Brighton",
-                "label": "Brighton"
-              },
-              {
-                "code": "Brighton CC",
-                "label": "Brighton CC"
-              },
-              {
-                "code": "Bristol",
-                "label": "Bristol"
-              },
-              {
-                "code": "Bristol 1",
-                "label": "Bristol 1"
-              },
-              {
-                "code": "Bristol 2",
-                "label": "Bristol 2"
-              },
-              {
-                "code": "Bristol 3",
-                "label": "Bristol 3"
-              },
-              {
-                "code": "Bristol 4",
-                "label": "Bristol 4"
-              },
-              {
-                "code": "Bristol 5",
-                "label": "Bristol 5"
-              },
-              {
-                "code": "Bristol 6",
-                "label": "Bristol 6"
-              },
-              {
-                "code": "Bristol CFJC",
-                "label": "Bristol CFJC"
-              },
-              {
-                "code": "BristolCityHall",
-                "label": "BristolCityHall"
-              },
-              {
-                "code": "Bristol Crown",
-                "label": "Bristol Crown"
-              },
-              {
-                "code": "Bristol Mags",
-                "label": "Bristol Mags"
-              },
-              {
-                "code": "Bristol TBC",
-                "label": "Bristol TBC"
-              },
-              {
-                "code": "Bristol Vintry",
-                "label": "Bristol Vintry"
-              },
-              {
-                "code": "Cardiff CFJC",
-                "label": "Cardiff CFJC"
-              },
-              {
-                "code": "Exeter",
-                "label": "Exeter"
-              },
-              {
-                "code": "Exeter Combined",
-                "label": "Exeter Combined"
-              },
-              {
-                "code": "Exeter Mags",
-                "label": "Exeter Mags"
-              },
-              {
-                "code": "Floating Case",
-                "label": "Floating Case"
-              },
-              {
-                "code": "Gloucester CCFC",
-                "label": "Gloucester CCFC"
-              },
-              {
-                "code": "Havant",
-                "label": "Havant"
-              },
-              {
-                "code": "Plymouth Mags",
-                "label": "Plymouth Mags"
-              },
-              {
-                "code": "Plym St Cath Ho",
-                "label": "Plym St Cath Ho"
-              },
-              {
-                "code": "Queensway House",
-                "label": "Queensway House"
-              },
-              {
-                "code": "Remote Hearing",
-                "label": "Remote Hearing"
-              },
-              {
-                "code": "ROIT",
-                "label": "ROIT"
-              },
-              {
-                "code": "Southampton",
-                "label": "Southampton"
-              },
-              {
-                "code": "Swindon",
-                "label": "Swindon"
-              },
-              {
-                "code": "Swindon2",
-                "label": "Swindon2"
-              },
-              {
-                "code": "Taunton",
-                "label": "Taunton"
-              },
-              {
-                "code": "Truro",
-                "label": "Truro"
-              },
-              {
-                "code": "Truro Mags",
-                "label": "Truro Mags"
-              },
-              {
-                "code": "UWE Bristol",
-                "label": "UWE Bristol"
-              },
-              {
-                "code": "Vintry House",
-                "label": "Vintry House"
-              },
-              {
-                "code": "Worle",
-                "label": "Worle"
-              },
-              {
-                "code": "Yeovil Mags",
-                "label": "Yeovil Mags"
-              }
-            ],
-            "selectedCode": "Barnstaple",
-            "selectedLabel": "Barnstaple"
-          },
           "hearingFormat": [
             "In person"
           ],
@@ -224,180 +320,6 @@
               "value": {
                 "listedDate": "2022-05-16T01:00:00.000",
                 "Hearing_status": "Listed",
-                "hearingVenueDay": {
-                  "value": {
-                    "code": "Barnstaple",
-                    "label": "Barnstaple"
-                  },
-                  "list_items": [
-                    {
-                      "code": "Barnstaple",
-                      "label": "Barnstaple"
-                    },
-                    {
-                      "code": "Bath Law Courts",
-                      "label": "Bath Law Courts"
-                    },
-                    {
-                      "code": "Bodmin",
-                      "label": "Bodmin"
-                    },
-                    {
-                      "code": "Bournemouth MC",
-                      "label": "Bournemouth MC"
-                    },
-                    {
-                      "code": "Brighton",
-                      "label": "Brighton"
-                    },
-                    {
-                      "code": "Brighton CC",
-                      "label": "Brighton CC"
-                    },
-                    {
-                      "code": "Bristol",
-                      "label": "Bristol"
-                    },
-                    {
-                      "code": "Bristol 1",
-                      "label": "Bristol 1"
-                    },
-                    {
-                      "code": "Bristol 2",
-                      "label": "Bristol 2"
-                    },
-                    {
-                      "code": "Bristol 3",
-                      "label": "Bristol 3"
-                    },
-                    {
-                      "code": "Bristol 4",
-                      "label": "Bristol 4"
-                    },
-                    {
-                      "code": "Bristol 5",
-                      "label": "Bristol 5"
-                    },
-                    {
-                      "code": "Bristol 6",
-                      "label": "Bristol 6"
-                    },
-                    {
-                      "code": "Bristol CFJC",
-                      "label": "Bristol CFJC"
-                    },
-                    {
-                      "code": "BristolCityHall",
-                      "label": "BristolCityHall"
-                    },
-                    {
-                      "code": "Bristol Crown",
-                      "label": "Bristol Crown"
-                    },
-                    {
-                      "code": "Bristol Mags",
-                      "label": "Bristol Mags"
-                    },
-                    {
-                      "code": "Bristol TBC",
-                      "label": "Bristol TBC"
-                    },
-                    {
-                      "code": "Bristol Vintry",
-                      "label": "Bristol Vintry"
-                    },
-                    {
-                      "code": "Cardiff CFJC",
-                      "label": "Cardiff CFJC"
-                    },
-                    {
-                      "code": "Exeter",
-                      "label": "Exeter"
-                    },
-                    {
-                      "code": "Exeter Combined",
-                      "label": "Exeter Combined"
-                    },
-                    {
-                      "code": "Exeter Mags",
-                      "label": "Exeter Mags"
-                    },
-                    {
-                      "code": "Floating Case",
-                      "label": "Floating Case"
-                    },
-                    {
-                      "code": "Gloucester CCFC",
-                      "label": "Gloucester CCFC"
-                    },
-                    {
-                      "code": "Havant",
-                      "label": "Havant"
-                    },
-                    {
-                      "code": "Plymouth Mags",
-                      "label": "Plymouth Mags"
-                    },
-                    {
-                      "code": "Plym St Cath Ho",
-                      "label": "Plym St Cath Ho"
-                    },
-                    {
-                      "code": "Queensway House",
-                      "label": "Queensway House"
-                    },
-                    {
-                      "code": "Remote Hearing",
-                      "label": "Remote Hearing"
-                    },
-                    {
-                      "code": "ROIT",
-                      "label": "ROIT"
-                    },
-                    {
-                      "code": "Southampton",
-                      "label": "Southampton"
-                    },
-                    {
-                      "code": "Swindon",
-                      "label": "Swindon"
-                    },
-                    {
-                      "code": "Swindon2",
-                      "label": "Swindon2"
-                    },
-                    {
-                      "code": "Taunton",
-                      "label": "Taunton"
-                    },
-                    {
-                      "code": "Truro",
-                      "label": "Truro"
-                    },
-                    {
-                      "code": "Truro Mags",
-                      "label": "Truro Mags"
-                    },
-                    {
-                      "code": "UWE Bristol",
-                      "label": "UWE Bristol"
-                    },
-                    {
-                      "code": "Vintry House",
-                      "label": "Vintry House"
-                    },
-                    {
-                      "code": "Worle",
-                      "label": "Worle"
-                    },
-                    {
-                      "code": "Yeovil Mags",
-                      "label": "Yeovil Mags"
-                    }
-                  ],
-                  "selectedCode": "Barnstaple",
-                  "selectedLabel": "Barnstaple"
-                },
                 "hearingTimingStart": "2022-05-16T01:00:00.000",
                 "hearingTimingFinish": "2022-05-16T01:00:00.000"
               }
@@ -407,180 +329,6 @@
               "value": {
                 "listedDate": "2069-05-16T01:00:00.000",
                 "Hearing_status": "Listed",
-                "hearingVenueDay": {
-                  "value": {
-                    "code": "Barnstaple",
-                    "label": "Barnstaple"
-                  },
-                  "list_items": [
-                    {
-                      "code": "Barnstaple",
-                      "label": "Barnstaple"
-                    },
-                    {
-                      "code": "Bath Law Courts",
-                      "label": "Bath Law Courts"
-                    },
-                    {
-                      "code": "Bodmin",
-                      "label": "Bodmin"
-                    },
-                    {
-                      "code": "Bournemouth MC",
-                      "label": "Bournemouth MC"
-                    },
-                    {
-                      "code": "Brighton",
-                      "label": "Brighton"
-                    },
-                    {
-                      "code": "Brighton CC",
-                      "label": "Brighton CC"
-                    },
-                    {
-                      "code": "Bristol",
-                      "label": "Bristol"
-                    },
-                    {
-                      "code": "Bristol 1",
-                      "label": "Bristol 1"
-                    },
-                    {
-                      "code": "Bristol 2",
-                      "label": "Bristol 2"
-                    },
-                    {
-                      "code": "Bristol 3",
-                      "label": "Bristol 3"
-                    },
-                    {
-                      "code": "Bristol 4",
-                      "label": "Bristol 4"
-                    },
-                    {
-                      "code": "Bristol 5",
-                      "label": "Bristol 5"
-                    },
-                    {
-                      "code": "Bristol 6",
-                      "label": "Bristol 6"
-                    },
-                    {
-                      "code": "Bristol CFJC",
-                      "label": "Bristol CFJC"
-                    },
-                    {
-                      "code": "BristolCityHall",
-                      "label": "BristolCityHall"
-                    },
-                    {
-                      "code": "Bristol Crown",
-                      "label": "Bristol Crown"
-                    },
-                    {
-                      "code": "Bristol Mags",
-                      "label": "Bristol Mags"
-                    },
-                    {
-                      "code": "Bristol TBC",
-                      "label": "Bristol TBC"
-                    },
-                    {
-                      "code": "Bristol Vintry",
-                      "label": "Bristol Vintry"
-                    },
-                    {
-                      "code": "Cardiff CFJC",
-                      "label": "Cardiff CFJC"
-                    },
-                    {
-                      "code": "Exeter",
-                      "label": "Exeter"
-                    },
-                    {
-                      "code": "Exeter Combined",
-                      "label": "Exeter Combined"
-                    },
-                    {
-                      "code": "Exeter Mags",
-                      "label": "Exeter Mags"
-                    },
-                    {
-                      "code": "Floating Case",
-                      "label": "Floating Case"
-                    },
-                    {
-                      "code": "Gloucester CCFC",
-                      "label": "Gloucester CCFC"
-                    },
-                    {
-                      "code": "Havant",
-                      "label": "Havant"
-                    },
-                    {
-                      "code": "Plymouth Mags",
-                      "label": "Plymouth Mags"
-                    },
-                    {
-                      "code": "Plym St Cath Ho",
-                      "label": "Plym St Cath Ho"
-                    },
-                    {
-                      "code": "Queensway House",
-                      "label": "Queensway House"
-                    },
-                    {
-                      "code": "Remote Hearing",
-                      "label": "Remote Hearing"
-                    },
-                    {
-                      "code": "ROIT",
-                      "label": "ROIT"
-                    },
-                    {
-                      "code": "Southampton",
-                      "label": "Southampton"
-                    },
-                    {
-                      "code": "Swindon",
-                      "label": "Swindon"
-                    },
-                    {
-                      "code": "Swindon2",
-                      "label": "Swindon2"
-                    },
-                    {
-                      "code": "Taunton",
-                      "label": "Taunton"
-                    },
-                    {
-                      "code": "Truro",
-                      "label": "Truro"
-                    },
-                    {
-                      "code": "Truro Mags",
-                      "label": "Truro Mags"
-                    },
-                    {
-                      "code": "UWE Bristol",
-                      "label": "UWE Bristol"
-                    },
-                    {
-                      "code": "Vintry House",
-                      "label": "Vintry House"
-                    },
-                    {
-                      "code": "Worle",
-                      "label": "Worle"
-                    },
-                    {
-                      "code": "Yeovil Mags",
-                      "label": "Yeovil Mags"
-                    }
-                  ],
-                  "selectedCode": "Barnstaple",
-                  "selectedLabel": "Barnstaple"
-                },
                 "hearingTimingStart": "2069-05-16T01:00:00.000",
                 "hearingTimingFinish": "2069-05-16T01:00:00.000"
               }
@@ -589,129 +337,491 @@
           "hearingEstLengthNumType": "Days"
         }
       }
-    ]
+    ],
+    "isLocationCorrect": "Yes",
+    "targetHearingDate": "2024-04-29",
+    "documentCollection": [
+      {
+        "id": "cdfabef6-250f-4f36-8a32-b0aa75893e5f",
+        "value": {
+          "typeOfDocument": "ET1",
+          "shortDescription": "lol",
+          "uploadedDocument": {
+            "document_url": "http://dm-store-demo.service.core-compute-demo.internal/documents/b52f0618-f656-4e63-a8b8-634fd210552e",
+            "document_filename": "evidence.txt",
+            "document_binary_url": "http://dm-store-demo.service.core-compute-demo.internal/documents/b52f0618-f656-4e63-a8b8-634fd210552e/binary"
+          }
+        }
+      },
+      {
+        "id": "f855da5d-e826-471e-aa7e-f4cb69c06c05",
+        "value": {
+          "typeOfDocument": "Respondent correspondence",
+          "shortDescription": "Consider a decision afresh",
+          "uploadedDocument": {
+            "document_url": "http://dm-store-demo.service.core-compute-demo.internal/documents/7ade8b6f-2b06-40c0-b6e3-f87a405b5556",
+            "document_filename": "Contact the tribunal.pdf",
+            "document_binary_url": "http://dm-store-demo.service.core-compute-demo.internal/documents/7ade8b6f-2b06-40c0-b6e3-f87a405b5556/binary"
+          }
+        }
+      },
+      {
+        "id": "be3ba19f-b682-4cbc-a4f2-5b7e28efa63b",
+        "value": {
+          "typeOfDocument": "Respondent correspondence",
+          "shortDescription": "Consider a decision afresh",
+          "uploadedDocument": {
+            "document_url": "http://dm-store-demo.service.core-compute-demo.internal/documents/b52f0618-f656-4e63-a8b8-634fd210552e",
+            "document_filename": "evidence.txt",
+            "document_binary_url": "http://dm-store-demo.service.core-compute-demo.internal/documents/b52f0618-f656-4e63-a8b8-634fd210552e/binary"
+          }
+        }
+      }
+    ],
+    "et1VettingDocument": {
+      "document_url": "http://dm-store-demo.service.core-compute-demo.internal/documents/6042caf3-9b19-404b-8de1-3613b05617a3",
+      "document_filename": "ET1 Vetting.pdf",
+      "document_binary_url": "http://dm-store-demo.service.core-compute-demo.internal/documents/6042caf3-9b19-404b-8de1-3613b05617a3/binary"
+    },
+    "ethosCaseReference": "8000255/2023",
+    "flagsImageFileName": "EMP-TRIB-00011000000.jpg",
+    "jurCodesCollection": [
+      {
+        "id": "9c6e880d-ac3d-4694-8a50-3a2019b6dd39",
+        "value": {
+          "judgmentOutcome": "Not allocated",
+          "juridictionCodesList": "ADT"
+        }
+      }
+    ],
+    "claimantWorkAddress": {
+      "claimant_work_address": {
+        "Country": "isnt",
+        "PostCode": "EH12 7TB",
+        "PostTown": "this",
+        "AddressLine1": "I",
+        "AddressLine2": "hope"
+      }
+    },
+    "et1OnlineSubmission": "Yes",
+    "judgementCollection": [
+      {
+        "id": "acd7a154-856c-4c4e-9b1a-e791203a9d25",
+        "value": {
+          "judgement_type": "Judgment",
+          "judgment_notes": "Judgment Notes (Optional)",
+          "Judgement_costs": {
+            "costs_question": "Yes",
+            "wasted_cost_awarded_to": "Claimant",
+            "costs_expenses_awarded_to": "Claimant",
+            "pro_bono_costs_awarded_to": "Access to Justice Foundation",
+            "wasted_cost_amount_awarded": "6900",
+            "wasted_cost_awarded_against": "Claimant",
+            "costs_expenses_awarded_amount": "42000",
+            "pro_bono_costs_amount_awarded": "61700",
+            "costs_expenses_awarded_against": "Respondent",
+            "preparation_of_time_awarded_to": "Claimant",
+            "pro_bono_costs_awarded_against": "Claimant's Representative",
+            "preparation_of_time_amount_awarded": "133700",
+            "preparation_of_time_awarded_against": "Claimant"
+          },
+          "reconsiderations": {
+            "reconsideration": "Yes",
+            "reconsiderationDate": "2000-01-11",
+            "reconsiderationDecision": "Judgment Varied",
+            "reconsiderationDirection": "Application to be considered on the written submissions",
+            "reconsiderationOwnInitiative": "Yes"
+          },
+          "judgement_details": {
+            "awardMade": "Yes",
+            "reasons_given": "Yes",
+            "non-financial_award": "Yes",
+            "certificateOfCorrection": "Yes"
+          },
+          "jurisdictionCodes": [
+            {
+              "id": "329a5ac0-4819-453e-bfe3-db24bb537807",
+              "value": {
+                "juridictionCodesList": "ADT"
+              }
+            }
+          ],
+          "date_judgment_made": "2022-05-16",
+          "date_judgment_sent": "2022-05-16",
+          "liability_optional": "Remedy",
+          "non_hearing_judgment": "Yes",
+          "judgement_outcome_doc": {
+            "document_url": "http://dm-store-demo.service.core-compute-demo.internal/documents/b52f0618-f656-4e63-a8b8-634fd210552e",
+            "document_filename": "evidence.txt",
+            "document_binary_url": "http://dm-store-demo.service.core-compute-demo.internal/documents/b52f0618-f656-4e63-a8b8-634fd210552e/binary"
+          }
+        }
+      }
+    ],
+    "restrictedReporting": {
+      "imposed": "Yes",
+      "rule503b": "Yes",
+      "startDate": "1989-01-16",
+      "dateCeased": "2000-01-11",
+      "requestedBy": "Both Parties",
+      "excludedNames": "not for public release",
+      "excludedRegister": "Definite",
+      "deletedPhyRegister": "Yes",
+      "dynamicRequestedBy": {
+        "value": {
+          "code": "Both Parties",
+          "label": "Both Parties"
+        },
+        "list_items": [
+          {
+            "code": "R: Another Person",
+            "label": "Another Person"
+          },
+          {
+            "code": "C: Jack Reeve",
+            "label": "Jack Reeve"
+          },
+          {
+            "code": "Judge",
+            "label": "Judge"
+          },
+          {
+            "code": "Both Parties",
+            "label": "Both Parties"
+          },
+          {
+            "code": "Other",
+            "label": "Other"
+          },
+          {
+            "code": "None",
+            "label": "None"
+          }
+        ],
+        "selectedCode": "Both Parties",
+        "selectedLabel": "Both Parties"
+      }
+    },
+    "areTheseCodesCorrect": "Yes",
+    "respondentCollection": [
+      {
+        "id": "1c3b2694-111b-490d-a371-fa251ea3af1f",
+        "value": {
+          "respondent_ACAS": "R123456/12/34",
+          "respondent_name": "Badman",
+          "responseContinue": "Yes",
+          "responseReceived": "No",
+          "responseStruckOut": "No",
+          "extensionRequested": "No",
+          "respondent_address": {
+            "Country": "isnt",
+            "PostCode": "EH12 7TB",
+            "PostTown": "this",
+            "AddressLine1": "I",
+            "AddressLine2": "hope"
+          },
+          "respondent_ACAS_question": "Yes"
+        }
+      }
+    ],
+    "caseNameHmctsInternal": "Citizen One vs Badman",
+    "et1GovOrMajorQuestion": "No",
+    "et1VettingCompletedBy": "ET API1",
+    "caseManagementCategory": {
+      "value": {
+        "code": "Employment Tribunals",
+        "label": "Employment"
+      },
+      "list_items": [
+        {
+          "code": "Employment Tribunals",
+          "label": "Employment"
+        }
+      ],
+      "selectedCode": "Employment Tribunals",
+      "selectedLabel": "Employment"
+    },
+    "caseManagementLocation": {
+      "region": "11",
+      "baseLocation": "366559"
+    },
+    "claimantTaskListChecks": {
+      "claimDetailsCheck": "Yes",
+      "personalDetailsCheck": "Yes",
+      "employmentAndRespondentCheck": "Yes"
+    },
+    "et1SuggestHearingVenue": "No",
+    "noticeOfChangeAnswers0": {
+      "respondentName": "Badman",
+      "claimantLastName": "One",
+      "claimantFirstName": "Citizen"
+    },
+    "claimant_TypeOfClaimant": "Individual",
+    "et1VideoHearingQuestion": "Yes",
+    "isTrackAllocationCorrect": "Yes",
+    "tribunalCorrespondenceDX": "DX 580003",
+    "claimantHearingPreference": {
+      "hearing_preferences": [
+        "Video"
+      ],
+      "reasonable_adjustments": "No"
+    },
+    "tribunalAndOfficeLocation": "<hr><h3>Tribunal location</h3><pre>Tribunal &#09&#09&#09&#09&nbsp; England<br><br>Office &#09&#09&#09&#09&#09 Bristol</pre><hr>",
+    "tribunalCorrespondenceFax": "01264 785 177",
+    "claimantDocumentCollection": [
+      {
+        "id": "cdfabef6-250f-4f36-8a32-b0aa75893e5f",
+        "value": {
+          "typeOfDocument": "ET1",
+          "shortDescription": "lol",
+          "uploadedDocument": {
+            "document_url": "http://dm-store-demo.service.core-compute-demo.internal/documents/b52f0618-f656-4e63-a8b8-634fd210552e",
+            "document_filename": "evidence.txt",
+            "document_binary_url": "http://dm-store-demo.service.core-compute-demo.internal/documents/b52f0618-f656-4e63-a8b8-634fd210552e/binary"
+          }
+        }
+      }
+    ],
+    "representativeClaimantType": {
+      "name_of_organisation": "Org Name",
+      "name_of_representative": "Claimant Rep",
+      "representative_id": "5d3be92a-c731-49c2-abda-0cc3825cbd3f",
+      "representative_address": {
+        "County": "",
+        "Country": "United Kingdom",
+        "PostCode": "HU10 6NA",
+        "PostTown": "Hull",
+        "AddressLine1": "222 Kingston Road",
+        "AddressLine2": "",
+        "AddressLine3": "Willerby"
+      },
+      "representative_reference": null,
+      "representative_occupation": "Solicitor",
+      "representative_preference": "Email",
+      "representative_phone_number": null,
+      "representative_email_address": null,
+      "representative_mobile_number": null,
+      "representative_occupation_other": null
+    },
+    "selectNotificationDropdown": {
+      "value": {
+        "code": "cb633a0d-8f02-4404-9512-bb63890999e8",
+        "label": "Notification Title - [Claimant / Respondent details, Claim (ET1), Response (ET3), Hearing, Judgment, Case management orders / requests, Employer Contract Claim, Other (General correspondence)]"
+      },
+      "list_items": [
+        {
+          "code": "cb633a0d-8f02-4404-9512-bb63890999e8",
+          "label": "Notification Title - [Claimant / Respondent details, Claim (ET1), Response (ET3), Hearing, Judgment, Case management orders / requests, Employer Contract Claim, Other (General correspondence)]"
+        }
+      ],
+      "selectedCode": "cb633a0d-8f02-4404-9512-bb63890999e8",
+      "selectedLabel": "Notification Title - [Claimant / Respondent details, Claim (ET1), Response (ET3), Hearing, Judgment, Case management orders / requests, Employer Contract Claim, Other (General correspondence)]"
+    },
+    "sendNotificationCollection": [
+      {
+        "id": "cb633a0d-8f02-4404-9512-bb63890999e8",
+        "value": {
+          "date": "1 November 2023",
+          "number": "1",
+          "notificationState": "notViewedYet",
+          "respondCollection": [
+            {
+              "id": "e75739d3-1961-4e8d-bc57-1ce7646bd1ec",
+              "value": {
+                "date": "1 November 2023",
+                "from": "Respondent",
+                "response": "Response to the tribunal",
+                "copyToOtherParty": "Yes",
+                "supportingMaterial": [
+                  {
+                    "id": "71188dda-4bea-48ab-bd9d-f88c243fd51b",
+                    "value": {
+                      "shortDescription": "FlexUI sample document",
+                      "uploadedDocument": {
+                        "document_url": "http://dm-store-demo.service.core-compute-demo.internal/documents/b52f0618-f656-4e63-a8b8-634fd210552e",
+                        "document_filename": "evidence.txt",
+                        "document_binary_url": "http://dm-store-demo.service.core-compute-demo.internal/documents/b52f0618-f656-4e63-a8b8-634fd210552e/binary"
+                      }
+                    }
+                  }
+                ],
+                "hasSupportingMaterial": "Yes"
+              }
+            }
+          ],
+          "sendNotificationTitle": "Notification Title",
+          "sendNotificationLetter": "No",
+          "sendNotificationNotify": "Both parties",
+          "sendNotificationSentBy": "Tribunal",
+          "sendNotificationDetails": "decision details",
+          "sendNotificationSubject": [
+            "Claimant / Respondent details",
+            "Claim (ET1)",
+            "Response (ET3)",
+            "Hearing",
+            "Judgment",
+            "Case management orders / requests",
+            "Employer Contract Claim",
+            "Other (General correspondence)"
+          ],
+          "sendNotificationDecision": "Other",
+          "sendNotificationFullName": "Name of person 1",
+          "sendNotificationFullName2": "Full name for judgment",
+          "sendNotificationEccQuestion": "Notice of Employer Contract Claim",
+          "sendNotificationWhoCaseOrder": "Legal officer",
+          "sendNotificationSelectHearing": {
+            "value": {
+              "code": "bfd521ce-355f-4f89-9e45-c80be48710d8",
+              "label": "1: Hearing - Barnstaple - 16 May 2022 01:00"
+            },
+            "list_items": [
+              {
+                "code": "bfd521ce-355f-4f89-9e45-c80be48710d8",
+                "label": "1: Hearing - Barnstaple - 16 May 2022 01:00"
+              },
+              {
+                "code": "4d7724a0-643d-4137-9e41-7966c0f1f9a4",
+                "label": "2: Hearing - Barnstaple - 16 May 2069 01:00"
+              }
+            ],
+            "selectedCode": "bfd521ce-355f-4f89-9e45-c80be48710d8",
+            "selectedLabel": "1: Hearing - Barnstaple - 16 May 2022 01:00"
+          },
+          "sendNotificationSelectParties": "Claimant only",
+          "sendNotificationSubjectString": "Claimant / Respondent details, Claim (ET1), Response (ET3), Hearing, Judgment, Case management orders / requests, Employer Contract Claim, Other (General correspondence)",
+          "sendNotificationAdditionalInfo": "more data",
+          "sendNotificationCaseManagement": "Case management order",
+          "sendNotificationResponsesCount": "1",
+          "sendNotificationUploadDocument": [
+            {
+              "id": "908b7020-664e-4b34-87f2-749c3ab7e85e",
+              "value": {
+                "shortDescription": "FlexUI sample document",
+                "uploadedDocument": {
+                  "document_url": "http://dm-store-demo.service.core-compute-demo.internal/documents/b52f0618-f656-4e63-a8b8-634fd210552e",
+                  "document_filename": "evidence.txt",
+                  "document_binary_url": "http://dm-store-demo.service.core-compute-demo.internal/documents/b52f0618-f656-4e63-a8b8-634fd210552e/binary"
+                }
+              }
+            }
+          ],
+          "sendNotificationResponseTribunal": "Yes - view document for details",
+          "sendNotificationWhoMadeJudgement": "Judge",
+          "respondNotificationTypeCollection": [
+            {
+              "id": "7e2ba02d-8e6f-41eb-bb20-ca937466cbd3",
+              "value": {
+                "isClaimantResponseDue": "Yes",
+                "respondNotificationDate": "1 November 2023",
+                "respondNotificationTitle": "Caseworker response",
+                "respondNotificationFullName": "Name of person responding",
+                "respondNotificationWhoRespond": "Claimant only",
+                "respondNotificationCmoOrRequest": "Case management order",
+                "respondNotificationPartyToNotify": "Both parties",
+                "respondNotificationAdditionalInfo": "Additional information",
+                "respondNotificationUploadDocument": [
+                  {
+                    "id": "9cbe33eb-aa43-42f3-90d5-cd15d0684a61",
+                    "value": {
+                      "shortDescription": "FlexUI sample document",
+                      "uploadedDocument": {
+                        "document_url": "http://dm-store-demo.service.core-compute-demo.internal/documents/b52f0618-f656-4e63-a8b8-634fd210552e",
+                        "document_filename": "evidence.txt",
+                        "document_binary_url": "http://dm-store-demo.service.core-compute-demo.internal/documents/b52f0618-f656-4e63-a8b8-634fd210552e/binary"
+                      }
+                    }
+                  }
+                ],
+                "respondNotificationResponseRequired": "Yes",
+                "respondNotificationCaseManagementMadeBy": "Legal officer"
+              }
+            }
+          ],
+          "sendNotificationResponseTribunalTable": "Yes"
+        }
+      }
+    ],
+    "claimantRepresentedQuestion": "Yes",
+    "claimantWorkAddressQuestion": "Yes",
+    "tribunalCorrespondenceEmail": "glasgowet@justice.gov.uk",
+    "et1VettingAcasCertIsYesOrNo1": "Yes",
+    "respondentOrganisationPolicy0": {
+      "Organisation": {
+        "OrganisationID": "TWH38KH"
+      },
+      "OrgPolicyCaseAssignedRole": "[SOLICITORA]"
+    },
+    "respondentOrganisationPolicy1": {
+      "OrgPolicyCaseAssignedRole": "[SOLICITORB]"
+    },
+    "respondentOrganisationPolicy2": {
+      "OrgPolicyCaseAssignedRole": "[SOLICITORC]"
+    },
+    "respondentOrganisationPolicy3": {
+      "OrgPolicyCaseAssignedRole": "[SOLICITORD]"
+    },
+    "respondentOrganisationPolicy4": {
+      "OrgPolicyCaseAssignedRole": "[SOLICITORE]"
+    },
+    "respondentOrganisationPolicy5": {
+      "OrgPolicyCaseAssignedRole": "[SOLICITORF]"
+    },
+    "respondentOrganisationPolicy6": {
+      "OrgPolicyCaseAssignedRole": "[SOLICITORG]"
+    },
+    "respondentOrganisationPolicy7": {
+      "OrgPolicyCaseAssignedRole": "[SOLICITORH]"
+    },
+    "respondentOrganisationPolicy8": {
+      "OrgPolicyCaseAssignedRole": "[SOLICITORI]"
+    },
+    "respondentOrganisationPolicy9": {
+      "OrgPolicyCaseAssignedRole": "[SOLICITORJ]"
+    },
+    "changeOrganisationRequestField": {
+      "OrganisationToAdd": {}
+    },
+    "et1VettingCanServeClaimYesOrNo": "Yes",
+    "genericTseApplicationCollection": [
+      {
+        "id": "a0c03b6f-3686-4bb8-ba8f-96f12457e061",
+        "value": {
+          "date": "1 November 2023",
+          "type": "Consider a decision afresh",
+          "number": "1",
+          "status": "Open",
+          "details": "lol",
+          "dueDate": "8 November 2023",
+          "applicant": "Respondent",
+          "documentUpload": {
+            "document_url": "http://dm-store-demo.service.core-compute-demo.internal/documents/b52f0618-f656-4e63-a8b8-634fd210552e",
+            "document_filename": "evidence.txt",
+            "document_binary_url": "http://dm-store-demo.service.core-compute-demo.internal/documents/b52f0618-f656-4e63-a8b8-634fd210552e/binary"
+          },
+          "responsesCount": "0",
+          "applicationState": "notStartedYet",
+          "copyToOtherPartyYesOrNo": "Yes"
+        }
+      }
+    ],
+    "tribunalCorrespondenceTelephone": "0141 204 0730",
+    "et1ReasonableAdjustmentsQuestion": "No",
+    "sendNotificationWhoMadeJudgement": "Judge",
+    "pseRespondentSelectOrderOrRequest": {
+      "value": {
+        "code": "1",
+        "label": "1 Notification Title"
+      },
+      "list_items": [
+        {
+          "code": "1",
+          "label": "1 Notification Title"
+        }
+      ],
+      "selectedCode": "1",
+      "selectedLabel": "1 Notification Title"
+    }
   },
   "security_classification": "PUBLIC",
-  "callback_response_status": null,
-  "caseCategories": [
-    {
-      "categoryType": "Employment",
-      "categoryValue": "Employment",
-      "categoryParent": "Employment"
-    }
-  ],
-  "respondentCollection": [
-    {
-      "id": "5f69a174-fce3-4286-a13c-58832514be9e",
-      "value": {
-        "respondentType": "Organisation",
-        "respondent_ACAS": "123",
-        "respondent_name": "George Costanza",
-        "responseContinue": "Yes",
-        "responseReceived": "No",
-        "respondent_phone1": "07123456789",
-        "responseStruckOut": "No",
-        "extensionRequested": "No",
-        "respondent_address": {
-          "Country": "United Kingdom",
-          "PostCode": "DA8 2DE",
-          "PostTown": "Erith",
-          "AddressLine1": "35 Bridge Road"
-        },
-        "respondent_ACAS_question": "Yes"
-      }
-    },
-    {
-      "id": "5f69a174-fce3-4286-a13c-58832514be9f",
-      "value": {
-        "respondentType": "Organisation",
-        "respondent_ACAS": "123",
-        "respondent_name": "Lynnette Orr",
-        "responseContinue": "Yes",
-        "responseReceived": "No",
-        "respondent_phone1": "07123456789",
-        "responseStruckOut": "No",
-        "extensionRequested": "No",
-        "respondent_address": {
-          "Country": "United Kingdom",
-          "PostCode": "DA8 2DE",
-          "PostTown": "Erith",
-          "AddressLine1": "35 Bridge Road"
-        },
-        "respondent_ACAS_question": "Yes"
-      }
-    }
-  ],
-  "repCollection": [
-    {
-      "id": "7977fb82-8dd4-4b33-8fee-f8f60809c6f1",
-      "value": {
-        "respondentId": "5f69a174-fce3-4286-a13c-58832514be9e",
-        "resp_rep_name": "George Costanza",
-        "dynamic_resp_rep_name": {
-          "value": {
-            "code": "R: George Costanza",
-            "label": "George Costanza"
-          },
-          "list_items": [
-            {
-              "code": "R: George Costanza",
-              "label": "George Costanza"
-            },
-            {
-              "code": "R: Lynnette Orr",
-              "label": "Lynnette Orr"
-            }
-          ],
-          "selectedCode": "R: George Costanza",
-          "selectedLabel": "George Costanza"
-        },
-        "name_of_representative": "Respondent rep 2",
-        "representative_address": {
-          "Country": "United Kingdom",
-          "PostCode": "SW1H 9AJ",
-          "PostTown": "London",
-          "AddressLine1": "Ministry Of Justice",
-          "AddressLine2": "Seventh Floor 102 Petty France"
-        }
-      }
-    },
-    {
-      "id": "1c97e356-f3ca-4785-9ecd-80808f696d86",
-      "value": {
-        "myHmctsYesNo": "Yes",
-        "respondentId": "5f69a174-fce3-4286-a13c-58832514be9f",
-        "resp_rep_name": "Lynnette Orr",
-        "name_of_organisation": "ET - Organisation 1",
-        "dynamic_resp_rep_name": {
-          "value": {
-            "code": "R: Lynnette Orr",
-            "label": "Lynnette Orr"
-          },
-          "list_items": [
-            {
-              "code": "R: George Costanza",
-              "label": "George Costanza"
-            },
-            {
-              "code": "R: Lynnette Orr",
-              "label": "Lynnette Orr"
-            }
-          ],
-          "selectedCode": "R: Lynnette Orr",
-          "selectedLabel": "Lynnette Orr"
-        },
-        "name_of_representative": "Respondent rep (orgl) for org",
-        "representative_address": {
-          "PostCode": "ET1 ET1",
-          "PostTown": "London",
-          "AddressLine1": "1 Main Street"
-        },
-        "respondentOrganisation": {
-          "OrganisationID": "79ZRSOU",
-          "OrganisationName": "ET - Organisation 1"
-        }
-      }
-    }
-  ]
+  "callback_response_status": null
 }

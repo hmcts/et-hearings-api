@@ -3,11 +3,22 @@ package uk.gov.hmcts.reform.et.helper.mapping;
 import uk.gov.hmcts.et.common.model.ccd.CaseData;
 import uk.gov.hmcts.et.common.model.ccd.items.RepresentedTypeRItem;
 import uk.gov.hmcts.et.common.model.ccd.items.RespondentSumTypeItem;
+import uk.gov.hmcts.et.common.model.ccd.types.RepresentedTypeC;
+import uk.gov.hmcts.et.common.model.ccd.types.RespondentSumType;
+import uk.gov.hmcts.et.common.model.hmc.IndividualDetails;
 import uk.gov.hmcts.et.common.model.hmc.PartyDetails;
-import uk.gov.hmcts.reform.et.model.hmc.reference.EntityRoleCode;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
+import java.util.UUID;
+
+import static org.apache.commons.lang3.StringUtils.defaultString;
+import static org.apache.commons.lang3.StringUtils.isEmpty;
+import static org.apache.commons.lang3.StringUtils.isNotEmpty;
+import static uk.gov.hmcts.reform.et.model.hmc.reference.EntityRoleCode.CLAIMANT;
+import static uk.gov.hmcts.reform.et.model.hmc.reference.EntityRoleCode.LEGAL_REPRESENTATIVE;
+import static uk.gov.hmcts.reform.et.model.hmc.reference.EntityRoleCode.RESPONDENT;
 
 public final class HearingsPartyMapping {
 
@@ -15,107 +26,105 @@ public final class HearingsPartyMapping {
     public static final String ORGANISATION = "ORG";
 
     private HearingsPartyMapping() {
-        //NO-OP
+
     }
 
-    public static List<PartyDetails> buildPartyObjectForHearingPayload(
-        CaseData caseData,
-        List<RespondentSumTypeItem> respondents,
-        List<RepresentedTypeRItem> representatives) {
-
+    /**
+     * Construct a list of PartyDetails for HMC. Maps Claimant, Respondent and their legal reps where appropriate.
+     */
+    public static List<PartyDetails> buildPartyObjectForHearingPayload(CaseData caseData) {
         List<PartyDetails> parties = new ArrayList<>();
-        addPartyObjects(caseData, parties, representatives, respondents);
+        parties.add(mapPartyDetailsForClaimant(caseData));
+
+        Optional.ofNullable(caseData.getRepresentativeClaimantType())
+                .filter(claimant -> isNotEmpty(claimant.getNameOfRepresentative()))
+                .ifPresent(claimant -> parties.add(mapPartyDetailsForClaimantRep(caseData)));
+
+        Optional.ofNullable(caseData.getRespondentCollection())
+                .ifPresent(respondents -> parties.addAll(respondents.stream()
+                    .map(HearingsPartyMapping::mapPartyDetailsForRespondent)
+                    .toList()));
+
+        Optional.ofNullable(caseData.getRepCollection())
+                .ifPresent(representatives -> parties.addAll(representatives.stream()
+                        .map(HearingsPartyMapping::mapPartyDetailsForRespondentRep)
+                        .toList()));
+
         return parties;
     }
 
-    private static void addPartyObjects(CaseData caseData,
-                                        List<PartyDetails> parties,
-                                        List<RepresentedTypeRItem> representative,
-                                        List<RespondentSumTypeItem> respondents) {
+    private static PartyDetails mapPartyDetailsForRespondent(RespondentSumTypeItem respondentItem) {
+        RespondentSumType respondent = respondentItem.getValue();
+        assert respondent != null;
 
-        parties.add(getDetailsForClaimantPartyObject(caseData));
+        PartyDetails details = PartyDetails.builder()
+                .partyID(respondentItem.getId())
+                .partyRole(RESPONDENT.getHmcReference())
+                .partyType(ORGANISATION)
+                .partyName(respondent.getRespondentOrganisation())
+                .build();
 
-        if (caseData.getRepresentativeClaimantType() != null
-            && caseData.getRepresentativeClaimantType().getNameOfRepresentative() != null
-            && !caseData.getRepresentativeClaimantType().getNameOfRepresentative().isEmpty()) {
-            parties.add(getDetailsForClaimantRepPartyObject(caseData));
+        if (isNotEmpty(details.getPartyName())) {
+            return details; // Return early as we've already defaulted to organisation
         }
 
-        parties.addAll(getDetailsForRespondentPartyObject(respondents));
+        String fullName = respondent.getRespondentName();
+        details.setPartyType(INDIVIDUAL);
+        details.setPartyName(fullName);
 
-        if (representative != null && !representative.isEmpty()) {
-            parties.addAll(getDetailsForRespondentRepPartyObject(representative));
+        String firstName = defaultString(respondent.getRespondentFirstName(), fullName);
+        String lastName = defaultString(respondent.getRespondentLastName(), fullName);
+
+        if (isEmpty(respondent.getRespondentFirstName()) && fullName.contains(" ")) {
+            // Need to and can split by space
+            int lastSpaceIndex = fullName.lastIndexOf(' ');
+            firstName = fullName.substring(0, lastSpaceIndex);
+            lastName = fullName.substring(lastSpaceIndex + 1);
         }
+
+        details.setIndividualDetails(IndividualDetails.builder().firstName(firstName).lastName(lastName).build());
+        return details;
     }
 
-    private static List<PartyDetails> getDetailsForRespondentPartyObject(List<RespondentSumTypeItem> respondents) {
-        EntityRoleCode respondent = EntityRoleCode.RESPONDENT;
-        return respondents.stream()
-            .map(respondentItem -> {
-                PartyDetails respondentDetails = new PartyDetails();
-                respondentDetails.setPartyID(respondentItem.getId());
-                respondentDetails.setPartyRole(respondent.getHmcReference());
-
-                if (respondentItem.getValue().getRespondentOrganisation() == null
-                    || respondentItem.getValue().getRespondentOrganisation().isEmpty()) {
-                    respondentDetails.setPartyType(INDIVIDUAL);
-                    respondentDetails.setPartyName(respondentItem.getValue().getRespondentName());
-                } else {
-                    respondentDetails.setPartyType(ORGANISATION);
-                    respondentDetails.setPartyName(respondentItem.getValue().getRespondentOrganisation());
-                }
-                return respondentDetails;
-            })
-            .toList();
+    private static PartyDetails mapPartyDetailsForRespondentRep(RepresentedTypeRItem repItem) {
+        // TODO: Do we need IndividualDetails for RespondentRep?
+        return PartyDetails.builder()
+                .partyID(repItem.getId())
+                .partyName(repItem.getValue().getNameOfRepresentative())
+                .partyRole(LEGAL_REPRESENTATIVE.getHmcReference())
+                .partyType(isEmpty(repItem.getValue().getNameOfOrganisation()) ? INDIVIDUAL : ORGANISATION)
+                .build();
     }
 
-    private static List<PartyDetails> getDetailsForRespondentRepPartyObject(
-        List<RepresentedTypeRItem> representatives) {
-        EntityRoleCode representative = EntityRoleCode.LEGAL_REPRESENTATIVE;
-        return representatives.stream()
-            .map(repItem -> {
-                PartyDetails respondentRepDetails = new PartyDetails();
-                respondentRepDetails.setPartyID(repItem.getId());
-                respondentRepDetails.setPartyName(repItem.getValue().getNameOfRepresentative());
-                respondentRepDetails.setPartyRole(representative.getHmcReference());
+    private static PartyDetails mapPartyDetailsForClaimant(CaseData caseData) {
+        IndividualDetails individualDetails = IndividualDetails.builder()
+                .title(caseData.getClaimantIndType().getClaimantTitle())
+                .firstName(caseData.getClaimantIndType().getClaimantFirstNames())
+                .lastName(caseData.getClaimantIndType().getClaimantLastName())
+                .build();
 
-                if (repItem.getValue().getNameOfOrganisation() == null
-                    || repItem.getValue().getNameOfOrganisation().isEmpty()) {
-                    respondentRepDetails.setPartyType(INDIVIDUAL);
-                } else {
-                    respondentRepDetails.setPartyType(ORGANISATION);
-                }
-                return respondentRepDetails;
-            })
-            .toList();
+        return PartyDetails.builder()
+                // TODO: Remove the defaultString line when migration has gone live (RET-4383)
+                // .partyID(caseData.getClaimantId()))
+                .partyID(defaultString(caseData.getClaimantId(), UUID.randomUUID().toString()))
+                .partyName(caseData.getClaimant())
+                .partyRole(CLAIMANT.getHmcReference())
+                .partyType(INDIVIDUAL)
+                .individualDetails(individualDetails).build();
     }
 
-    private static PartyDetails getDetailsForClaimantPartyObject(CaseData caseData) {
-        PartyDetails claimantDetails = new PartyDetails();
-        EntityRoleCode claimant = EntityRoleCode.CLAIMANT;
+    private static PartyDetails mapPartyDetailsForClaimantRep(CaseData caseData) {
+        RepresentedTypeC claimantType = caseData.getRepresentativeClaimantType();
 
-        claimantDetails.setPartyID(caseData.getClaimantId());
-        claimantDetails.setPartyName(caseData.getClaimant());
-        claimantDetails.setPartyRole(claimant.getHmcReference());
-        claimantDetails.setPartyType(INDIVIDUAL);
-
-        return claimantDetails;
-    }
-
-    private static PartyDetails getDetailsForClaimantRepPartyObject(CaseData caseData) {
-        PartyDetails claimantRepDetails = new PartyDetails();
-        EntityRoleCode representative = EntityRoleCode.LEGAL_REPRESENTATIVE;
-        claimantRepDetails.setPartyID(caseData.getRepresentativeClaimantType().getRepresentativeId());
-        claimantRepDetails.setPartyName(caseData.getRepresentativeClaimantType().getNameOfRepresentative());
-        claimantRepDetails.setPartyRole(representative.getHmcReference());
-
-        if (caseData.getRepresentativeClaimantType().getNameOfOrganisation() == null
-            || caseData.getRepresentativeClaimantType().getNameOfOrganisation().isEmpty()) {
-            claimantRepDetails.setPartyType(INDIVIDUAL);
-        } else {
-            claimantRepDetails.setPartyType(ORGANISATION);
-        }
-        return claimantRepDetails;
+        // TODO: Do we need IndividualDetails for ClaimantRep?
+        return PartyDetails.builder()
+                // TODO: Remove the defaultString line when migration has gone live (RET-4383)
+                // .partyID(claimantType.getRepresentativeId())
+                .partyID(defaultString(claimantType.getRepresentativeId(), UUID.randomUUID().toString()))
+                .partyName(claimantType.getNameOfRepresentative())
+                .partyRole(LEGAL_REPRESENTATIVE.getHmcReference())
+                .partyType(isEmpty(claimantType.getNameOfOrganisation()) ? INDIVIDUAL : ORGANISATION)
+                .build();
     }
 }
 

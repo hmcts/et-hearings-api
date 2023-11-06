@@ -7,7 +7,6 @@ import lombok.RequiredArgsConstructor;
 @Getter
 @RequiredArgsConstructor
 public enum EntityRoleCode {
-
     CLAIMANT("CLAI", "Claimant"),
     RESPONDENT("RESP", "Respondent"),
     LEGAL_REPRESENTATIVE("LGRP", "Legal Representative");
@@ -16,8 +15,4 @@ public enum EntityRoleCode {
     private final String hmcReference;
     private final String parentRole;
 
-    public static String getHmcReferenceForRole(EntityRoleCode role) {
-        return role.getHmcReference();
-    }
 }
-
