@@ -16,6 +16,9 @@ public final class CaseFlagsMapping {
 
     }
 
+    /**
+     * Flattens case and party flags into a single CaseFlags object for the HMC payload.
+     */
     public static CaseFlags getCaseFlags(CaseData caseData) {
         List<PartyFlags> flags = new ArrayList<>();
 
@@ -33,6 +36,11 @@ public final class CaseFlagsMapping {
                 .build();
     }
 
+    /**
+     * Map CaseFlag objects into PartyFlags for HMC.
+     * @param partyId ID for the party being mapped
+     * @param flags CaseFlags object as recognised by CCD
+     */
     private static List<PartyFlags> mapCaseFlagsToPartyFlags(String partyId, CaseFlagsType flags) {
         if (flags == null || flags.getDetails() == null) {
             return new ArrayList<>();

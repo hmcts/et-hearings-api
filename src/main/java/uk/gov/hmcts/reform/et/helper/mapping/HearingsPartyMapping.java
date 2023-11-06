@@ -29,6 +29,9 @@ public final class HearingsPartyMapping {
 
     }
 
+    /**
+     * Construct a list of PartyDetails for HMC. Maps Claimant, Respondent and their legal reps where appropriate.
+     */
     public static List<PartyDetails> buildPartyObjectForHearingPayload(CaseData caseData) {
         List<PartyDetails> parties = new ArrayList<>();
         parties.add(mapPartyDetailsForClaimant(caseData));

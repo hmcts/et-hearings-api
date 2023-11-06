@@ -28,6 +28,12 @@ public class ServiceHearingsService {
     @Value("${et.hmctsServiceId}")
     private String hmctsServiceId;
 
+    /**
+     * Gets ServiceHearingValues required for ExUI to display the Hearings tab.
+     * @param authorization Bearer token used to look up the case
+     * @param request Request object containing the case ID
+     * @throws GetCaseException When the case cannot be fetched from CCD.
+     */
     public ServiceHearingValues getServiceHearingValues(String authorization, ServiceHearingRequest request)
             throws GetCaseException {
         CaseDetails caseDetails = caseService.retrieveCase(authorization, request.getCaseId());
@@ -49,7 +55,7 @@ public class ServiceHearingsService {
                 .caseRestrictedFlag(HearingsCaseMapping.getCaseRestrictedFlag(caseData))
                 .caseSlaStartDate(HearingsCaseMapping.getCaseCreated(caseData))
                 .caseType(caseTypeId)
-                .duration(HearingsDetailsMapping.getHearingDuration())
+                .duration(0)
                 .hearingChannels(new ArrayList<>())
                 .hearingInWelshFlag(HearingsDetailsMapping.isHearingInWelshFlag(caseData))
                 .hearingIsLinkedFlag(HearingsDetailsMapping.isHearingIsLinkedFlag(caseData))

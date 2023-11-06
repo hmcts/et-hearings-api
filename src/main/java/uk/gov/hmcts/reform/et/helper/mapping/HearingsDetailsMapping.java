@@ -34,10 +34,6 @@ public final class HearingsDetailsMapping {
         return STANDARD_PRIORITY;
     }
 
-    public static Integer getHearingDuration() {
-        return 0;
-    }
-
     public static Integer getNumberOfPhysicalAttendees() {
         // TODO Future Work
         return PHYSICAL_ATTENDEES;
