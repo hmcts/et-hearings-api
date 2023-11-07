@@ -28,7 +28,17 @@ class HearingsPartyMappingTest {
     }
 
     @Test
-    void testBuildPartyObjectForHearingPayload() {
+    void testBuildPartyObjectForHearingPayloadFullPayload() {
+        RespondentSumType respondent = caseData.getRespondentCollection().get(0).getValue();
+        respondent.setRespondentFirstName("First");
+        respondent.setRespondentLastName("Last");
+        respondent.setRespondentName("First Last");
+
+        PartyDetails expectedRespondentDetails = serviceHearingValues.getParties().get(2);
+        expectedRespondentDetails.setPartyName("First Last");
+        expectedRespondentDetails.getIndividualDetails().setFirstName("First");
+        expectedRespondentDetails.getIndividualDetails().setLastName("Last");
+
         List<PartyDetails> parties = HearingsPartyMapping.buildPartyObjectForHearingPayload(caseData);
         assertEquals(serviceHearingValues.getParties(), parties);
     }
@@ -44,6 +54,22 @@ class HearingsPartyMappingTest {
         expectedRespondentDetails.setPartyName("First Last");
         expectedRespondentDetails.getIndividualDetails().setFirstName("First");
         expectedRespondentDetails.getIndividualDetails().setLastName("Last");
+
+        List<PartyDetails> parties = HearingsPartyMapping.buildPartyObjectForHearingPayload(caseData);
+        assertEquals(serviceHearingValues.getParties(), parties);
+    }
+
+    @Test
+    void testBuildPartyObjectForHearingPayloadNoLastName() {
+        RespondentSumType respondent = caseData.getRespondentCollection().get(0).getValue();
+        respondent.setRespondentFirstName(null);
+        respondent.setRespondentLastName(null);
+        respondent.setRespondentName("NoLastName");
+
+        PartyDetails expectedRespondentDetails = serviceHearingValues.getParties().get(2);
+        expectedRespondentDetails.setPartyName("NoLastName");
+        expectedRespondentDetails.getIndividualDetails().setFirstName("NoLastName");
+        expectedRespondentDetails.getIndividualDetails().setLastName("NoLastName");
 
         List<PartyDetails> parties = HearingsPartyMapping.buildPartyObjectForHearingPayload(caseData);
         assertEquals(serviceHearingValues.getParties(), parties);
