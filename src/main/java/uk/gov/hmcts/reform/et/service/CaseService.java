@@ -20,7 +20,7 @@ public class CaseService {
     public CaseDetails retrieveCase(String authorization, String caseId) throws GetCaseException {
 
         if (StringUtils.isEmpty(caseId)) {
-            String cause = String.format("The Case id was invalid");
+            String cause = "The Case id was invalid";
             GetCaseException exc = new GetCaseException(cause);
             log.error(cause, exc);
             throw exc;
