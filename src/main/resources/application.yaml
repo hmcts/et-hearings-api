@@ -84,6 +84,9 @@ etcos:
     username: et.service@hmcts.net
     password: Pa55word11
 
+case-details-url:
+  exui: ${EXUI_CASE_DETAILS_URL:http://localhost:3455/cases/case-details/}
+
   flags:
     hmc-to-hearings-api:
       enabled: ${HMC_HEARINGS_LISTENING_ENABLED:false}

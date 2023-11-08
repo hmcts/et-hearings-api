@@ -14,7 +14,7 @@
       "categoryParent": "BHA1-EMT"
     }
   ],
-  "caseDeepLink": "TODO",
+  "caseDeepLink": "https://manage-case.test.platform.hmcts.net/cases/case-details/1646225213651590#Case%20File%20View",
   "externalCaseReference": null,
   "caseManagementLocationCode": "366559",
   "autoListFlag": false,
