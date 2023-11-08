@@ -28,7 +28,7 @@ class HearingsPartyMappingTest {
     }
 
     @Test
-    void testBuildPartyObjectForHearingPayload() {
+    void testBuildPartyObjectForHearingPayloadFullPayload() {
         List<PartyDetails> parties = HearingsPartyMapping.buildPartyObjectForHearingPayload(caseData);
         assertEquals(serviceHearingValues.getParties(), parties);
     }
@@ -44,6 +44,23 @@ class HearingsPartyMappingTest {
         expectedRespondentDetails.setPartyName("First Last");
         expectedRespondentDetails.getIndividualDetails().setFirstName("First");
         expectedRespondentDetails.getIndividualDetails().setLastName("Last");
+
+        List<PartyDetails> parties = HearingsPartyMapping.buildPartyObjectForHearingPayload(caseData);
+        assertEquals(serviceHearingValues.getParties(), parties);
+    }
+
+    @Test
+    void testBuildPartyObjectForHearingPayloadNoLastName() {
+        RespondentSumType respondent = caseData.getRespondentCollection().get(0).getValue();
+        respondent.setRespondentFirstName(null);
+        respondent.setRespondentLastName(null);
+        String noLastName = "NoLastName";
+        respondent.setRespondentName(noLastName);
+
+        PartyDetails expectedRespondentDetails = serviceHearingValues.getParties().get(2);
+        expectedRespondentDetails.setPartyName(noLastName);
+        expectedRespondentDetails.getIndividualDetails().setFirstName(noLastName);
+        expectedRespondentDetails.getIndividualDetails().setLastName(noLastName);
 
         List<PartyDetails> parties = HearingsPartyMapping.buildPartyObjectForHearingPayload(caseData);
         assertEquals(serviceHearingValues.getParties(), parties);
