@@ -28,6 +28,9 @@ public class ServiceHearingsService {
     @Value("${et.hmctsServiceId}")
     private String hmctsServiceId;
 
+    @Value("${case-details-url.exui}")
+    private String exuiUrl;
+
     /**
      * Gets ServiceHearingValues required for ExUI to display the Hearings tab.
      * @param authorization Bearer token used to look up the case
@@ -40,21 +43,21 @@ public class ServiceHearingsService {
         CaseData caseData = CaseDataMapping.mapCaseData(caseDetails.getData());
 
         log.info("Mapping hearing values for Case id : {}, generating Service Hearing Values", caseDetails.getId());
-        return mapServiceHearingValues(caseDetails.getCaseTypeId(), caseData);
+        return mapServiceHearingValues(caseDetails, caseData);
     }
 
-    private ServiceHearingValues mapServiceHearingValues(String caseTypeId, CaseData caseData) {
+    private ServiceHearingValues mapServiceHearingValues(CaseDetails caseDetails, CaseData caseData) {
         return ServiceHearingValues.builder()
                 .autoListFlag(HearingsDetailsMapping.getAutoListFlag(caseData))
                 .caseAdditionalSecurityFlag(HearingsCaseMapping.getCaseAdditionalSecurityFlag(caseData))
                 .caseCategories(HearingsCaseMapping.getCaseCategories())
-                .caseDeepLink(HearingsCaseMapping.getCaseDeepLink(caseData))
+                .caseDeepLink(HearingsCaseMapping.getCaseDeepLink(exuiUrl, caseDetails.getId().toString()))
                 .caseFlags(CaseFlagsMapping.getCaseFlags(caseData))
                 .caseInterpreterRequiredFlag(HearingsCaseMapping.getCaseInterpreterRequiredFlag(caseData))
                 .caseManagementLocationCode(HearingsDetailsMapping.getTribunalAndOfficeLocation(caseData))
                 .caseRestrictedFlag(HearingsCaseMapping.getCaseRestrictedFlag(caseData))
                 .caseSlaStartDate(HearingsCaseMapping.getCaseCreated(caseData))
-                .caseType(caseTypeId)
+                .caseType(caseDetails.getCaseTypeId())
                 .duration(0)
                 .hearingChannels(new ArrayList<>())
                 .hearingInWelshFlag(HearingsDetailsMapping.isHearingInWelshFlag(caseData))

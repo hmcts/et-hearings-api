@@ -27,11 +27,17 @@ class HearingsCaseMappingTest {
 
     @Test
     void testGetCaseDeepLink() {
-        CaseData caseData = new CaseData();
-        caseData.setCaseDeepLink("deepLink");
+        String expectedCaseDeepLink =
+            "https://manage-case.test.platform.hmcts.net/cases/case-details/1694700082073614#Case%20File%20View";
 
-        assertEquals("deepLink", HearingsCaseMapping.getCaseDeepLink(caseData),
-                "CaseDeepLink should match the expected value");
+        assertEquals(
+            expectedCaseDeepLink,
+            HearingsCaseMapping.getCaseDeepLink(
+                "https://manage-case.test.platform.hmcts.net/cases/case-details/",
+                "1694700082073614"
+            ),
+            "CaseDeepLink should match the expected value"
+        );
     }
 
     @Test

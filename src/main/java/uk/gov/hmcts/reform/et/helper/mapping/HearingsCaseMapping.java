@@ -19,13 +19,14 @@ import static uk.gov.hmcts.ecm.common.model.helper.Constants.YES;
 public final class HearingsCaseMapping {
     public static final String CASE_TYPE = "caseType";
     public static final String CASE_SUB_TYPE = "caseSubType";
+    private static final String CASE_FILE_VIEW_TAB = "#Case%20File%20View";
 
     private HearingsCaseMapping() {
 
     }
 
-    public static String getCaseDeepLink(CaseData caseData) {
-        return defaultString(caseData.getCaseDeepLink(), "TODO");
+    public static String getCaseDeepLink(String exuiUrl, String caseId) {
+        return exuiUrl + caseId + CASE_FILE_VIEW_TAB;
     }
 
     public static String getCaseNameHmctsInternal(CaseData caseData) {
