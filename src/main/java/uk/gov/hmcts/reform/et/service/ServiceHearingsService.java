@@ -39,25 +39,27 @@ public class ServiceHearingsService {
      */
     public ServiceHearingValues getServiceHearingValues(String authorization, ServiceHearingRequest request)
             throws GetCaseException {
-        CaseDetails caseDetails = caseService.retrieveCase(authorization, request.getCaseId());
+        String caseId = request.getCaseId();
+        CaseDetails caseDetails = caseService.retrieveCase(authorization, caseId);
         CaseData caseData = CaseDataMapping.mapCaseData(caseDetails.getData());
 
-        log.info("Mapping hearing values for Case id : {}, generating Service Hearing Values", caseDetails.getId());
-        return mapServiceHearingValues(caseDetails, caseData);
+
+        log.info("Mapping hearing values for Case id : {}, generating Service Hearing Values", caseId);
+        return mapServiceHearingValues(caseDetails.getCaseTypeId(), caseId, caseData);
     }
 
-    private ServiceHearingValues mapServiceHearingValues(CaseDetails caseDetails, CaseData caseData) {
+    private ServiceHearingValues mapServiceHearingValues(String caseTypeId, String caseId, CaseData caseData) {
         return ServiceHearingValues.builder()
                 .autoListFlag(HearingsDetailsMapping.getAutoListFlag(caseData))
                 .caseAdditionalSecurityFlag(HearingsCaseMapping.getCaseAdditionalSecurityFlag(caseData))
                 .caseCategories(HearingsCaseMapping.getCaseCategories())
-                .caseDeepLink(HearingsCaseMapping.getCaseDeepLink(exuiUrl, caseDetails.getId().toString()))
+                .caseDeepLink(HearingsCaseMapping.getCaseDeepLink(exuiUrl, caseId))
                 .caseFlags(CaseFlagsMapping.getCaseFlags(caseData))
                 .caseInterpreterRequiredFlag(HearingsCaseMapping.getCaseInterpreterRequiredFlag(caseData))
                 .caseManagementLocationCode(HearingsDetailsMapping.getTribunalAndOfficeLocation(caseData))
                 .caseRestrictedFlag(HearingsCaseMapping.getCaseRestrictedFlag(caseData))
                 .caseSlaStartDate(HearingsCaseMapping.getCaseCreated(caseData))
-                .caseType(caseDetails.getCaseTypeId())
+                .caseType(caseTypeId)
                 .duration(0)
                 .hearingChannels(new ArrayList<>())
                 .hearingInWelshFlag(HearingsDetailsMapping.isHearingInWelshFlag(caseData))

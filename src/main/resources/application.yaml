@@ -85,7 +85,7 @@ etcos:
     password: Pa55word11
 
 case-details-url:
-  exui: ${EXUI_CASE_DETAILS_URL:http://localhost:3455/cases/case-details/}
+  exui: ${EXUI_CASE_DETAILS_URL:http://localhost:3000/cases/case-details/}
 
   flags:
     hmc-to-hearings-api:
