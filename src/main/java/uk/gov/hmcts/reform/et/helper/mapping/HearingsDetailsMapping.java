@@ -57,11 +57,10 @@ public final class HearingsDetailsMapping {
     }
 
     public static String getTribunalAndOfficeLocation(CaseData caseData) {
-        return defaultString(
-            caseData.getCaseManagementLocationCode(),
-            Optional.ofNullable(caseData.getCaseManagementLocation())
-                .map(CaseLocation::getBaseLocation)
-                .orElse(" ")
+        return defaultString(caseData.getCaseManagementLocationCode(),
+                Optional.ofNullable(caseData.getCaseManagementLocation())
+                        .map(CaseLocation::getBaseLocation)
+                        .orElse(" ")
         );
     }
 
