@@ -206,7 +206,7 @@ dependencies {
   implementation group: 'org.springframework.boot', name: 'spring-boot-starter-actuator'
   implementation group: 'org.springframework.boot', name: 'spring-boot-starter-aop'
   implementation group: 'org.springframework.boot', name: 'spring-boot-starter-json'
-  implementation group: 'org.springframework.boot', name: 'spring-boot-starter-activemq', version: '2.7.17'
+  implementation group: 'org.springframework.boot', name: 'spring-boot-starter-activemq', version: '3.1.5'
   implementation group: 'org.springframework', name: 'spring-jms', version: '6.0.13'
   implementation group: 'org.springframework', name: 'spring-messaging', version: '6.0.13'
   implementation group: 'org.springdoc', name: 'springdoc-openapi-starter-webmvc-ui', version: '2.2.0'
@@ -225,7 +225,7 @@ dependencies {
   implementation group: 'org.apache.logging.log4j', name: 'log4j-api', version: log4JVersion
   implementation group: 'org.apache.logging.log4j', name: 'log4j-to-slf4j', version: log4JVersion
   implementation group: 'io.rest-assured', name: 'rest-assured'
-  implementation group: 'org.apache.qpid', name: 'qpid-jms-client', version: '2.4.0'
+  implementation group: 'org.apache.qpid', name: 'qpid-jms-client', version: '2.5.0'
   implementation group: 'org.apache.tomcat.embed', name: 'tomcat-embed-core', version: '10.1.15'
   implementation group: 'org.apache.tomcat.embed', name: 'tomcat-embed-websocket', version: '10.1.15'
   implementation group: 'org.bouncycastle', name: 'bcprov-jdk18on', version: '1.76'
