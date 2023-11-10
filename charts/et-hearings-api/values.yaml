@@ -27,4 +27,3 @@ java:
     HMC_HEARINGS_TOPIC_POLICY_NAME: SendAndListenSharedAccessKey
     HMC_URL: "http://hmc-cft-hearing-service-{{ .Values.global.environment }}.service.core-compute-{{ .Values.global.environment }}.internal"
     MICRO_SERVICE: "et_hearings_api"
-
