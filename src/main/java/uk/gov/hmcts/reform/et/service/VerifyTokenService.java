@@ -13,6 +13,7 @@ import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 import uk.gov.hmcts.reform.authorisation.exceptions.InvalidTokenException;
+import uk.gov.hmcts.reform.et.config.interceptors.RequestInterceptor;
 
 import java.net.URL;
 import java.security.Key;
@@ -39,8 +40,8 @@ public class VerifyTokenService {
 
     public boolean verifyTokenSignature(String token) {
         try {
-            var tokenTocheck = StringUtils.replace(token, "Bearer ", "");
-            var signedJwt = SignedJWT.parse(tokenTocheck);
+            var tokenToCheck = StringUtils.replace(token, "Bearer ", "");
+            var signedJwt = SignedJWT.parse(tokenToCheck);
             JWKSet jsonWebKeySet = loadJsonWebKeySet(idamJwkUrl);
 
             var jwsHeader = signedJwt.getHeader();
@@ -71,11 +72,11 @@ public class VerifyTokenService {
             if (jsonWebKey == null) {
                 throw new InvalidTokenException("JWK does not exist in the key set");
             }
-            if (jsonWebKey instanceof SecretJWK) {
-                return ((SecretJWK) jsonWebKey).toSecretKey();
+            if (jsonWebKey instanceof SecretJWK secretJwk) {
+                return secretJwk.toSecretKey();
             }
-            if (jsonWebKey instanceof AsymmetricJWK) {
-                return ((AsymmetricJWK) jsonWebKey).toPublicKey();
+            if (jsonWebKey instanceof AsymmetricJWK asymmetricJwk) {
+                return asymmetricJwk.toPublicKey();
             }
             throw new InvalidTokenException("Unsupported JWK " + jsonWebKey.getClass().getName());
         } catch (JOSEException e) {

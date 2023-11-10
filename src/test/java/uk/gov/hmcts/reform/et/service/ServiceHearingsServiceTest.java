@@ -32,6 +32,7 @@ class ServiceHearingsServiceTest {
 
     public static final String MOCK_CASE_ID = "1646225213651590";
     public static final String MOCK_REQUEST_HEARING_ID = "c73bcbc4-430e-41c9-9790-182543914c0c";
+    public static final String EXUI_URL = "https://manage-case.test.platform.hmcts.net/cases/case-details/";
 
     @BeforeEach
     public void setUp() {
@@ -40,8 +41,6 @@ class ServiceHearingsServiceTest {
 
     @Test
     void serviceHearingsServiceTest() throws IOException, URISyntaxException, GetCaseException {
-        String authorization = "authorization";
-        String caseId = MOCK_CASE_ID;
         CaseDetails mockCaseDetails = new CaseTestData().expectedDetails();
         CaseData caseData = CaseDataMapping.mapCaseData(mockCaseDetails.getData());
 
@@ -50,12 +49,16 @@ class ServiceHearingsServiceTest {
         }
 
         ReflectionTestUtils.setField(serviceHearingsService, "hmctsServiceId", "BHA1");
+        ReflectionTestUtils.setField(serviceHearingsService, "exuiUrl", EXUI_URL);
+        String authorization = "authorization";
+        String caseId = MOCK_CASE_ID;
         when(caseService.retrieveCase(authorization, caseId)).thenReturn(mockCaseDetails);
         ServiceHearingRequest request = new ServiceHearingRequest(caseId, MOCK_REQUEST_HEARING_ID);
         ServiceHearingValues actual = serviceHearingsService.getServiceHearingValues(authorization, request);
         ServiceHearingValues expected = new CaseTestData().expectedServiceHearingValues();
 
         assertEquals(expected.getCaseCategories(), actual.getCaseCategories());
+        assertEquals(expected.getCaseDeepLink(), actual.getCaseDeepLink());
         assertEquals(expected.getCaseFlags(), actual.getCaseFlags());
         assertEquals(expected.getHearingChannels(), actual.getHearingChannels());
         assertEquals(expected.getHearingLocations(), actual.getHearingLocations());
