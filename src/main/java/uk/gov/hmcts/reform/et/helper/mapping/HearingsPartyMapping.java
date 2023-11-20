@@ -4,6 +4,7 @@ import org.springframework.util.ObjectUtils;
 import uk.gov.hmcts.et.common.model.ccd.CaseData;
 import uk.gov.hmcts.et.common.model.ccd.items.FlagDetailType;
 import uk.gov.hmcts.et.common.model.ccd.items.GenericTypeItem;
+import uk.gov.hmcts.et.common.model.ccd.items.ListTypeItem;
 import uk.gov.hmcts.et.common.model.ccd.items.RepresentedTypeRItem;
 import uk.gov.hmcts.et.common.model.ccd.items.RespondentSumTypeItem;
 import uk.gov.hmcts.et.common.model.ccd.types.CaseFlagsType;
@@ -16,6 +17,7 @@ import uk.gov.hmcts.et.common.model.ccd.types.RespondentSumType;
 import uk.gov.hmcts.et.common.model.hmc.IndividualDetails;
 import uk.gov.hmcts.et.common.model.hmc.OrganisationDetails;
 import uk.gov.hmcts.et.common.model.hmc.PartyDetails;
+import uk.gov.hmcts.et.common.model.hmc.UnavailabilityRanges;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -76,6 +78,7 @@ public final class HearingsPartyMapping {
                 .partyRole(RESPONDENT.getHmcReference())
                 .partyType(ORGANISATION)
                 .partyName(respondent.getRespondentOrganisation())
+                .unavailabilityRanges(mapCcdUnavailabilityToHmc(caseData.getRespondentUnavailability()))
                 .build();
 
         if (isNotEmpty(details.getPartyName())) {
@@ -175,7 +178,13 @@ public final class HearingsPartyMapping {
                 .partyName(caseData.getClaimant())
                 .partyRole(CLAIMANT.getHmcReference())
                 .partyType(INDIVIDUAL)
-                .individualDetails(individualDetails).build();
+                .individualDetails(individualDetails)
+                .unavailabilityRanges(mapCcdUnavailabilityToHmc(caseData.getClaimantUnavailability()))
+                .build();
+    }
+
+    private static List<UnavailabilityRanges> mapCcdUnavailabilityToHmc(ListTypeItem<UnavailabilityRanges> ranges) {
+        return ranges.stream().map(GenericTypeItem::getValue).toList();
     }
 
     private static FlagDetailType getVulnerableFlag(CaseFlagsType flags) {
