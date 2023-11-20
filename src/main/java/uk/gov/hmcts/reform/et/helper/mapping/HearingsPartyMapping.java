@@ -20,6 +20,7 @@ import uk.gov.hmcts.et.common.model.hmc.PartyDetails;
 import uk.gov.hmcts.et.common.model.hmc.UnavailabilityRanges;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 import java.util.Objects;
 import java.util.UUID;
@@ -185,7 +186,7 @@ public final class HearingsPartyMapping {
 
     private static List<UnavailabilityRanges> mapCcdUnavailabilityToHmc(ListTypeItem<UnavailabilityRanges> ranges) {
         if (ranges == null) {
-            return null;
+            return Collections.emptyList();
         }
         return ranges.stream().map(GenericTypeItem::getValue).toList();
     }
