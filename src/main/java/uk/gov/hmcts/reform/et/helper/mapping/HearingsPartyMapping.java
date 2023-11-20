@@ -134,13 +134,14 @@ public final class HearingsPartyMapping {
         PartyDetails firmPartyDetails = PartyDetails.builder()
                 .partyID(ofNullable(rep.getRespondentOrganisation())
                         .map(Organisation::getOrganisationID)
-                        .orElseGet(() -> defaultString(rep.getRepresentativeReference(), UUID.randomUUID().toString())))
+                        .orElse(defaultString(rep.getNonMyHmctsOrganisationId(), UUID.randomUUID().toString())))
                 .partyName(defaultString(rep.getNameOfOrganisation(), rep.getNameOfRepresentative()))
                 .partyRole(LEGAL_REPRESENTATIVE.getHmcReference())
                 .partyType(ORGANISATION)
                 .organisationDetails(OrganisationDetails.builder()
                         .name(rep.getNameOfOrganisation())
                         .cftOrganisationID(ObjectUtils.isEmpty(organisation) ? null : organisation.getOrganisationID())
+                        .organisationType(ORGANISATION)
                         .build())
                 .build();
 
@@ -223,6 +224,7 @@ public final class HearingsPartyMapping {
                 .partyType(ORGANISATION)
                 .organisationDetails(OrganisationDetails.builder()
                         .name(claimantType.getNameOfOrganisation())
+                        .organisationType(ORGANISATION)
                         .build())
                 .build();
 
