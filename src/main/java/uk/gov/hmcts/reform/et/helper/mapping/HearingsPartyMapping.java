@@ -81,6 +81,7 @@ public final class HearingsPartyMapping {
         if (isNotEmpty(details.getPartyName())) {
             details.setOrganisationDetails(OrganisationDetails.builder()
                     .name(respondent.getRespondentOrganisation())
+                    .organisationType(ORGANISATION)
                     .build());
 
             return details; // Return early as we've already defaulted to organisation

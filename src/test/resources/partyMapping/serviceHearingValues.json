@@ -1,0 +1,339 @@
+{
+  "hmctsServiceID": "BHA1",
+  "hmctsInternalCaseName": "Citizen One vs Badman",
+  "publicCaseName": "Citizen One vs Badman",
+  "caseAdditionalSecurityFlag": false,
+  "caseCategories": [
+    {
+      "categoryType": "caseType",
+      "categoryValue": "BHA1-EMT"
+    },
+    {
+      "categoryType": "caseSubType",
+      "categoryValue": "BHA1-EMT",
+      "categoryParent": "BHA1-EMT"
+    }
+  ],
+  "caseDeepLink": "https://manage-case.demo.platform.hmcts.net/cases/case-details/1700471689475915#Case%20File%20View",
+  "externalCaseReference": null,
+  "caseManagementLocationCode": "36313",
+  "autoListFlag": false,
+  "hearingType": null,
+  "hearingWindow": {
+    "dateRangeStart": null,
+    "dateRangeEnd": null,
+    "firstDateTimeMustBe": null
+  },
+  "duration": 0,
+  "hearingPriorityType": "Standard",
+  "numberOfPhysicalAttendees": 0,
+  "hearingInWelshFlag": false,
+  "hearingLocations": [],
+  "facilitiesRequired": null,
+  "listingComments": null,
+  "hearingRequester": null,
+  "privateHearingRequiredFlag": false,
+  "caseInterpreterRequiredFlag": false,
+  "panelRequirements": null,
+  "leadJudgeContractType": "",
+  "judiciary": {},
+  "hearingIsLinkedFlag": false,
+  "parties": [
+    {
+      "partyID": "28ef750b-db1e-4f18-8287-7a0acb52430c",
+      "partyType": "IND",
+      "partyRole": "CLAI",
+      "individualDetails": {
+        "title": "Other",
+        "firstName": "Citizen",
+        "lastName": "One",
+        "preferredHearingChannel": "Email",
+        "interpreterLanguage": "nld",
+        "reasonableAdjustments": null,
+        "otherReasonableAdjustmentDetails": null,
+        "custodyStatus": "A",
+        "vulnerableFlag": true,
+        "vulnerabilityDetails": "vulnerable with reason",
+        "hearingChannelEmail": [
+          "et.citizen1@hmcts.net"
+        ],
+        "hearingChannelPhone": [
+          "07111111111"
+        ],
+        "relatedParties": null
+      },
+      "organisationDetails": null,
+      "unavailabilityRanges": null,
+      "partyName": "Citizen One",
+      "hearingsSubChannel": null,
+      "unavailabilityDOW": null
+    },
+    {
+      "partyID": "ec32a4e7-f18a-4091-9bbd-05ba2980ad4f",
+      "partyType": "IND",
+      "partyRole": "LGRP",
+      "individualDetails": {
+        "title": null,
+        "firstName": "Claimant",
+        "lastName": "Rep",
+        "preferredHearingChannel": "Email",
+        "interpreterLanguage": null,
+        "reasonableAdjustments": null,
+        "otherReasonableAdjustmentDetails": null,
+        "custodyStatus": "A",
+        "vulnerableFlag": null,
+        "vulnerabilityDetails": null,
+        "hearingChannelEmail": [
+          "claimantrep@email.com"
+        ],
+        "hearingChannelPhone": [
+          "+447222222222",
+          "+447111111111"
+        ],
+        "relatedParties": null
+      },
+      "organisationDetails": null,
+      "unavailabilityRanges": null,
+      "partyName": "Claimant Rep",
+      "hearingsSubChannel": null,
+      "unavailabilityDOW": null
+    },
+    {
+      "partyID": "e28ae8dd-9af2-4ae1-9613-b8764d7536b9",
+      "partyType": "ORG",
+      "partyRole": "LGRP",
+      "individualDetails": null,
+      "organisationDetails": {
+        "name": "Org Name",
+        "organisationType": "ORG",
+        "cftOrganisationID": null
+      },
+      "unavailabilityRanges": null,
+      "partyName": "Org Name",
+      "hearingsSubChannel": null,
+      "unavailabilityDOW": null
+    },
+    {
+      "partyID": "0e76e754-12fe-4878-8a71-7806a07bddbf",
+      "partyType": "IND",
+      "partyRole": "RESP",
+      "individualDetails": {
+        "title": null,
+        "firstName": "Badman",
+        "lastName": "Badman",
+        "preferredHearingChannel": null,
+        "interpreterLanguage": "deu",
+        "reasonableAdjustments": null,
+        "otherReasonableAdjustmentDetails": null,
+        "custodyStatus": null,
+        "vulnerableFlag": true,
+        "vulnerabilityDetails": null,
+        "hearingChannelEmail": null,
+        "hearingChannelPhone": null,
+        "relatedParties": null
+      },
+      "organisationDetails": null,
+      "unavailabilityRanges": null,
+      "partyName": "Badman",
+      "hearingsSubChannel": null,
+      "unavailabilityDOW": null
+    },
+    {
+      "partyID": "9214caf5-c2e1-4078-a1d4-3874bb2310b3",
+      "partyType": "IND",
+      "partyRole": "LGRP",
+      "individualDetails": {
+        "title": null,
+        "firstName": "NonHMCTSAccount",
+        "lastName": "NonHMCTSAccount",
+        "preferredHearingChannel": null,
+        "interpreterLanguage": null,
+        "reasonableAdjustments": null,
+        "otherReasonableAdjustmentDetails": null,
+        "custodyStatus": null,
+        "vulnerableFlag": null,
+        "vulnerabilityDetails": null,
+        "hearingChannelEmail": null,
+        "hearingChannelPhone": null,
+        "relatedParties": null
+      },
+      "organisationDetails": null,
+      "unavailabilityRanges": null,
+      "partyName": "NonHMCTSAccount",
+      "hearingsSubChannel": null,
+      "unavailabilityDOW": null
+    },
+    {
+      "partyID": "91155c6a-7b33-4302-8a60-4eae0e0c7057",
+      "partyType": "ORG",
+      "partyRole": "LGRP",
+      "individualDetails": null,
+      "organisationDetails": {
+        "name": "Reps R Us",
+        "organisationType": "ORG",
+        "cftOrganisationID": null
+      },
+      "unavailabilityRanges": null,
+      "partyName": "Reps R Us",
+      "hearingsSubChannel": null,
+      "unavailabilityDOW": null
+    },
+    {
+      "partyID": "be3b1c87-f263-49a4-8e67-32a83e804778",
+      "partyType": "IND",
+      "partyRole": "LGRP",
+      "individualDetails": {
+        "title": null,
+        "firstName": "Legal",
+        "lastName": "repFive",
+        "preferredHearingChannel": null,
+        "interpreterLanguage": null,
+        "reasonableAdjustments": null,
+        "otherReasonableAdjustmentDetails": null,
+        "custodyStatus": null,
+        "vulnerableFlag": null,
+        "vulnerabilityDetails": null,
+        "hearingChannelEmail": null,
+        "hearingChannelPhone": null,
+        "relatedParties": null
+      },
+      "organisationDetails": null,
+      "unavailabilityRanges": null,
+      "partyName": "Legal repFive",
+      "hearingsSubChannel": null,
+      "unavailabilityDOW": null
+    },
+    {
+      "partyID": "TWH38KH",
+      "partyType": "ORG",
+      "partyRole": "LGRP",
+      "individualDetails": null,
+      "organisationDetails": {
+        "name": "ET Test 3 Org",
+        "organisationType": "ORG",
+        "cftOrganisationID": "TWH38KH"
+      },
+      "unavailabilityRanges": null,
+      "partyName": "ET Test 3 Org",
+      "hearingsSubChannel": null,
+      "unavailabilityDOW": null
+    }
+  ],
+  "caseFlags": {
+    "flags": [
+      {
+        "flagDescription": "Vulnerable user",
+        "flagId": "PF0002",
+        "flagParentId": "",
+        "flagStatus": "Active",
+        "partyId": "28ef750b-db1e-4f18-8287-7a0acb52430c",
+        "partyName": "Citizen One"
+      },
+      {
+        "flagDescription": "Language Interpreter",
+        "flagId": "PF0015",
+        "flagParentId": "",
+        "flagStatus": "Active",
+        "partyId": "28ef750b-db1e-4f18-8287-7a0acb52430c",
+        "partyName": "Citizen One"
+      },
+      {
+        "flagDescription": "Vulnerable user",
+        "flagId": "PF0002",
+        "flagParentId": "",
+        "flagStatus": "Active",
+        "partyId": "0e76e754-12fe-4878-8a71-7806a07bddbf",
+        "partyName": "Badman"
+      },
+      {
+        "flagDescription": "Language Interpreter",
+        "flagId": "PF0015",
+        "flagParentId": "",
+        "flagStatus": "Active",
+        "partyId": "0e76e754-12fe-4878-8a71-7806a07bddbf",
+        "partyName": "Badman"
+      }
+    ],
+    "flagAmendURL": ""
+  },
+  "screenFlow": [
+    {
+      "navigation": [
+        {
+          "resultValue": "hearing-facilities"
+        }
+      ],
+      "screenName": "hearing-requirements"
+    },
+    {
+      "navigation": [
+        {
+          "resultValue": "hearing-stage"
+        }
+      ],
+      "screenName": "hearing-facilities"
+    },
+    {
+      "navigation": [
+        {
+          "resultValue": "hearing-attendance"
+        }
+      ],
+      "screenName": "hearing-stage"
+    },
+    {
+      "navigation": [
+        {
+          "resultValue": "hearing-venue"
+        }
+      ],
+      "screenName": "hearing-attendance"
+    },
+    {
+      "navigation": [
+        {
+          "resultValue": "hearing-judge"
+        }
+      ],
+      "screenName": "hearing-venue"
+    },
+    {
+      "navigation": [
+        {
+          "resultValue": "hearing-timing"
+        }
+      ],
+      "screenName": "hearing-judge"
+    },
+    {
+      "navigation": [
+        {
+          "resultValue": "hearing-link"
+        }
+      ],
+      "screenName": "hearing-timing"
+    },
+    {
+      "navigation": [
+        {
+          "resultValue": "hearing-additional-instructions"
+        }
+      ],
+      "screenName": "hearing-link"
+    },
+    {
+      "navigation": [
+        {
+          "resultValue": "hearing-create-edit-summary"
+        }
+      ],
+      "screenName": "hearing-additional-instructions"
+    }
+  ],
+  "vocabulary": [],
+  "hearingChannels": [],
+  "caseType": "ET_EnglandWales",
+  "hearingLevelParticipantAttendance": null,
+  "caserestrictedFlag": false,
+  "caseSLAStartDate": "2023-11-20"
+}

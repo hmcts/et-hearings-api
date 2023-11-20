@@ -109,7 +109,29 @@
         "representative_preference": "Email",
         "representative_phone_number": "+447000000009",
         "representative_email_address": "non.system@representative.com",
-        "representative_mobile_number": "+447000000008"
+        "representative_mobile_number": "+447000000008",
+        "nonMyHmctsOrganisationId": "91155c6a-7b33-4302-8a60-4eae0e0c7057"
+      }
+    },
+    {
+      "id": "be3b1c87-f263-49a4-8e67-32a83e804778",
+      "value": {
+        "myHmctsYesNo": "Yes",
+        "respondentId": "0e76e754-12fe-4878-8a71-7806a07bddbf",
+        "resp_rep_name": "Another Person",
+        "name_of_organisation": "ET Test 3 Org",
+        "name_of_representative": "Legal repFive",
+        "representative_address": {
+          "County": "Leeds",
+          "PostCode": "LS1 6HF",
+          "PostTown": "Leeds",
+          "AddressLine1": "Marks & Spencer Plc",
+          "AddressLine2": "Briggate"
+        },
+        "respondentOrganisation": {
+          "OrganisationID": "TWH38KH"
+        },
+        "representative_email_address": "et.legalrep.1@gmail.com"
       }
     }
   ],
@@ -380,7 +402,8 @@
     "representative_preference": "Email",
     "representative_phone_number": "+447222222222",
     "representative_email_address": "claimantrep@email.com",
-    "representative_mobile_number": "+447111111111"
+    "representative_mobile_number": "+447111111111",
+    "organisationId": "e28ae8dd-9af2-4ae1-9613-b8764d7536b9"
   },
   "claimantRepresentedQuestion": "Yes",
   "claimantWorkAddressQuestion": "Yes",
