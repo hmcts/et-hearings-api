@@ -184,6 +184,9 @@ public final class HearingsPartyMapping {
     }
 
     private static List<UnavailabilityRanges> mapCcdUnavailabilityToHmc(ListTypeItem<UnavailabilityRanges> ranges) {
+        if (ranges == null) {
+            return null;
+        }
         return ranges.stream().map(GenericTypeItem::getValue).toList();
     }
 
