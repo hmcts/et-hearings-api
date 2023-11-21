@@ -1,0 +1,476 @@
+{
+  "caseType": "Single",
+  "claimant": "Citizen One",
+  "caseFlags": {},
+  "caseSource": "ET1 Online",
+  "claimantId": "28ef750b-db1e-4f18-8287-7a0acb52430c",
+  "respondent": "Badman",
+  "receiptDate": "2023-11-20",
+  "claimantType": {
+    "claimant_addressUK": {
+      "Country": "isnt",
+      "PostCode": "HU5 3UD",
+      "PostTown": "this",
+      "AddressLine1": "I",
+      "AddressLine2": "hope"
+    },
+    "claimant_phone_number": "07111111111",
+    "claimant_email_address": "et.citizen1@hmcts.net",
+    "claimant_contact_preference": "Email"
+  },
+  "multipleFlag": "No",
+  "positionType": "ET1 Online submission",
+  "typesOfClaim": [
+    "discrimination"
+  ],
+  "claimantFlags": {
+    "details": [
+      {
+        "id": "b5a0bf0a-b9ce-4ab5-9296-e3f61287f399",
+        "value": {
+          "name": "Vulnerable user",
+          "path": [
+            {
+              "id": "e393662a-8153-408f-9b4d-75a19974ca0a",
+              "value": "Party"
+            }
+          ],
+          "status": "Active",
+          "flagCode": "PF0002",
+          "subTypeKey": null,
+          "flagComment": "vulnerable with reason",
+          "subTypeValue": null,
+          "dateTimeCreated": "2023-11-20T09:23:21.078Z",
+          "hearingRelevant": "Yes",
+          "otherDescription": null
+        }
+      },
+      {
+        "id": "ef29cca0-7907-4add-b888-5bc78a35cb3e",
+        "value": {
+          "name": "Language Interpreter",
+          "path": [
+            {
+              "id": "f2f73ce6-a517-4eaa-934f-1f38a1b6214b",
+              "value": "Party"
+            }
+          ],
+          "status": "Active",
+          "flagCode": "PF0015",
+          "subTypeKey": "nld",
+          "flagComment": "Dutch ftw",
+          "subTypeValue": "Dutch",
+          "dateTimeCreated": "2023-11-20T09:26:58.973Z",
+          "hearingRelevant": "Yes",
+          "otherDescription": null
+        }
+      }
+    ],
+    "groupId": null,
+    "partyName": "Citizen One",
+    "roleOnCase": "claimant",
+    "visibility": null
+  },
+  "preAcceptCase": {
+    "caseAccepted": "Yes",
+    "dateAccepted": "2022-09-06"
+  },
+  "repCollection": [
+    {
+      "id": "9214caf5-c2e1-4078-a1d4-3874bb2310b3",
+      "value": {
+        "myHmctsYesNo": "No",
+        "respondentId": "0e76e754-12fe-4878-8a71-7806a07bddbf",
+        "resp_rep_name": "Badman",
+        "name_of_organisation": "Reps R Us",
+        "dynamic_resp_rep_name": {
+          "value": {
+            "code": "R: Badman",
+            "label": "Badman"
+          },
+          "list_items": [
+            {
+              "code": "R: Badman",
+              "label": "Badman"
+            }
+          ],
+          "selectedCode": "R: Badman",
+          "selectedLabel": "Badman"
+        },
+        "name_of_representative": "NonHMCTSAccount",
+        "representative_address": {
+          "Country": "United Kingdom",
+          "PostCode": "DA8 2DE",
+          "PostTown": "Erith",
+          "AddressLine1": "45 Bridge Road"
+        },
+        "representative_reference": "idk",
+        "representative_occupation": "Solicitor",
+        "representative_preference": "Email",
+        "representative_phone_number": "+447000000009",
+        "representative_email_address": "non.system@representative.com",
+        "representative_mobile_number": "+447000000008",
+        "nonMyHmctsOrganisationId": "91155c6a-7b33-4302-8a60-4eae0e0c7057"
+      }
+    },
+    {
+      "id": "be3b1c87-f263-49a4-8e67-32a83e804778",
+      "value": {
+        "myHmctsYesNo": "Yes",
+        "respondentId": "0e76e754-12fe-4878-8a71-7806a07bddbf",
+        "resp_rep_name": "Another Person",
+        "name_of_organisation": "ET Test 3 Org",
+        "name_of_representative": "Legal repFive",
+        "representative_address": {
+          "County": "Leeds",
+          "PostCode": "LS1 6HF",
+          "PostTown": "Leeds",
+          "AddressLine1": "Marks & Spencer Plc",
+          "AddressLine2": "Briggate"
+        },
+        "respondentOrganisation": {
+          "OrganisationID": "TWH38KH"
+        },
+        "representative_email_address": "et.legalrep.1@gmail.com"
+      }
+    }
+  ],
+  "SearchCriteria": {
+    "SearchParties": [
+      {
+        "id": "b84d802a-ecae-4b18-ba1c-fdbe7da4f63c",
+        "value": {
+          "Name": "Citizen One",
+          "PostCode": "HU5 3UD",
+          "DateOfBirth": "1989-01-16",
+          "AddressLine1": "I",
+          "EmailAddress": "et.citizen1@hmcts.net"
+        }
+      },
+      {
+        "id": "94051787-a9ee-442b-b081-b5441be44d45",
+        "value": {
+          "Name": "Badman",
+          "PostCode": "HU5 3UD",
+          "AddressLine1": "I"
+        }
+      },
+      {
+        "id": "5e4bc1b4-53c6-426d-8253-b0ca81b71538",
+        "value": {
+          "Name": "Badman",
+          "PostCode": "DA8 2DE",
+          "AddressLine1": "45 Bridge Road",
+          "EmailAddress": "non.system@representative.com"
+        }
+      }
+    ],
+    "OtherCaseReferences": [
+      {
+        "id": "59f53e43-c433-4760-851e-26757843e0f4",
+        "value": "6001072/2023"
+      }
+    ]
+  },
+  "dateToPosition": "2023-11-20",
+  "managingOffice": "Leeds",
+  "publicCaseName": "Citizen One vs Badman",
+  "claimantIndType": {
+    "claimant_sex": "Male",
+    "claimant_last_name": "One",
+    "claimant_first_names": "Citizen",
+    "claimant_title_other": "Doctor Professor",
+    "claimant_date_of_birth": "1989-01-16",
+    "claimant_preferred_title": "Other"
+  },
+  "currentPosition": "ET1 Online submission",
+  "respondentFlags": {
+    "details": [
+      {
+        "id": "b41eb463-de1d-4865-8c4d-de33c6c5ce32",
+        "value": {
+          "name": "Vulnerable user",
+          "path": [
+            {
+              "id": "5d96229a-36f1-4f2c-b945-d3a3564a956e",
+              "value": "Party"
+            }
+          ],
+          "status": "Active",
+          "flagCode": "PF0002",
+          "subTypeKey": null,
+          "flagComment": null,
+          "subTypeValue": null,
+          "dateTimeCreated": "2023-11-20T09:22:55.300Z",
+          "hearingRelevant": "Yes",
+          "otherDescription": null
+        }
+      },
+      {
+        "id": "7fbeddfc-115b-4912-879e-ac7cbda5f54f",
+        "value": {
+          "name": "Language Interpreter",
+          "path": [
+            {
+              "id": "c32ad006-a69c-44a4-b818-73efff3874fc",
+              "value": "Party"
+            }
+          ],
+          "status": "Active",
+          "flagCode": "PF0015",
+          "subTypeKey": "deu",
+          "flagComment": "Comment is mandatory here",
+          "subTypeValue": "German",
+          "dateTimeCreated": "2023-11-20T09:23:55.787Z",
+          "hearingRelevant": "Yes",
+          "otherDescription": null
+        }
+      }
+    ],
+    "groupId": null,
+    "partyName": "Badman",
+    "roleOnCase": "respondent",
+    "visibility": null
+  },
+  "triageQuestions": {
+    "caseType": "Single",
+    "postcode": "HU5 3UD",
+    "acasMultiple": "Yes",
+    "typesOfClaim": [
+      "discrimination"
+    ],
+    "claimantRepresentedQuestion": "No"
+  },
+  "claimantRequests": {
+    "claim_description": "idklol",
+    "discrimination_claims": [
+      "Age"
+    ]
+  },
+  "et1DateCompleted": "20 Nov 2023",
+  "claimantOtherType": {
+    "pastEmployer": "Yes",
+    "stillWorking": "No longer working",
+    "claimant_occupation": "Fall Guy",
+    "claimant_employed_to": "2023-01-01",
+    "claimant_employed_from": "1989-01-01",
+    "claimant_pay_after_tax": "69000",
+    "claimant_pay_before_tax": "420000",
+    "claimant_average_weekly_hours": "69"
+  },
+  "conciliationTrack": "Open Track",
+  "et1TribunalRegion": "Bristol",
+  "feeGroupReference": "1700471689475915",
+  "isLocationCorrect": "Yes",
+  "targetHearingDate": "2024-05-18",
+  "documentCollection": [
+    {
+      "id": "f136e4ab-7f32-45cb-9517-2e29bc63ee98",
+      "value": {
+        "typeOfDocument": "ET1",
+        "shortDescription": "Case Details - Citizen One",
+        "uploadedDocument": {
+          "category_id": "C11",
+          "document_url": "http://dm-store-demo.service.core-compute-demo.internal/documents/bf46d19c-8add-4f7d-b530-3e39d83e3c6d",
+          "document_filename": "ET1_CASE_DOCUMENT_Citizen_One.pdf",
+          "document_binary_url": "http://dm-store-demo.service.core-compute-demo.internal/documents/bf46d19c-8add-4f7d-b530-3e39d83e3c6d/binary"
+        }
+      }
+    }
+  ],
+  "et1VettingDocument": {
+    "document_url": "http://dm-store-demo.service.core-compute-demo.internal/documents/b4fdf9b1-40d0-423c-bb6b-8a738a101620",
+    "document_filename": "ET1 Vetting.pdf",
+    "document_binary_url": "http://dm-store-demo.service.core-compute-demo.internal/documents/b4fdf9b1-40d0-423c-bb6b-8a738a101620/binary"
+  },
+  "ethosCaseReference": "6001072/2023",
+  "flagsImageFileName": "EMP-TRIB-00000000000.jpg",
+  "jurCodesCollection": [
+    {
+      "id": "42c5f3bd-8cbe-44e6-b652-a3dd95f2473a",
+      "value": {
+        "juridictionCodesList": "DAG"
+      }
+    }
+  ],
+  "claimantWorkAddress": {
+    "claimant_work_address": {
+      "Country": "isnt",
+      "PostCode": "HU5 3UD",
+      "PostTown": "this",
+      "AddressLine1": "I",
+      "AddressLine2": "hope"
+    }
+  },
+  "et1OnlineSubmission": "Yes",
+  "areTheseCodesCorrect": "Yes",
+  "respondentCollection": [
+    {
+      "id": "0e76e754-12fe-4878-8a71-7806a07bddbf",
+      "value": {
+        "respondent_ACAS": "R123456/12/34",
+        "respondent_name": "Badman",
+        "responseContinue": "Yes",
+        "responseReceived": "No",
+        "responseStruckOut": "No",
+        "extensionRequested": "No",
+        "respondent_address": {
+          "Country": "isnt",
+          "PostCode": "HU5 3UD",
+          "PostTown": "this",
+          "AddressLine1": "I",
+          "AddressLine2": "hope"
+        },
+        "respondent_ACAS_question": "Yes"
+      }
+    }
+  ],
+  "caseNameHmctsInternal": "Citizen One vs Badman",
+  "et1GovOrMajorQuestion": "No",
+  "et1VettingCompletedBy": "ET API1",
+  "caseManagementCategory": {
+    "value": {
+      "code": "Employment Tribunals",
+      "label": "Employment"
+    },
+    "list_items": [
+      {
+        "code": "Employment Tribunals",
+        "label": "Employment"
+      }
+    ],
+    "selectedCode": "Employment Tribunals",
+    "selectedLabel": "Employment"
+  },
+  "caseManagementLocation": {
+    "region": "3",
+    "baseLocation": "36313"
+  },
+  "claimantTaskListChecks": {
+    "claimDetailsCheck": "Yes",
+    "personalDetailsCheck": "Yes",
+    "employmentAndRespondentCheck": "Yes"
+  },
+  "et1SuggestHearingVenue": "No",
+  "noticeOfChangeAnswers0": {
+    "respondentName": "Badman",
+    "claimantLastName": "One",
+    "claimantFirstName": "Citizen"
+  },
+  "claimant_TypeOfClaimant": "Individual",
+  "et1VideoHearingQuestion": "Yes",
+  "isTrackAllocationCorrect": "Yes",
+  "tribunalCorrespondenceDX": "DX 742940 Leeds 75",
+  "claimantHearingPreference": {
+    "contact_language": "English",
+    "hearing_language": "English",
+    "hearing_preferences": [
+      "Video"
+    ],
+    "reasonable_adjustments": "No"
+  },
+  "tribunalAndOfficeLocation": "<hr><h3>Tribunal location</h3><pre>Tribunal &#09&#09&#09&#09&nbsp; England<br><br>Office &#09&#09&#09&#09&#09 Bristol</pre><hr>",
+  "tribunalCorrespondenceFax": "01264 785136",
+  "caseManagementLocationCode": "36313",
+  "claimantDocumentCollection": [
+    {
+      "id": "f136e4ab-7f32-45cb-9517-2e29bc63ee98",
+      "value": {
+        "typeOfDocument": "ET1",
+        "shortDescription": "Case Details - Citizen One",
+        "uploadedDocument": {
+          "category_id": "C11",
+          "document_url": "http://dm-store-demo.service.core-compute-demo.internal/documents/bf46d19c-8add-4f7d-b530-3e39d83e3c6d",
+          "document_filename": "ET1_CASE_DOCUMENT_Citizen_One.pdf",
+          "document_binary_url": "http://dm-store-demo.service.core-compute-demo.internal/documents/bf46d19c-8add-4f7d-b530-3e39d83e3c6d/binary"
+        }
+      }
+    }
+  ],
+  "representativeClaimantType": {
+    "representative_id": "ec32a4e7-f18a-4091-9bbd-05ba2980ad4f",
+    "name_of_organisation": "Org Name",
+    "name_of_representative": "Claimant Rep",
+    "representative_address": {
+      "Country": "United Kingdom",
+      "PostCode": "HU5 3UD",
+      "PostTown": "Hull",
+      "AddressLine1": "136 Perth Street West"
+    },
+    "representative_reference": "idklol",
+    "representative_occupation": "Solicitor",
+    "representative_preference": "Email",
+    "representative_phone_number": "+447222222222",
+    "representative_email_address": "claimantrep@email.com",
+    "representative_mobile_number": "+447111111111",
+    "organisationId": "e28ae8dd-9af2-4ae1-9613-b8764d7536b9"
+  },
+  "claimantRepresentedQuestion": "Yes",
+  "claimantWorkAddressQuestion": "Yes",
+  "tribunalCorrespondenceEmail": "LeedsET@justice.gov.uk",
+  "et1VettingAcasCertIsYesOrNo1": "Yes",
+  "respondentOrganisationPolicy0": {
+    "Organisation": {},
+    "OrgPolicyCaseAssignedRole": "[SOLICITORA]"
+  },
+  "respondentOrganisationPolicy1": {
+    "Organisation": {},
+    "OrgPolicyCaseAssignedRole": "[SOLICITORB]"
+  },
+  "respondentOrganisationPolicy2": {
+    "Organisation": {},
+    "OrgPolicyCaseAssignedRole": "[SOLICITORC]"
+  },
+  "respondentOrganisationPolicy3": {
+    "Organisation": {},
+    "OrgPolicyCaseAssignedRole": "[SOLICITORD]"
+  },
+  "respondentOrganisationPolicy4": {
+    "Organisation": {},
+    "OrgPolicyCaseAssignedRole": "[SOLICITORE]"
+  },
+  "respondentOrganisationPolicy5": {
+    "Organisation": {},
+    "OrgPolicyCaseAssignedRole": "[SOLICITORF]"
+  },
+  "respondentOrganisationPolicy6": {
+    "Organisation": {},
+    "OrgPolicyCaseAssignedRole": "[SOLICITORG]"
+  },
+  "respondentOrganisationPolicy7": {
+    "Organisation": {},
+    "OrgPolicyCaseAssignedRole": "[SOLICITORH]"
+  },
+  "respondentOrganisationPolicy8": {
+    "Organisation": {},
+    "OrgPolicyCaseAssignedRole": "[SOLICITORI]"
+  },
+  "respondentOrganisationPolicy9": {
+    "Organisation": {},
+    "OrgPolicyCaseAssignedRole": "[SOLICITORJ]"
+  },
+  "changeOrganisationRequestField": {
+    "OrganisationToRemove": {}
+  },
+  "et1VettingCanServeClaimYesOrNo": "Yes",
+  "tribunalCorrespondenceTelephone": "0113 245 9741",
+  "et1ReasonableAdjustmentsQuestion": "No",
+  "claimantUnavailability": [
+    {
+      "id": "0964715e-61c1-4477-8ba3-7e86302332c3",
+      "value": {
+        "unavailableToDate": "2023-11-23",
+        "unavailableFromDate": "2023-11-20"
+      }
+    }
+  ],
+  "respondentUnavailability": [
+    {
+      "id": "5dbdc595-88f8-4f18-8738-a046b315b4a4",
+      "value": {
+        "unavailableToDate": "2023-11-25",
+        "unavailableFromDate": "2023-11-23"
+      }
+    }
+  ]
+}

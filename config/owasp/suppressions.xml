@@ -37,5 +37,13 @@
     <notes>activemq-client-jakarta-5.18.2.jar</notes>
     <cve>CVE-2023-46604</cve>
   </suppress>
+<suppress>
+   <packageUrl regex="true">^pkg:maven/com\.microsoft.*$</packageUrl>
+   <cve>CVE-2023-36052</cve>
+</suppress>
+<suppress>
+   <packageUrl regex="true">^pkg:maven/com\.azure.*$</packageUrl>
+   <cve>CVE-2023-36052</cve>
+</suppress>
   <!--End of temporary suppression section -->
 </suppressions>
