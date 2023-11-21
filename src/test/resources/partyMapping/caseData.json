@@ -459,6 +459,7 @@
     {
       "id": "0964715e-61c1-4477-8ba3-7e86302332c3",
       "value": {
+        "unavailabilityType": "ALL_DAY",
         "unavailableToDate": "2023-11-23",
         "unavailableFromDate": "2023-11-20"
       }
@@ -468,6 +469,7 @@
     {
       "id": "5dbdc595-88f8-4f18-8738-a046b315b4a4",
       "value": {
+        "unavailabilityType": "ALL_DAY",
         "unavailableToDate": "2023-11-25",
         "unavailableFromDate": "2023-11-23"
       }

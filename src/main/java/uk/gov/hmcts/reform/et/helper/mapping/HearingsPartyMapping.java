@@ -14,6 +14,7 @@ import uk.gov.hmcts.et.common.model.ccd.types.Organisation;
 import uk.gov.hmcts.et.common.model.ccd.types.RepresentedTypeC;
 import uk.gov.hmcts.et.common.model.ccd.types.RepresentedTypeR;
 import uk.gov.hmcts.et.common.model.ccd.types.RespondentSumType;
+import uk.gov.hmcts.et.common.model.hmc.DayOfWeekUnavailableType;
 import uk.gov.hmcts.et.common.model.hmc.IndividualDetails;
 import uk.gov.hmcts.et.common.model.hmc.OrganisationDetails;
 import uk.gov.hmcts.et.common.model.hmc.PartyDetails;
@@ -188,7 +189,17 @@ public final class HearingsPartyMapping {
         if (ranges == null) {
             return Collections.emptyList();
         }
-        return ranges.stream().map(GenericTypeItem::getValue).toList();
+        return ranges.stream()
+                .map(GenericTypeItem::getValue)
+                .filter(Objects::nonNull)
+                .map(o -> {
+                    UnavailabilityRanges range = new UnavailabilityRanges();
+                    range.setUnavailabilityType(DayOfWeekUnavailableType.ALL.getLabel());
+                    range.setUnavailableFromDate(o.getUnavailableFromDate());
+                    range.setUnavailableToDate(o.getUnavailableToDate());
+                    return range;
+                })
+                .toList();
     }
 
     private static FlagDetailType getVulnerableFlag(CaseFlagsType flags) {
