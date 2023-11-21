@@ -228,7 +228,7 @@ dependencies {
   implementation group: 'org.apache.qpid', name: 'qpid-jms-client', version: '2.5.0'
   implementation group: 'org.apache.tomcat.embed', name: 'tomcat-embed-core', version: '10.1.16'
   implementation group: 'org.apache.tomcat.embed', name: 'tomcat-embed-websocket', version: '10.1.16'
-  implementation group: 'org.bouncycastle', name: 'bcprov-jdk18on', version: '1.76'
+  implementation group: 'org.bouncycastle', name: 'bcprov-jdk18on', version: '1.77'
   implementation group: 'org.elasticsearch', name: 'elasticsearch', version: '8.11.1'
   implementation group: 'com.azure', name: 'azure-core', version: '1.45.0'
   implementation group: 'org.apache.activemq', name: 'activemq-client', version: '5.18.3'
