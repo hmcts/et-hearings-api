@@ -77,8 +77,7 @@ public final class HearingsCaseMapping {
                 buildScreenNavigation("hearing-attendance", "hearing-venue"),
                 buildScreenNavigation("hearing-venue", "hearing-judge"),
                 buildScreenNavigation("hearing-judge", "hearing-timing"),
-                buildScreenNavigation("hearing-timing", "hearing-link"),
-                buildScreenNavigation("hearing-link", "hearing-additional-instructions"),
+                buildScreenNavigation("hearing-timing", "hearing-additional-instructions"),
                 buildScreenNavigation("hearing-additional-instructions", "hearing-create-edit-summary")
         );
     }
