@@ -320,18 +320,10 @@
     {
       "navigation": [
         {
-          "resultValue": "hearing-link"
-        }
-      ],
-      "screenName": "hearing-timing"
-    },
-    {
-      "navigation": [
-        {
           "resultValue": "hearing-additional-instructions"
         }
       ],
-      "screenName": "hearing-link"
+      "screenName": "hearing-timing"
     },
     {
       "navigation": [
