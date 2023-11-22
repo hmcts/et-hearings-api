@@ -137,15 +137,16 @@ public final class HearingsPartyMapping {
                 .build();
 
         Organisation organisation = rep.getRespondentOrganisation();
+        String firmPartyName = defaultString(rep.getNameOfOrganisation(), rep.getNameOfRepresentative());
         PartyDetails firmPartyDetails = PartyDetails.builder()
                 .partyID(ofNullable(rep.getRespondentOrganisation())
                         .map(Organisation::getOrganisationID)
                         .orElse(defaultString(rep.getNonMyHmctsOrganisationId(), UUID.randomUUID().toString())))
-                .partyName(defaultString(rep.getNameOfOrganisation(), rep.getNameOfRepresentative()))
+                .partyName(firmPartyName)
                 .partyRole(LEGAL_REPRESENTATIVE.getHmcReference())
                 .partyType(ORGANISATION)
                 .organisationDetails(OrganisationDetails.builder()
-                        .name(rep.getNameOfOrganisation())
+                        .name(firmPartyName)
                         .cftOrganisationID(ObjectUtils.isEmpty(organisation) ? null : organisation.getOrganisationID())
                         .organisationType(ORGANISATION)
                         .build())
@@ -234,21 +235,22 @@ public final class HearingsPartyMapping {
                 // TODO: Remove the defaultString line when migration has gone live (RET-4383)
                 // .partyID(claimantRep.getRepresentativeId())
                 .partyID(defaultString(claimantRep.getRepresentativeId(), UUID.randomUUID().toString()))
-                .partyName(defaultString(claimantRep.getNameOfRepresentative(), claimantRep.getNameOfRepresentative()))
+                .partyName(claimantRep.getNameOfRepresentative())
                 .partyRole(LEGAL_REPRESENTATIVE.getHmcReference())
                 .partyType(INDIVIDUAL)
                 .individualDetails(mapIndividualDetailsForClaimantRep(claimantRep))
                 .build();
 
+        String firmPartyName = defaultString(claimantRep.getNameOfOrganisation(), claimantRep.getNameOfRepresentative());
         PartyDetails orgPartyDetails = PartyDetails.builder()
                 // TODO: Remove the defaultString line when migration has gone live (RET-4383)
                 // .partyID(claimantRep.getOrganisationId())
                 .partyID(defaultString(claimantRep.getOrganisationId(), UUID.randomUUID().toString()))
-                .partyName(defaultString(claimantRep.getNameOfOrganisation(), claimantRep.getNameOfRepresentative()))
+                .partyName(firmPartyName)
                 .partyRole(LEGAL_REPRESENTATIVE.getHmcReference())
                 .partyType(ORGANISATION)
                 .organisationDetails(OrganisationDetails.builder()
-                        .name(claimantRep.getNameOfOrganisation())
+                        .name(firmPartyName)
                         .organisationType(ORGANISATION)
                         .build())
                 .build();
