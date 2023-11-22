@@ -137,16 +137,16 @@ public final class HearingsPartyMapping {
                 .build();
 
         Organisation organisation = rep.getRespondentOrganisation();
-        String firmPartyName = defaultString(rep.getNameOfOrganisation(), rep.getNameOfRepresentative());
+        String firstName = defaultString(rep.getNameOfOrganisation(), rep.getNameOfRepresentative());
         PartyDetails firmPartyDetails = PartyDetails.builder()
                 .partyID(ofNullable(rep.getRespondentOrganisation())
                         .map(Organisation::getOrganisationID)
                         .orElse(defaultString(rep.getNonMyHmctsOrganisationId(), UUID.randomUUID().toString())))
-                .partyName(firmPartyName)
+                .partyName(firstName)
                 .partyRole(LEGAL_REPRESENTATIVE.getHmcReference())
                 .partyType(ORGANISATION)
                 .organisationDetails(OrganisationDetails.builder()
-                        .name(firmPartyName)
+                        .name(firstName)
                         .cftOrganisationID(ObjectUtils.isEmpty(organisation) ? null : organisation.getOrganisationID())
                         .organisationType(ORGANISATION)
                         .build())
@@ -241,16 +241,16 @@ public final class HearingsPartyMapping {
                 .individualDetails(mapIndividualDetailsForClaimantRep(claimantRep))
                 .build();
 
-        String firmPartyName = defaultString(claimantRep.getNameOfOrganisation(), claimantRep.getNameOfRepresentative());
+        String firstName = defaultString(claimantRep.getNameOfOrganisation(), claimantRep.getNameOfRepresentative());
         PartyDetails orgPartyDetails = PartyDetails.builder()
                 // TODO: Remove the defaultString line when migration has gone live (RET-4383)
                 // .partyID(claimantRep.getOrganisationId())
                 .partyID(defaultString(claimantRep.getOrganisationId(), UUID.randomUUID().toString()))
-                .partyName(firmPartyName)
+                .partyName(firstName)
                 .partyRole(LEGAL_REPRESENTATIVE.getHmcReference())
                 .partyType(ORGANISATION)
                 .organisationDetails(OrganisationDetails.builder()
-                        .name(firmPartyName)
+                        .name(firstName)
                         .organisationType(ORGANISATION)
                         .build())
                 .build();
