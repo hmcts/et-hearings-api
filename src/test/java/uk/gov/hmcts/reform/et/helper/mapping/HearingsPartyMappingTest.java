@@ -144,4 +144,39 @@ class HearingsPartyMappingTest {
             assertEquals(expectedParties.get(i), actualParties.get(i));
         }
     }
+
+    @Test
+    void testBuildPartyObjectForHearingPayloadNoOrgNames() {
+        String claimantRepName = "claimantRepName";
+        String resRepName = "resRepName";
+
+        List<PartyDetails> expectedParties = serviceHearingValues.getParties();
+        caseData.getRepresentativeClaimantType().setNameOfOrganisation(null);
+        caseData.getRepresentativeClaimantType().setNameOfRepresentative(claimantRepName);
+        caseData.getRepCollection().get(0).getValue().setNameOfOrganisation(null);
+        caseData.getRepCollection().get(0).getValue().setNameOfRepresentative(resRepName);
+
+
+        PartyDetails expectedClaimant = expectedParties.get(2);
+        expectedClaimant.getOrganisationDetails().setName(claimantRepName);
+        expectedClaimant.setPartyName(claimantRepName);
+
+
+        PartyDetails expectedRespondent = expectedParties.get(5);
+        expectedRespondent.getOrganisationDetails().setName(resRepName);
+        expectedRespondent.setPartyName(resRepName);
+
+        List<PartyDetails> actualParties = HearingsPartyMapping.buildPartyObjectForHearingPayload(caseData);
+
+        PartyDetails actualClaimant = actualParties.get(2);
+        assertEquals(expectedClaimant.getPartyName(), actualClaimant.getPartyName());
+        assertEquals(expectedClaimant.getOrganisationDetails().getName(),
+                actualClaimant.getOrganisationDetails().getName());
+
+        PartyDetails actualRespondent = actualParties.get(5);
+        assertEquals(expectedRespondent.getPartyName(), actualRespondent.getPartyName());
+        assertEquals(expectedRespondent.getOrganisationDetails().getName(),
+                actualRespondent.getOrganisationDetails().getName());
+
+    }
 }
