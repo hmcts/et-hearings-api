@@ -241,16 +241,16 @@ public final class HearingsPartyMapping {
                 .individualDetails(mapIndividualDetailsForClaimantRep(claimantRep))
                 .build();
 
-        String firstName = defaultString(claimantRep.getNameOfOrganisation(), claimantRep.getNameOfRepresentative());
+        String firmName = defaultString(claimantRep.getNameOfOrganisation(), claimantRep.getNameOfRepresentative());
         PartyDetails orgPartyDetails = PartyDetails.builder()
                 // TODO: Remove the defaultString line when migration has gone live (RET-4383)
                 // .partyID(claimantRep.getOrganisationId())
                 .partyID(defaultString(claimantRep.getOrganisationId(), UUID.randomUUID().toString()))
-                .partyName(firstName)
+                .partyName(firmName)
                 .partyRole(LEGAL_REPRESENTATIVE.getHmcReference())
                 .partyType(ORGANISATION)
                 .organisationDetails(OrganisationDetails.builder()
-                        .name(firstName)
+                        .name(firmName)
                         .organisationType(ORGANISATION)
                         .build())
                 .build();
