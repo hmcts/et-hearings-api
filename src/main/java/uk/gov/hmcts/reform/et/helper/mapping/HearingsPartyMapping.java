@@ -137,16 +137,16 @@ public final class HearingsPartyMapping {
                 .build();
 
         Organisation organisation = rep.getRespondentOrganisation();
-        String firstName = defaultString(rep.getNameOfOrganisation(), rep.getNameOfRepresentative());
+        String firmName = defaultString(rep.getNameOfOrganisation(), rep.getNameOfRepresentative());
         PartyDetails firmPartyDetails = PartyDetails.builder()
                 .partyID(ofNullable(rep.getRespondentOrganisation())
                         .map(Organisation::getOrganisationID)
                         .orElse(defaultString(rep.getNonMyHmctsOrganisationId(), UUID.randomUUID().toString())))
-                .partyName(firstName)
+                .partyName(firmName)
                 .partyRole(LEGAL_REPRESENTATIVE.getHmcReference())
                 .partyType(ORGANISATION)
                 .organisationDetails(OrganisationDetails.builder()
-                        .name(firstName)
+                        .name(firmName)
                         .cftOrganisationID(ObjectUtils.isEmpty(organisation) ? null : organisation.getOrganisationID())
                         .organisationType(ORGANISATION)
                         .build())
