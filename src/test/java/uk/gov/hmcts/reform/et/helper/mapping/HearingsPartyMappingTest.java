@@ -179,4 +179,14 @@ class HearingsPartyMappingTest {
                 actualRespondent.getOrganisationDetails().getName());
 
     }
+
+    @Test
+    void testBuildPartyObjectForHearingPayloadNullCaseFlags() {
+        caseData.setRespondentFlags(null);
+        caseData.setClaimantFlags(null);
+
+        List<PartyDetails> actualParties = HearingsPartyMapping.buildPartyObjectForHearingPayload(caseData);
+
+        assertEquals(8, actualParties.size());
+    }
 }
