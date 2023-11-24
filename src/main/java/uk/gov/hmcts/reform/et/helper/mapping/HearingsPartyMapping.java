@@ -204,7 +204,7 @@ public final class HearingsPartyMapping {
     }
 
     private static FlagDetailType getVulnerableFlag(CaseFlagsType flags) {
-        if (flags.getDetails() == null) {
+        if (flags == null || flags.getDetails() == null) {
             return null;
         }
 
@@ -216,7 +216,7 @@ public final class HearingsPartyMapping {
     }
 
     private static String getInterpreterLanguage(CaseFlagsType flags) {
-        if (flags.getDetails() == null) {
+        if (flags == null || flags.getDetails() == null) {
             return null;
         }
 
