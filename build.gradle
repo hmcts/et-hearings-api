@@ -213,7 +213,7 @@ dependencies {
   implementation group: 'com.github.hmcts', name: 'et-common', version:'1.2.10'
   implementation group: 'com.github.hmcts', name: 'et-data-model', version:'3.9.0'
   implementation group: 'org.springframework.boot', name: 'spring-boot-configuration-processor'
-  implementation group: 'org.springframework.retry', name: 'spring-retry', version: '2.0.4'
+  implementation group: 'org.springframework.retry', name: 'spring-retry', version: '2.0.11'
  implementation group: 'org.springframework.cloud', name: 'spring-cloud-starter-openfeign', version: '4.0.4' , {
     exclude group: 'commons-io', module: 'commons-io'
   }
