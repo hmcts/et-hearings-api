@@ -35,4 +35,7 @@
     <packageUrl regex="true">^pkg:maven/com\.microsoft\.rest/client\-runtime@.*$</packageUrl>
     <cpe>cpe:/a:microsoft:azure_cli</cpe>
   </suppress>
+  <suppress>
+    <cve>CVE-2023-6378</cve>
+  </suppress>
 </suppressions>
