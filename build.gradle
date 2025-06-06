@@ -272,6 +272,7 @@ dependencyManagement {
       entry 'netty-handler'
       entry 'netty-handler-proxy'
       entry 'netty-resolver'
+      entry 'netty-resolver-dns'
       entry 'netty-resolver-dns-classes-macos'
       entry 'netty-resolver-dns-native-macos'
       entry 'netty-transport'
