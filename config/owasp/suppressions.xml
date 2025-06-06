@@ -38,4 +38,7 @@
   <suppress>
     <cve>CVE-2023-6378</cve>
   </suppress>
+  <suppress>
+    <cve>CVE-2024-38820</cve>
+  </suppress>
 </suppressions>
