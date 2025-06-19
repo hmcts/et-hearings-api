@@ -2,6 +2,10 @@ server:
   port: 4560
 
 management:
+  # To be enabled at some point in the future
+  health:
+    jms:
+      enabled: false
   endpoint:
     health:
       show-details: "always"
