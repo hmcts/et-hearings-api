@@ -218,7 +218,7 @@ dependencies {
   implementation group: 'org.springframework', name: 'spring-messaging', version: '6.1.1'
   implementation group: 'org.springdoc', name: 'springdoc-openapi-starter-webmvc-ui', version: '2.2.0'
   implementation group: 'com.github.hmcts', name: 'et-common', version: '3.0.28'
-  implementation group: 'com.github.hmcts', name: 'et-data-model', version: '4.2.23'
+  implementation group: 'com.github.hmcts', name: 'et-data-model', version: '4.2.25'
   implementation group: 'org.springframework.boot', name: 'spring-boot-configuration-processor'
   implementation group: 'org.springframework.retry', name: 'spring-retry', version: '2.0.12'
   implementation group: 'org.springframework.cloud', name: 'spring-cloud-starter-openfeign', version: '4.1.3' , {
