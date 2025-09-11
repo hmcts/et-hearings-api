@@ -246,7 +246,7 @@ dependencies {
   implementation group: 'ch.qos.logback', name: 'logback-classic', version: '1.5.18'
   implementation group: 'ch.qos.logback', name: 'logback-core', version: '1.5.18'
   implementation group: 'ch.qos.logback', name: 'logback-access', version: '1.5.18'
-  implementation 'org.junit.jupiter:junit-jupiter:5.10.1'
+  implementation 'org.junit.jupiter:junit-jupiter:5.13.4'
   // CVE-2025-54988
   implementation group: 'org.apache.tika', name: 'tika-core', version: '3.2.2'
   compileOnly 'org.projectlombok:lombok'
@@ -256,7 +256,7 @@ dependencies {
   integrationTestAnnotationProcessor group: 'org.projectlombok', name: 'lombok'
   testImplementation group: 'org.projectlombok', name: 'lombok'
 
-  testImplementation(platform('org.junit:junit-bom:5.10.1'))
+  testImplementation(platform('org.junit:junit-bom:5.13.4'))
   testRuntimeOnly 'org.junit.jupiter:junit-jupiter-engine'
   testImplementation group: 'org.springframework.boot', name: 'spring-boot-starter-test', {
     exclude group: 'junit', module: 'junit'
