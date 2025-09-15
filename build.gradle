@@ -266,7 +266,7 @@ dependencies {
 
 dependencyManagement {
   dependencies {
-    dependencySet(group: 'io.netty', version: '4.1.119.Final') {
+    dependencySet(group: 'io.netty', version: '4.2.6.Final') {
       entry 'netty-buffer'
       entry 'netty-codec'
       entry 'netty-codec-dns'
