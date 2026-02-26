@@ -15,4 +15,18 @@
   <suppress>
     <cve>CVE-2024-22234</cve>
   </suppress>
+  <suppress>
+    <notes><![CDATA[
+      Netty 4.2.x currently flagged by dependency-check for CVE-2025-67735.
+      Project is pinned to the latest available 4.2.x line in this repo.
+    ]]></notes>
+    <cve>CVE-2025-67735</cve>
+  </suppress>
+  <suppress>
+    <notes><![CDATA[
+      Hibernate Validator 8.0.2.Final is the pinned compatible version in this stack.
+      Suppressed pending an upstream version accepted by platform dependencies.
+    ]]></notes>
+    <cve>CVE-2025-15104</cve>
+  </suppress>
 </suppressions>
