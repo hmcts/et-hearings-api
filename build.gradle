@@ -219,7 +219,7 @@ repositories {
 
 ext {
   log4JVersion = "2.25.3"
-  tomcatEmbedVersion = "10.1.48"
+  tomcatEmbedVersion = "10.1.52"
   nettyVersion = "4.2.10.Final"
   hibernateValidatorVersion = "8.0.3.Final"
   errorProneVersion = "2.48.0"
