@@ -222,7 +222,7 @@ ext {
   tomcatEmbedVersion = "10.1.48"
   nettyVersion = "4.2.10.Final"
   hibernateValidatorVersion = "8.0.3.Final"
-  errorProneVersion = "2.28.0"
+  errorProneVersion = "2.48.0"
   jacksonVersion = '2.18.3'
 }
 
