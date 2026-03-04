@@ -266,9 +266,9 @@ dependencies {
   implementation group: 'com.azure', name: 'azure-messaging-servicebus', version: '7.17.17'
   implementation group: 'commons-fileupload', name: 'commons-fileupload', version: '1.6.0'
   implementation group: 'org.apache.commons', name: 'commons-lang3', version: '3.18.0'
-  implementation group: 'ch.qos.logback', name: 'logback-classic', version: '1.5.18'
-  implementation group: 'ch.qos.logback', name: 'logback-core', version: '1.5.18'
-  implementation group: 'ch.qos.logback', name: 'logback-access', version: '1.5.18'
+  implementation group: 'ch.qos.logback', name: 'logback-classic', version: '1.5.32'
+  implementation group: 'ch.qos.logback', name: 'logback-core', version: '1.5.32'
+  implementation group: 'ch.qos.logback', name: 'logback-access', version: '1.5.32'
   implementation 'org.junit.jupiter:junit-jupiter:5.13.4'
   // CVE-2025-54988
   implementation group: 'org.apache.tika', name: 'tika-core', version: '3.2.3'
