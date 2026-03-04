@@ -221,7 +221,7 @@ ext {
   log4JVersion = "2.25.3"
   tomcatEmbedVersion = "10.1.48"
   nettyVersion = "4.2.7.Final"
-  hibernateValidatorVersion = "8.0.2.Final"
+  hibernateValidatorVersion = "8.0.3.Final"
   errorProneVersion = "2.28.0"
   jacksonVersion = '2.18.3'
 }
