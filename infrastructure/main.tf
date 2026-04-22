@@ -6,12 +6,12 @@ locals {
   tagEnv = var.env == "aat" ? "staging" : var.env == "perftest" ? "testing" : var.env
   tags = merge(var.common_tags,
     tomap({
-      "environment" = local.tagEnv,
-      "managedBy" = var.team_name,
+      "environment"  = local.tagEnv,
+      "managedBy"    = var.team_name,
       "Team Contact" = var.team_contact,
-      "application" = "employment-tribunals",
+      "application"  = "employment-tribunals",
       "businessArea" = "CFT",
-      "builtFrom" = "et-hearings-api"
+      "builtFrom"    = "et-hearings-api"
     })
   )
 }
@@ -20,6 +20,11 @@ resource "azurerm_resource_group" "rg" {
   name     = "${var.product}-${var.component}-${var.env}"
   location = var.location
   tags     = local.tags
+}
+
+data "azurerm_user_assigned_identity" "jenkins" {
+  name                = "jenkins-${var.env}-mi"
+  resource_group_name = "managed-identities-${var.env}-rg"
 }
 
 data "azurerm_user_assigned_identity" "et-identity" {
@@ -34,6 +39,7 @@ module "key-vault" {
   env                         = var.env
   tenant_id                   = var.tenant_id
   object_id                   = var.jenkins_AAD_objectId
+  jenkins_object_id           = data.azurerm_user_assigned_identity.jenkins.principal_id
   resource_group_name         = azurerm_resource_group.rg.name
   product_group_name          = "DTS Employment Tribunals"
   common_tags                 = local.tags

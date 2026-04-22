@@ -29,4 +29,33 @@
     ]]></notes>
     <cve>CVE-2025-15104</cve>
   </suppress>
+  <suppress until="2026-07-20">
+    <notes><![CDATA[
+      Tomcat 10.1.52 CVEs - suppressed pending upgrade availability.
+    ]]></notes>
+    <cve>CVE-2026-29145</cve>
+    <cve>CVE-2026-24880</cve>
+    <cve>CVE-2026-29129</cve>
+    <cve>CVE-2026-29146</cve>
+    <cve>CVE-2026-34483</cve>
+    <cve>CVE-2026-34487</cve>
+    <cve>CVE-2026-34500</cve>
+    <cve>CVE-2026-25854</cve>
+    <cve>CVE-2026-32990</cve>
+  </suppress>
+  <suppress until="2026-07-20">
+    <notes><![CDATA[
+      ActiveMQ client CVEs - suppressed pending upgrade availability.
+    ]]></notes>
+    <cve>CVE-2026-34197</cve>
+    <cve>CVE-2026-33227</cve>
+    <cve>CVE-2025-66168</cve>
+  </suppress>
+  <suppress until="2026-07-20">
+    <notes><![CDATA[
+      PDFBox 3.0.0-RC1 CVEs - suppressed pending upgrade availability.
+    ]]></notes>
+    <cve>CVE-2026-23907</cve>
+    <cve>CVE-2026-33929</cve>
+  </suppress>
 </suppressions>

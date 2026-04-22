@@ -1,10 +1,10 @@
 #HMC to hearings API
 module "servicebus-subscription" {
-  source                = "git@github.com:hmcts/terraform-module-servicebus-subscription?ref=DTSPO-18682"
-  name                  = "hmc-to-et-subscription-${var.env}"
-  namespace_name        = "hmc-servicebus-${var.env}"
-  topic_name            = "hmc-to-cft-${var.env}"
-  resource_group_name   = "hmc-shared-${var.env}"
+  source              = "git@github.com:hmcts/terraform-module-servicebus-subscription?ref=DTSPO-18682"
+  name                = "hmc-to-et-subscription-${var.env}"
+  namespace_name      = "hmc-servicebus-${var.env}"
+  topic_name          = "hmc-to-cft-${var.env}"
+  resource_group_name = "hmc-shared-${var.env}"
 }
 resource "azurerm_servicebus_subscription_rule" "topic_filter_rule_et" {
   name            = "hmc-servicebus-${var.env}-subscription-rule-BHA1"
@@ -21,7 +21,7 @@ data "azurerm_key_vault" "hmc-key-vault" {
   resource_group_name = "hmc-shared-${var.env}"
 }
 data "azurerm_key_vault_secret" "hmc-servicebus-connection-string" {
-  key_vault_id = "${data.azurerm_key_vault.hmc-key-vault.id}"
+  key_vault_id = data.azurerm_key_vault.hmc-key-vault.id
   name         = "hmc-servicebus-connection-string"
 }
 
